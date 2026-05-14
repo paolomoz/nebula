@@ -182,6 +182,32 @@ other photo slot is present). Surface if the budget is breached.
 Record all slots and the policy in `DESIGN.json.extensions.imageSlots[]`
 and `DESIGN.json.extensions.imagePolicy`.
 
+### Phase 4d — Pick hovers (0–1 per card grid)
+
+Read `skills/nebula/reference/hovers.md`. If any picked move/signature
+is a card-grid host (M2 photographic card, S9 elastic-cards, or any
+future card-grid pattern), **optionally** pick one hover from the
+library to apply *uniformly* to all cards in that grid.
+
+The rules:
+
+1. **0–1 hover per card grid.** Multiple grids on the same page may
+   use different hovers; cards within a single grid must use the same
+   hover (mixing hovers within a grid is render-refusal grade).
+2. **Defaults to zero.** Unless the brief signals card emphasis
+   (portfolio brief, gallery brief, atelier folio, featured-work
+   showcase), prefer no hover.
+3. **Verify constraints.** For each candidate hover:
+   - Its `Applied to` list includes a picked host move/signature.
+   - The brief's anchor family appears in its `Fits` list.
+   - Its CSS tech cost is acceptable (all H1–H15 are vanilla CSS — no
+     tech-budget concern).
+
+Record picked hovers in `DESIGN.json.extensions.hovers[]` as
+`{ id, name, appliedToMove, appliedToGridSlot, specimen }`. Each
+entry binds the hover to a specific host so render knows which grid
+to scope the CSS to.
+
 ### Phase 5 — Distinctiveness check (gate)
 
 Before writing the target spec, run the distinctiveness check. For each
@@ -211,6 +237,7 @@ Axes:
 
 Moves:       <M-ids>
 Signatures:  <S-ids, or "none — type-led">
+Hovers:      <H-ids per host, or "none">
 Image slots: <N total, broken down: hero ×1, card ×3 …>
 Image policy: <unsplash | user-supplied | generate (will fall back to unsplash)>
 
@@ -305,6 +332,9 @@ Next: $nebula render
 - `skills/nebula/reference/image-policy.md` — image source policy
   (Unsplash by default; user-supplied takes priority; generation
   opt-in only) + per-anchor skip rules + slot schema.
+- `skills/nebula/reference/hovers.md` — hover effects catalog (H1–H15
+  from Codrops). Applied as modifiers to card-grid host moves; 0–1
+  hover per card grid.
 - `reference/anchor-selection.md` — the 3-candidate generator + scoring
   procedure.
 - `reference/curated-pools/` — human-curated content for each axis.

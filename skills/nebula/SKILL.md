@@ -107,5 +107,10 @@ what was synthesized vs. authored, and what other artifacts were read.
   user-supplied takes priority, generation opt-in only), the 3-way
   resolution chain, slot schema, per-anchor skip rules, Unsplash discipline
   (max 4 photos / brand-anchored keywords).
+- `reference/hovers.md` — hover effects catalog (H1–H15 from Codrops:
+  Sadie, Layla, Honey, Lily, Selena, Apollo, Steve, Marley, Ruby,
+  Bubba, Romeo, Dexter, Sarah, Chico, Oscar). Applied as modifiers
+  to card-grid host moves; 0–1 hover per card grid; consistency
+  within a grid is mandatory.
 - `reference/pitfalls.md` — named rules that must not be violated.
 - `reference/state-machine.md` — lifecycle, state report format, stale rules.

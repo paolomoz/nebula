@@ -123,6 +123,21 @@ Every rendered photographic element must carry:
 - `loading="lazy"` (except hero / above-the-fold, which may be eager)
 - `decoding="async"` for non-critical photos
 
+**Apply each picked hover** in `DESIGN.json.extensions.hovers[]` to its
+declared host:
+
+- Look up the hover entry in `skills/nebula/reference/hovers.md` for
+  the CSS recipe.
+- Scope the recipe to the host grid via `data-hover="<H-id>"` on the
+  host wrapper (e.g., `<section data-hover="H1" data-move="M2">`).
+  Render adapts the canonical `.fig`/`.cap` class names from the
+  recipe to the page's own namespace.
+- If the hover has a local specimen, read it for any non-CSS context
+  (markup splits like H11 Romeo's two-span title); otherwise the CSS
+  recipe in `hovers.md` is the full instruction.
+- All cards in the host grid receive the same hover. Mixing two
+  hovers within one grid is render-refusal grade.
+
 For each picked signature, **adapt the specimen — never inline it
 verbatim**. The specimen demonstrates the technique; render adapts it
 to the brand:
@@ -170,6 +185,11 @@ Also run nebula-specific checks:
   photo count is within the Unsplash-discipline budget (≤ 4 photos
   unless the anchor is Catalog with an M2 card grid as the only photo
   set).
+- **Hover integrity.** Every hover in
+  `DESIGN.json.extensions.hovers[]` is applied to its declared host
+  in the rendered HTML, scoped to a `data-hover="<H-id>"` wrapper.
+  Every card within the host grid receives the same hover — no
+  intra-grid mixing.
 
 ### Phase 5 — Surface and iterate
 
@@ -243,4 +263,6 @@ Update `nebula/state.json`:
 - `skills/nebula/reference/image-policy.md` — image source policy
   (Unsplash by default; user-supplied takes priority; generation
   opt-in) + slot schema + provenance + validation rules.
+- `skills/nebula/reference/hovers.md` — hover effects catalog
+  (H1–H15 from Codrops). CSS recipes scoped to `data-hover="<H-id>"`.
 - `skills/nebula/reference/pitfalls.md` — nebula-specific render rules.

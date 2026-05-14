@@ -396,7 +396,244 @@ sections.
 
 ### Type-led anchor family
 
-*TODO — author when needed.*
+Three moves for briefs where the typography *is* the design: Penguin
+Classics Clothbound, Saul Bass title sequences, A.G. Fronzoni editorial,
+hand-set specimen pages, manifesto / declaration pages.
+
+## M6 — Oversized display + corner marginalia
+
+**Use when.** A hero or chapter-opener where the display type is the
+whole composition — Penguin Clothbound covers, manifesto pages, type-
+specimen folios, book-cover-style heros. The anchor is type-led
+(Penguin / Bass / Fronzoni / hand-set print) and the brief earns
+theatrical type scale.
+
+**Recipe.**
+
+- The display element fills most of the viewport, anchored to a grid
+  position (commonly bottom-left, top-center, or dead-center) — the
+  composition of the type *as object* is the point.
+- Tiny corner marginalia (mono or small label-typography) in the
+  opposite corners — page numbers, edition marks, dates, classification
+  labels. These read as book-page marginalia, not as UI chrome.
+- No photography, no second display element. The hairline rule
+  framing the section's edges is optional but reinforces the "book
+  page" register.
+
+```css
+.type-hero {
+  position: relative;
+  min-height: 88vh;
+  padding: var(--space-3xl) var(--space-xl);
+  display: grid;
+  /* anchor variations: align-items / justify-items shift the type-as-object */
+  align-items: end;
+  justify-items: start;
+  background: var(--color-paper);
+  color: var(--color-olive-ink);
+  /* optional: 1px inset hairline frame */
+  outline: 1px solid var(--color-rule);
+  outline-offset: calc(-1 * var(--space-md));
+}
+
+.type-hero__display {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+  margin: 0;
+}
+
+.type-hero__marginalia {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-bottle-green);
+}
+.type-hero__marginalia--tl { top: var(--space-xl); left: var(--space-xl); }
+.type-hero__marginalia--tr { top: var(--space-xl); right: var(--space-xl); }
+.type-hero__marginalia--bl { bottom: var(--space-xl); left: var(--space-xl); }
+.type-hero__marginalia--br { bottom: var(--space-xl); right: var(--space-xl); }
+```
+
+**Pitfalls.** None type-specific. The cliché trap is using the
+display type with a subtle scrim or photographic underlay — that
+turns the move into M1 with bigger type. M6 demands the substrate be
+flat (paper or single-color); the typography carries the entire
+section alone.
+
+**Pairs with.** **M7** drop-cap chapter opener for the body section
+that follows M6 — the oversized display sets the chapter title; the
+drop-cap opens the prose. **M8** type-as-pattern band as a mid-page
+texture rhythm break.
+
+---
+
+## M7 — Drop-cap chapter opener
+
+**Use when.** The first paragraph of a chapter / section that should
+read as the opening of a book chapter — an old-style serif drop-cap
+flows into the body prose, taking 3–5 lines of body height. Editorial
+publications, long-read essays, atelier / sense-of-history briefs.
+
+**Recipe.**
+
+- The first letter of the lead paragraph is rendered at display size,
+  floated to the left, sized to ~5 lines of body text. The body wraps
+  around it naturally.
+- The drop-cap inherits the **display** font family, not the body —
+  this is the typographic gesture that reads as "book chapter."
+- Color contrast: the drop-cap can carry the brand's signature color
+  (oxblood / accent) as a sparing punctuation use, or stay in body ink.
+- Implement via `::first-letter` *or* an explicit `<span class="drop">`
+  wrapping the first letter — the latter is more robust across browsers
+  for fine-grained line-height / float tuning.
+
+```css
+.chapter-prose {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* preferred: explicit span wrap for predictable rendering across browsers */
+.chapter-prose .drop {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 5.5em;           /* ≈ 5 body lines (5 × 1.7 line-height ≈ 5.5em block height) */
+  line-height: 0.86;
+  margin: 0.04em 0.10em 0 0;
+  color: var(--color-oxblood);
+  /* small optical kerning so the body wraps to the cap's right edge cleanly */
+  padding: 0 0.04em 0 0;
+}
+
+/* fallback: ::first-letter (less robust, but zero-markup) */
+.chapter-prose--auto::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 5.5em;
+  line-height: 0.86;
+  margin: 0.04em 0.10em 0 0;
+  color: var(--color-oxblood);
+}
+```
+
+**Pitfalls.** Drop-caps fail visually when (a) the paragraph is too
+short — the cap's bottom extends below the last line of text, leaving
+a hanging glyph; (b) the floated cap interacts with a `column-count`
+multi-column layout (it breaks). Render checks:
+
+- The lead paragraph must run at least 5 lines at the prose-max width.
+- The containing element must not use CSS columns.
+
+**Pairs with.** **M6** for the chapter title that introduces the
+prose. **M3** atmospheric band as the transition into the next
+chapter — the prose ends, the texture band begins.
+
+---
+
+## M8 — Type-as-pattern band
+
+**Use when.** A mid-page texture band that uses display type repeated
+as pattern — Penguin Clothbound's foil-stamped tessellating motifs,
+festival-poster repetition, manifesto declaration bands. The band is
+type-only; no photography, no second graphic element.
+
+**Recipe.**
+
+- A full-bleed band repeats a short phrase (or single word) several
+  times across its width, either in a single line that overflows the
+  viewport horizontally, or in 2–4 stacked rows at a tighter scale.
+- The text is rendered at display size with `overflow: hidden` on the
+  container so the repetition reads as pattern, not as scrolling text.
+- Optional very-slow horizontal animation (15–30s loop) for a marquee-
+  pattern variant — but the static composition is the canonical form;
+  motion is the lesser member of the family.
+- The band's substrate is the brand's *accent* color (or accent-tinted
+  surface), with display type in the *paper* color — inverting the
+  page's normal color order is the move's wit.
+
+```css
+.pattern-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-oxblood);
+  color: var(--color-paper);
+  padding: var(--space-xl) 0;
+  /* the band is *intentionally* clipped — repetition reads as pattern */
+}
+
+.pattern-band__rail {
+  display: flex;
+  gap: var(--space-xl);
+  white-space: nowrap;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  /* the rail is wider than viewport — repetition fills the overflow */
+}
+
+.pattern-band__word {
+  display: inline-block;
+  /* optional decorative glyph between repetitions */
+}
+
+.pattern-band__word::after {
+  content: "·";
+  display: inline-block;
+  margin-left: var(--space-xl);
+  color: var(--color-paper);
+  opacity: 0.5;
+}
+
+/* optional marquee variant — slow drift; pauses on hover; honors reduced motion */
+.pattern-band--marquee .pattern-band__rail {
+  animation: pattern-drift 32s linear infinite;
+  will-change: transform;
+}
+.pattern-band--marquee:hover .pattern-band__rail { animation-play-state: paused; }
+
+@keyframes pattern-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pattern-band--marquee .pattern-band__rail { animation: none; }
+}
+```
+
+For the marquee variant the rail's content must be **doubled** (the
+same word-list rendered twice in sequence) so the translate by -50%
+loops seamlessly.
+
+**Pitfalls.** The band fails when (a) the repetition reads as
+*broken UI* rather than as pattern — typically because there are
+fewer than 4 repetitions across the viewport at the chosen size; (b)
+the marquee variant runs at a speed fast enough to read as motion-
+graphic rather than as drift (the 32s default is calibrated; anything
+under 18s reads as scrolling text). Render checks:
+
+- At the chosen `font-size`, count repetitions across a 1440px-wide
+  viewport. Must be ≥ 4 to read as pattern.
+- If marquee variant: animation duration ≥ 20s.
+
+**Pairs with.** **M6** as a hero ↔ band ↔ chapter rhythm — type-as-
+object opens; type-as-pattern interrupts; type-as-paragraph (body)
+continues. **M7** drop-cap chapter opener as the prose that follows
+the pattern band.
+
+---
 
 ### Grid / system anchor family
 
