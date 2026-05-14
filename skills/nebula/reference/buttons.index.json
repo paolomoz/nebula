@@ -1,0 +1,281 @@
+{
+  "_meta": {
+    "pool": "buttons",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.525Z",
+    "sourceFile": "skills/nebula/reference/buttons.md",
+    "count": 12
+  },
+  "entries": [
+    {
+      "id": "B1",
+      "name": "Quiet hover",
+      "anchor": "b1-quiet-hover",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic",
+        "documentary",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "music-label",
+        "cinematic"
+      ],
+      "techStack": "Vanilla CSS",
+      "tier": "css-only",
+      "trigger": "Hover",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B2",
+      "name": "Fill slide",
+      "anchor": "b2-fill-slide",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "editorial",
+        "civic",
+        "documentary",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "brutalist"
+      ],
+      "techStack": "Vanilla CSS",
+      "tier": "css-only",
+      "trigger": "Hover",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B3",
+      "name": "Ring expand",
+      "anchor": "b3-ring-expand",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist",
+        "wine-spirits"
+      ],
+      "techStack": "Vanilla CSS",
+      "tier": "css-only",
+      "trigger": "Hover",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B4",
+      "name": "Inverted hover",
+      "anchor": "b4-inverted-hover",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "civic",
+        "documentary",
+        "hospitality",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "athletic"
+      ],
+      "techStack": "Vanilla CSS",
+      "tier": "css-only",
+      "trigger": "Hover",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B5",
+      "name": "Underline draw",
+      "anchor": "b5-underline-draw",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "documentary",
+        "hospitality",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "techStack": "Vanilla CSS",
+      "tier": "css-only",
+      "trigger": "Hover",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B6",
+      "name": "Arrow lean",
+      "anchor": "b6-arrow-lean",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "trust-fintech",
+        "civic",
+        "documentary",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist",
+        "quiet-craft"
+      ],
+      "techStack": "Vanilla CSS",
+      "tier": "css-only",
+      "trigger": "Hover",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B7",
+      "name": "Magnetic pull",
+      "anchor": "b7-magnetic-pull",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS + light JS",
+      "tier": "css-plus-js",
+      "trigger": "Cursor-tracking (continuous)",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "B8",
+      "name": "Material ripple",
+      "anchor": "b8-material-ripple",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "trust-fintech",
+        "vibrant-playful",
+        "civic",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "music-label",
+        "wine-spirits"
+      ],
+      "techStack": "Vanilla CSS + light JS",
+      "tier": "css-plus-js",
+      "trigger": "Click",
+      "specimenStatus": "inline"
+    },
+    {
+      "id": "B9",
+      "name": "Particle burst (squares)",
+      "anchor": "b9-particle-burst-squares",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "civic",
+        "hospitality",
+        "tech-research"
+      ],
+      "techStack": "Vanilla JS + Canvas 2D",
+      "tier": "canvas-or-webgl",
+      "trigger": "Click",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "B10",
+      "name": "Particle burst (circles)",
+      "anchor": "b10-particle-burst-circles",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "luxury-fashion",
+        "hospitality",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "techStack": "Vanilla JS + Canvas 2D",
+      "tier": "canvas-or-webgl",
+      "trigger": "Click",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "B11",
+      "name": "Particle implode",
+      "anchor": "b11-particle-implode",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "civic",
+        "hospitality"
+      ],
+      "techStack": "Vanilla JS + Canvas 2D",
+      "tier": "canvas-or-webgl",
+      "trigger": "Hover (continuous, not click)",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "B12",
+      "name": "Iridescent foil",
+      "anchor": "b12-iridescent-foil",
+      "filePath": "skills/nebula/reference/buttons.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "civic",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "techStack": "Vanilla CSS + light JS (cursor angle tracking). Optional shader upgrade for premium tier",
+      "tier": "canvas-or-webgl",
+      "trigger": "Cursor position over button",
+      "specimenStatus": "external-only"
+    }
+  ]
+}

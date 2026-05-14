@@ -1,0 +1,216 @@
+{
+  "_meta": {
+    "pool": "signatures",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.523Z",
+    "sourceFile": "skills/nebula/reference/signatures.md",
+    "count": 9
+  },
+  "entries": [
+    {
+      "id": "S1",
+      "name": "Horizontal Parallax Gallery",
+      "anchor": "s1-horizontal-parallax-gallery",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "luxury-fashion",
+        "music-label",
+        "cinematic",
+        "boutique-hotel"
+      ],
+      "avoid": [],
+      "sectionRole": "Gallery / portfolio band. Often deployed mid-page as the showcase moment of a folio or editorial feature",
+      "techStack": "Vanilla JS + CSS (no WebGL, no GSAP). Vertical scroll input is mapped to horizontal translation of a row of image panels, with per-layer parallax",
+      "antiPairs": [
+        "V1",
+        "V6",
+        "V11"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/horizontal-parallax-gallery/index.html"
+    },
+    {
+      "id": "S2",
+      "name": "Canvas Grid Mouse",
+      "anchor": "s2-canvas-grid-mouse",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "tech-research",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero / above-the-fold ambient. Replaces a static hero background with a cursor-reactive canvas field",
+      "techStack": "Vanilla JS + Canvas 2D. No GSAP, no Tweakpane. The canvas is sized to the smaller viewport dimension and re-renders on every cursor move + every animation frame",
+      "antiPairs": [
+        "V1",
+        "V5",
+        "V7"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/canvas-grid-mouse/index.html"
+    },
+    {
+      "id": "S3",
+      "name": "Delphi clone",
+      "anchor": "s3-delphi-clone",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero. A signature-tier launch / campaign hero, not a recurring band",
+      "techStack": "Three.js / WebGL. The slug `delphi-three` implies the Three.js variant of a Delphi project; presumably a 3D scene with cloned/duplicated subject(s) rendered through WebGL",
+      "antiPairs": [
+        "V5",
+        "V9",
+        "V11",
+        "V4"
+      ],
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "S4",
+      "name": "Telescope Zoom",
+      "anchor": "s4-telescope-zoom",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero transition / scroll-driven reveal. The first scroll on the page is the move",
+      "techStack": "Original uses GSAP; reimplementable in vanilla JS via `IntersectionObserver` + scroll progress mapping. Medium reimpl cost",
+      "antiPairs": [
+        "V6",
+        "V11",
+        "V3"
+      ],
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "S5",
+      "name": "Shader Animation (GSAP)",
+      "anchor": "s5-shader-animation-gsap",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "luxury-fashion",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero or transition between image states. Image-to-image dissolves with shader-driven distortion",
+      "techStack": "Three.js + custom GLSL fragment shader + GSAP. The shader uniforms (progress, distortion, color shift) are animated by GSAP timelines on click. High reimpl cost — requires GLSL knowledge",
+      "antiPairs": [
+        "V5",
+        "V9",
+        "V7",
+        "V8"
+      ],
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "S6",
+      "name": "Gridmorphic",
+      "anchor": "s6-gridmorphic",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "indie-game",
+        "music-label"
+      ],
+      "avoid": [],
+      "sectionRole": "Gallery / content surface. The name suggests a grid that morphs between layouts",
+      "techStack": "TBD — source page inaccessible to programmatic fetch. Likely vanilla JS + CSS Grid + transform-based morphing; may use GSAP",
+      "antiPairs": [
+        "V8"
+      ],
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "S7",
+      "name": "Imagen Header",
+      "anchor": "s7-imagen-header",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero only. A statement opener for AI / generative / launch pages",
+      "techStack": "React Three Fiber + Three.js Shading Language (TSL) + GSAP + Tailwind. Original is React-based. High reimpl cost; non-React reimpl would require porting TSL shader to GLSL",
+      "antiPairs": [
+        "V9",
+        "V5",
+        "V7"
+      ],
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "S8",
+      "name": "Elastic Grid Scroll",
+      "anchor": "s8-elastic-grid-scroll",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "indie-game",
+        "documentary",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Gallery / content surface. A mid-page or full-page gallery moment that turns scrolling into the showcase mechanic",
+      "techStack": "Vanilla JS + CSS (no GSAP). Scroll velocity drives per-item transforms (skew + scale + translate) with elastic falloff that releases when scroll stops",
+      "antiPairs": [
+        "V6",
+        "V11",
+        "V1"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/elastic-grid-scroll/index.html"
+    },
+    {
+      "id": "S9",
+      "name": "Elastic Cards (4×2 variant)",
+      "anchor": "s9-elastic-cards-4-2-variant",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "music-label",
+        "boutique-hotel"
+      ],
+      "avoid": [],
+      "sectionRole": "Feature grid / showcase. A smaller, more curated cousin of S8 — designed for 8 marquee items rather than a wide gallery",
+      "techStack": "Vanilla JS + CSS (no GSAP). Inherits the elastic-scroll behavior of S8, plus per-card hover micro-motion in the Sadie idiom (smooth scale + caption reveal)",
+      "antiPairs": [
+        "V7",
+        "V11",
+        "V1"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/elastic-cards/index.html"
+    }
+  ]
+}

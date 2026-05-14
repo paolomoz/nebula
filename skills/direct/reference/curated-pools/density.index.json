@@ -1,0 +1,327 @@
+{
+  "_meta": {
+    "pool": "density",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.518Z",
+    "sourceFile": "skills/direct/reference/curated-pools/density.md",
+    "count": 11
+  },
+  "entries": [
+    {
+      "id": "D1",
+      "name": "Confident Product",
+      "anchor": "d1-confident-product",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "trust-fintech",
+        "editorial",
+        "vibrant-playful",
+        "clinical",
+        "civic",
+        "indie-game",
+        "tech-research",
+        "music-label",
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "hospitality"
+      ],
+      "values": {
+        "pad": 84,
+        "lhBody": 1.55,
+        "lhDisplay": 1.1,
+        "scale": 1.5,
+        "base": 16,
+        "rhythm": 20,
+        "container": 1296,
+        "gridGap": 14
+      }
+    },
+    {
+      "id": "D2",
+      "name": "Editorial Sparse",
+      "anchor": "d2-editorial-sparse",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "documentary",
+        "sustainable-eco",
+        "wine-spirits"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "values": {
+        "pad": 120,
+        "lhBody": 1.7,
+        "lhDisplay": 1.15,
+        "scale": 1.333,
+        "base": 18,
+        "rhythm": 24,
+        "container": 1080,
+        "gridGap": 32
+      }
+    },
+    {
+      "id": "D3",
+      "name": "Gentle Craft",
+      "anchor": "d3-gentle-craft",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "values": {
+        "pad": 96,
+        "lhBody": 1.7,
+        "lhDisplay": 1.2,
+        "scale": 1.25,
+        "base": 17,
+        "rhythm": 28,
+        "container": 1080,
+        "gridGap": 28
+      }
+    },
+    {
+      "id": "D4",
+      "name": "Atelier Folio",
+      "anchor": "d4-atelier-folio",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "documentary",
+        "music-label",
+        "cinematic",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "values": {
+        "pad": 104,
+        "lhBody": 1.65,
+        "lhDisplay": 1.15,
+        "scale": 1.3,
+        "base": 17,
+        "rhythm": 30,
+        "container": 1080,
+        "gridGap": 36
+      }
+    },
+    {
+      "id": "D5",
+      "name": "Balanced Product",
+      "anchor": "d5-balanced-product",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist"
+      ],
+      "values": {
+        "pad": 80,
+        "lhBody": 1.55,
+        "lhDisplay": 1.15,
+        "scale": 1.25,
+        "base": 16,
+        "rhythm": 20,
+        "container": 1280,
+        "gridGap": 24
+      }
+    },
+    {
+      "id": "D6",
+      "name": "Utilitarian Tight",
+      "anchor": "d6-utilitarian-tight",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "trust-fintech",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "hospitality",
+        "music-label",
+        "boutique-hotel"
+      ],
+      "values": {
+        "pad": 48,
+        "lhBody": 1.5,
+        "lhDisplay": 1.1,
+        "scale": 1.2,
+        "base": 15,
+        "rhythm": 14,
+        "container": 1280,
+        "gridGap": 16
+      }
+    },
+    {
+      "id": "D7",
+      "name": "Codex",
+      "anchor": "d7-codex",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "documentary",
+        "tech-research"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "sustainable-eco",
+        "athletic"
+      ],
+      "values": {
+        "pad": 144,
+        "lhBody": 1.75,
+        "lhDisplay": 1.18,
+        "scale": 1.35,
+        "base": 18,
+        "rhythm": 28,
+        "container": 1020,
+        "gridGap": 36
+      }
+    },
+    {
+      "id": "D8",
+      "name": "Manifesto",
+      "anchor": "d8-manifesto",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "civic",
+        "hospitality"
+      ],
+      "values": {
+        "pad": 112,
+        "lhBody": 1.55,
+        "lhDisplay": 1.05,
+        "scale": 1.5,
+        "base": 18,
+        "rhythm": 26,
+        "container": 1100,
+        "gridGap": 24
+      }
+    },
+    {
+      "id": "D9",
+      "name": "Op-Ed",
+      "anchor": "d9-op-ed",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "editorial",
+        "documentary",
+        "tech-research"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "hospitality",
+        "music-label",
+        "athletic"
+      ],
+      "values": {
+        "pad": 96,
+        "lhBody": 1.72,
+        "lhDisplay": 1.18,
+        "scale": 1.35,
+        "base": 17,
+        "rhythm": 24,
+        "container": 1020,
+        "gridGap": 24
+      }
+    },
+    {
+      "id": "D10",
+      "name": "Broadsheet",
+      "anchor": "d10-broadsheet",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "civic",
+        "documentary"
+      ],
+      "avoid": [
+        "brutalist",
+        "quiet-craft",
+        "hospitality",
+        "boutique-hotel"
+      ],
+      "values": {
+        "pad": 72,
+        "lhBody": 1.55,
+        "lhDisplay": 1.1,
+        "scale": 1.3,
+        "base": 17,
+        "rhythm": 20,
+        "container": 1200,
+        "gridGap": 18
+      }
+    },
+    {
+      "id": "D11",
+      "name": "Catalog",
+      "anchor": "d11-catalog",
+      "filePath": "skills/direct/reference/curated-pools/density.md",
+      "fits": [
+        "vibrant-playful",
+        "hospitality",
+        "sustainable-eco",
+        "wine-spirits"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist",
+        "music-label"
+      ],
+      "values": {
+        "pad": 64,
+        "lhBody": 1.55,
+        "lhDisplay": 1.12,
+        "scale": 1.25,
+        "base": 16,
+        "rhythm": 18,
+        "container": 1320,
+        "gridGap": 18
+      }
+    }
+  ]
+}

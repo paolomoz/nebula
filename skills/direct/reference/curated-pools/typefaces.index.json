@@ -1,0 +1,993 @@
+{
+  "_meta": {
+    "pool": "typefaces",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.511Z",
+    "sourceFile": "skills/direct/reference/curated-pools/typefaces.md",
+    "count": 39
+  },
+  "entries": [
+    {
+      "id": "T1",
+      "name": "Montserrat & Google Sans",
+      "anchor": "t1-montserrat-google-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "trust-fintech"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "display": {
+        "name": "Montserrat",
+        "genre": "geometric-sans"
+      },
+      "body": {
+        "name": "Google Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T2",
+      "name": "Inter & Montserrat",
+      "anchor": "t2-inter-montserrat",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "trust-fintech"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "display": {
+        "name": "Inter",
+        "genre": "geometric-sans"
+      },
+      "body": {
+        "name": "Montserrat",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T3",
+      "name": "Playfair Display & Nunito",
+      "anchor": "t3-playfair-display-nunito",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "cinematic"
+      ],
+      "avoid": [
+        "quiet-craft",
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "Playfair Display",
+        "genre": "modern-serif"
+      },
+      "body": {
+        "name": "Nunito",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.414
+    },
+    {
+      "id": "T4",
+      "name": "Fraunces & Epilogue",
+      "anchor": "t4-fraunces-epilogue",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "editorial"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "Fraunces",
+        "genre": "modern-serif"
+      },
+      "body": {
+        "name": "Epilogue",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.414
+    },
+    {
+      "id": "T5",
+      "name": "Archivo Black & Archivo",
+      "anchor": "t5-archivo-black-archivo",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "brutalist",
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "architecture",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "display": {
+        "name": "Archivo Black",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "Archivo",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T6",
+      "name": "Archivo Narrow & General Sans",
+      "anchor": "t6-archivo-narrow-general-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "brutalist",
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "clinical",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "display": {
+        "name": "Archivo Narrow",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "General Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T7",
+      "name": "Unbounded & Albert Sans",
+      "anchor": "t7-unbounded-albert-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "architecture",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "display": {
+        "name": "Unbounded",
+        "genre": "display-sans"
+      },
+      "body": {
+        "name": "Albert Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T8",
+      "name": "Staatliches & DM Sans",
+      "anchor": "t8-staatliches-dm-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "brutalist",
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "architecture",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "display": {
+        "name": "Staatliches",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "DM Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T9",
+      "name": "Unbounded & Geist",
+      "anchor": "t9-unbounded-geist",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "architecture",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "display": {
+        "name": "Unbounded",
+        "genre": "display-sans"
+      },
+      "body": {
+        "name": "Geist",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T10",
+      "name": "Archivo Narrow & Archivo",
+      "anchor": "t10-archivo-narrow-archivo",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "brutalist",
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "clinical",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "display": {
+        "name": "Archivo Narrow",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "Archivo",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T11",
+      "name": "Inknut Antiqua & Work Sans",
+      "anchor": "t11-inknut-antiqua-work-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "quiet-craft"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "Inknut Antiqua",
+        "genre": "old-style-serif"
+      },
+      "body": {
+        "name": "Work Sans",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.333
+    },
+    {
+      "id": "T12",
+      "name": "Noto Serif & Noto Sans",
+      "anchor": "t12-noto-serif-noto-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "quiet-craft"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "Noto Serif",
+        "genre": "transitional-serif"
+      },
+      "body": {
+        "name": "Noto Sans",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T13",
+      "name": "Roboto Serif & Roboto",
+      "anchor": "t13-roboto-serif-roboto",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "quiet-craft"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "Roboto Serif",
+        "genre": "transitional-serif"
+      },
+      "body": {
+        "name": "Roboto",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T14",
+      "name": "Rethink Sans & Geist",
+      "anchor": "t14-rethink-sans-geist",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "vibrant-playful"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Rethink Sans",
+        "genre": "grotesque-sans"
+      },
+      "body": {
+        "name": "Geist",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T15",
+      "name": "Zalando Sans Expanded & Zalando Sans",
+      "anchor": "t15-zalando-sans-expanded-zalando-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "clinical"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Zalando Sans Expanded",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Zalando Sans",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T16",
+      "name": "Open Sans & Source Sans Pro",
+      "anchor": "t16-open-sans-source-sans-pro",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "clinical"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Open Sans",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Source Sans Pro",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T17",
+      "name": "Roboto & Open Sans",
+      "anchor": "t17-roboto-open-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "clinical"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Roboto",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Open Sans",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T18",
+      "name": "Open Sans & PT Sans",
+      "anchor": "t18-open-sans-pt-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "clinical"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Open Sans",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "PT Sans",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T19",
+      "name": "Epilogue & Spectral",
+      "anchor": "t19-epilogue-spectral",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "civic",
+        "documentary"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "Epilogue",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Spectral",
+        "genre": "transitional-serif"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T20",
+      "name": "DM Serif Text & DM Sans",
+      "anchor": "t20-dm-serif-text-dm-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "DM Serif Text",
+        "genre": "modern-serif"
+      },
+      "body": {
+        "name": "DM Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.414
+    },
+    {
+      "id": "T21",
+      "name": "DM Serif Display & DM Sans",
+      "anchor": "t21-dm-serif-display-dm-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "athletic"
+      ],
+      "display": {
+        "name": "DM Serif Display",
+        "genre": "modern-serif"
+      },
+      "body": {
+        "name": "DM Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.414
+    },
+    {
+      "id": "T22",
+      "name": "Instrument Sans & Geist Mono",
+      "anchor": "t22-instrument-sans-geist-mono",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "architecture",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Instrument Sans",
+        "genre": "grotesque-sans"
+      },
+      "body": {
+        "name": "Geist Mono",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T23",
+      "name": "Karla & Inconsolata",
+      "anchor": "t23-karla-inconsolata",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "architecture",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Karla",
+        "genre": "grotesque-sans"
+      },
+      "body": {
+        "name": "Inconsolata",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T24",
+      "name": "Syne & Red Hat Text",
+      "anchor": "t24-syne-red-hat-text",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "architecture",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Syne",
+        "genre": "display-sans"
+      },
+      "body": {
+        "name": "Red Hat Text",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T25",
+      "name": "Open Sans & Lora",
+      "anchor": "t25-open-sans-lora",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "documentary",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "athletic"
+      ],
+      "display": {
+        "name": "Open Sans",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Lora",
+        "genre": "transitional-serif"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T26",
+      "name": "Nunito & Merriweather",
+      "anchor": "t26-nunito-merriweather",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "documentary",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "athletic"
+      ],
+      "display": {
+        "name": "Nunito",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Merriweather",
+        "genre": "transitional-serif"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T27",
+      "name": "Archivo & IBM Plex Mono",
+      "anchor": "t27-archivo-ibm-plex-mono",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "architecture",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "hospitality",
+        "athletic"
+      ],
+      "display": {
+        "name": "Archivo",
+        "genre": "geometric-sans"
+      },
+      "body": {
+        "name": "IBM Plex Mono",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T28",
+      "name": "IBM Plex Mono & Inter",
+      "anchor": "t28-ibm-plex-mono-inter",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "architecture"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "hospitality",
+        "athletic"
+      ],
+      "display": {
+        "name": "IBM Plex Mono",
+        "genre": "monospace"
+      },
+      "body": {
+        "name": "Inter",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T29",
+      "name": "Inter & Inconsolata",
+      "anchor": "t29-inter-inconsolata",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "architecture"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "hospitality",
+        "athletic"
+      ],
+      "display": {
+        "name": "Inter",
+        "genre": "geometric-sans"
+      },
+      "body": {
+        "name": "Inconsolata",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T30",
+      "name": "Barlow Condensed & Barlow",
+      "anchor": "t30-barlow-condensed-barlow",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "quiet-craft",
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Barlow Condensed",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "Barlow",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T31",
+      "name": "Fira Sans Condensed & Fira Sans",
+      "anchor": "t31-fira-sans-condensed-fira-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "quiet-craft",
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "Fira Sans Condensed",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "Fira Sans",
+        "genre": "humanist-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T32",
+      "name": "News Cycle & Newsreader",
+      "anchor": "t32-news-cycle-newsreader",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "outdoor-adventure",
+        "athletic"
+      ],
+      "avoid": [
+        "quiet-craft",
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "display": {
+        "name": "News Cycle",
+        "genre": "condensed-sans"
+      },
+      "body": {
+        "name": "Newsreader",
+        "genre": "transitional-serif"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T33",
+      "name": "Open Sans & Merriweather",
+      "anchor": "t33-open-sans-merriweather",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "athletic"
+      ],
+      "display": {
+        "name": "Open Sans",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "Merriweather",
+        "genre": "transitional-serif"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T34",
+      "name": "Manrope & Geist Mono",
+      "anchor": "t34-manrope-geist-mono",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "hospitality"
+      ],
+      "display": {
+        "name": "Manrope",
+        "genre": "geometric-sans"
+      },
+      "body": {
+        "name": "Geist Mono",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T35",
+      "name": "DM Sans & DM Mono",
+      "anchor": "t35-dm-sans-dm-mono",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "hospitality"
+      ],
+      "display": {
+        "name": "DM Sans",
+        "genre": "geometric-sans"
+      },
+      "body": {
+        "name": "DM Mono",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T36",
+      "name": "Work Sans & JetBrains Mono",
+      "anchor": "t36-work-sans-jetbrains-mono",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "hospitality"
+      ],
+      "display": {
+        "name": "Work Sans",
+        "genre": "humanist-sans"
+      },
+      "body": {
+        "name": "JetBrains Mono",
+        "genre": "monospace"
+      },
+      "scale": 1.25
+    },
+    {
+      "id": "T37",
+      "name": "Young Serif & Geist",
+      "anchor": "t37-young-serif-geist",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "editorial",
+        "sustainable-eco",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "architecture",
+        "tech-research"
+      ],
+      "display": {
+        "name": "Young Serif",
+        "genre": "display-serif"
+      },
+      "body": {
+        "name": "Geist",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.5
+    },
+    {
+      "id": "T38",
+      "name": "Arvo & Geist",
+      "anchor": "t38-arvo-geist",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "sustainable-eco",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "architecture",
+        "tech-research"
+      ],
+      "display": {
+        "name": "Arvo",
+        "genre": "slab-serif"
+      },
+      "body": {
+        "name": "Geist",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.333
+    },
+    {
+      "id": "T39",
+      "name": "Fraunces & DM Sans",
+      "anchor": "t39-fraunces-dm-sans",
+      "filePath": "skills/direct/reference/curated-pools/typefaces.md",
+      "fits": [
+        "editorial",
+        "cinematic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "clinical"
+      ],
+      "display": {
+        "name": "Fraunces",
+        "genre": "modern-serif"
+      },
+      "body": {
+        "name": "DM Sans",
+        "genre": "geometric-sans"
+      },
+      "scale": 1.414
+    }
+  ]
+}

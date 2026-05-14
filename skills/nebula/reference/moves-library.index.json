@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "pool": "moves",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.522Z",
+    "sourceFile": "skills/nebula/reference/moves-library.md",
+    "count": 8
+  },
+  "entries": [
+    {
+      "id": "M1",
+      "name": "Photographic hero (full-bleed)",
+      "anchor": "m1-photographic-hero-full-bleed",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "hospitality",
+        "music-label",
+        "cinematic",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "pairsWith": [
+        "M5",
+        "M3"
+      ],
+      "pitfalls": [
+        "A"
+      ]
+    },
+    {
+      "id": "M2",
+      "name": "Photographic card / panel",
+      "anchor": "m2-photographic-card-panel",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [],
+      "pairsWith": [
+        "M4"
+      ],
+      "pitfalls": [
+        "A"
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Full-bleed atmospheric band",
+      "anchor": "m3-full-bleed-atmospheric-band",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "editorial"
+      ],
+      "pairsWith": [
+        "M1",
+        "M5"
+      ],
+      "pitfalls": [
+        "A"
+      ]
+    },
+    {
+      "id": "M4",
+      "name": "Fade-into-page mask",
+      "anchor": "m4-fade-into-page-mask",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "editorial"
+      ],
+      "pairsWith": [
+        "M2"
+      ],
+      "pitfalls": []
+    },
+    {
+      "id": "M5",
+      "name": "Cinematic closer band",
+      "anchor": "m5-cinematic-closer-band",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "editorial",
+        "luxury-fashion",
+        "hospitality",
+        "wine-spirits"
+      ],
+      "pairsWith": [
+        "M1"
+      ],
+      "pitfalls": [
+        "A"
+      ]
+    },
+    {
+      "id": "M6",
+      "name": "Oversized display + corner marginalia",
+      "anchor": "m6-oversized-display-corner-marginalia",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [],
+      "pairsWith": [
+        "M7",
+        "M6",
+        "M8"
+      ],
+      "pitfalls": []
+    },
+    {
+      "id": "M7",
+      "name": "Drop-cap chapter opener",
+      "anchor": "m7-drop-cap-chapter-opener",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "editorial",
+        "quiet-craft"
+      ],
+      "pairsWith": [
+        "M6",
+        "M3"
+      ],
+      "pitfalls": []
+    },
+    {
+      "id": "M8",
+      "name": "Type-as-pattern band",
+      "anchor": "m8-type-as-pattern-band",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "sustainable-eco"
+      ],
+      "pairsWith": [
+        "M6",
+        "M7"
+      ],
+      "pitfalls": []
+    }
+  ]
+}

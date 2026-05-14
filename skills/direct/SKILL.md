@@ -34,6 +34,15 @@ HTML — that is `nebula:render`.
 
 ## Procedure
 
+> **Retrieval discipline.** Every pool / library pick (Phases 2, 4,
+> 4b, 4d, 4e) follows the index-first pattern documented in
+> `skills/nebula/reference/retrieval.md`: read the `<pool>.index.json`
+> sidecar, filter by `fits` / `avoid` / tech-tier / pool-specific
+> stats, score top 3–8 candidates, then read only those entries'
+> full bodies from the markdown. Never load the full pool markdown
+> to pick a single entry. The full markdown is for the final pick
+> (after narrowing) and for Phase 5's distinctiveness check.
+
 ### Phase 1 — Anchor selection (invisible)
 
 Pick a real-world anchor that fits the brief. **The user is not asked.**
@@ -429,6 +438,11 @@ Next: $nebula render
 - `skills/nebula/reference/buttons.md` — button animation catalog
   (B1–B12). Each entry is a *button system* (primary + secondary
   recipes); 0–1 per page; tech-stack budget per anchor family.
+- `skills/nebula/reference/retrieval.md` — the index-first retrieval
+  pattern used by every Phase 2 / 4 / 4b / 4d / 4e pick. Index
+  sidecars live next to each pool's markdown (`<pool>.index.json`).
+  Regenerate via `node scripts/build-indexes.mjs` after any pool
+  edit.
 - `reference/anchor-selection.md` — the 3-candidate generator + scoring
   procedure.
 - `reference/curated-pools/` — human-curated content for each axis.

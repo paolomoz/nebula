@@ -1,0 +1,229 @@
+{
+  "_meta": {
+    "pool": "edges",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.521Z",
+    "sourceFile": "skills/direct/reference/curated-pools/edges.md",
+    "count": 8
+  },
+  "entries": [
+    {
+      "id": "E1",
+      "name": "Hairline crisp",
+      "anchor": "e1-hairline-crisp",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic",
+        "documentary",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game"
+      ],
+      "radii": {
+        "card": "2px",
+        "button": "2px",
+        "input": "2px",
+        "badge": "2px",
+        "image": "2px"
+      }
+    },
+    {
+      "id": "E2",
+      "name": "Soft product",
+      "anchor": "e2-soft-product",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "vibrant-playful",
+        "clinical",
+        "civic",
+        "indie-game",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist",
+        "hospitality",
+        "music-label",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "radii": {
+        "card": "10px",
+        "button": "8px",
+        "input": "8px",
+        "badge": "999px",
+        "image": "8px"
+      }
+    },
+    {
+      "id": "E3",
+      "name": "Library hairline",
+      "anchor": "e3-library-hairline",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "editorial",
+        "brutalist",
+        "civic",
+        "documentary",
+        "tech-research"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "hospitality",
+        "boutique-hotel"
+      ],
+      "radii": {
+        "card": "0px",
+        "button": "0px",
+        "input": "0px",
+        "badge": "0px",
+        "image": "0px"
+      }
+    },
+    {
+      "id": "E4",
+      "name": "Civic 4",
+      "anchor": "e4-civic-4",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "documentary",
+        "tech-research"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label"
+      ],
+      "radii": {
+        "card": "4px",
+        "button": "4px",
+        "input": "4px",
+        "badge": "4px",
+        "image": "4px"
+      }
+    },
+    {
+      "id": "E5",
+      "name": "Workshop",
+      "anchor": "e5-workshop",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "civic",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "boutique-hotel"
+      ],
+      "radii": {
+        "card": "4px",
+        "button": "4px",
+        "input": "4px",
+        "badge": "4px",
+        "image": "4px"
+      }
+    },
+    {
+      "id": "E6",
+      "name": "Quiet card",
+      "anchor": "e6-quiet-card",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "hospitality",
+        "music-label"
+      ],
+      "radii": {
+        "card": "6px",
+        "button": "6px",
+        "input": "6px",
+        "badge": "999px",
+        "image": "6px"
+      }
+    },
+    {
+      "id": "E7",
+      "name": "Notebook",
+      "anchor": "e7-notebook",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "editorial",
+        "documentary",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "hospitality",
+        "music-label"
+      ],
+      "radii": {
+        "card": "6px",
+        "button": "4px",
+        "input": "4px",
+        "badge": "999px",
+        "image": "6px"
+      }
+    },
+    {
+      "id": "E8",
+      "name": "Breath",
+      "anchor": "e8-breath",
+      "filePath": "skills/direct/reference/curated-pools/edges.md",
+      "fits": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "brutalist",
+        "hospitality",
+        "music-label",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "radii": {
+        "card": "8px",
+        "button": "6px",
+        "input": "6px",
+        "badge": "999px",
+        "image": "8px"
+      }
+    }
+  ]
+}

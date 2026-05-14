@@ -1,0 +1,2858 @@
+{
+  "_meta": {
+    "pool": "palettes",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.517Z",
+    "sourceFile": "skills/direct/reference/curated-pools/palettes.md",
+    "count": 48
+  },
+  "entries": [
+    {
+      "id": "P1",
+      "name": "Neutral Harmony Bliss",
+      "anchor": "p1-neutral-harmony-bliss",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "trust-fintech",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.955,
+          "C": 0.025,
+          "h": 99.5,
+          "hex": "#F4F1DE"
+        },
+        "ink": {
+          "L": 0.38,
+          "C": 0.046,
+          "h": 279.1,
+          "hex": "#3D405B"
+        },
+        "accent": {
+          "L": 0.8640000000000001,
+          "C": 0.089,
+          "h": 79,
+          "hex": "#F2CC8F"
+        },
+        "surface1": {
+          "L": 0.688,
+          "C": 0.133,
+          "h": 35.8,
+          "hex": "#E07A5F"
+        },
+        "surface2": {
+          "L": 0.722,
+          "C": 0.063,
+          "h": 163.1,
+          "hex": "#81B29A"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.722,
+        "avgChroma": 0.071,
+        "contrastInkBg": 2.34,
+        "bgLightness": 0.955,
+        "bgChroma": 0.025,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 79,
+        "accentChroma": 0.089
+      }
+    },
+    {
+      "id": "P2",
+      "name": "Deep Blue Waters",
+      "anchor": "p2-deep-blue-waters",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "trust-fintech"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.89,
+          "C": 0.009,
+          "h": 128.6,
+          "hex": "#D9DCD6"
+        },
+        "ink": {
+          "L": 0.361,
+          "C": 0.064,
+          "h": 237.4,
+          "hex": "#16425B"
+        },
+        "accent": {
+          "L": 0.78,
+          "C": 0.073,
+          "h": 218.9,
+          "hex": "#81C3D7"
+        },
+        "surface1": {
+          "L": 0.561,
+          "C": 0.092,
+          "h": 238.7,
+          "hex": "#3A7CA5"
+        },
+        "surface2": {
+          "L": 0.493,
+          "C": 0.089,
+          "h": 244.2,
+          "hex": "#2F6690"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.617,
+        "avgChroma": 0.065,
+        "contrastInkBg": 2.29,
+        "bgLightness": 0.89,
+        "bgChroma": 0.009,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 218.9,
+        "accentChroma": 0.073
+      }
+    },
+    {
+      "id": "P3",
+      "name": "Monochrome Beach",
+      "anchor": "p3-monochrome-beach",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "trust-fintech",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 1,
+          "C": 0,
+          "h": null,
+          "hex": "#FFFFFF"
+        },
+        "ink": {
+          "L": 0.32899999999999996,
+          "C": 0,
+          "h": null,
+          "hex": "#353535"
+        },
+        "accent": {
+          "L": 0.397,
+          "C": 0.058,
+          "h": 240.3,
+          "hex": "#284B63"
+        },
+        "surface1": {
+          "L": 0.885,
+          "C": 0,
+          "h": null,
+          "hex": "#D9D9D9"
+        },
+        "surface2": {
+          "L": 0.504,
+          "C": 0.054,
+          "h": 200.6,
+          "hex": "#3C6E71"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.623,
+        "avgChroma": 0.022,
+        "contrastInkBg": 2.77,
+        "bgLightness": 1,
+        "bgChroma": 0,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 240.3,
+        "accentChroma": 0.058
+      }
+    },
+    {
+      "id": "P4",
+      "name": "Gentle Sea Breeze",
+      "anchor": "p4-gentle-sea-breeze",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "trust-fintech",
+        "civic"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 1,
+          "C": 0,
+          "h": null,
+          "hex": "#FFFFFF"
+        },
+        "ink": {
+          "L": 0.27,
+          "C": 0.051,
+          "h": 228.1,
+          "hex": "#022B3A"
+        },
+        "accent": {
+          "L": 0.88,
+          "C": 0.049,
+          "h": 248.4,
+          "hex": "#BFDBF7"
+        },
+        "surface1": {
+          "L": 0.9229999999999999,
+          "C": 0.018,
+          "h": 272.3,
+          "hex": "#E1E5F2"
+        },
+        "surface2": {
+          "L": 0.536,
+          "C": 0.085,
+          "h": 214.3,
+          "hex": "#1F7A8C"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.722,
+        "avgChroma": 0.041,
+        "contrastInkBg": 3.28,
+        "bgLightness": 1,
+        "bgChroma": 0,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 248.4,
+        "accentChroma": 0.049
+      }
+    },
+    {
+      "id": "P5",
+      "name": "Earthly Tones",
+      "anchor": "p5-earthly-tones",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "editorial"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.983,
+          "C": 0.001,
+          "h": null,
+          "hex": "#FAF9F9"
+        },
+        "ink": {
+          "L": 0.473,
+          "C": 0.032,
+          "h": 271.4,
+          "hex": "#555B6E"
+        },
+        "accent": {
+          "L": 0.904,
+          "C": 0.059,
+          "h": 56.2,
+          "hex": "#FFD6BA"
+        },
+        "surface1": {
+          "L": 0.887,
+          "C": 0.04,
+          "h": 180.8,
+          "hex": "#BEE3DB"
+        },
+        "surface2": {
+          "L": 0.728,
+          "C": 0.042,
+          "h": 192.4,
+          "hex": "#89B0AE"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.795,
+        "avgChroma": 0.035,
+        "contrastInkBg": 1.98,
+        "bgLightness": 0.983,
+        "bgChroma": 0.001,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 56.2,
+        "accentChroma": 0.059
+      }
+    },
+    {
+      "id": "P6",
+      "name": "Neon Jungle",
+      "anchor": "p6-neon-jungle",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "brutalist"
+      ],
+      "avoid": [
+        "editorial",
+        "clinical",
+        "boutique-hotel"
+      ],
+      "roles": {
+        "bg": {
+          "L": 1,
+          "C": 0,
+          "h": null,
+          "hex": "#FFFFFF"
+        },
+        "ink": {
+          "L": 0.163,
+          "C": 0.011,
+          "h": 132.9,
+          "hex": "#0C0F0A"
+        },
+        "accent": {
+          "L": 0.648,
+          "C": 0.247,
+          "h": 9.2,
+          "hex": "#FF206E"
+        },
+        "surface1": {
+          "L": 0.848,
+          "C": 0.138,
+          "h": 182.1,
+          "hex": "#41EAD4"
+        },
+        "surface2": {
+          "L": 0.965,
+          "C": 0.21,
+          "h": 110.9,
+          "hex": "#FBFF12"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.725,
+        "avgChroma": 0.121,
+        "contrastInkBg": 4.93,
+        "bgLightness": 1,
+        "bgChroma": 0,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 9.2,
+        "accentChroma": 0.247
+      }
+    },
+    {
+      "id": "P7",
+      "name": "Warm Autumn Glow",
+      "anchor": "p7-warm-autumn-glow",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "brutalist",
+        "cinematic"
+      ],
+      "avoid": [
+        "editorial",
+        "clinical",
+        "boutique-hotel"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9079999999999999,
+          "C": 0.057,
+          "h": 98.6,
+          "hex": "#EAE2B7"
+        },
+        "ink": {
+          "L": 0.294,
+          "C": 0.066,
+          "h": 238.5,
+          "hex": "#003049"
+        },
+        "accent": {
+          "L": 0.7190000000000001,
+          "C": 0.179,
+          "h": 54.4,
+          "hex": "#F77F00"
+        },
+        "surface1": {
+          "L": 0.84,
+          "C": 0.147,
+          "h": 80.5,
+          "hex": "#FCBF49"
+        },
+        "surface2": {
+          "L": 0.568,
+          "C": 0.208,
+          "h": 27.1,
+          "hex": "#D62828"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.666,
+        "avgChroma": 0.131,
+        "contrastInkBg": 2.78,
+        "bgLightness": 0.908,
+        "bgChroma": 0.057,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 54.4,
+        "accentChroma": 0.179
+      }
+    },
+    {
+      "id": "P8",
+      "name": "Rustic Charm",
+      "anchor": "p8-rustic-charm",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "brutalist",
+        "cinematic"
+      ],
+      "avoid": [
+        "editorial",
+        "clinical",
+        "boutique-hotel"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.991,
+          "C": 0.014,
+          "h": 93,
+          "hex": "#FFFCF2"
+        },
+        "ink": {
+          "L": 0.261,
+          "C": 0.004,
+          "h": null,
+          "hex": "#252422"
+        },
+        "accent": {
+          "L": 0.6559999999999999,
+          "C": 0.186,
+          "h": 39.4,
+          "hex": "#EB5E28"
+        },
+        "surface1": {
+          "L": 0.826,
+          "C": 0.018,
+          "h": 81.3,
+          "hex": "#CCC5B9"
+        },
+        "surface2": {
+          "L": 0.36200000000000004,
+          "C": 0.008,
+          "h": 75.3,
+          "hex": "#403D39"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.619,
+        "avgChroma": 0.046,
+        "contrastInkBg": 3.35,
+        "bgLightness": 0.991,
+        "bgChroma": 0.014,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 39.4,
+        "accentChroma": 0.186
+      }
+    },
+    {
+      "id": "P9",
+      "name": "Olive Garden Feast",
+      "anchor": "p9-olive-garden-feast",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "quiet-craft",
+        "cinematic"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.981,
+          "C": 0.034,
+          "h": 99.8,
+          "hex": "#FEFAE0"
+        },
+        "ink": {
+          "L": 0.312,
+          "C": 0.053,
+          "h": 129.6,
+          "hex": "#283618"
+        },
+        "accent": {
+          "L": 0.609,
+          "C": 0.13,
+          "h": 57.3,
+          "hex": "#BC6C25"
+        },
+        "surface1": {
+          "L": 0.753,
+          "C": 0.11,
+          "h": 67.8,
+          "hex": "#DDA15E"
+        },
+        "surface2": {
+          "L": 0.508,
+          "C": 0.076,
+          "h": 119.9,
+          "hex": "#606C38"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.633,
+        "avgChroma": 0.081,
+        "contrastInkBg": 2.85,
+        "bgLightness": 0.981,
+        "bgChroma": 0.034,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 57.3,
+        "accentChroma": 0.13
+      }
+    },
+    {
+      "id": "P10",
+      "name": "Neutral Elegance",
+      "anchor": "p10-neutral-elegance",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "quiet-craft"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9640000000000001,
+          "C": 0.007,
+          "h": 97.4,
+          "hex": "#F4F3EE"
+        },
+        "ink": {
+          "L": 0.373,
+          "C": 0.013,
+          "h": 57.9,
+          "hex": "#463F3A"
+        },
+        "accent": {
+          "L": 0.795,
+          "C": 0.061,
+          "h": 37.7,
+          "hex": "#E0AFA0"
+        },
+        "surface1": {
+          "L": 0.784,
+          "C": 0.011,
+          "h": 81.8,
+          "hex": "#BCB8B1"
+        },
+        "surface2": {
+          "L": 0.61,
+          "C": 0.013,
+          "h": 51.2,
+          "hex": "#8A817C"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.705,
+        "avgChroma": 0.021,
+        "contrastInkBg": 2.4,
+        "bgLightness": 0.964,
+        "bgChroma": 0.007,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 37.7,
+        "accentChroma": 0.061
+      }
+    },
+    {
+      "id": "P11",
+      "name": "Earthy Green",
+      "anchor": "p11-earthy-green",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "quiet-craft"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.8540000000000001,
+          "C": 0.02,
+          "h": 133.1,
+          "hex": "#CAD2C5"
+        },
+        "ink": {
+          "L": 0.354,
+          "C": 0.024,
+          "h": 231.6,
+          "hex": "#2F3E46"
+        },
+        "accent": {
+          "L": 0.408,
+          "C": 0.032,
+          "h": 205,
+          "hex": "#354F52"
+        },
+        "surface1": {
+          "L": 0.6990000000000001,
+          "C": 0.058,
+          "h": 151.2,
+          "hex": "#84A98C"
+        },
+        "surface2": {
+          "L": 0.544,
+          "C": 0.047,
+          "h": 176.7,
+          "hex": "#52796F"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.572,
+        "avgChroma": 0.036,
+        "contrastInkBg": 2.24,
+        "bgLightness": 0.854,
+        "bgChroma": 0.02,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 205,
+        "accentChroma": 0.032
+      }
+    },
+    {
+      "id": "P12",
+      "name": "Warm Neutral Tones",
+      "anchor": "p12-warm-neutral-tones",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "quiet-craft",
+        "documentary"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.97,
+          "C": 0.013,
+          "h": 196.9,
+          "hex": "#ECF8F8"
+        },
+        "ink": {
+          "L": 0.6920000000000001,
+          "C": 0.049,
+          "h": 63.7,
+          "hex": "#B2967D"
+        },
+        "accent": {
+          "L": 0.8320000000000001,
+          "C": 0.051,
+          "h": 42.9,
+          "hex": "#E6BEAE"
+        },
+        "surface1": {
+          "L": 0.9259999999999999,
+          "C": 0.012,
+          "h": 37.4,
+          "hex": "#EEE4E1"
+        },
+        "surface2": {
+          "L": 0.89,
+          "C": 0.026,
+          "h": 67.5,
+          "hex": "#E7D8C9"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.862,
+        "avgChroma": 0.03,
+        "contrastInkBg": 1.37,
+        "bgLightness": 0.97,
+        "bgChroma": 0.013,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 42.9,
+        "accentChroma": 0.051
+      }
+    },
+    {
+      "id": "P13",
+      "name": "Contrast Pop",
+      "anchor": "p13-contrast-pop",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "athletic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.998,
+          "C": 0.004,
+          "h": null,
+          "hex": "#FDFFFC"
+        },
+        "ink": {
+          "L": 0.193,
+          "C": 0.045,
+          "h": 244,
+          "hex": "#011627"
+        },
+        "accent": {
+          "L": 0.7829999999999999,
+          "C": 0.168,
+          "h": 66.2,
+          "hex": "#FF9F1C"
+        },
+        "surface1": {
+          "L": 0.594,
+          "C": 0.228,
+          "h": 23.1,
+          "hex": "#E71D36"
+        },
+        "surface2": {
+          "L": 0.742,
+          "C": 0.121,
+          "h": 185.4,
+          "hex": "#2EC4B6"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.662,
+        "avgChroma": 0.113,
+        "contrastInkBg": 4.31,
+        "bgLightness": 0.998,
+        "bgChroma": 0.004,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 66.2,
+        "accentChroma": 0.168
+      }
+    },
+    {
+      "id": "P14",
+      "name": "Sunny Beach Day",
+      "anchor": "p14-sunny-beach-day",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.7809999999999999,
+          "C": 0.127,
+          "h": 57.9,
+          "hex": "#F4A261"
+        },
+        "ink": {
+          "L": 0.375,
+          "C": 0.044,
+          "h": 226.2,
+          "hex": "#264653"
+        },
+        "accent": {
+          "L": 0.6779999999999999,
+          "C": 0.156,
+          "h": 35.2,
+          "hex": "#E76F51"
+        },
+        "surface1": {
+          "L": 0.8340000000000001,
+          "C": 0.117,
+          "h": 87.4,
+          "hex": "#E9C46A"
+        },
+        "surface2": {
+          "L": 0.63,
+          "C": 0.101,
+          "h": 183,
+          "hex": "#2A9D8F"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.66,
+        "avgChroma": 0.109,
+        "contrastInkBg": 1.96,
+        "bgLightness": 0.781,
+        "bgChroma": 0.127,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 35.2,
+        "accentChroma": 0.156
+      }
+    },
+    {
+      "id": "P15",
+      "name": "Oceanic Cactus",
+      "anchor": "p15-oceanic-cactus",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.992,
+          "C": 0.013,
+          "h": 145.5,
+          "hex": "#F7FFF7"
+        },
+        "ink": {
+          "L": 0.41,
+          "C": 0.059,
+          "h": 209.8,
+          "hex": "#1A535C"
+        },
+        "accent": {
+          "L": 0.922,
+          "C": 0.143,
+          "h": 97.8,
+          "hex": "#FFE66D"
+        },
+        "surface1": {
+          "L": 0.7120000000000001,
+          "C": 0.181,
+          "h": 22.8,
+          "hex": "#FF6B6B"
+        },
+        "surface2": {
+          "L": 0.7759999999999999,
+          "C": 0.112,
+          "h": 188.5,
+          "hex": "#4ECDC4"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.762,
+        "avgChroma": 0.102,
+        "contrastInkBg": 2.27,
+        "bgLightness": 0.992,
+        "bgChroma": 0.013,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 97.8,
+        "accentChroma": 0.143
+      }
+    },
+    {
+      "id": "P16",
+      "name": "Sunset Bliss",
+      "anchor": "p16-sunset-bliss",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.81,
+          "C": 0.092,
+          "h": 206.2,
+          "hex": "#73D2DE"
+        },
+        "ink": {
+          "L": 0.555,
+          "C": 0.086,
+          "h": 191.9,
+          "hex": "#218380"
+        },
+        "accent": {
+          "L": 0.8370000000000001,
+          "C": 0.152,
+          "h": 78.4,
+          "hex": "#FFBC42"
+        },
+        "surface1": {
+          "L": 0.568,
+          "C": 0.221,
+          "h": 9.8,
+          "hex": "#D81159"
+        },
+        "surface2": {
+          "L": 0.456,
+          "C": 0.137,
+          "h": 358.3,
+          "hex": "#8F2D56"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.645,
+        "avgChroma": 0.138,
+        "contrastInkBg": 1.42,
+        "bgLightness": 0.81,
+        "bgChroma": 0.092,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 78.4,
+        "accentChroma": 0.152
+      }
+    },
+    {
+      "id": "P17",
+      "name": "Vibrant Harmony",
+      "anchor": "p17-vibrant-harmony",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.879,
+          "C": 0.162,
+          "h": 90.9,
+          "hex": "#FFD23F"
+        },
+        "ink": {
+          "L": 0.341,
+          "C": 0.155,
+          "h": 314.2,
+          "hex": "#540D6E"
+        },
+        "accent": {
+          "L": 0.659,
+          "C": 0.156,
+          "h": 156.6,
+          "hex": "#0EAD69"
+        },
+        "surface1": {
+          "L": 0.639,
+          "C": 0.207,
+          "h": 13.5,
+          "hex": "#EE4266"
+        },
+        "surface2": {
+          "L": 0.767,
+          "C": 0.132,
+          "h": 173.5,
+          "hex": "#3BCEAC"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.657,
+        "avgChroma": 0.162,
+        "contrastInkBg": 2.38,
+        "bgLightness": 0.879,
+        "bgChroma": 0.162,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 156.6,
+        "accentChroma": 0.156
+      }
+    },
+    {
+      "id": "P18",
+      "name": "Soft Sand",
+      "anchor": "p18-soft-sand",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "editorial",
+        "clinical",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "brutalist",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.945,
+          "C": 0.005,
+          "h": 106.5,
+          "hex": "#EDEDE9"
+        },
+        "ink": {
+          "L": 0.815,
+          "C": 0.034,
+          "h": 52.2,
+          "hex": "#D5BDAF"
+        },
+        "accent": {
+          "L": 0.945,
+          "C": 0.018,
+          "h": 70.2,
+          "hex": "#F5EBE0"
+        },
+        "surface1": {
+          "L": 0.8809999999999999,
+          "C": 0.022,
+          "h": 60.7,
+          "hex": "#E3D5CA"
+        },
+        "surface2": {
+          "L": 0.851,
+          "C": 0.018,
+          "h": 67.6,
+          "hex": "#D6CCC2"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.887,
+        "avgChroma": 0.019,
+        "contrastInkBg": 1.15,
+        "bgLightness": 0.945,
+        "bgChroma": 0.005,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 70.2,
+        "accentChroma": 0.018
+      }
+    },
+    {
+      "id": "P19",
+      "name": "Pastel Bliss",
+      "anchor": "p19-pastel-bliss",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "clinical"
+      ],
+      "avoid": [
+        "brutalist",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9540000000000001,
+          "C": 0.012,
+          "h": 29.9,
+          "hex": "#F8EDEB"
+        },
+        "ink": {
+          "L": 0.87,
+          "C": 0.086,
+          "h": 61.7,
+          "hex": "#FEC89A"
+        },
+        "accent": {
+          "L": 0.8390000000000001,
+          "C": 0.089,
+          "h": 31,
+          "hex": "#FFB5A7"
+        },
+        "surface1": {
+          "L": 0.904,
+          "C": 0.045,
+          "h": 29.9,
+          "hex": "#FCD5CE"
+        },
+        "surface2": {
+          "L": 0.912,
+          "C": 0.045,
+          "h": 61.8,
+          "hex": "#F9DCC4"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.896,
+        "avgChroma": 0.055,
+        "contrastInkBg": 1.09,
+        "bgLightness": 0.954,
+        "bgChroma": 0.012,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 31,
+        "accentChroma": 0.089
+      }
+    },
+    {
+      "id": "P20",
+      "name": "Pastel Dreams",
+      "anchor": "p20-pastel-dreams",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "clinical"
+      ],
+      "avoid": [
+        "brutalist",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.919,
+          "C": 0.026,
+          "h": 161.9,
+          "hex": "#D6EADF"
+        },
+        "ink": {
+          "L": 0.688,
+          "C": 0.082,
+          "h": 262.8,
+          "hex": "#809BCE"
+        },
+        "accent": {
+          "L": 0.858,
+          "C": 0.048,
+          "h": 349.4,
+          "hex": "#EAC4D5"
+        },
+        "surface1": {
+          "L": 0.8740000000000001,
+          "C": 0.046,
+          "h": 171.9,
+          "hex": "#B8E0D2"
+        },
+        "surface2": {
+          "L": 0.765,
+          "C": 0.052,
+          "h": 239.4,
+          "hex": "#95B8D1"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.821,
+        "avgChroma": 0.051,
+        "contrastInkBg": 1.31,
+        "bgLightness": 0.919,
+        "bgChroma": 0.026,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 349.4,
+        "accentChroma": 0.048
+      }
+    },
+    {
+      "id": "P21",
+      "name": "Cool Coastal Vibes",
+      "anchor": "p21-cool-coastal-vibes",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "civic",
+        "wine-spirits"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.958,
+          "C": 0.006,
+          "h": 223.5,
+          "hex": "#EDF2F4"
+        },
+        "ink": {
+          "L": 0.305,
+          "C": 0.038,
+          "h": 279.7,
+          "hex": "#2B2D42"
+        },
+        "accent": {
+          "L": 0.5589999999999999,
+          "C": 0.225,
+          "h": 24,
+          "hex": "#D90429"
+        },
+        "surface1": {
+          "L": 0.68,
+          "C": 0.034,
+          "h": 261.7,
+          "hex": "#8D99AE"
+        },
+        "surface2": {
+          "L": 0.612,
+          "C": 0.231,
+          "h": 22.6,
+          "hex": "#EF233C"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.623,
+        "avgChroma": 0.107,
+        "contrastInkBg": 2.84,
+        "bgLightness": 0.958,
+        "bgChroma": 0.006,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 24,
+        "accentChroma": 0.225
+      }
+    },
+    {
+      "id": "P22",
+      "name": "Watermelon Sorbet",
+      "anchor": "p22-watermelon-sorbet",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.88,
+          "C": 0.135,
+          "h": 86.1,
+          "hex": "#FFD166"
+        },
+        "ink": {
+          "L": 0.32899999999999996,
+          "C": 0.059,
+          "h": 225.8,
+          "hex": "#073B4C"
+        },
+        "accent": {
+          "L": 0.777,
+          "C": 0.16,
+          "h": 166.6,
+          "hex": "#06D6A0"
+        },
+        "surface1": {
+          "L": 0.648,
+          "C": 0.204,
+          "h": 11.1,
+          "hex": "#EF476F"
+        },
+        "surface2": {
+          "L": 0.5920000000000001,
+          "C": 0.112,
+          "h": 228,
+          "hex": "#118AB2"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.645,
+        "avgChroma": 0.134,
+        "contrastInkBg": 2.45,
+        "bgLightness": 0.88,
+        "bgChroma": 0.135,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 166.6,
+        "accentChroma": 0.16
+      }
+    },
+    {
+      "id": "P23",
+      "name": "Pastel Rainbow",
+      "anchor": "p23-pastel-rainbow",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.83,
+          "C": 0.111,
+          "h": 226.7,
+          "hex": "#70D6FF"
+        },
+        "ink": {
+          "L": 0.956,
+          "C": 0.168,
+          "h": 117,
+          "hex": "#E9FF70"
+        },
+        "accent": {
+          "L": 0.732,
+          "C": 0.181,
+          "h": 358.9,
+          "hex": "#FF70A6"
+        },
+        "surface1": {
+          "L": 0.777,
+          "C": 0.136,
+          "h": 41.1,
+          "hex": "#FF9770"
+        },
+        "surface2": {
+          "L": 0.8909999999999999,
+          "C": 0.129,
+          "h": 87.7,
+          "hex": "#FFD670"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.837,
+        "avgChroma": 0.145,
+        "contrastInkBg": 1.14,
+        "bgLightness": 0.83,
+        "bgChroma": 0.111,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 358.9,
+        "accentChroma": 0.181
+      }
+    },
+    {
+      "id": "P24",
+      "name": "Vibrant Summer",
+      "anchor": "p24-vibrant-summer",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.688,
+          "C": 0.201,
+          "h": 22.5,
+          "hex": "#FF595E"
+        },
+        "ink": {
+          "L": 0.583,
+          "C": 0.134,
+          "h": 243.4,
+          "hex": "#1982C4"
+        },
+        "accent": {
+          "L": 0.863,
+          "C": 0.161,
+          "h": 87.1,
+          "hex": "#FFCA3A"
+        },
+        "surface1": {
+          "L": 0.765,
+          "C": 0.193,
+          "h": 129.5,
+          "hex": "#8AC926"
+        },
+        "surface2": {
+          "L": 0.48100000000000004,
+          "C": 0.114,
+          "h": 301.8,
+          "hex": "#6A4C93"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.676,
+        "avgChroma": 0.161,
+        "contrastInkBg": 1.17,
+        "bgLightness": 0.688,
+        "bgChroma": 0.201,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 87.1,
+        "accentChroma": 0.161
+      }
+    },
+    {
+      "id": "P25",
+      "name": "Bright Bold Colors",
+      "anchor": "p25-bright-bold-colors",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.616,
+          "C": 0.215,
+          "h": 21.8,
+          "hex": "#EA3546"
+        },
+        "ink": {
+          "L": 0.435,
+          "C": 0.169,
+          "h": 303.6,
+          "hex": "#662E9B"
+        },
+        "accent": {
+          "L": 0.852,
+          "C": 0.172,
+          "h": 90.6,
+          "hex": "#F9C80E"
+        },
+        "surface1": {
+          "L": 0.6859999999999999,
+          "C": 0.193,
+          "h": 41.3,
+          "hex": "#F86624"
+        },
+        "surface2": {
+          "L": 0.736,
+          "C": 0.107,
+          "h": 208.4,
+          "hex": "#43BCCD"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.665,
+        "avgChroma": 0.171,
+        "contrastInkBg": 1.37,
+        "bgLightness": 0.616,
+        "bgChroma": 0.215,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 90.6,
+        "accentChroma": 0.172
+      }
+    },
+    {
+      "id": "P26",
+      "name": "Forest Hues",
+      "anchor": "p26-forest-hues",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "cinematic",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "brutalist",
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "tech-research",
+        "cinematic",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9079999999999999,
+          "C": 0.021,
+          "h": 51.5,
+          "hex": "#EDDDD4"
+        },
+        "ink": {
+          "L": 0.342,
+          "C": 0.027,
+          "h": 188.5,
+          "hex": "#283D3B"
+        },
+        "accent": {
+          "L": 0.506,
+          "C": 0.079,
+          "h": 201.9,
+          "hex": "#197278"
+        },
+        "surface1": {
+          "L": 0.565,
+          "C": 0.165,
+          "h": 29.8,
+          "hex": "#C44536"
+        },
+        "surface2": {
+          "L": 0.40399999999999997,
+          "C": 0.105,
+          "h": 29.5,
+          "hex": "#772E25"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.545,
+        "avgChroma": 0.079,
+        "contrastInkBg": 2.44,
+        "bgLightness": 0.908,
+        "bgChroma": 0.021,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 201.9,
+        "accentChroma": 0.079
+      }
+    },
+    {
+      "id": "P27",
+      "name": "Mocha Latte",
+      "anchor": "p27-mocha-latte",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "documentary"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.965,
+          "C": 0.002,
+          "h": null,
+          "hex": "#F2F4F3"
+        },
+        "ink": {
+          "L": 0.141,
+          "C": 0.003,
+          "h": null,
+          "hex": "#0A0908"
+        },
+        "accent": {
+          "L": 0.31,
+          "C": 0.027,
+          "h": 228.8,
+          "hex": "#22333B"
+        },
+        "surface1": {
+          "L": 0.675,
+          "C": 0.041,
+          "h": 64.5,
+          "hex": "#A9927D"
+        },
+        "surface2": {
+          "L": 0.44,
+          "C": 0.032,
+          "h": 72.2,
+          "hex": "#5E503F"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.506,
+        "avgChroma": 0.021,
+        "contrastInkBg": 5.31,
+        "bgLightness": 0.965,
+        "bgChroma": 0.002,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 228.8,
+        "accentChroma": 0.027
+      }
+    },
+    {
+      "id": "P28",
+      "name": "Deep Sea",
+      "anchor": "p28-deep-sea",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "architecture"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9079999999999999,
+          "C": 0.005,
+          "h": 117.9,
+          "hex": "#E0E1DD"
+        },
+        "ink": {
+          "L": 0.218,
+          "C": 0.036,
+          "h": 251.3,
+          "hex": "#0D1B2A"
+        },
+        "accent": {
+          "L": 0.26899999999999996,
+          "C": 0.042,
+          "h": 262.7,
+          "hex": "#1B263B"
+        },
+        "surface1": {
+          "L": 0.636,
+          "C": 0.049,
+          "h": 254.6,
+          "hex": "#778DA9"
+        },
+        "surface2": {
+          "L": 0.46,
+          "C": 0.056,
+          "h": 252.7,
+          "hex": "#415A77"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.498,
+        "avgChroma": 0.038,
+        "contrastInkBg": 3.57,
+        "bgLightness": 0.908,
+        "bgChroma": 0.005,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 262.7,
+        "accentChroma": 0.042
+      }
+    },
+    {
+      "id": "P29",
+      "name": "Ocean Sunset",
+      "anchor": "p29-ocean-sunset",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "hospitality",
+        "tech-research",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "brutalist",
+        "vibrant-playful",
+        "clinical",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.795,
+          "C": 0.086,
+          "h": 49.1,
+          "hex": "#EAAC8B"
+        },
+        "ink": {
+          "L": 0.424,
+          "C": 0.063,
+          "h": 253.4,
+          "hex": "#355070"
+        },
+        "accent": {
+          "L": 0.675,
+          "C": 0.152,
+          "h": 20,
+          "hex": "#E56B6F"
+        },
+        "surface1": {
+          "L": 0.602,
+          "C": 0.104,
+          "h": 7.1,
+          "hex": "#B56576"
+        },
+        "surface2": {
+          "L": 0.496,
+          "C": 0.057,
+          "h": 311.8,
+          "hex": "#6D597A"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.598,
+        "avgChroma": 0.092,
+        "contrastInkBg": 1.78,
+        "bgLightness": 0.795,
+        "bgChroma": 0.086,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 20,
+        "accentChroma": 0.152
+      }
+    },
+    {
+      "id": "P30",
+      "name": "Dark Sunset",
+      "anchor": "p30-dark-sunset",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "hospitality",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.958,
+          "C": 0.086,
+          "h": 99.2,
+          "hex": "#FFF3B0"
+        },
+        "ink": {
+          "L": 0.29100000000000004,
+          "C": 0.104,
+          "h": 24.9,
+          "hex": "#540B0E"
+        },
+        "accent": {
+          "L": 0.7490000000000001,
+          "C": 0.134,
+          "h": 73.5,
+          "hex": "#E09F3E"
+        },
+        "surface1": {
+          "L": 0.46799999999999997,
+          "C": 0.152,
+          "h": 24.9,
+          "hex": "#9E2A2B"
+        },
+        "surface2": {
+          "L": 0.449,
+          "C": 0.049,
+          "h": 217,
+          "hex": "#335C67"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.583,
+        "avgChroma": 0.105,
+        "contrastInkBg": 2.96,
+        "bgLightness": 0.958,
+        "bgChroma": 0.086,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 73.5,
+        "accentChroma": 0.134
+      }
+    },
+    {
+      "id": "P31",
+      "name": "Autumn Glow",
+      "anchor": "p31-autumn-glow",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "hospitality",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9470000000000001,
+          "C": 0.088,
+          "h": 108.7,
+          "hex": "#F2F3AE"
+        },
+        "ink": {
+          "L": 0.258,
+          "C": 0.062,
+          "h": 17.8,
+          "hex": "#3C1518"
+        },
+        "accent": {
+          "L": 0.505,
+          "C": 0.144,
+          "h": 45.1,
+          "hex": "#A44200"
+        },
+        "surface1": {
+          "L": 0.6940000000000001,
+          "C": 0.133,
+          "h": 64.3,
+          "hex": "#D58936"
+        },
+        "surface2": {
+          "L": 0.342,
+          "C": 0.119,
+          "h": 29,
+          "hex": "#69140E"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.549,
+        "avgChroma": 0.109,
+        "contrastInkBg": 3.24,
+        "bgLightness": 0.947,
+        "bgChroma": 0.088,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 45.1,
+        "accentChroma": 0.144
+      }
+    },
+    {
+      "id": "P32",
+      "name": "Spring Blooms",
+      "anchor": "p32-spring-blooms",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "outdoor-adventure"
+      ],
+      "avoid": [
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.875,
+          "C": 0.135,
+          "h": 128.1,
+          "hex": "#BCE784"
+        },
+        "ink": {
+          "L": 0.387,
+          "C": 0.053,
+          "h": 320,
+          "hex": "#513B56"
+        },
+        "accent": {
+          "L": 0.785,
+          "C": 0.132,
+          "h": 161.6,
+          "hex": "#5DD39E"
+        },
+        "surface1": {
+          "L": 0.594,
+          "C": 0.092,
+          "h": 224.1,
+          "hex": "#348AA7"
+        },
+        "surface2": {
+          "L": 0.451,
+          "C": 0.057,
+          "h": 285.2,
+          "hex": "#525174"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.618,
+        "avgChroma": 0.094,
+        "contrastInkBg": 2.12,
+        "bgLightness": 0.875,
+        "bgChroma": 0.135,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 161.6,
+        "accentChroma": 0.132
+      }
+    },
+    {
+      "id": "P33",
+      "name": "Refreshing Aqua Tones",
+      "anchor": "p33-refreshing-aqua-tones",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "outdoor-adventure"
+      ],
+      "avoid": [
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9259999999999999,
+          "C": 0.117,
+          "h": 159.3,
+          "hex": "#9FFFCB"
+        },
+        "ink": {
+          "L": 0.39399999999999996,
+          "C": 0.075,
+          "h": 224.8,
+          "hex": "#004E64"
+        },
+        "accent": {
+          "L": 0.6709999999999999,
+          "C": 0.126,
+          "h": 224.3,
+          "hex": "#00A5CF"
+        },
+        "surface1": {
+          "L": 0.8340000000000001,
+          "C": 0.168,
+          "h": 145.4,
+          "hex": "#7AE582"
+        },
+        "surface2": {
+          "L": 0.639,
+          "C": 0.108,
+          "h": 179.7,
+          "hex": "#25A18E"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.693,
+        "avgChroma": 0.119,
+        "contrastInkBg": 2.2,
+        "bgLightness": 0.926,
+        "bgChroma": 0.117,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 224.3,
+        "accentChroma": 0.126
+      }
+    },
+    {
+      "id": "P34",
+      "name": "Cool Waters",
+      "anchor": "p34-cool-waters",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "outdoor-adventure"
+      ],
+      "avoid": [
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9359999999999999,
+          "C": 0.079,
+          "h": 147.6,
+          "hex": "#C7F9CC"
+        },
+        "ink": {
+          "L": 0.43799999999999994,
+          "C": 0.08,
+          "h": 241,
+          "hex": "#22577A"
+        },
+        "accent": {
+          "L": 0.86,
+          "C": 0.154,
+          "h": 149.6,
+          "hex": "#80ED99"
+        },
+        "surface1": {
+          "L": 0.764,
+          "C": 0.13,
+          "h": 162.1,
+          "hex": "#57CC99"
+        },
+        "surface2": {
+          "L": 0.657,
+          "C": 0.095,
+          "h": 196.9,
+          "hex": "#38A3A5"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.731,
+        "avgChroma": 0.108,
+        "contrastInkBg": 2.02,
+        "bgLightness": 0.936,
+        "bgChroma": 0.079,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 149.6,
+        "accentChroma": 0.154
+      }
+    },
+    {
+      "id": "P35",
+      "name": "Bright Contrasts",
+      "anchor": "p35-bright-contrasts",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "outdoor-adventure"
+      ],
+      "avoid": [
+        "luxury-fashion",
+        "cinematic",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.988,
+          "C": 0.035,
+          "h": 119.3,
+          "hex": "#F8FFE5"
+        },
+        "ink": {
+          "L": 0.63,
+          "C": 0.103,
+          "h": 208.4,
+          "hex": "#1B9AAA"
+        },
+        "accent": {
+          "L": 0.852,
+          "C": 0.157,
+          "h": 83.6,
+          "hex": "#FFC43D"
+        },
+        "surface1": {
+          "L": 0.648,
+          "C": 0.204,
+          "h": 11.1,
+          "hex": "#EF476F"
+        },
+        "surface2": {
+          "L": 0.777,
+          "C": 0.16,
+          "h": 166.6,
+          "hex": "#06D6A0"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.779,
+        "avgChroma": 0.132,
+        "contrastInkBg": 1.53,
+        "bgLightness": 0.988,
+        "bgChroma": 0.035,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 83.6,
+        "accentChroma": 0.157
+      }
+    },
+    {
+      "id": "P36",
+      "name": "Leafy Green Garden",
+      "anchor": "p36-leafy-green-garden",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "indie-game",
+        "cinematic",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.94,
+          "C": 0.107,
+          "h": 112.3,
+          "hex": "#ECF39E"
+        },
+        "ink": {
+          "L": 0.259,
+          "C": 0.051,
+          "h": 143.9,
+          "hex": "#132A13"
+        },
+        "accent": {
+          "L": 0.522,
+          "C": 0.113,
+          "h": 132.9,
+          "hex": "#4F772D"
+        },
+        "surface1": {
+          "L": 0.6970000000000001,
+          "C": 0.114,
+          "h": 123,
+          "hex": "#90A955"
+        },
+        "surface2": {
+          "L": 0.41700000000000004,
+          "C": 0.081,
+          "h": 141.5,
+          "hex": "#31572C"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.567,
+        "avgChroma": 0.093,
+        "contrastInkBg": 3.2,
+        "bgLightness": 0.94,
+        "bgChroma": 0.107,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 132.9,
+        "accentChroma": 0.113
+      }
+    },
+    {
+      "id": "P37",
+      "name": "Forest Green Tones",
+      "anchor": "p37-forest-green-tones",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.892,
+          "C": 0.045,
+          "h": 146.2,
+          "hex": "#C9E4CA"
+        },
+        "ink": {
+          "L": 0.396,
+          "C": 0.035,
+          "h": 242.5,
+          "hex": "#364958"
+        },
+        "accent": {
+          "L": 0.748,
+          "C": 0.066,
+          "h": 163.5,
+          "hex": "#87BBA2"
+        },
+        "surface1": {
+          "L": 0.5770000000000001,
+          "C": 0.051,
+          "h": 211.5,
+          "hex": "#55828B"
+        },
+        "surface2": {
+          "L": 0.46299999999999997,
+          "C": 0.043,
+          "h": 204.5,
+          "hex": "#3B6064"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.615,
+        "avgChroma": 0.048,
+        "contrastInkBg": 2.11,
+        "bgLightness": 0.892,
+        "bgChroma": 0.045,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 163.5,
+        "accentChroma": 0.066
+      }
+    },
+    {
+      "id": "P38",
+      "name": "Soft Pastel",
+      "anchor": "p38-soft-pastel",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.935,
+          "C": 0.016,
+          "h": 328.8,
+          "hex": "#F0E6EF"
+        },
+        "ink": {
+          "L": 0.664,
+          "C": 0.072,
+          "h": 303,
+          "hex": "#9C89B8"
+        },
+        "accent": {
+          "L": 0.807,
+          "C": 0.098,
+          "h": 348.9,
+          "hex": "#F0A6CA"
+        },
+        "surface1": {
+          "L": 0.866,
+          "C": 0.068,
+          "h": 333.3,
+          "hex": "#EFC3E6"
+        },
+        "surface2": {
+          "L": 0.807,
+          "C": 0.044,
+          "h": 276.7,
+          "hex": "#B8BEDD"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.816,
+        "avgChroma": 0.06,
+        "contrastInkBg": 1.38,
+        "bgLightness": 0.935,
+        "bgChroma": 0.016,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 348.9,
+        "accentChroma": 0.098
+      }
+    },
+    {
+      "id": "P39",
+      "name": "Golden Glow",
+      "anchor": "p39-golden-glow",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "editorial",
+        "sustainable-eco",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "architecture",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9590000000000001,
+          "C": 0.024,
+          "h": 57.7,
+          "hex": "#FFEEE2"
+        },
+        "ink": {
+          "L": 0.619,
+          "C": 0.051,
+          "h": 54,
+          "hex": "#9F7E69"
+        },
+        "accent": {
+          "L": 0.986,
+          "C": 0.041,
+          "h": 118.9,
+          "hex": "#F7FFE0"
+        },
+        "surface1": {
+          "L": 0.9440000000000001,
+          "C": 0.052,
+          "h": 103.8,
+          "hex": "#F2EFC7"
+        },
+        "surface2": {
+          "L": 0.805,
+          "C": 0.045,
+          "h": 71.6,
+          "hex": "#D2BBA0"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.863,
+        "avgChroma": 0.043,
+        "contrastInkBg": 1.51,
+        "bgLightness": 0.959,
+        "bgChroma": 0.024,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 118.9,
+        "accentChroma": 0.041
+      }
+    },
+    {
+      "id": "P40",
+      "name": "Soft Serenity",
+      "anchor": "p40-soft-serenity",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "editorial",
+        "sustainable-eco",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "architecture",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.966,
+          "C": 0.023,
+          "h": 96,
+          "hex": "#F8F4E3"
+        },
+        "ink": {
+          "L": 0.68,
+          "C": 0.019,
+          "h": 103.3,
+          "hex": "#9A998C"
+        },
+        "accent": {
+          "L": 0.851,
+          "C": 0.016,
+          "h": 77.1,
+          "hex": "#D4CDC3"
+        },
+        "surface1": {
+          "L": 0.861,
+          "C": 0.007,
+          "h": 53.4,
+          "hex": "#D5D0CD"
+        },
+        "surface2": {
+          "L": 0.71,
+          "C": 0.024,
+          "h": 109.7,
+          "hex": "#A2A392"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.814,
+        "avgChroma": 0.018,
+        "contrastInkBg": 1.39,
+        "bgLightness": 0.966,
+        "bgChroma": 0.023,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": true,
+        "accentHue": 77.1,
+        "accentChroma": 0.016
+      }
+    },
+    {
+      "id": "P41",
+      "name": "Earthy Sunshine Bliss",
+      "anchor": "p41-earthy-sunshine-bliss",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "editorial",
+        "sustainable-eco",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "architecture",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.983,
+          "C": 0.032,
+          "h": 97.3,
+          "hex": "#FFFAE2"
+        },
+        "ink": {
+          "L": 0.665,
+          "C": 0.036,
+          "h": 116.6,
+          "hex": "#92977E"
+        },
+        "accent": {
+          "L": 0.975,
+          "C": 0.099,
+          "h": 106.9,
+          "hex": "#FEFCAD"
+        },
+        "surface1": {
+          "L": 0.895,
+          "C": 0.073,
+          "h": 96.4,
+          "hex": "#EADDA6"
+        },
+        "surface2": {
+          "L": 0.895,
+          "C": 0.103,
+          "h": 105.3,
+          "hex": "#E6E18F"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.883,
+        "avgChroma": 0.069,
+        "contrastInkBg": 1.44,
+        "bgLightness": 0.983,
+        "bgChroma": 0.032,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 106.9,
+        "accentChroma": 0.099
+      }
+    },
+    {
+      "id": "P42",
+      "name": "Crimson Hues",
+      "anchor": "p42-crimson-hues",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "cinematic",
+        "wine-spirits"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.494,
+          "C": 0.169,
+          "h": 22.7,
+          "hex": "#AD2831"
+        },
+        "ink": {
+          "L": 0.18600000000000003,
+          "C": 0.051,
+          "h": 39.8,
+          "hex": "#250902"
+        },
+        "accent": {
+          "L": 0.223,
+          "C": 0.08,
+          "h": 15.7,
+          "hex": "#38040E"
+        },
+        "surface1": {
+          "L": 0.385,
+          "C": 0.146,
+          "h": 26.1,
+          "hex": "#800E13"
+        },
+        "surface2": {
+          "L": 0.327,
+          "C": 0.119,
+          "h": 23.4,
+          "hex": "#640D14"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.323,
+        "avgChroma": 0.113,
+        "contrastInkBg": 2.31,
+        "bgLightness": 0.494,
+        "bgChroma": 0.169,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 15.7,
+        "accentChroma": 0.08
+      }
+    },
+    {
+      "id": "P43",
+      "name": "Warm Earth Tones",
+      "anchor": "p43-warm-earth-tones",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "cinematic",
+        "wine-spirits"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.8859999999999999,
+          "C": 0.034,
+          "h": 76,
+          "hex": "#E7D7C1"
+        },
+        "ink": {
+          "L": 0.419,
+          "C": 0.149,
+          "h": 29.5,
+          "hex": "#8C1C13"
+        },
+        "accent": {
+          "L": 0.556,
+          "C": 0.16,
+          "h": 24.3,
+          "hex": "#BF4342"
+        },
+        "surface1": {
+          "L": 0.657,
+          "C": 0.039,
+          "h": 41.8,
+          "hex": "#A78A7F"
+        },
+        "surface2": {
+          "L": 0.484,
+          "C": 0.039,
+          "h": 32.3,
+          "hex": "#735751"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.6,
+        "avgChroma": 0.084,
+        "contrastInkBg": 2,
+        "bgLightness": 0.886,
+        "bgChroma": 0.034,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 24.3,
+        "accentChroma": 0.16
+      }
+    },
+    {
+      "id": "P44",
+      "name": "Fiery Ocean",
+      "anchor": "p44-fiery-ocean",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "wine-spirits"
+      ],
+      "avoid": [
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "tech-research"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.958,
+          "C": 0.038,
+          "h": 85.3,
+          "hex": "#FDF0D5"
+        },
+        "ink": {
+          "L": 0.294,
+          "C": 0.066,
+          "h": 238.5,
+          "hex": "#003049"
+        },
+        "accent": {
+          "L": 0.36,
+          "C": 0.148,
+          "h": 29.2,
+          "hex": "#780000"
+        },
+        "surface1": {
+          "L": 0.665,
+          "C": 0.075,
+          "h": 236.8,
+          "hex": "#669BBC"
+        },
+        "surface2": {
+          "L": 0.516,
+          "C": 0.202,
+          "h": 25.9,
+          "hex": "#C1121F"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.559,
+        "avgChroma": 0.106,
+        "contrastInkBg": 2.93,
+        "bgLightness": 0.958,
+        "bgChroma": 0.038,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 29.2,
+        "accentChroma": 0.148
+      }
+    },
+    {
+      "id": "P45",
+      "name": "Deep Sea",
+      "anchor": "p45-deep-sea",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 1,
+          "C": 0,
+          "h": null,
+          "hex": "#FFFFFF"
+        },
+        "ink": {
+          "L": 0.19,
+          "C": 0.035,
+          "h": 222.4,
+          "hex": "#00171F"
+        },
+        "accent": {
+          "L": 0.69,
+          "C": 0.146,
+          "h": 234.8,
+          "hex": "#00A8E8"
+        },
+        "surface1": {
+          "L": 0.555,
+          "C": 0.111,
+          "h": 230,
+          "hex": "#007EA7"
+        },
+        "surface2": {
+          "L": 0.316,
+          "C": 0.083,
+          "h": 246.8,
+          "hex": "#003459"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.55,
+        "avgChroma": 0.075,
+        "contrastInkBg": 4.38,
+        "bgLightness": 1,
+        "bgChroma": 0,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 234.8,
+        "accentChroma": 0.146
+      }
+    },
+    {
+      "id": "P46",
+      "name": "Bold Hues",
+      "anchor": "p46-bold-hues",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "athletic"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "architecture",
+        "wine-spirits"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.782,
+          "C": 0.121,
+          "h": 222.5,
+          "hex": "#4CC9F0"
+        },
+        "ink": {
+          "L": 0.36200000000000004,
+          "C": 0.206,
+          "h": 282.7,
+          "hex": "#3A0CA3"
+        },
+        "accent": {
+          "L": 0.643,
+          "C": 0.244,
+          "h": 0.7,
+          "hex": "#F72585"
+        },
+        "surface1": {
+          "L": 0.556,
+          "C": 0.214,
+          "h": 269,
+          "hex": "#4361EE"
+        },
+        "surface2": {
+          "L": 0.447,
+          "C": 0.228,
+          "h": 304,
+          "hex": "#7209B7"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.558,
+        "avgChroma": 0.203,
+        "contrastInkBg": 2.02,
+        "bgLightness": 0.782,
+        "bgChroma": 0.121,
+        "isDarkLean": false,
+        "isLightLean": false,
+        "isMonochrome": false,
+        "accentHue": 0.7,
+        "accentChroma": 0.244
+      }
+    },
+    {
+      "id": "P47",
+      "name": "Blush Harmony",
+      "anchor": "p47-blush-harmony",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.9329999999999999,
+          "C": 0.016,
+          "h": 126.8,
+          "hex": "#E6EBE0"
+        },
+        "ink": {
+          "L": 0.674,
+          "C": 0.073,
+          "h": 201.4,
+          "hex": "#5CA4A9"
+        },
+        "accent": {
+          "L": 0.6809999999999999,
+          "C": 0.165,
+          "h": 29.1,
+          "hex": "#ED6A5A"
+        },
+        "surface1": {
+          "L": 0.9470000000000001,
+          "C": 0.07,
+          "h": 105,
+          "hex": "#F4F1BB"
+        },
+        "surface2": {
+          "L": 0.782,
+          "C": 0.041,
+          "h": 186.5,
+          "hex": "#9BC1BC"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.803,
+        "avgChroma": 0.073,
+        "contrastInkBg": 1.36,
+        "bgLightness": 0.933,
+        "bgChroma": 0.016,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 29.1,
+        "accentChroma": 0.165
+      }
+    },
+    {
+      "id": "P48",
+      "name": "Earthy Neutrals",
+      "anchor": "p48-earthy-neutrals",
+      "filePath": "skills/direct/reference/curated-pools/palettes.md",
+      "fits": [
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "roles": {
+        "bg": {
+          "L": 0.937,
+          "C": 0,
+          "h": null,
+          "hex": "#EAEAEA"
+        },
+        "ink": {
+          "L": 0.516,
+          "C": 0.04,
+          "h": 226.6,
+          "hex": "#4F6D7A"
+        },
+        "accent": {
+          "L": 0.6609999999999999,
+          "C": 0.151,
+          "h": 41.4,
+          "hex": "#DD6E42"
+        },
+        "surface1": {
+          "L": 0.862,
+          "C": 0.027,
+          "h": 224.3,
+          "hex": "#C0D6DF"
+        },
+        "surface2": {
+          "L": 0.89,
+          "C": 0.055,
+          "h": 91,
+          "hex": "#E8DAB2"
+        }
+      },
+      "stats": {
+        "avgLightness": 0.773,
+        "avgChroma": 0.055,
+        "contrastInkBg": 1.74,
+        "bgLightness": 0.937,
+        "bgChroma": 0,
+        "isDarkLean": false,
+        "isLightLean": true,
+        "isMonochrome": false,
+        "accentHue": 41.4,
+        "accentChroma": 0.151
+      }
+    }
+  ]
+}

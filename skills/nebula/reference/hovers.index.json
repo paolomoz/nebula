@@ -1,0 +1,401 @@
+{
+  "_meta": {
+    "pool": "hovers",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.524Z",
+    "sourceFile": "skills/nebula/reference/hovers.md",
+    "count": 15
+  },
+  "entries": [
+    {
+      "id": "H1",
+      "name": "Sadie",
+      "anchor": "h1-sadie",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2",
+        "S9"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "local",
+      "specimen": "signatures/elastic-cards/index.html"
+    },
+    {
+      "id": "H2",
+      "name": "Layla",
+      "anchor": "h2-layla",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "quiet-craft",
+        "clinical",
+        "civic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H3",
+      "name": "Honey",
+      "anchor": "h3-honey",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "civic",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "music-label",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H4",
+      "name": "Lily",
+      "anchor": "h4-lily",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "documentary",
+        "hospitality",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "brutalist"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H5",
+      "name": "Selena",
+      "anchor": "h5-selena",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H6",
+      "name": "Apollo",
+      "anchor": "h6-apollo",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "music-label",
+        "cinematic",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H7",
+      "name": "Steve",
+      "anchor": "h7-steve",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "documentary",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H8",
+      "name": "Marley",
+      "anchor": "h8-marley",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "civic",
+        "documentary",
+        "hospitality",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H9",
+      "name": "Ruby",
+      "anchor": "h9-ruby",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "music-label",
+        "cinematic",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "indie-game"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H10",
+      "name": "Bubba",
+      "anchor": "h10-bubba",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "architecture",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H11",
+      "name": "Romeo",
+      "anchor": "h11-romeo",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H12",
+      "name": "Dexter",
+      "anchor": "h12-dexter",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "quiet-craft",
+        "clinical",
+        "civic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H13",
+      "name": "Sarah",
+      "anchor": "h13-sarah",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "documentary",
+        "hospitality"
+      ],
+      "avoid": [
+        "brutalist",
+        "quiet-craft",
+        "luxury-fashion"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H14",
+      "name": "Chico",
+      "anchor": "h14-chico",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "architecture",
+        "hospitality",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    },
+    {
+      "id": "H15",
+      "name": "Oscar",
+      "anchor": "h15-oscar",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "music-label",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "athletic"
+      ],
+      "appliedTo": [
+        "M2"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "external-only",
+      "specimen": null
+    }
+  ]
+}

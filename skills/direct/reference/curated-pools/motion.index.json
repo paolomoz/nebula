@@ -1,0 +1,244 @@
+{
+  "_meta": {
+    "pool": "motion",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:12:00.519Z",
+    "sourceFile": "skills/direct/reference/curated-pools/motion.md",
+    "count": 11
+  },
+  "entries": [
+    {
+      "id": "V1",
+      "name": "Magnetic chain",
+      "anchor": "v1-magnetic-chain",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "vibrant-playful",
+        "clinical",
+        "civic",
+        "tech-research"
+      ],
+      "trigger": "Cursor position (continuous). No click, no scroll. Desktop only — the vocabulary loses its meaning on touch.",
+      "easing": "`cubic-bezier(0.25, 0.46, 0.45, 0.94)` — ease-out-quad. Calm decay; the chain settles, it doesn't snap.",
+      "duration": "140ms response on each link. Chain transmission is staggered by the per-link response, not by an explicit delay."
+    },
+    {
+      "id": "V2",
+      "name": "Paper-fold",
+      "anchor": "v2-paper-fold",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "hospitality",
+        "wine-spirits",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "vibrant-playful",
+        "clinical",
+        "indie-game",
+        "tech-research",
+        "athletic"
+      ],
+      "trigger": "Hover or click. Never continuous, never time-driven.",
+      "easing": "`cubic-bezier(0.22, 1, 0.36, 1)` — out-expo. The fold accelerates into the hinge and decelerates to rest, like real paper falling.",
+      "duration": "600ms hinge. Long enough to read as material, short enough not to drag."
+    },
+    {
+      "id": "V3",
+      "name": "Rack focus",
+      "anchor": "v3-rack-focus",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "indie-game",
+        "tech-research",
+        "athletic"
+      ],
+      "trigger": "Hover on any element within the grid. The grid is the trigger surface, individual elements are the foci.",
+      "easing": "`cubic-bezier(0.4, 0, 0.2, 1)` — standard cinematic ease, mirrors how a camera lens actually pulls focus.",
+      "duration": "300ms focus pull. Felt as a camera operation, not a screen transition."
+    },
+    {
+      "id": "V4",
+      "name": "Iris transition",
+      "anchor": "v4-iris-transition",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "tech-research"
+      ],
+      "trigger": "Click or route change. Never hover, never scroll-into-view, never time-driven.",
+      "easing": "`cubic-bezier(0.65, 0, 0.35, 1)` — in-out-cubic. Symmetric closing and opening; the pause at full-closed is part of the move.",
+      "duration": "1100ms total — 550ms close, 550ms open. Built for a deliberate beat, not for speed."
+    },
+    {
+      "id": "V5",
+      "name": "Heat trace",
+      "anchor": "v5-heat-trace",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "luxury-fashion",
+        "documentary"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "tech-research",
+        "athletic"
+      ],
+      "trigger": "Cursor movement (continuous). Desktop only — touch has no continuous cursor.",
+      "easing": "Linear decay (per trail node) plus radial fade (per trail node). Each trail node fades by a constant factor per frame; the trail length is implicit in the decay rate.",
+      "duration": "Each trail point persists ~700ms then fades. The continuous trail is alive as long as the cursor moves."
+    },
+    {
+      "id": "V6",
+      "name": "Type-set-on-scroll",
+      "anchor": "v6-type-set-on-scroll",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "documentary",
+        "sustainable-eco"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "indie-game",
+        "tech-research",
+        "athletic"
+      ],
+      "trigger": "Scroll progress through the element. Each element animates only on first scroll-through; subsequent re-entries do not replay (unless an explicit \"replay\" handle is provided).",
+      "easing": "Linear, mapped to scroll progress through the element. The user controls the pace.",
+      "duration": "Tied to scroll dwell — approximately 1.2 seconds of read-equivalent travel through the element, but actual duration depends on the user's scroll speed."
+    },
+    {
+      "id": "V7",
+      "name": "Chromatic separation",
+      "anchor": "v7-chromatic-separation",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic"
+      ],
+      "trigger": "Hover on display text only. Never on body, never on icons, never on form elements.",
+      "easing": "`ease-out` — the split engages quickly on hover, releases gently on un-hover. Asymmetric is correct here: the holographic moment is fast, the resolution is slow.",
+      "duration": "150ms engage, ~250ms release. The hover moment feels electric; the return to neutral feels considered."
+    },
+    {
+      "id": "V8",
+      "name": "Match-cut morph",
+      "anchor": "v8-match-cut-morph",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "trust-fintech",
+        "vibrant-playful",
+        "civic",
+        "tech-research"
+      ],
+      "avoid": [
+        "editorial",
+        "quiet-craft",
+        "wine-spirits"
+      ],
+      "trigger": "Click or tap. Never hover, never scroll, never continuous.",
+      "easing": "`cubic-bezier(0.22, 1, 0.36, 1)` — out-expo. The morph accelerates into the new shape and decelerates to rest. Symmetric is wrong here; the destination shape should feel like the morph's resting point.",
+      "duration": "600ms shape transition. Long enough for the morph to be read as continuity, short enough not to drag."
+    },
+    {
+      "id": "V9",
+      "name": "Drift compositions",
+      "anchor": "v9-drift-compositions",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "quiet-craft",
+        "luxury-fashion",
+        "sustainable-eco",
+        "music-label",
+        "boutique-hotel"
+      ],
+      "avoid": [
+        "clinical",
+        "tech-research",
+        "athletic"
+      ],
+      "trigger": "Continuous; independent per-element loops. Never coupled to user input, scroll, or events.",
+      "easing": "`ease-in-out` (sinusoidal) per shape. Each shape follows its own path independently of others.",
+      "duration": "19–31 seconds per loop, with deliberately different periods per shape — the composition never returns to the same configuration on a predictable beat."
+    },
+    {
+      "id": "V10",
+      "name": "Color bleed",
+      "anchor": "v10-color-bleed",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "tech-research"
+      ],
+      "trigger": "Hover. Never click, never scroll, never continuous.",
+      "easing": "`cubic-bezier(0.4, 0, 0.2, 1)` for the engage; a longer linear decay on release. Asymmetric is correct here: the bleed is fast, the recede is slow — like real ink soaking into paper and then evaporating.",
+      "duration": "400ms engage on hover, 800ms recede on un-hover. The asymmetry between engage and release is essential to the metaphor."
+    },
+    {
+      "id": "V11",
+      "name": "Crosshatching reveal",
+      "anchor": "v11-crosshatching-reveal",
+      "filePath": "skills/direct/reference/curated-pools/motion.md",
+      "fits": [
+        "editorial",
+        "quiet-craft",
+        "sustainable-eco",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "tech-research"
+      ],
+      "trigger": "Scroll-into-view, once per element. Never replays, never on hover, never continuous.",
+      "easing": "`cubic-bezier(0.65, 0, 0.35, 1)` — symmetric in-out-cubic. Stripes draw apart along the same curve they would close on, like a deliberate two-hand gesture.",
+      "duration": "1400ms total reveal, with each stripe staggered 80ms. Long enough that the engraving metaphor reads; short enough not to delay first-content-visible past the user's patience."
+    }
+  ]
+}
