@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Horizontal Parallax Gallery — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --bg:#000;
+    --text:#fff;
+    --muted:#8a8580;
+    --accent:#ffd23f;
+    --rule:rgba(255,255,255,.14);
+    --page-padding:1.5rem;
+  }
+  html,body{margin:0;padding:0}
+  body{
+    width:100%;
+    height:100dvh;
+    overflow:hidden;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Space Mono',ui-monospace,monospace;
+    -webkit-font-smoothing:antialiased;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  ::selection{background:var(--accent);color:#000}
+  a{color:inherit;text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------------- frame (top nav, sponsor-style metadata) ---------------- */
+  .frame{
+    position:fixed;top:0;left:0;width:100%;
+    padding:var(--page-padding);
+    z-index:100;
+    display:grid;
+    grid-template-columns:auto auto 1fr auto;
+    grid-template-rows:auto auto;
+    grid-template-areas:
+      "title back github hint"
+      "tags  tags tags   hint";
+    gap:1rem 1.5rem;
+    align-items:start;
+    font-size:12px;
+    pointer-events:none;
+  }
+  .frame a, .frame .hint, .frame .tags{pointer-events:auto}
+  .frame__title{
+    grid-area:title;
+    margin:0;
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .frame__title em{font-style:normal;color:var(--accent)}
+  .frame__back{grid-area:back}
+  .frame__github{grid-area:github}
+  .frame__tags{
+    grid-area:tags;
+    display:flex;flex-wrap:wrap;gap:.5rem 1rem;
+    color:var(--muted);
+  }
+  .frame__tags span{display:inline-block}
+  .frame__hint{
+    grid-area:hint;
+    color:var(--muted);
+    text-align:right;
+    font-size:11px;
+    line-height:1.5;
+    max-width:24ch;
+  }
+  .frame__hint kbd{
+    display:inline-block;background:rgba(255,255,255,.08);border:1px solid var(--rule);
+    padding:1px 6px;border-radius:3px;font-family:inherit;font-size:10px;color:var(--text);
+  }
+  @media (max-width:680px){.frame__hint{display:none}}
+
+  /* ---------------- gallery stage ---------------- */
+  .content{
+    position:relative;
+    width:100vw;height:100dvh;
+    display:flex;align-items:center;justify-content:flex-start;
+    padding-left:var(--page-padding);
+  }
+  .gallery__wrapper{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    -webkit-user-select:none;user-select:none;
+  }
+  .gallery__container{
+    display:flex;
+    gap:2rem;
+    will-change:transform;
+    height:60vh;
+    transform:translate3d(0,0,0);
+  }
+  .gallery__media{
+    flex-shrink:0;
+    aspect-ratio:4/3;
+    height:60vh;
+    overflow:hidden;
+    position:relative;
+    display:block;
+    background:#0a0a0a;
+  }
+  /* image overshoots by 12.5% on each side → headroom for parallax shift */
+  .gallery__media__image{
+    position:absolute;
+    top:0;left:-12.5%;
+    width:125%;height:100%;
+    object-fit:cover;
+    will-change:transform;
+    transform:translate3d(0,0,0);
+    background:#0a0a0a;
+  }
+  /* caption hangs below the panel, monospace, documentary tone */
+  .gallery__caption{
+    position:absolute;
+    bottom:-3rem;left:0;right:0;
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:1rem;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.04em;
+  }
+  .gallery__caption b{color:var(--text);font-weight:400}
+  .gallery__caption .n{color:var(--accent);font-weight:700;letter-spacing:.08em}
+
+  /* big floating panel number — sits above the image, parallaxes faster */
+  .gallery__num{
+    position:absolute;
+    top:1rem;left:1rem;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-variation-settings:"opsz" 96;
+    font-weight:700;
+    font-size:clamp(56px,8vw,120px);
+    line-height:.86;
+    letter-spacing:-0.04em;
+    color:var(--text);
+    pointer-events:none;
+    mix-blend-mode:difference;
+    will-change:transform;
+  }
+
+  /* ---------------- progress bar / scroll indicator ---------------- */
+  .progress{
+    position:fixed;
+    left:var(--page-padding);right:var(--page-padding);
+    bottom:1.25rem;
+    height:1px;
+    background:var(--rule);
+    z-index:50;
+  }
+  .progress__fill{
+    height:100%;
+    background:var(--text);
+    transform-origin:0 50%;
+    transform:scaleX(0);
+    transition:transform .08s linear;
+  }
+  .progress__label{
+    position:fixed;
+    left:var(--page-padding);
+    bottom:1.75rem;
+    font-size:11px;
+    color:var(--muted);
+    z-index:50;
+  }
+  .progress__counter{
+    position:fixed;
+    right:var(--page-padding);
+    bottom:1.75rem;
+    font-size:11px;
+    color:var(--muted);
+    z-index:50;
+  }
+  .progress__counter b{color:var(--text);font-weight:400}
+
+  /* reduced motion fallback — replace lerp track with native scroll-snap */
+  @media (prefers-reduced-motion: reduce){
+    body{height:auto;overflow:visible}
+    .content{padding:6rem var(--page-padding) 4rem;height:auto;overflow-x:auto;scroll-snap-type:x mandatory}
+    .gallery__container{transform:none !important}
+    .gallery__media{scroll-snap-align:start}
+    .gallery__media__image,.gallery__num{transform:none !important}
+    .progress,.progress__label,.progress__counter{display:none}
+    .frame{position:static;background:rgba(0,0,0,.85);padding:1rem var(--page-padding)}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame" role="banner">
+  <h1 class="frame__title">Horizontal Parallax Gallery <em>· clean-room replica</em></h1>
+  <a class="frame__back" href="https://tympanus.net/Tutorials/HorizontalParallaxGallery/index2.html" target="_blank" rel="noopener">source ↗</a>
+  <a class="frame__github" href="#" aria-disabled="true">DOM-only</a>
+  <nav class="frame__tags" aria-label="Tags">
+    <span>#scroll</span><span>#parallax</span><span>#css-only</span>
+  </nav>
+  <div class="frame__hint" aria-hidden="true">
+    <kbd>Scroll</kbd> <kbd>Drag</kbd> <kbd>← →</kbd><br>
+    to traverse
+  </div>
+</header>
+
+<main class="content">
+  <div class="gallery__wrapper">
+    <div class="gallery__container" id="track">
+      <!-- 10 panels, picsum.photos seeds for stable photographic content -->
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/mara-dawn/1600/1200" alt="Sunrise over Mara">
+        <span class="gallery__num">01</span>
+        <figcaption class="gallery__caption"><span class="n">01 / 10</span><b>Sunrise over Mara</b><span>Narok · ph. NK</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/mukono-pump/1600/1200" alt="Borehole at Mukono">
+        <span class="gallery__num">02</span>
+        <figcaption class="gallery__caption"><span class="n">02 / 10</span><b>Borehole at Mukono</b><span>Mukono · ph. DO</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/iganga-well/1600/1200" alt="The well at Iganga">
+        <span class="gallery__num">03</span>
+        <figcaption class="gallery__caption"><span class="n">03 / 10</span><b>The well at Iganga</b><span>Iganga · ph. NK</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/talek-river/1600/1200" alt="Riverbed near Talek">
+        <span class="gallery__num">04</span>
+        <figcaption class="gallery__caption"><span class="n">04 / 10</span><b>Riverbed near Talek</b><span>Narok · ph. DO</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/engaruka-school/1600/1200" alt="Engaruka Primary, new wing">
+        <span class="gallery__num">05</span>
+        <figcaption class="gallery__caption"><span class="n">05 / 10</span><b>Engaruka Primary</b><span>Arusha · ph. DO</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/arusha-classroom/1600/1200" alt="Classroom in Arusha">
+        <span class="gallery__num">06</span>
+        <figcaption class="gallery__caption"><span class="n">06 / 10</span><b>Class in session</b><span>Arusha · ph. NK</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/kakamega-ledger/1600/1200" alt="The committee ledger">
+        <span class="gallery__num">07</span>
+        <figcaption class="gallery__caption"><span class="n">07 / 10</span><b>The committee ledger</b><span>Kakamega · ph. DO</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/soroti-dusk/1600/1200" alt="Dusk on the long road">
+        <span class="gallery__num">08</span>
+        <figcaption class="gallery__caption"><span class="n">08 / 10</span><b>Dusk, the long road</b><span>Soroti · ph. NK</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/kibera-meeting/1600/1200" alt="Community meeting at Kibera">
+        <span class="gallery__num">09</span>
+        <figcaption class="gallery__caption"><span class="n">09 / 10</span><b>Community meeting</b><span>Kibera · ph. DO</span></figcaption>
+      </picture>
+      <picture class="gallery__media">
+        <img class="gallery__media__image" src="https://picsum.photos/seed/singida-acacia/1600/1200" alt="Acacia, late afternoon">
+        <span class="gallery__num">10</span>
+        <figcaption class="gallery__caption"><span class="n">10 / 10</span><b>Acacia, late afternoon</b><span>Singida · ph. NK</span></figcaption>
+      </picture>
+    </div>
+  </div>
+</main>
+
+<div class="progress__label" aria-hidden="true">FIELD NOTES · 2024</div>
+<div class="progress__counter" id="counter" aria-live="polite">01 / 10</div>
+<div class="progress" aria-hidden="true">
+  <div class="progress__fill" id="progress"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const track = document.getElementById("track");
+  const wrapper = track.parentElement;
+  const progress = document.getElementById("progress");
+  const counter = document.getElementById("counter");
+  const panels = Array.from(track.querySelectorAll(".gallery__media"));
+  const images = panels.map(p => p.querySelector(".gallery__media__image"));
+  const nums   = panels.map(p => p.querySelector(".gallery__num"));
+
+  let target = 0;
+  let current = 0;
+  let maxScroll = 0;
+  let isPointerDown = false;
+  let pointerStartX = 0;
+  let pointerStartTarget = 0;
+
+  function recalc(){
+    // maxScroll is how far the track must translate to show the last panel
+    maxScroll = Math.max(0, track.scrollWidth - wrapper.clientWidth);
+  }
+
+  function clamp(v, lo, hi){ return Math.min(hi, Math.max(lo, v)); }
+  function lerp(a, b, t){ return a + (b - a) * t; }
+
+  // wheel → horizontal scroll
+  window.addEventListener("wheel", (e) => {
+    // both vertical and horizontal wheel contribute
+    const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    target = clamp(target + delta, 0, maxScroll);
+    e.preventDefault();
+  }, { passive: false });
+
+  // keyboard
+  window.addEventListener("keydown", (e) => {
+    const step = wrapper.clientWidth * 0.5;
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " "){
+      target = clamp(target + step, 0, maxScroll); e.preventDefault();
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp"){
+      target = clamp(target - step, 0, maxScroll); e.preventDefault();
+    } else if (e.key === "Home"){
+      target = 0; e.preventDefault();
+    } else if (e.key === "End"){
+      target = maxScroll; e.preventDefault();
+    }
+  });
+
+  // touch / drag
+  function getX(e){
+    return e.touches ? e.touches[0].clientX : e.clientX;
+  }
+  function onDown(e){
+    isPointerDown = true;
+    pointerStartX = getX(e);
+    pointerStartTarget = target;
+    document.body.style.cursor = "grabbing";
+  }
+  function onMove(e){
+    if (!isPointerDown) return;
+    const dx = getX(e) - pointerStartX;
+    target = clamp(pointerStartTarget - dx * 1.4, 0, maxScroll);
+    if (e.cancelable) e.preventDefault();
+  }
+  function onUp(){
+    isPointerDown = false;
+    document.body.style.cursor = "";
+  }
+  wrapper.addEventListener("mousedown", onDown);
+  wrapper.addEventListener("touchstart", onDown, { passive: true });
+  window.addEventListener("mousemove", onMove);
+  window.addEventListener("touchmove", onMove, { passive: false });
+  window.addEventListener("mouseup", onUp);
+  window.addEventListener("touchend", onUp);
+  window.addEventListener("touchcancel", onUp);
+
+  // resize handler
+  let resizeTO = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTO);
+    resizeTO = setTimeout(() => { recalc(); target = clamp(target, 0, maxScroll); }, 100);
+  });
+
+  // wait for layout, then start
+  function start(){
+    recalc();
+    requestAnimationFrame(tick);
+  }
+  if (document.readyState === "complete") start();
+  else window.addEventListener("load", start);
+
+  const viewportCenter = () => window.innerWidth / 2;
+
+  function tick(){
+    // smooth lerp toward target
+    current = lerp(current, target, 0.08);
+    if (Math.abs(target - current) < 0.05) current = target;
+
+    track.style.transform = `translate3d(${-current}px, 0, 0)`;
+
+    // per-panel parallax: each image gets a translateX based on its distance
+    // from viewport center. The image is 125% wide with -12.5% offset, so
+    // shifting by ±10–12% of panel width still keeps the panel covered.
+    const cx = viewportCenter();
+    let activeIdx = 0;
+    let bestDist = Infinity;
+    for (let i = 0; i < panels.length; i++){
+      const rect = panels[i].getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      const dist = center - cx;
+      // image: lags ~10% of the distance (slow background)
+      images[i].style.transform = `translate3d(${-dist * 0.10}px, 0, 0)`;
+      // number: leads, ~14% (foreground)
+      if (nums[i]) nums[i].style.transform = `translate3d(${dist * 0.14}px, 0, 0)`;
+      const ad = Math.abs(dist);
+      if (ad < bestDist){ bestDist = ad; activeIdx = i; }
+    }
+
+    // progress + counter
+    const p = maxScroll > 0 ? current / maxScroll : 0;
+    progress.style.transform = `scaleX(${p})`;
+    const n = String(activeIdx + 1).padStart(2, "0");
+    if (counter.textContent !== `${n} / 10`) counter.textContent = `${n} / 10`;
+
+    requestAnimationFrame(tick);
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elastic grid · 4×2 cards with hover — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    font-size:14px;
+    --color-text:#1a1a1a;
+    --color-bg:#f7f3ec;
+    --color-muted:#7a7468;
+    --color-rule:rgba(26,26,26,.12);
+    --color-accent:#c1402a;
+    --page-padding:5vw;
+    --c-gap:2.5vw;
+    --r-gap:3vw;
+    --column-count:1;
+  }
+  html,body{margin:0;padding:0}
+  body{
+    color:var(--color-text);background:var(--color-bg);
+    font-family:'Space Mono',ui-monospace,monospace;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* frame nav */
+  .frame{
+    padding:2rem var(--page-padding) 0;
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem;
+    font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--color-muted);
+  }
+  .frame__title{color:var(--color-text);font-weight:700;margin:0;font-size:12px;letter-spacing:.04em}
+  .frame__tags{display:flex;gap:1rem}
+  .frame__info{
+    padding:2px 6px;border:1px solid;border-radius:3px;
+    line-height:.9;font-size:10px;letter-spacing:.06em;
+  }
+
+  /* hero — gives the page enough scroll room for the elastic effect to read */
+  .hero{
+    padding:18rem var(--page-padding) 12rem;
+    display:grid;grid-template-columns:1fr;gap:2rem;
+  }
+  .hero h1{
+    font-family:'Bricolage Grotesque',serif;
+    font-variation-settings:"opsz" 96;
+    font-weight:500;
+    font-size:clamp(48px,8vw,124px);
+    line-height:.94;letter-spacing:-0.035em;
+    margin:0;max-width:18ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--color-accent)}
+  .hero p{
+    max-width:46ch;font-size:14px;line-height:1.6;color:var(--color-muted);
+    margin:0;letter-spacing:.02em;
+  }
+  .hero .meta{
+    display:flex;gap:2rem;flex-wrap:wrap;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--color-muted);
+    margin-top:1rem;
+  }
+  .hero .meta b{color:var(--color-text);font-weight:400}
+
+  /* grid — 1 col mobile, 2 col tablet, 4 col desktop */
+  .grid{
+    display:grid;
+    padding:0 var(--page-padding) 14rem;
+    margin:0 auto;
+    grid-template-columns:repeat(var(--column-count), minmax(0, 1fr));
+    grid-column-gap:var(--c-gap);
+    grid-row-gap:var(--r-gap);
+  }
+  @media (min-width: 720px){:root{--column-count:2}}
+  @media (min-width: 1120px){:root{--column-count:4}}
+
+  /* JS wraps items in column containers */
+  .grid__column{
+    display:flex;flex-direction:column;
+    gap:var(--c-gap);
+    will-change:transform;
+  }
+
+  /* ─── Sadie-style hover card ─── */
+  /* technique: image always visible, title always centered, hover
+     reveals a bottom gradient + paragraph + CTA, title shifts upward */
+  .card{
+    position:relative;
+    margin:0;
+    overflow:hidden;
+    background:#1a1a1a;
+    aspect-ratio:3 / 4;
+    cursor:pointer;
+    isolation:isolate;
+  }
+  .card img{
+    display:block;width:100%;height:100%;object-fit:cover;
+    transition:transform 0.6s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover img{transform:scale(1.04)}
+
+  /* The "Sadie" gradient scrim — sits below the card content, fades in on hover */
+  .card::before{
+    content:"";
+    position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg, rgba(20,20,20,0) 35%, rgba(20,20,20,.84) 100%);
+    opacity:0;
+    transform:translate3d(0, 30%, 0);
+    transition:opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .card:hover::before, .card:focus-within::before{
+    opacity:1;
+    transform:translate3d(0, 0, 0);
+  }
+
+  .card__caption{
+    position:absolute;inset:0;z-index:2;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:1.5rem 1.5rem 1.75rem;
+    color:#fff;
+    pointer-events:none;
+  }
+  /* title — sits centered at rest, lifts to the bottom-aligned position on hover */
+  .card__title{
+    position:absolute;
+    left:1.5rem;right:1.5rem;
+    top:50%;
+    margin:0;
+    font-family:'Bricolage Grotesque',serif;
+    font-variation-settings:"opsz" 48;
+    font-weight:500;
+    font-size:clamp(24px,2vw,32px);
+    line-height:1;letter-spacing:-0.02em;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 2px 16px rgba(0,0,0,.35);
+    transform:translate3d(0, -50%, 0);
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
+    z-index:3;
+  }
+  .card__title em{font-style:normal;color:var(--color-accent)}
+  .card:hover .card__title, .card:focus-within .card__title{
+    transform:translate3d(0, calc(-50% + 30%), 0);
+    /* moved by 30% of viewport-card-height downward, ends in upper third of bottom scrim */
+  }
+  /* paragraph + cta — hidden at rest, slide up from below on hover */
+  .card__meta{
+    position:relative;
+    transform:translate3d(0, 20px, 0);
+    opacity:0;
+    transition:opacity .25s ease, transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .card__meta p{
+    margin:0 0 .75rem;
+    font-size:11px;line-height:1.6;letter-spacing:.04em;
+    color:rgba(255,255,255,.82);
+    max-width:34ch;
+  }
+  .card__meta .cta{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:#fff;font-weight:700;
+    border-bottom:1px solid rgba(255,255,255,.5);
+    padding-bottom:2px;
+    pointer-events:auto;
+  }
+  .card:hover .card__meta, .card:focus-within .card__meta{
+    opacity:1;
+    transform:translate3d(0, 0, 0);
+    transition-delay:.05s;
+  }
+  /* index chip at top-left, always visible — adds an editorial mark */
+  .card__index{
+    position:absolute;top:1rem;left:1rem;z-index:3;
+    font-size:10px;letter-spacing:.2em;color:#fff;font-weight:700;
+    background:rgba(0,0,0,.35);padding:4px 8px;border-radius:2px;
+    backdrop-filter:blur(4px);
+  }
+
+  /* footer */
+  .footer{
+    padding:8rem var(--page-padding) 6rem;
+    border-top:1px solid var(--color-rule);
+    display:grid;grid-template-columns:1fr;gap:1.5rem;
+    font-size:11px;letter-spacing:.06em;color:var(--color-muted);
+  }
+  .footer h3{
+    font-family:'Bricolage Grotesque',serif;font-weight:500;
+    font-size:clamp(24px,3.5vw,42px);letter-spacing:-0.02em;line-height:1.1;
+    color:var(--color-text);margin:0 0 1rem;max-width:18ch;
+  }
+  .footer p{max-width:54ch;line-height:1.7;margin:0}
+  .footer .creds{
+    margin-top:2rem;display:flex;flex-wrap:wrap;gap:1.5rem;text-transform:uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .grid__column{transform:none !important}
+    .card img,.card::before,.card__title,.card__meta{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame" role="banner">
+  <h1 class="frame__title">Elastic grid <span style="color:var(--color-muted)">· 4×2 cards · hover: Sadie</span></h1>
+  <nav class="frame__tags" aria-label="Tags">
+    <a href="https://tympanus.net/Tutorials/ElasticGridScroll/" target="_blank" rel="noopener">elastic scroll ↗</a>
+    <a href="https://tympanus.net/Development/HoverEffectIdeas/" target="_blank" rel="noopener">hover effect ↗</a>
+  </nav>
+  <p class="frame__info">Per-column lag · pure JS · no GSAP</p>
+</header>
+
+<section class="hero">
+  <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-muted);margin:0">Field Notes · Vol. 04 · 2024</p>
+  <h1>Eight quiet <em>frames</em> from a year in the field.</h1>
+  <p>A short visual essay. Hover any plate for the location and a longer caption — the grid breathes with scroll, columns near the edges lagging behind the center.</p>
+  <div class="meta">
+    <span><b>08</b> plates</span>
+    <span><b>03</b> countries</span>
+    <span><b>2024</b></span>
+  </div>
+</section>
+
+<main class="grid" id="grid">
+  <!-- 8 cards — JS will wrap into 4 column containers -->
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-01/720/960" alt="">
+    <span class="card__index">01 / 08</span>
+    <h2 class="card__title">First <em>light</em></h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Mwanza, Tanzania · 04:46 · A fisherman's lamp on Lake Victoria before the wind shifts.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-02/720/960" alt="">
+    <span class="card__index">02 / 08</span>
+    <h2 class="card__title">Pump <em>day</em></h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Mukono, Uganda · The morning the borehole came online. Mary's class arrived first.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-03/720/960" alt="">
+    <span class="card__index">03 / 08</span>
+    <h2 class="card__title">The <em>ledger</em></h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Kakamega, Kenya · The committee's monthly meeting. Every shilling read aloud, every signature inked.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-04/720/960" alt="">
+    <span class="card__index">04 / 08</span>
+    <h2 class="card__title">Engaruka</h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Arusha, Tanzania · Naserian's classroom. The new wing opened in March.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-05/720/960" alt="">
+    <span class="card__index">05 / 08</span>
+    <h2 class="card__title">Acacia</h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Singida, Tanzania · Mid-afternoon. The bus from Dodoma stops nowhere, then suddenly stops.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-06/720/960" alt="">
+    <span class="card__index">06 / 08</span>
+    <h2 class="card__title">Mason's <em>hands</em></h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Iganga, Uganda · The well in the foreground was laid in 2011 by the man whose hands are in the frame.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-07/720/960" alt="">
+    <span class="card__index">07 / 08</span>
+    <h2 class="card__title">The long <em>road</em></h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Soroti, Uganda · Late dusk. The clinic visit was the last appointment of a four-village circuit.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+  <figure class="card" tabindex="0">
+    <img src="https://picsum.photos/seed/elc-08/720/960" alt="">
+    <span class="card__index">08 / 08</span>
+    <h2 class="card__title">After <em>rain</em></h2>
+    <div class="card__caption">
+      <div class="card__meta">
+        <p>Kisii, Kenya · A short storm. The children gathered the runoff in plastic basins.</p>
+        <a class="cta" href="#">View plate →</a>
+      </div>
+    </div>
+  </figure>
+</main>
+
+<footer class="footer">
+  <h3>Built together. Built to last.</h3>
+  <p>Each plate is a single moment from a longer engagement — sometimes a week of listening, sometimes a year of partnership. The grid above runs the elastic-scroll effect on four columns, with outer columns lagging behind the center at a 0.15-per-step factor.</p>
+  <div class="creds">
+    <span>© 2009–2026 · Lumen Foundation</span>
+    <span>Field photography · NK · DO</span>
+    <span>Replica of Codrops Elastic Grid Scroll + Hover Effect Ideas</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  const grid = document.getElementById("grid");
+
+  // ─── elastic-scroll engine (per-column lag) ───
+  const BASE_LAG  = 0.5;
+  const LAG_SCALE = 0.15;   // bumped from source's 0.10 — fewer cols → need
+                            // wider spread to keep the effect visible
+
+  const originalItems = Array.from(grid.querySelectorAll(".card"));
+
+  function getColumnCount(){
+    const tmpl = getComputedStyle(grid).getPropertyValue("grid-template-columns");
+    return tmpl.split(" ").filter(Boolean).length;
+  }
+
+  let columns = [];
+
+  function buildLayout(){
+    grid.querySelectorAll(".grid__column").forEach(c => c.remove());
+    originalItems.forEach(it => grid.appendChild(it));
+
+    const n = getColumnCount();
+    const mid = (n - 1) / 2;
+
+    const buckets = Array.from({ length: n }, () => []);
+    originalItems.forEach((it, i) => buckets[i % n].push(it));
+
+    const frag = document.createDocumentFragment();
+    columns = buckets.map((items, i) => {
+      const col = document.createElement("div");
+      col.className = "grid__column";
+      items.forEach(it => col.appendChild(it));
+      frag.appendChild(col);
+      return {
+        element: col,
+        lag: BASE_LAG + Math.abs(i - mid) * LAG_SCALE,
+        currentY: window.scrollY,
+      };
+    });
+    grid.appendChild(frag);
+  }
+
+  buildLayout();
+
+  let lastColumnCount = getColumnCount();
+  window.addEventListener("resize", () => {
+    const n = getColumnCount();
+    if (n !== lastColumnCount){
+      lastColumnCount = n;
+      buildLayout();
+    }
+  });
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let lastT = performance.now();
+  function tick(now){
+    const dt = Math.min(64, now - lastT);
+    lastT = now;
+    const targetY = window.scrollY;
+
+    if (reduced){
+      columns.forEach(c => { c.element.style.transform = ""; });
+    } else {
+      for (const c of columns){
+        const k = Math.min(1, (dt / 1000) / c.lag);
+        c.currentY += (targetY - c.currentY) * k;
+        const offset = targetY - c.currentY;
+        c.element.style.transform = `translate3d(0, ${offset}px, 0)`;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>

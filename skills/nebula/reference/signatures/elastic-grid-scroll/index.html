@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elastic Grid Scroll — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    font-size:14px;
+    --color-text:#333;
+    --color-bg:#fff;
+    --color-link:#929292;
+    --color-link-hover:#000;
+    --page-padding:5vw;
+    --c-gap:5vw;
+    --r-gap:5vw;
+    --column-size:80px;
+    --column-count:3;
+  }
+  html,body{margin:0;padding:0}
+  body{
+    color:var(--color-text);background:var(--color-bg);
+    font-family:'Space Mono',ui-monospace,monospace;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:var(--color-link);text-decoration:none}
+  a:hover{color:var(--color-link-hover);text-decoration:underline}
+  img{display:block;width:100%;height:auto}
+
+  /* frame nav */
+  .frame{
+    padding:2rem var(--page-padding) 0;
+    display:grid;z-index:1000;position:relative;
+    grid-row-gap:1rem;pointer-events:none;
+    justify-items:start;
+    grid-template-columns:100%;
+    grid-template-areas:
+      "title"
+      "back"
+      "github"
+      "tags"
+      "info";
+  }
+  .frame a, .frame button{pointer-events:auto}
+  .frame__title{grid-area:title;font-size:inherit;font-weight:inherit;margin:0}
+  .frame__back{grid-area:back}
+  .frame__github{grid-area:github}
+  .frame__tags{grid-area:tags;display:flex;flex-wrap:wrap;gap:1rem}
+  .frame__info{
+    grid-area:info;margin:0;padding:2px 6px;
+    border:1px solid;border-radius:3px;line-height:.9;font-size:11px;
+  }
+  @media screen and (min-width:53em){
+    .frame{
+      grid-template-columns:auto auto auto auto 1fr;
+      grid-template-rows:auto auto;
+      grid-column-gap:2rem;
+      grid-template-areas:
+        "title back github tags ..."
+        "info  info info  ... ...";
+    }
+  }
+
+  /* the grid — 3 columns on mobile, 7 on desktop */
+  .grid{
+    display:grid;
+    padding:10rem var(--page-padding);
+    margin:0 auto;
+    grid-template-columns:repeat(var(--column-count), minmax(var(--column-size), 1fr));
+    grid-column-gap:var(--c-gap);
+    grid-row-gap:var(--r-gap);
+  }
+  @media screen and (min-width:65em){
+    :root{--column-count:7}
+  }
+
+  /* JS wraps items into these column containers — see init() */
+  .grid__column{
+    display:flex;flex-direction:column;
+    gap:var(--c-gap);
+    will-change:transform;       /* hint browser we'll translate this */
+  }
+  .grid__item{margin:0}
+  .grid__item-img{
+    aspect-ratio:128 / 160;
+    background-size:cover;background-position:center;
+    background-color:#eee;
+  }
+  .grid__item-caption{
+    font-size:11px;font-weight:400;margin-top:.5rem;
+    color:var(--color-link);
+    display:flex;justify-content:space-between;
+  }
+  .grid__item-caption b{color:var(--color-text);font-weight:400}
+
+  @media (prefers-reduced-motion: reduce){
+    .grid__column{transform:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="frame" role="banner">
+  <h1 class="frame__title">Elastic Grid Scroll <span style="color:var(--color-link)">· clean-room replica</span></h1>
+  <a class="frame__back" href="https://tympanus.net/Tutorials/ElasticGridScroll/" target="_blank" rel="noopener">source ↗</a>
+  <a class="frame__github" href="#" aria-disabled="true">no GSAP · no ScrollSmoother</a>
+  <nav class="frame__tags" aria-label="Tags">
+    <a href="#">#scroll</a><a href="#">#grid</a><a href="#">#elastic</a>
+  </nav>
+  <p class="frame__info">Symmetrical outer column lag · pure JS rAF + lerp</p>
+</header>
+
+<main class="grid" id="grid">
+  <!-- 63 portrait items, flat list — JS will regroup into 7 column wrappers -->
+  <!-- 9 items per column × 7 columns -->
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  const grid = document.getElementById("grid");
+
+  // ─────── seed the grid with portrait tiles ───────
+  const ITEMS = 63;
+  // generate items with picsum seeds for stable photographic content
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < ITEMS; i++){
+    const el = document.createElement("article");
+    el.className = "grid__item";
+    const id = String(i + 1).padStart(3, "0");
+    const seed = `elastic-${id}`;
+    el.innerHTML = `
+      <div class="grid__item-img" style="background-image:url('https://picsum.photos/seed/${seed}/640/800')"></div>
+      <div class="grid__item-caption"><b>Plate ${id}</b><span>2024</span></div>
+    `;
+    frag.appendChild(el);
+  }
+  grid.appendChild(frag);
+
+  // ─────── elastic-scroll engine ───────
+  // Lag config — matches the source pen exactly.
+  const BASE_LAG  = 0.5;   // applied to the center column
+  const LAG_SCALE = 0.1;   // additional lag per column away from center
+
+  // Preserve original flat order so we can rebuild on resize/column-count change
+  const originalItems = Array.from(grid.querySelectorAll(".grid__item"));
+
+  // Group items into column buckets, wrap each bucket in a .grid__column.
+  // Modulo distribution → column 0 gets items 0, 7, 14, …; column 1 gets 1, 8, 15, …
+  function getColumnCount(){
+    const tmpl = getComputedStyle(grid).getPropertyValue("grid-template-columns");
+    return tmpl.split(" ").filter(Boolean).length;
+  }
+
+  let columns = [];   // [{ element, lag, currentY }]
+
+  function buildLayout(){
+    // teardown
+    grid.querySelectorAll(".grid__column").forEach(c => c.remove());
+    originalItems.forEach(it => grid.appendChild(it));
+
+    const n = getColumnCount();
+    const mid = (n - 1) / 2;
+
+    // bucket items by column
+    const buckets = Array.from({ length: n }, () => []);
+    originalItems.forEach((it, i) => buckets[i % n].push(it));
+
+    // wrap each bucket
+    const frag = document.createDocumentFragment();
+    columns = buckets.map((items, i) => {
+      const col = document.createElement("div");
+      col.className = "grid__column";
+      items.forEach(it => col.appendChild(it));
+      frag.appendChild(col);
+      return {
+        element: col,
+        lag: BASE_LAG + Math.abs(i - mid) * LAG_SCALE,
+        currentY: 0,
+      };
+    });
+    grid.appendChild(frag);
+
+    // sync currentY to whatever the page scrolled to
+    const sy = window.scrollY;
+    columns.forEach(c => c.currentY = sy);
+  }
+
+  buildLayout();
+
+  // rebuild only if column count changes (matches source behavior)
+  let lastColumnCount = getColumnCount();
+  window.addEventListener("resize", () => {
+    const n = getColumnCount();
+    if (n !== lastColumnCount){
+      lastColumnCount = n;
+      buildLayout();
+    }
+  });
+
+  // rAF loop — per-column lerp toward window.scrollY with time-constant = lag
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let lastT = performance.now();
+  function tick(now){
+    const dt = Math.min(64, now - lastT); // cap dt to avoid huge jumps on tab return
+    lastT = now;
+    const targetY = window.scrollY;
+
+    if (reduced){
+      // no lag — columns sit at natural position
+      columns.forEach(c => { c.element.style.transform = ""; });
+    } else {
+      for (const c of columns){
+        // approach target with time-constant = lag seconds
+        // y += (target - y) * (dt / 1000 / lag)
+        const k = Math.min(1, (dt / 1000) / c.lag);
+        c.currentY += (targetY - c.currentY) * k;
+        const offset = targetY - c.currentY;  // positive → translated DOWN → appears to lag
+        c.element.style.transform = `translate3d(0, ${offset}px, 0)`;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>

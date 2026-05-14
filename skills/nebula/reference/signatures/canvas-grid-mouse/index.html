@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canvas grid mouse effect — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;width:100%;height:100%}
+  body{
+    display:flex;justify-content:center;align-items:center;
+    background:#000;color:#fff;
+    font-family:'Space Mono',ui-monospace,monospace;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+
+  /* the canvas is centered and scaled to the smaller viewport dim */
+  #stage{
+    position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:100vw;height:100vh;
+    pointer-events:none;
+  }
+  canvas{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    aspect-ratio:1;
+    width:auto;height:100%;
+    image-rendering:auto;
+    background:#0a0a0a;
+    pointer-events:auto;
+  }
+  @media (min-aspect-ratio: 1){
+    canvas{width:100%;height:auto}
+  }
+
+  /* tiny credit + controls UI */
+  .frame{
+    position:fixed;top:1.25rem;left:1.25rem;
+    font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+    color:rgba(255,255,255,.7);z-index:10;
+    line-height:1.6;
+  }
+  .frame b{color:#fff;font-weight:700}
+  .frame a{color:#ffd23f;text-decoration:none;border-bottom:1px solid rgba(255,210,63,.4)}
+  .frame a:hover{border-bottom-color:#ffd23f}
+
+  .hint{
+    position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);
+    font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;
+    pointer-events:none;z-index:10;
+  }
+
+  .panel{
+    position:fixed;top:1.25rem;right:1.25rem;
+    background:rgba(20,20,22,.92);border:1px solid rgba(255,255,255,.10);
+    border-radius:6px;
+    padding:14px 16px;
+    font-size:11px;color:#d4d3d0;
+    width:240px;z-index:10;
+    backdrop-filter:blur(6px);
+  }
+  .panel h3{margin:0 0 12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#ffd23f;font-weight:700}
+  .panel label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0;cursor:pointer}
+  .panel label span{flex:0 0 auto;color:rgba(255,255,255,.65)}
+  .panel select, .panel input[type=range], .panel input[type=color]{
+    flex:1 1 auto;
+    background:#0e0e10;border:1px solid rgba(255,255,255,.12);color:#fff;
+    padding:4px 6px;border-radius:3px;font:inherit;font-size:11px;
+    accent-color:#ffd23f;
+  }
+  .panel input[type=color]{padding:0;height:22px;width:38px;flex:0 0 38px}
+  .panel input[type=checkbox]{accent-color:#ffd23f}
+  .panel .val{
+    color:#ffd23f;font-variant-numeric:tabular-nums;font-size:10px;
+    min-width:30px;text-align:right;
+  }
+  .panel summary{cursor:pointer;color:#ffd23f;list-style:none;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;outline:none}
+  .panel summary::-webkit-details-marker{display:none}
+  .panel summary::before{content:"▸ ";display:inline-block;transition:transform .15s}
+  .panel[open] summary::before, details[open] > summary::before{transform:rotate(0deg);content:"▾ "}
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <b>Canvas Grid Mouse Effect</b><br>
+  clean-room replica · move the mouse<br>
+  <a href="https://codepen.io/creativeocean/full/emBOove" target="_blank" rel="noopener">source pen by Creative Ocean ↗</a>
+</div>
+
+<details class="panel" open>
+  <summary>Controls</summary>
+  <label>
+    <span>Image</span>
+    <select id="ctrl-img">
+      <option value="0">Flowers</option>
+      <option value="1">Mountain</option>
+      <option value="2">Prism</option>
+      <option value="3">Aurora</option>
+      <option value="4">Portrait</option>
+    </select>
+  </label>
+  <label>
+    <span>Box size</span>
+    <input type="range" id="ctrl-box" min="25" max="250" step="1" value="123">
+    <span class="val" id="val-box">123</span>
+  </label>
+  <label>
+    <span>Fade</span>
+    <input type="checkbox" id="ctrl-fade">
+  </label>
+  <label>
+    <span>Dots</span>
+    <input type="checkbox" id="ctrl-dots" checked>
+  </label>
+  <label>
+    <span>Dot color</span>
+    <input type="color" id="ctrl-color" value="#ffffff">
+  </label>
+</details>
+
+<div id="stage">
+  <canvas id="c" width="2000" height="2000"></canvas>
+</div>
+
+<div class="hint" aria-hidden="true">Move the mouse over the image</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const c = document.getElementById("c");
+  const ctx = c.getContext("2d");
+  const cw = 2000;
+  const ch = 2000;
+
+  // images — different seeds than the original pen but same vibe
+  const imgs = [
+    "https://picsum.photos/seed/grid-flowers/2000/2000",
+    "https://picsum.photos/seed/grid-mountain/2000/2000",
+    "https://picsum.photos/seed/grid-prism/2000/2000",
+    "https://picsum.photos/seed/grid-aurora/2000/2000",
+    "https://picsum.photos/seed/grid-portrait/2000/2000",
+  ];
+
+  // properties (live-mutable via the panel)
+  const props = {
+    imgIndex: 0,
+    boxSize: 123,
+    fade: false,
+    dots: true,
+    dotColor: "#ffffff",
+  };
+
+  // smoothed mouse state — replaces GSAP quickTo
+  // m.x/m.y is the lagged "lens" position; m.x2/m.y2 is the raw pointer;
+  // m.s is a smoothed scale derived from |m - m2| (i.e. pointer velocity).
+  const m = { x: cw/2, y: ch/2, s: 0.001, tx: cw/2, ty: cw/2, ts: 0.001, x2: cw/2, y2: cw/2 };
+
+  let cRect = c.getBoundingClientRect();
+  let sx = cw / cRect.width;
+  let sy = ch / cRect.height;
+
+  let img = new Image();
+  img.crossOrigin = "anonymous";
+  let imgLoaded = false;
+
+  let boxes = [];
+  function buildGrid(){
+    boxes.length = 0;
+    for (let x = 0; x <= cw; x += props.boxSize){
+      for (let y = 0; y <= ch; y += props.boxSize){
+        boxes.push({ x, y, d: 0, s: 0 });
+      }
+    }
+  }
+
+  function loadImage(url){
+    imgLoaded = false;
+    img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => { imgLoaded = true; };
+    img.onerror = () => {
+      // fallback: draw a procedural texture if external image is blocked
+      const fb = document.createElement("canvas");
+      fb.width = fb.height = 2000;
+      const fctx = fb.getContext("2d");
+      // warm gradient sunrise stand-in
+      const g = fctx.createRadialGradient(1400, 600, 100, 1000, 1000, 1400);
+      g.addColorStop(0, "#ffd6a0");
+      g.addColorStop(0.3, "#ff8a47");
+      g.addColorStop(0.7, "#5a230d");
+      g.addColorStop(1, "#0a0807");
+      fctx.fillStyle = g;
+      fctx.fillRect(0, 0, 2000, 2000);
+      // sprinkle noise
+      const id = fctx.getImageData(0, 0, 2000, 2000);
+      for (let i = 0; i < id.data.length; i += 4){
+        const n = (Math.random() - 0.5) * 24;
+        id.data[i]   = Math.max(0, Math.min(255, id.data[i] + n));
+        id.data[i+1] = Math.max(0, Math.min(255, id.data[i+1] + n));
+        id.data[i+2] = Math.max(0, Math.min(255, id.data[i+2] + n));
+      }
+      fctx.putImageData(id, 0, 0);
+      img = fb;
+      imgLoaded = true;
+    };
+    img.src = url;
+  }
+
+  buildGrid();
+  loadImage(imgs[props.imgIndex]);
+
+  // pointer tracking — map screen coords to canvas internal coords
+  function onPointer(e){
+    const x = (e.clientX - cRect.left) * sx;
+    const y = (e.clientY - cRect.top) * sy;
+    m.x2 = x; m.y2 = y;
+    m.tx = x; m.ty = y;
+  }
+  c.addEventListener("pointermove", onPointer);
+
+  // resize
+  function onResize(){
+    cRect = c.getBoundingClientRect();
+    sx = cw / cRect.width;
+    sy = ch / cRect.height;
+  }
+  window.addEventListener("resize", onResize);
+
+  // lerp factors ≈ GSAP quickTo at the original durations/eases
+  const LERP_POS   = 0.08;  // expo @ 1s   →  ~0.08
+  const LERP_SCALE = 0.03;  // power2 @ 2s →  ~0.03
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function clamp(v, lo, hi){ return Math.min(hi, Math.max(lo, v)); }
+
+  function update(){
+    // smooth position toward target (latest pointer)
+    m.x = lerp(m.x, m.tx, LERP_POS);
+    m.y = lerp(m.y, m.ty, LERP_POS);
+
+    // velocity proxy = distance between smoothed and raw
+    const vel = Math.hypot(m.x - m.x2, m.y - m.y2);
+    m.ts = vel / cw * 2;
+    m.s = lerp(m.s, m.ts, LERP_SCALE);
+    if (m.s < 1e-5) m.s = 1e-5; // never zero (avoid div-by-zero in c.s formula)
+
+    // clear & repaint base image
+    ctx.clearRect(0, 0, cw, ch);
+    if (imgLoaded){
+      ctx.drawImage(img, 0, 0, img.naturalWidth || 2000, img.naturalHeight || 2000, 0, 0, cw, ch);
+    }
+
+    // pass 1 — zoomed inset patches
+    for (let i = 0; i < boxes.length; i++){
+      const b = boxes[i];
+      b.d = Math.hypot(b.x - m.x, b.y - m.y);
+      b.s = 1 - clamp(b.d / cw / m.s, 0, 1);
+      if (b.s < 0.001) continue;
+
+      const boxScaled = props.boxSize * b.s;
+      if (props.fade) ctx.globalAlpha = b.s;
+
+      if (imgLoaded){
+        const srcScale = (img.naturalWidth || 2000) / cw;
+        ctx.drawImage(
+          img,
+          (b.x + boxScaled/2) * srcScale,
+          (b.y + boxScaled/2) * srcScale,
+          (props.boxSize - boxScaled) * srcScale,
+          (props.boxSize - boxScaled) * srcScale,
+          b.x, b.y,
+          props.boxSize, props.boxSize
+        );
+      }
+    }
+    if (props.fade) ctx.globalAlpha = 1;
+
+    // pass 2 — dots
+    if (props.dots){
+      ctx.fillStyle = props.dotColor;
+      for (let i = 0; i < boxes.length; i++){
+        const b = boxes[i];
+        if (b.s < 0.001) continue;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, props.boxSize * 0.15 * b.s, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+
+  // ---------- panel controls ----------
+  const $img   = document.getElementById("ctrl-img");
+  const $box   = document.getElementById("ctrl-box");
+  const $val   = document.getElementById("val-box");
+  const $fade  = document.getElementById("ctrl-fade");
+  const $dots  = document.getElementById("ctrl-dots");
+  const $color = document.getElementById("ctrl-color");
+
+  $img.addEventListener("change", () => {
+    props.imgIndex = parseInt($img.value, 10);
+    loadImage(imgs[props.imgIndex]);
+  });
+  $box.addEventListener("input", () => {
+    props.boxSize = parseInt($box.value, 10);
+    $val.textContent = props.boxSize;
+    buildGrid();
+  });
+  $fade.addEventListener("change", () => props.fade = $fade.checked);
+  $dots.addEventListener("change", () => props.dots = $dots.checked);
+  $color.addEventListener("input", () => props.dotColor = $color.value);
+
+  // initial pointer position = center
+  m.tx = m.x = cw/2;
+  m.ty = m.y = cw/2;
+  m.x2 = cw/2; m.y2 = cw/2;
+})();
+</script>
+</body>
+</html>
