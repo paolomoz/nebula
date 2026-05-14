@@ -123,6 +123,24 @@ Every rendered photographic element must carry:
 - `loading="lazy"` (except hero / above-the-fold, which may be eager)
 - `decoding="async"` for non-critical photos
 
+**Apply the picked button animation** from
+`DESIGN.json.extensions.buttonAnimation` to the page's button system:
+
+- Look up the entry in `skills/nebula/reference/buttons.md`. The entry
+  defines both a `primaryRecipe` and a `secondaryRecipe`.
+- Apply `primaryRecipe` to every `.btn--primary` (or equivalent CTA
+  class in the page namespace) — uniformly across the page.
+- Apply `secondaryRecipe` to every `.btn--secondary` (ghost / outline /
+  text) — uniformly across the page.
+- For JS-bearing animations (B7–B12), inline the JS at the bottom of
+  the page. Bind via `data-` attributes the entry specifies
+  (`data-magnetic`, `data-ripple`, `data-particle="squares"`, etc.).
+- For `external-only` specimens (B9–B12 particle / shader), the
+  catalog's recipe outline is the integration spec; the full canvas
+  / shader library is referenced via the source link. If the user
+  has not committed to vendoring those libraries, **render falls
+  back to B1 quiet hover** and surfaces the substitution.
+
 **Apply each picked hover** in `DESIGN.json.extensions.hovers[]` to its
 declared host:
 
@@ -190,6 +208,14 @@ Also run nebula-specific checks:
   in the rendered HTML, scoped to a `data-hover="<H-id>"` wrapper.
   Every card within the host grid receives the same hover — no
   intra-grid mixing.
+- **Button-system integrity.** The picked button animation
+  (`DESIGN.json.extensions.buttonAnimation`) is applied uniformly:
+  every `.btn--primary` shares the same primary recipe; every
+  `.btn--secondary` shares the same secondary recipe. No buttons on
+  the page use animations from other catalog entries. If the picked
+  animation was substituted by render (e.g., external-only specimen
+  not available, fell back to B1), the substitution is recorded in
+  the render report.
 
 ### Phase 5 — Surface and iterate
 
@@ -265,4 +291,7 @@ Update `nebula/state.json`:
   opt-in) + slot schema + provenance + validation rules.
 - `skills/nebula/reference/hovers.md` — hover effects catalog
   (H1–H15 from Codrops). CSS recipes scoped to `data-hover="<H-id>"`.
+- `skills/nebula/reference/buttons.md` — button animation catalog
+  (B1–B12). Each entry defines a primary + secondary recipe applied
+  page-wide.
 - `skills/nebula/reference/pitfalls.md` — nebula-specific render rules.

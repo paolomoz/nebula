@@ -112,5 +112,10 @@ what was synthesized vs. authored, and what other artifacts were read.
   Bubba, Romeo, Dexter, Sarah, Chico, Oscar). Applied as modifiers
   to card-grid host moves; 0–1 hover per card grid; consistency
   within a grid is mandatory.
+- `reference/buttons.md` — button animation catalog (B1–B12). Each
+  entry is a *button system* (primary + secondary recipes). 0–1 per
+  page applied to all buttons; tech-stack budget per anchor family
+  (CSS-only for restrained anchors; canvas particle / WebGL only
+  when the anchor earns it).
 - `reference/pitfalls.md` — named rules that must not be violated.
 - `reference/state-machine.md` — lifecycle, state report format, stale rules.

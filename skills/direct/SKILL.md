@@ -261,6 +261,38 @@ Record picked hovers in `DESIGN.json.extensions.hovers[]` as
 entry binds the hover to a specific host so render knows which grid
 to scope the CSS to.
 
+### Phase 4e — Pick button animation (0–1 per page)
+
+Read `skills/nebula/reference/buttons.md`. Pick **exactly one** button
+animation (or zero on rare anchors). Every button animation is a
+**button system** — it defines both a primary recipe (filled CTA) and
+a secondary recipe (ghost / outline / text complement). Picking one
+binds the *entire button voice* of the page.
+
+**Default**: B1 Quiet hover (universal CSS pattern, fits any anchor).
+
+**Tech-stack budget check.** Verify the picked animation's tech tier
+is within the brief's anchor budget:
+
+| Anchor family | Allowed tier (max) |
+|---|---|
+| trust-led B2B / fintech, healthcare clinical, civic institutional, tech research / academic | CSS-only (B1–B6) |
+| editorial / publication, documentary / journalism, sustainable / eco, quiet craft / atelier | CSS + light JS (B1–B8) |
+| music label, cinema / film, festival / promo, luxury fashion (statement tier), indie game (premium tier) | + canvas particle / WebGL (B1–B12) |
+| vibrant consumer / playful, hospitality | usually B1–B8; B9–B12 only for launch / campaign pages |
+| sports / athletic | B1–B8 (CSS or ripple) |
+
+A pick that exceeds the budget is **refused** — propose a cheaper
+alternative from the same animation family. Surface the substitution
+in the gate report.
+
+**Anchor fits / avoids.** Verify the brief's anchor family appears in
+the entry's "Fits" list (or close adjacency). Anchors in the entry's
+"Avoid for" list disqualify the pick.
+
+Record the picked entry in `DESIGN.json.extensions.buttonAnimation`
+as `{ id, name, tier, primaryRecipe, secondaryRecipe, specimen }`.
+
 ### Phase 5 — Distinctiveness check (gate)
 
 Before writing the target spec, run the distinctiveness check. For each
@@ -291,6 +323,7 @@ Axes:
 Moves:       <M-ids>
 Signatures:  <S-ids, or "none — type-led">
 Hovers:      <H-ids per host, or "none">
+Buttons:     <B-id> (<tier>)
 Image slots: <N total, broken down: hero ×1, card ×3 …>
 Image policy: <unsplash | user-supplied | generate (will fall back to unsplash)>
 
@@ -393,6 +426,9 @@ Next: $nebula render
 - `skills/nebula/reference/hovers.md` — hover effects catalog (H1–H15
   from Codrops). Applied as modifiers to card-grid host moves; 0–1
   hover per card grid.
+- `skills/nebula/reference/buttons.md` — button animation catalog
+  (B1–B12). Each entry is a *button system* (primary + secondary
+  recipes); 0–1 per page; tech-stack budget per anchor family.
 - `reference/anchor-selection.md` — the 3-candidate generator + scoring
   procedure.
 - `reference/curated-pools/` — human-curated content for each axis.
