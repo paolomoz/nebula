@@ -52,12 +52,14 @@ nebula proposes, the user gates between `direct` and `render`.
 ## Human-sourced taste
 
 Nebula's curated content — typefaces, palettes, motion vocabularies, density
-schools, edge languages, and named design moves — is **human-authored, not
-LLM-generated**. The reference files under `skills/direct/reference/curated-pools/`
-and `reference/moves-library.md` exist precisely because LLM-default choices
+schools, edge languages, named design moves, and signature effects — is
+**human-authored, not LLM-generated**. The reference files under
+`skills/direct/reference/curated-pools/`, `reference/moves-library.md`, and
+`reference/signatures.md` (plus the specimen HTML files under
+`reference/signatures/<slug>/`) exist precisely because LLM-default choices
 are the "AI-slop" failure mode the plugin is designed to prevent. **Sample
-from the pools; do not invent fonts, palettes, or moves.** If a needed entry
-is missing from the pool, stop and tell the user — do not improvise.
+from the pools; do not invent fonts, palettes, moves, or signatures.** If a
+needed entry is missing, stop and tell the user — do not improvise.
 
 ## Per-stage state
 
@@ -93,11 +95,13 @@ what was synthesized vs. authored, and what other artifacts were read.
 
 - `reference/axes.md` — the 5 personality axes nebula commits on
   (typography, density, color, motion, edges).
-  *Human-authored content — see file for status.*
 - `reference/moves-library.md` — named design moves (M1, M2, …) indexed by
   anchor family and situation. Consumed by `direct` (selection) and `render`
   (execution).
-  *Human-authored content — see file for status.*
+- `reference/signatures.md` — named set-piece effects (S1, S2, …) — set
+  pieces distinct from moves; specimens live at
+  `reference/signatures/<slug>/index.html`. Carries the composition rule
+  (1 motion vocabulary + 0–2 signatures per page) and per-anchor tech-stack
+  budget.
 - `reference/pitfalls.md` — named rules that must not be violated.
-  *Human-authored content — see file for status.*
 - `reference/state-machine.md` — lifecycle, state report format, stale rules.

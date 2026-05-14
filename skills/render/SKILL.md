@@ -55,6 +55,23 @@ The picked moves (M-ids) in `DESIGN.json` are the recipes `render`
 executes. Look each one up in
 `skills/nebula/reference/moves-library.md` before rendering.
 
+The picked signatures (S-ids) in
+`DESIGN.json.extensions.signatures[]` are the named set-piece effects
+to apply. For each picked signature:
+
+- Read the catalog entry in `skills/nebula/reference/signatures.md`
+  for composition role, recipe outline, and anti-pairs.
+- If the entry's `specimen` field is a local path
+  (`skills/nebula/reference/signatures/<slug>/index.html`), **read the
+  specimen end-to-end** as the structural and timing reference. The
+  specimen is the source of truth for *how* — markup hierarchy, JS
+  event handlers, animation timings.
+- If `specimen` is `"external-only"`, stop and surface to the user:
+  *"signature `<S-id>` has no local specimen — proceed with a
+  placeholder section + a TODO link to the source, or pick a different
+  signature with a local specimen?"* Do not fabricate a specimen from
+  the source URL or from your own knowledge.
+
 ### Phase 2 — Compose the page-shape brief
 
 Before writing HTML, write a one-screen **page-shape brief** to
@@ -71,12 +88,33 @@ Generate `nebula/index.html` as a **self-contained** file:
   major section if that aids review).
 - External fonts via standard CDN imports (Google Fonts, etc.) where the
   picked typefaces require them.
-- No JavaScript unless the moves demand it; if needed, inline.
+- No JavaScript unless the moves or signatures demand it; if needed,
+  inline.
 - `:root` CSS custom properties expose the design tokens from
   `DESIGN.json` so downstream consumers can re-skin.
 - Respect impeccable's hard rules: OKLCH colors, no pure black/white,
   no glassmorphism, no side stripes, no gradient text, ≥1.25 type ratio
   for brand register, AA contrast minimum.
+
+For each picked signature, **adapt the specimen — never inline it
+verbatim**. The specimen demonstrates the technique; render adapts it
+to the brand:
+
+- Replace specimen placeholder copy (titles, captions, item labels)
+  with content sourced from the brief or the page-shape brief.
+- Swap specimen color values with the page's design tokens (paper /
+  ink / accent from the picked palette in `DESIGN.json`). The
+  specimen's color choices were illustrative; the brand's are
+  authoritative.
+- Substitute typography to the picked Google Fonts (display + body
+  from the picked typeface pair). Match the specimen's weight strategy
+  but with the brand's families.
+- Preserve the specimen's structural patterns (markup hierarchy,
+  JS event handlers, animation timing values, CSS custom properties).
+  Re-author CSS class names if they collide with the page's namespace.
+- Scope the signature's CSS to a wrapper marked
+  `data-signature="<S-id>"` so the page's structural data-attributes
+  can locate it later (see § Phase 4 § Signature integrity).
 
 ### Phase 4 — Impeccable craft loop
 
@@ -85,8 +123,19 @@ the relevant impeccable commands (consult impeccable's command registry
 at session start). Address every issue the loop surfaces; do not ship a
 render with unresolved hard-rule violations.
 
-Also run nebula-specific checks from `skills/nebula/reference/pitfalls.md`
-— the named-pitfall validations the user has authored.
+Also run nebula-specific checks:
+
+- **Pitfalls** (`skills/nebula/reference/pitfalls.md`). The named-rule
+  validations the user has authored. Pitfall A is the most-cited one
+  (scrim under filtered photo); verify it holds wherever a move uses
+  a photo filter.
+- **Signature integrity.** Every signature ID named in
+  `DESIGN.json.extensions.signatures[]` is present in the rendered
+  HTML, wrapped in a `data-signature="<S-id>"` element. Every
+  `data-signature` element in the rendered HTML corresponds to a
+  picked signature. No orphan signatures either direction.
+- **Move integrity.** Same rule for `data-move="<M-id>"` against the
+  picked moves in `DESIGN.json`.
 
 ### Phase 5 — Surface and iterate
 
@@ -155,6 +204,6 @@ Update `nebula/state.json`:
   satisfy (token surface, structural data-attributes, validation checks).
 - `skills/nebula/reference/moves-library.md` — the named moves render
   executes.
-  *Human-authored content — see file for status.*
+- `skills/nebula/reference/signatures.md` — the signature catalog;
+  specimens live at `signatures/<slug>/index.html`.
 - `skills/nebula/reference/pitfalls.md` — nebula-specific render rules.
-  *Human-authored content — see file for status.*

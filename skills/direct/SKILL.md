@@ -99,6 +99,39 @@ If the moves library does not yet contain entries that fit, surface this
 to the user — do not invent moves. The library grows over time as the user
 adds new ones.
 
+### Phase 4b — Pick signatures (0–2, optional)
+
+Read `skills/nebula/reference/signatures.md`. Decide whether the brief
+earns one or two **signature effects** — named set-piece moments
+distinct from moves (a moves library entry composes a section; a
+signature is a specific elaborated effect occupying a defined section
+role). Most pages pick **zero or one**; two is reserved for editorial,
+cinematic, or promo briefs and requires the signatures to occupy
+*different* section roles.
+
+For each candidate, verify all four constraints:
+
+1. **Tech-stack budget.** Does the brief's anchor family permit the
+   signature's tech stack? See the budget table at the top of
+   `signatures.md` (trust-led B2B → vanilla only; editorial → may earn
+   GSAP; music label / cinema / festival → may earn Three.js / shader).
+2. **Anchor-family eligibility.** The brief's anchor family must
+   appear in the signature's "Anchor families that earn it" list.
+3. **Anti-pairs.** The motion vocabulary picked in Phase 2 § axis A4
+   must **not** appear in the signature's anti-pairs.
+4. **Specimen availability.** Prefer signatures with a local specimen
+   (`signatures/<slug>/index.html`). Picking a `specimen-status:
+   external-only` signature is allowed but render will require the
+   user's explicit go-ahead to ship a placeholder section.
+
+If a candidate fails any check, do not pick it. **Zero is a valid
+choice** — don't force a signature where one isn't earned by the brief.
+
+Record picked signatures by ID (S1, S2, …) in `direction.md` and
+propagate to `DESIGN.json` under `extensions.signatures[]`. Each entry:
+`{ id, name, sectionRole, specimen }` where `specimen` is either the
+local path or the literal string `"external-only"`.
+
 ### Phase 5 — Distinctiveness check (gate)
 
 Before writing the target spec, run the distinctiveness check. For each
@@ -126,7 +159,8 @@ Axes:
   motion          <pool-entry-name>  (default would be: <default>)
   edges           <pool-entry-name>  (default would be: <default>)
 
-Moves: <M-ids>
+Moves:       <M-ids>
+Signatures:  <S-ids, or "none — type-led">
 
 Distinctiveness: <N>/5 axes diverge from default.
 ```
@@ -143,8 +177,9 @@ Author the project-root spec in impeccable's format:
 - `DESIGN.md` — visual system (Stitch frontmatter + 6 sections). Tokens
   derived from the axis choices in Phase 2 and the moves picked in Phase 4.
 - `DESIGN.json` — sidecar with extensions (divergence, componentStyle,
-  voice). Include the full audit trail of axis choices, defaults, and the
-  named tension.
+  voice, moves, signatures). Include the full audit trail of axis
+  choices, defaults, the named tension, and the picked-signature
+  records under `extensions.signatures[]`.
 
 Every component HTML/CSS snippet must be self-contained, use `ds-` class
 prefixes, and respect impeccable's hard rules.
@@ -213,7 +248,8 @@ Next: $nebula render
 - `skills/nebula/reference/axes.md` — the 5 axes spec.
 - `skills/nebula/reference/moves-library.md` — moves indexed by anchor
   family.
+- `skills/nebula/reference/signatures.md` — signature effects catalog;
+  composition rule + tech-stack budget per anchor family.
 - `reference/anchor-selection.md` — the 3-candidate generator + scoring
   procedure.
 - `reference/curated-pools/` — human-curated content for each axis.
-  *Human-authored content — see each file for status.*
