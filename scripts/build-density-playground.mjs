@@ -1,0 +1,520 @@
+// Build the density-tuning playground at nebula/proposals/density-playground.html.
+// Self-contained HTML: a multi-section page mock that responds to slider tuning
+// in real time, with named presets and a "save as school" mechanic.
+
+import fs from 'fs/promises';
+import path from 'path';
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>nebula · density tuner</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0e0f12; --panel:#15171c; --panel-2:#1d1f26;
+    --line:#2a2d35; --line-soft:#1f2229;
+    --text:#e6e6ea; --text-mute:#8e92a0; --text-dim:#5a5e6c;
+    --accent:#7a9eff; --pos:#5fd6a4; --warn:#f4b740;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --font-ui:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif;
+    --font-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .app{display:grid;grid-template-columns:340px 1fr;min-height:100vh}
+  /* Sidebar */
+  .sidebar{position:sticky;top:0;align-self:start;height:100vh;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+  .brand{padding:18px 18px 14px;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .brand-text h1{font-size:14px;font-weight:600;letter-spacing:.02em}
+  .brand-text .sub{font-size:11.5px;color:var(--text-mute);margin-top:3px;line-height:1.4}
+  .copy-btn-top{background:var(--accent);color:#0e0f12;border:none;border-radius:7px;padding:6px 10px;font:600 11.5px/1 var(--font-ui);cursor:pointer;white-space:nowrap}
+  .copy-btn-top:hover{filter:brightness(1.08)}
+  .sidebar-scroll{flex:1;overflow-y:auto}
+  .sec{padding:14px 18px 6px;border-bottom:1px solid var(--line-soft)}
+  .sec h2{font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px;font-weight:600}
+  /* Controls */
+  .ctl{margin-bottom:12px}
+  .ctl .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+  .ctl .row label{font-size:12px;color:var(--text)}
+  .ctl .row .val{font-family:var(--font-mono);font-size:11.5px;color:var(--accent);min-width:54px;text-align:right}
+  .ctl input[type=range]{width:100%;accent-color:var(--accent);-webkit-appearance:none;appearance:none;height:18px;background:transparent;cursor:pointer}
+  .ctl input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--line);border-radius:2px}
+  .ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);border:none;margin-top:-6px}
+  /* Preset chips */
+  .presets{display:flex;flex-wrap:wrap;gap:6px}
+  .preset-chip{background:transparent;color:var(--text-mute);border:1px solid var(--line);padding:5px 9px;border-radius:999px;font-size:11px;cursor:pointer;font-family:var(--font-ui)}
+  .preset-chip:hover{color:var(--text);border-color:var(--text-dim)}
+  /* Save row */
+  .save-row{display:flex;gap:6px;margin-top:6px;margin-bottom:8px}
+  .save-row input{flex:1;background:#0a0b0e;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:7px 10px;font:500 12px/1 var(--font-ui)}
+  .save-row input:focus{outline:none;border-color:var(--accent)}
+  .save-row button{background:var(--pos);color:#0e0f12;border:none;border-radius:7px;padding:7px 11px;font:600 12px/1 var(--font-ui);cursor:pointer}
+  .save-row button:disabled{opacity:.45;cursor:not-allowed}
+  /* Saved schools */
+  .schools-list{display:flex;flex-direction:column;gap:6px;margin-top:4px;padding-bottom:12px}
+  .school{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#0a0b0e;border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;transition:border-color .12s}
+  .school:hover{border-color:var(--accent)}
+  .school .name{font-size:12px;color:var(--text);font-weight:500}
+  .school .vals{font-size:10.5px;color:var(--text-dim);font-family:var(--font-mono);margin-top:2px}
+  .school .left{flex:1;min-width:0}
+  .school .x{background:transparent;border:none;color:var(--text-dim);font-size:14px;cursor:pointer;padding:2px 6px;line-height:1}
+  .school .x:hover{color:var(--warn)}
+  .empty{font-size:11.5px;color:var(--text-dim);font-style:italic;padding:8px 0}
+  /* Main / preview */
+  .main{padding:0}
+  .preview-bar{position:sticky;top:0;z-index:30;background:rgba(14,15,18,.85);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--line-soft)}
+  .preview-bar .stats{font-size:13px;color:var(--text-mute)}
+  .preview-bar .stats strong{color:var(--text);font-weight:600}
+  .preview-bar .stats .live{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);margin-left:14px}
+
+  /* THE PAGE MOCK — all density-tuned values come in via CSS vars */
+  .preview{
+    --pad: 80px;
+    --lh-body: 1.55;
+    --lh-display: 1.15;
+    --scale: 1.25;
+    --base: 16px;
+    --rhythm: 20px;
+    --container: 1280px;
+    --grid-gap: 24px;
+
+    /* Neutral mock palette so density carries, not color */
+    --paper: #F6F2EA;
+    --ink: #1A1815;
+    --mute: #7C766C;
+    --rule: #D9D2C5;
+    --spark: #B14A39;
+
+    /* derived sizes */
+    --h3: calc(var(--base) * var(--scale));
+    --h2: calc(var(--base) * var(--scale) * var(--scale));
+    --h1: calc(var(--base) * var(--scale) * var(--scale) * var(--scale));
+    --eyebrow: calc(var(--base) * 0.72);
+
+    background:var(--paper);color:var(--ink);
+    font-family:Georgia, 'Iowan Old Style', 'Charter', serif;
+    font-size:var(--base);
+    line-height:var(--lh-body);
+  }
+  .preview .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+  .preview .display{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-weight:700;line-height:var(--lh-display);letter-spacing:-.015em}
+
+  /* Sections */
+  .p-hero{padding:calc(var(--pad) * 1.5) 0 var(--pad)}
+  .p-hero .eyebrow{display:inline-block;font-size:var(--eyebrow);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--spark);border-bottom:1.5px solid var(--spark);padding-bottom:3px;margin-bottom:var(--rhythm)}
+  .p-hero h1{font-size:var(--h1);max-width:18ch}
+  .p-hero p{font-size:calc(var(--base) * 1.125);max-width:54ch;color:var(--ink);margin-top:var(--rhythm)}
+  .p-hero .actions{display:flex;gap:var(--rhythm);margin-top:calc(var(--rhythm) * 1.5)}
+  .p-hero .cta-primary{background:var(--ink);color:var(--paper);border:none;padding:13px 22px;font-size:calc(var(--base) * 0.95);font-weight:600;border-radius:0;cursor:pointer;font-family:inherit}
+  .p-hero .cta-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);padding:13px 22px;font-size:calc(var(--base) * 0.95);font-weight:600;border-radius:0;cursor:pointer;font-family:inherit}
+
+  .p-strip{padding:var(--pad) 0;border-top:1px solid var(--rule)}
+  .p-strip .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--grid-gap) * 2)}
+  .p-strip h3{font-size:var(--h3);font-family:-apple-system,sans-serif;font-weight:600;line-height:var(--lh-display);letter-spacing:-.01em;margin-bottom:var(--rhythm)}
+  .p-strip p{font-size:calc(var(--base) * 0.97);color:var(--mute)}
+  .p-strip .glyph{width:32px;height:32px;border:1.5px solid var(--ink);border-radius:50%;margin-bottom:var(--rhythm)}
+
+  .p-features{padding:var(--pad) 0;background:#F0EBE0}
+  .p-features .head{margin-bottom:calc(var(--rhythm) * 2)}
+  .p-features h2{font-size:var(--h2);max-width:22ch;font-family:-apple-system,sans-serif;font-weight:700;line-height:var(--lh-display);letter-spacing:-.012em}
+  .p-features .sub{font-size:calc(var(--base) * 1.04);color:var(--mute);max-width:50ch;margin-top:var(--rhythm)}
+  .p-features .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap)}
+  .p-features .card{background:var(--paper);padding:calc(var(--rhythm) * 1.2);border:1px solid var(--rule)}
+  .p-features .card h4{font-size:calc(var(--base) * 1.0625);font-family:-apple-system,sans-serif;font-weight:600;line-height:var(--lh-display);margin-bottom:calc(var(--rhythm) * 0.5)}
+  .p-features .card p{font-size:calc(var(--base) * 0.95);color:var(--mute)}
+  .p-features .card .meta{font-size:calc(var(--base) * 0.78);color:var(--mute);text-transform:uppercase;letter-spacing:.08em;margin-top:var(--rhythm);font-family:-apple-system,sans-serif}
+
+  .p-quote{padding:var(--pad) 0}
+  .p-quote blockquote{font-size:var(--h2);max-width:34ch;line-height:1.25;font-style:italic;color:var(--ink)}
+  .p-quote cite{display:block;margin-top:var(--rhythm);font-size:calc(var(--base) * 0.85);color:var(--mute);font-style:normal;letter-spacing:.06em;text-transform:uppercase;font-family:-apple-system,sans-serif}
+
+  .p-closer{padding:var(--pad) 0;border-top:1px solid var(--rule);text-align:center}
+  .p-closer h2{font-size:var(--h2);max-width:24ch;margin:0 auto var(--rhythm);font-family:-apple-system,sans-serif;font-weight:700;line-height:var(--lh-display)}
+  .p-closer button{background:var(--ink);color:var(--paper);border:none;padding:15px 28px;font-size:calc(var(--base) * 0.95);font-weight:600;cursor:pointer;font-family:inherit;border-radius:0}
+
+  /* Modal */
+  .modal-bd{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
+  .modal-bd.open{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--line);border-radius:14px;width:min(820px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
+  .modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line-soft)}
+  .modal-head h2{font-size:14px;font-weight:600}
+  .modal-head .close{background:transparent;border:none;color:var(--text-mute);font-size:18px;cursor:pointer;padding:4px}
+  .modal-head .close:hover{color:var(--text)}
+  .modal-body{padding:16px 20px 20px;overflow-y:auto}
+  .promptbox{background:#0a0b0e;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text);white-space:pre-wrap;word-break:break-word;max-height:60vh;overflow-y:auto}
+  .modal-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 20px 16px;border-top:1px solid var(--line-soft)}
+  .btn{background:var(--accent);color:#0e0f12;border:none;border-radius:8px;padding:9px 14px;font:600 12.5px/1 var(--font-ui);letter-spacing:.01em;cursor:pointer}
+  .btn:hover{filter:brightness(1.08)}
+  .btn-ghost{background:transparent;color:var(--text-mute);border:1px solid var(--line)}
+  .btn-ghost:hover{color:var(--text);border-color:var(--text-dim)}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--pos);color:#0e0f12;padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:600;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:200}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-text">
+        <h1>nebula · density</h1>
+        <div class="sub">Dial values, watch the mock respond. Save settings as named schools. Copy the prompt when done.</div>
+      </div>
+      <button class="copy-btn-top" id="copy-btn">Copy</button>
+    </div>
+    <div class="sidebar-scroll">
+      <div class="sec">
+        <h2>Presets</h2>
+        <div class="presets" id="presets"></div>
+      </div>
+      <div class="sec">
+        <h2>Controls</h2>
+        <div id="controls"></div>
+      </div>
+      <div class="sec">
+        <h2>Save current as school</h2>
+        <div class="save-row">
+          <input id="school-name" placeholder="e.g. Editorial Sparse" maxlength="40">
+          <button id="save-btn">Save</button>
+        </div>
+        <h2 style="margin-top:6px">Saved schools <span style="color:var(--text-dim);font-weight:500" id="saved-count"></span></h2>
+        <div class="schools-list" id="schools"></div>
+      </div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="preview-bar">
+      <div class="stats"><strong id="schools-count">0</strong> schools saved <span class="live" id="live-vals"></span></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-ghost btn" id="reset-btn">Reset</button>
+        <button class="btn" id="copy-btn-main">Copy prompt</button>
+      </div>
+    </div>
+
+    <div class="preview" id="preview">
+      <section class="p-hero">
+        <div class="container">
+          <span class="eyebrow">— New release</span>
+          <h1 class="display">Density is the unspoken stance of a page.</h1>
+          <p>It decides whether the reader leans in or leans back, before the words register. Tune the system rhythm here; the page recomposes as you slide.</p>
+          <div class="actions">
+            <button class="cta-primary">Get started</button>
+            <button class="cta-secondary">Read the brief</button>
+          </div>
+        </div>
+      </section>
+      <section class="p-strip">
+        <div class="container">
+          <div class="grid3">
+            <div><div class="glyph"></div><h3>Measure</h3><p>Reading width, line length, and pace — the silent grammar that decides reading comfort across the page.</p></div>
+            <div><div class="glyph"></div><h3>Rhythm</h3><p>Inter-element spacing that holds the eye's beat. Too tight feels rushed; too loose drops the thread.</p></div>
+            <div><div class="glyph"></div><h3>Section</h3><p>The breath between bands. A page either insists on transitions or hides them — that is a posture.</p></div>
+          </div>
+        </div>
+      </section>
+      <section class="p-features">
+        <div class="container">
+          <div class="head">
+            <h2>What the body learns from the spacing it walks through.</h2>
+            <p class="sub">Six fragments of a content surface, set in the system you're tuning. Watch line wrapping, breathing room, and overall page calm respond.</p>
+          </div>
+          <div class="grid">
+            <div class="card"><h4>Field telemetry</h4><p>Live sampling of session entries, dwell time, and exit pattern by segment.</p><div class="meta">Updated hourly</div></div>
+            <div class="card"><h4>Quiet diagnostics</h4><p>Surface health and tail-latency rolling indicators; one quiet column per region.</p><div class="meta">Region-aware</div></div>
+            <div class="card"><h4>Audit trail</h4><p>Per-event signed records; queryable, exportable, with reasoned summaries.</p><div class="meta">Compliance-grade</div></div>
+            <div class="card"><h4>Cohort drift</h4><p>Per-week composition shifts and trend signals across acquisition channels.</p><div class="meta">Weekly</div></div>
+            <div class="card"><h4>Inbound queue</h4><p>Priority-sorted incoming items with SLA timers and assignment history.</p><div class="meta">Live</div></div>
+            <div class="card"><h4>Capacity plan</h4><p>Forward-looking headroom and burndown across the next four quarters.</p><div class="meta">Forecast</div></div>
+          </div>
+        </div>
+      </section>
+      <section class="p-quote">
+        <div class="container">
+          <blockquote>"Two pages can have the same words and the same colors and read as different products. Density is doing that work, quietly."</blockquote>
+          <cite>— field notes on nebula, vol. ii</cite>
+        </div>
+      </section>
+      <section class="p-closer">
+        <div class="container">
+          <h2>Ship a page that breathes the way the brand thinks.</h2>
+          <button>Begin</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="modal-bd" id="modal-bd">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Prompt for Claude</h2>
+      <button class="close" id="modal-close">×</button>
+    </div>
+    <div class="modal-body"><div class="promptbox" id="promptbox"></div></div>
+    <div class="modal-foot">
+      <button class="btn-ghost btn" id="modal-close-2">Close</button>
+      <button class="btn" id="copy-now-btn">Copy to clipboard</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Saved</div>
+
+<script>
+const STORAGE_KEY = 'nebula-density-state';
+
+// Each control: key, label, min, max, step, suffix
+const CONTROLS = [
+  { key: 'pad',         label: 'Section padding (desktop)', min: 24,   max: 160,  step: 4,    suffix: 'px' },
+  { key: 'lhBody',      label: 'Body line height',          min: 1.3,  max: 1.9,  step: 0.025,suffix: '' },
+  { key: 'lhDisplay',   label: 'Display line height',       min: 1.0,  max: 1.3,  step: 0.025,suffix: '' },
+  { key: 'scale',       label: 'Type scale ratio',          min: 1.1,  max: 1.6,  step: 0.01, suffix: '' },
+  { key: 'base',        label: 'Base body size',            min: 14,   max: 20,   step: 0.5,  suffix: 'px' },
+  { key: 'rhythm',      label: 'Inter-element rhythm',      min: 8,    max: 40,   step: 1,    suffix: 'px' },
+  { key: 'container',   label: 'Container max width',       min: 1024, max: 1440, step: 8,    suffix: 'px' },
+  { key: 'gridGap',     label: 'Grid gap',                  min: 8,    max: 48,   step: 1,    suffix: 'px' },
+];
+
+const PRESETS = {
+  'Editorial Sparse': { pad: 120, lhBody: 1.7, lhDisplay: 1.15, scale: 1.333, base: 18, rhythm: 24, container: 1080, gridGap: 32 },
+  'Balanced Product': { pad: 80,  lhBody: 1.55,lhDisplay: 1.15, scale: 1.25,  base: 16, rhythm: 20, container: 1280, gridGap: 24 },
+  'Utilitarian Tight': { pad: 48, lhBody: 1.5, lhDisplay: 1.1,  scale: 1.2,   base: 15, rhythm: 14, container: 1280, gridGap: 16 },
+  'Gentle Craft':    { pad: 96,  lhBody: 1.7, lhDisplay: 1.2,  scale: 1.25,  base: 17, rhythm: 28, container: 1080, gridGap: 28 },
+  'Data Dense':      { pad: 32,  lhBody: 1.45,lhDisplay: 1.05, scale: 1.15,  base: 14, rhythm: 10, container: 1440, gridGap: 10 },
+};
+
+const DEFAULT = PRESETS['Balanced Product'];
+
+const state = {
+  current: { ...DEFAULT },
+  schools: [], // [{ name, values }]
+};
+
+// hydrate
+try {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    const obj = JSON.parse(raw);
+    if (obj.current) state.current = obj.current;
+    if (Array.isArray(obj.schools)) state.schools = obj.schools;
+  }
+} catch (e) {}
+
+function persist() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+function fmtVal(c, v) {
+  if (c.step < 1) return v.toFixed(c.step < 0.05 ? 3 : 2);
+  return v.toString();
+}
+
+function applyToPreview() {
+  const p = document.getElementById('preview');
+  p.style.setProperty('--pad', state.current.pad + 'px');
+  p.style.setProperty('--lh-body', state.current.lhBody);
+  p.style.setProperty('--lh-display', state.current.lhDisplay);
+  p.style.setProperty('--scale', state.current.scale);
+  p.style.setProperty('--base', state.current.base + 'px');
+  p.style.setProperty('--rhythm', state.current.rhythm + 'px');
+  p.style.setProperty('--container', state.current.container + 'px');
+  p.style.setProperty('--grid-gap', state.current.gridGap + 'px');
+
+  // live values readout
+  const lv = document.getElementById('live-vals');
+  const c = state.current;
+  lv.textContent = \`pad \${c.pad}px · lh \${c.lhBody.toFixed(2)} · scale \${c.scale.toFixed(3)} · base \${c.base}px · rhythm \${c.rhythm}px\`;
+}
+
+function renderControls() {
+  const root = document.getElementById('controls');
+  root.innerHTML = CONTROLS.map(c => \`
+    <div class="ctl">
+      <div class="row">
+        <label>\${c.label}</label>
+        <span class="val" id="val-\${c.key}">\${fmtVal(c, state.current[c.key])}\${c.suffix}</span>
+      </div>
+      <input type="range" min="\${c.min}" max="\${c.max}" step="\${c.step}" value="\${state.current[c.key]}" data-key="\${c.key}">
+    </div>
+  \`).join('');
+  for (const el of root.querySelectorAll('input[type=range]')) {
+    el.addEventListener('input', (e) => {
+      const k = el.dataset.key;
+      const v = parseFloat(e.target.value);
+      state.current[k] = v;
+      const ctl = CONTROLS.find(c => c.key === k);
+      document.getElementById('val-' + k).textContent = fmtVal(ctl, v) + ctl.suffix;
+      applyToPreview();
+      persist();
+    });
+  }
+}
+
+function renderPresets() {
+  const root = document.getElementById('presets');
+  root.innerHTML = Object.keys(PRESETS).map(name => \`<button class="preset-chip" data-preset="\${name}">\${name}</button>\`).join('');
+  for (const el of root.querySelectorAll('.preset-chip')) {
+    el.addEventListener('click', () => {
+      const name = el.dataset.preset;
+      state.current = { ...PRESETS[name] };
+      // also seed the save-name input with the preset name (user can adjust)
+      document.getElementById('school-name').value = name;
+      renderControls();
+      applyToPreview();
+      persist();
+    });
+  }
+}
+
+function renderSchools() {
+  const root = document.getElementById('schools');
+  const count = state.schools.length;
+  document.getElementById('saved-count').textContent = count ? \`(\${count})\` : '';
+  document.getElementById('schools-count').textContent = count;
+  if (count === 0) {
+    root.innerHTML = '<div class="empty">No schools saved yet. Tune values, name it, hit Save.</div>';
+    return;
+  }
+  root.innerHTML = state.schools.map((s, i) => \`
+    <div class="school" data-i="\${i}">
+      <div class="left">
+        <div class="name">\${s.name}</div>
+        <div class="vals">pad \${s.values.pad}px · lh \${s.values.lhBody.toFixed(2)} · scale \${s.values.scale.toFixed(3)} · base \${s.values.base}px</div>
+      </div>
+      <button class="x" title="Delete" data-i="\${i}">×</button>
+    </div>
+  \`).join('');
+  for (const el of root.querySelectorAll('.school')) {
+    el.addEventListener('click', (e) => {
+      if (e.target.classList.contains('x')) return;
+      const i = parseInt(el.dataset.i, 10);
+      state.current = { ...state.schools[i].values };
+      document.getElementById('school-name').value = state.schools[i].name;
+      renderControls();
+      applyToPreview();
+      persist();
+    });
+  }
+  for (const el of root.querySelectorAll('.school .x')) {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const i = parseInt(el.dataset.i, 10);
+      if (!confirm('Delete school "' + state.schools[i].name + '"?')) return;
+      state.schools.splice(i, 1);
+      renderSchools();
+      persist();
+    });
+  }
+}
+
+function saveCurrent() {
+  const nameInput = document.getElementById('school-name');
+  const name = nameInput.value.trim();
+  if (!name) {
+    nameInput.focus();
+    showToast('Give it a name first');
+    return;
+  }
+  // replace by name if exists
+  const existing = state.schools.findIndex(s => s.name === name);
+  const entry = { name, values: { ...state.current } };
+  if (existing >= 0) state.schools[existing] = entry;
+  else state.schools.push(entry);
+  renderSchools();
+  persist();
+  showToast('Saved "' + name + '"');
+  nameInput.value = '';
+}
+
+function buildPrompt() {
+  if (state.schools.length === 0) {
+    return '# No density schools saved yet.\\nGo back, tune values, save a few schools by name. The prompt will fill in here.';
+  }
+  let out = '';
+  out += 'I tuned ' + state.schools.length + ' density schools using the nebula density playground. Please append each to skills/direct/reference/curated-pools/density.md as a D<n> entry, following the schema defined at the top of that file.\\n\\n';
+  out += 'For each school, use these values verbatim for desktop:\\n';
+  out += '  • Section padding (desktop)\\n';
+  out += '  • Body line height + display line height\\n';
+  out += '  • Type scale ratio\\n';
+  out += '  • Base body size\\n';
+  out += '  • Inter-element rhythm (gap between heading / body / button in a stack)\\n';
+  out += '  • Container max width\\n';
+  out += '  • Grid gap (gap between cards / columns)\\n\\n';
+  out += 'Derive tablet/mobile section padding by ratio: tablet = round(desktop × 0.7), mobile = round(desktop × 0.5). State the derivation in the entry.\\n\\n';
+  out += 'For each school, write:\\n';
+  out += '  • **Character.** One paragraph capturing how the school FEELS — the name should be doing real work (e.g., "Editorial Sparse" reads as deliberately slow and editorial; "Data Dense" reads as utilitarian and information-led). Marked (<!-- inferred -->) only if you cannot lift the character directly from the name + values.\\n';
+  out += '  • **Information density per viewport.** Estimate sections-per-scroll and text density.\\n';
+  out += '  • **Fits.** Brief patterns / anchor families the school serves.\\n';
+  out += '  • **Avoid for.** The complement.\\n\\n';
+  out += '## Saved schools\\n\\n';
+  for (const s of state.schools) {
+    const v = s.values;
+    out += '### ' + s.name + '\\n';
+    out += '  desktop section padding: ' + v.pad + 'px\\n';
+    out += '  body line height: ' + v.lhBody.toFixed(3) + '\\n';
+    out += '  display line height: ' + v.lhDisplay.toFixed(3) + '\\n';
+    out += '  type scale ratio: ' + v.scale.toFixed(3) + '\\n';
+    out += '  base body size: ' + v.base + 'px\\n';
+    out += '  inter-element rhythm: ' + v.rhythm + 'px\\n';
+    out += '  container max width: ' + v.container + 'px\\n';
+    out += '  grid gap: ' + v.gridGap + 'px\\n\\n';
+  }
+  return out;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+async function copyToClipboard(text) {
+  try { await navigator.clipboard.writeText(text); showToast('Copied · paste back to Claude'); }
+  catch (e) {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    showToast('Copied · paste back to Claude');
+  }
+}
+
+const modalBd = document.getElementById('modal-bd');
+const promptbox = document.getElementById('promptbox');
+
+function openModal() {
+  promptbox.textContent = buildPrompt();
+  modalBd.classList.add('open');
+}
+document.getElementById('copy-btn').addEventListener('click', openModal);
+document.getElementById('copy-btn-main').addEventListener('click', openModal);
+document.getElementById('modal-close').addEventListener('click', () => modalBd.classList.remove('open'));
+document.getElementById('modal-close-2').addEventListener('click', () => modalBd.classList.remove('open'));
+modalBd.addEventListener('click', (e) => { if (e.target === modalBd) modalBd.classList.remove('open'); });
+document.getElementById('copy-now-btn').addEventListener('click', () => copyToClipboard(promptbox.textContent));
+
+document.getElementById('save-btn').addEventListener('click', saveCurrent);
+document.getElementById('school-name').addEventListener('keydown', (e) => { if (e.key === 'Enter') saveCurrent(); });
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if (!confirm('Reset current tuning to defaults? (Saved schools will not be cleared.)')) return;
+  state.current = { ...DEFAULT };
+  renderControls();
+  applyToPreview();
+  persist();
+});
+
+renderPresets();
+renderControls();
+renderSchools();
+applyToPreview();
+</script>
+</body>
+</html>
+`;
+
+const outDir = 'nebula/proposals';
+await fs.mkdir(outDir, { recursive: true });
+const outPath = path.join(outDir, 'density-playground.html');
+await fs.writeFile(outPath, html);
+const stats = await fs.stat(outPath);
+console.log(`wrote ${outPath}  (${(stats.size / 1024).toFixed(1)} KB)`);

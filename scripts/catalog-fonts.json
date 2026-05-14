@@ -1,0 +1,1757 @@
+{
+  "_meta": {
+    "source": {
+      "source": "fontpair.co/all + fontpair.co/fonts/google/<slug>",
+      "scrapedAt": "2026-05-14T11:07:56.199Z",
+      "slugsAttempted": 75,
+      "totalRaw": 510,
+      "uniquePairs": 381,
+      "filteredPairs": 308
+    },
+    "builtAt": "2026-05-14T11:10:23.711Z",
+    "intentCount": 20,
+    "pairingsPerIntent": 10
+  },
+  "intents": [
+    {
+      "id": "trust-fintech",
+      "name": "Trust-led B2B / fintech",
+      "blurb": "Geometric or grotesque sans pairings. Calm. Clear. Reads as competence.",
+      "pairings": [
+        {
+          "display": "Montserrat",
+          "body": "Google Sans",
+          "label": "Montserrat & Google Sans",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Poppins",
+          "label": "Inter & Poppins",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Montserrat",
+          "label": "Inter & Montserrat",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Archivo",
+          "label": "Inter & Archivo",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Manrope",
+          "label": "Inter & Manrope",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Be Vietnam Pro",
+          "label": "Inter & Be Vietnam Pro",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "Sora",
+          "label": "Manrope & Sora",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "General Sans",
+          "label": "Manrope & General Sans",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "Inter",
+          "label": "Manrope & Inter",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "Be Vietnam Pro",
+          "label": "Manrope & Be Vietnam Pro",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "editorial",
+      "name": "Editorial / publication",
+      "blurb": "Old-style or transitional serif body with a sans display, or full serif pair. Long-read magazine pages.",
+      "pairings": [
+        {
+          "display": "Playfair Display",
+          "body": "Lora",
+          "label": "Playfair Display & Lora",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Inknut Antiqua",
+          "body": "Work Sans",
+          "label": "Inknut Antiqua & Work Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Work Sans",
+          "label": "Instrument Serif & Work Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Nunito",
+          "label": "Playfair Display & Nunito",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Source Sans Pro",
+          "label": "Playfair Display & Source Sans Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Fira Sans",
+          "label": "Playfair Display & Fira Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Noto Serif Display",
+          "body": "Noto Sans",
+          "label": "Noto Serif Display & Noto Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "Nunito",
+          "label": "Cormorant Garamond & Nunito",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Roboto",
+          "label": "Playfair Display & Roboto",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Fraunces",
+          "body": "Epilogue",
+          "label": "Fraunces & Epilogue",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "brutalist",
+      "name": "Brutalist statement",
+      "blurb": "Condensed sans or display + monospace body. Or a single extreme display.",
+      "pairings": [
+        {
+          "display": "Unbounded",
+          "body": "Albert Sans",
+          "label": "Unbounded & Albert Sans",
+          "displayGenre": "display-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Voltaire",
+          "body": "Inter",
+          "label": "Voltaire & Inter",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Special Gothic Expanded One",
+          "body": "Inter",
+          "label": "Special Gothic Expanded One & Inter",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Alumni Sans",
+          "body": "DM Sans",
+          "label": "Alumni Sans & DM Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Staatliches",
+          "body": "DM Sans",
+          "label": "Staatliches & DM Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Unbounded",
+          "body": "Geist",
+          "label": "Unbounded & Geist",
+          "displayGenre": "display-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "BenchNine",
+          "body": "Archivo",
+          "label": "BenchNine & Archivo",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Archivo Black",
+          "body": "Archivo",
+          "label": "Archivo Black & Archivo",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Archivo",
+          "label": "Archivo Narrow & Archivo",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "General Sans",
+          "label": "Archivo Narrow & General Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "quiet-craft",
+      "name": "Quiet craft / atelier",
+      "blurb": "Warm serif headings with humanist sans body. Studio of a ceramicist. Whisper-volume type.",
+      "pairings": [
+        {
+          "display": "Inknut Antiqua",
+          "body": "Work Sans",
+          "label": "Inknut Antiqua & Work Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "Nunito",
+          "label": "Cormorant Garamond & Nunito",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Ysabeau SC",
+          "body": "Ysabeau",
+          "label": "Ysabeau SC & Ysabeau",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Libre Baskerville",
+          "body": "Work Sans",
+          "label": "Libre Baskerville & Work Sans",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Merriweather",
+          "body": "Open Sans",
+          "label": "Merriweather & Open Sans",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "PT Serif",
+          "body": "Lato",
+          "label": "PT Serif & Lato",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Alegreya",
+          "body": "Source Sans Pro",
+          "label": "Alegreya & Source Sans Pro",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Source Serif 4",
+          "body": "Source Sans Pro",
+          "label": "Source Serif 4 & Source Sans Pro",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Roboto Serif",
+          "body": "Roboto",
+          "label": "Roboto Serif & Roboto",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Noto Serif",
+          "body": "Noto Sans",
+          "label": "Noto Serif & Noto Sans",
+          "displayGenre": "transitional-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "vibrant-playful",
+      "name": "Vibrant consumer / playful",
+      "blurb": "Display sans or decorative + geometric sans body. Confident.",
+      "pairings": [
+        {
+          "display": "Unbounded",
+          "body": "Albert Sans",
+          "label": "Unbounded & Albert Sans",
+          "displayGenre": "display-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Unbounded",
+          "body": "Geist",
+          "label": "Unbounded & Geist",
+          "displayGenre": "display-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Space Grotesk",
+          "body": "Inter",
+          "label": "Space Grotesk & Inter",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Space Grotesk",
+          "body": "General Sans",
+          "label": "Space Grotesk & General Sans",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Space Grotesk",
+          "body": "Be Vietnam Pro",
+          "label": "Space Grotesk & Be Vietnam Pro",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Bricolage Grotesque",
+          "body": "Geist",
+          "label": "Bricolage Grotesque & Geist",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Funnel Display",
+          "body": "Geist",
+          "label": "Funnel Display & Geist",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Young Serif",
+          "body": "Geist",
+          "label": "Young Serif & Geist",
+          "displayGenre": "display-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Rethink Sans",
+          "body": "Geist",
+          "label": "Rethink Sans & Geist",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Inter",
+          "label": "Abril Fatface & Inter",
+          "displayGenre": "display-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "clinical",
+      "name": "Healthcare / clinical",
+      "blurb": "Humanist sans pair. Warm. Calm. Approachable. No display drama.",
+      "pairings": [
+        {
+          "display": "Ysabeau Infant",
+          "body": "Ysabeau",
+          "label": "Ysabeau Infant & Ysabeau",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Zain",
+          "body": "Nunito",
+          "label": "Zain & Nunito",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Zen Kaku Gothic Antique",
+          "body": "Zen Kaku Gothic New",
+          "label": "Zen Kaku Gothic Antique & Zen Kaku Gothic New",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Zalando Sans Expanded",
+          "body": "Zalando Sans",
+          "label": "Zalando Sans Expanded & Zalando Sans",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Open Sans",
+          "body": "Roboto",
+          "label": "Open Sans & Roboto",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Open Sans",
+          "body": "PT Sans",
+          "label": "Open Sans & PT Sans",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Open Sans",
+          "body": "Source Sans Pro",
+          "label": "Open Sans & Source Sans Pro",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Roboto",
+          "body": "Open Sans",
+          "label": "Roboto & Open Sans",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Open Sans",
+          "label": "PT Sans & Open Sans",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Fira Sans",
+          "body": "Open Sans",
+          "label": "Fira Sans & Open Sans",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "civic",
+      "name": "Civic / institutional",
+      "blurb": "Humanist sans + transitional serif. Library, museum, civic letter.",
+      "pairings": [
+        {
+          "display": "Open Sans",
+          "body": "Lora",
+          "label": "Open Sans & Lora",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Open Sans",
+          "body": "Merriweather",
+          "label": "Open Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Nunito",
+          "body": "Merriweather",
+          "label": "Nunito & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Fira Sans",
+          "body": "Merriweather",
+          "label": "Fira Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Roboto",
+          "body": "Roboto Serif",
+          "label": "Roboto & Roboto Serif",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Lora",
+          "label": "PT Sans & Lora",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Alegreya Sans",
+          "body": "Merriweather",
+          "label": "Alegreya Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Epilogue",
+          "body": "Newsreader",
+          "label": "Epilogue & Newsreader",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Epilogue",
+          "body": "Spectral",
+          "label": "Epilogue & Spectral",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Spectral",
+          "label": "PT Sans & Spectral",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "luxury-fashion",
+      "name": "Luxury fashion / fragrance",
+      "blurb": "Thin modern serif heading + geometric sans body. Negative space.",
+      "pairings": [
+        {
+          "display": "Gloock",
+          "body": "Inter",
+          "label": "Gloock & Inter",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "DM Serif Text",
+          "body": "DM Sans",
+          "label": "DM Serif Text & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "DM Serif Display",
+          "body": "DM Sans",
+          "label": "DM Serif Display & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Fraunces",
+          "body": "DM Sans",
+          "label": "Fraunces & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "DM Sans",
+          "label": "Cormorant Garamond & DM Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Be Vietnam Pro",
+          "label": "Playfair Display & Be Vietnam Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "General Sans",
+          "label": "Instrument Serif & General Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Inter",
+          "label": "Instrument Serif & Inter",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Work Sans",
+          "label": "Instrument Serif & Work Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Nunito",
+          "label": "Playfair Display & Nunito",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "indie-game",
+      "name": "Indie game / playful tech",
+      "blurb": "Display sans or decorative + grotesque body. Mono accent. Plays well.",
+      "pairings": [
+        {
+          "display": "Unbounded",
+          "body": "Albert Sans",
+          "label": "Unbounded & Albert Sans",
+          "displayGenre": "display-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 6
+        },
+        {
+          "display": "Unbounded",
+          "body": "Geist",
+          "label": "Unbounded & Geist",
+          "displayGenre": "display-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 6
+        },
+        {
+          "display": "Instrument Sans",
+          "body": "Geist Mono",
+          "label": "Instrument Sans & Geist Mono",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "monospace",
+          "score": 3
+        },
+        {
+          "display": "Karla",
+          "body": "Inconsolata",
+          "label": "Karla & Inconsolata",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "monospace",
+          "score": 3
+        },
+        {
+          "display": "Bricolage Grotesque",
+          "body": "Geist",
+          "label": "Bricolage Grotesque & Geist",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 2
+        },
+        {
+          "display": "Bricolage Grotesque",
+          "body": "BioRhyme",
+          "label": "Bricolage Grotesque & BioRhyme",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "display-serif",
+          "score": 2
+        },
+        {
+          "display": "Bricolage Grotesque",
+          "body": "Ubuntu",
+          "label": "Bricolage Grotesque & Ubuntu",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Syne",
+          "body": "Red Hat Text",
+          "label": "Syne & Red Hat Text",
+          "displayGenre": "display-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Syne",
+          "body": "TASA Orbiter",
+          "label": "Syne & TASA Orbiter",
+          "displayGenre": "display-sans",
+          "bodyGenre": "grotesque-sans",
+          "score": 2
+        },
+        {
+          "display": "Syne",
+          "body": "Epilogue",
+          "label": "Syne & Epilogue",
+          "displayGenre": "display-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "documentary",
+      "name": "Documentary / journalism",
+      "blurb": "Transitional serif body + humanist sans display. Long-form reading.",
+      "pairings": [
+        {
+          "display": "Open Sans",
+          "body": "Lora",
+          "label": "Open Sans & Lora",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Open Sans",
+          "body": "Merriweather",
+          "label": "Open Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Nunito",
+          "body": "Merriweather",
+          "label": "Nunito & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Fira Sans",
+          "body": "Merriweather",
+          "label": "Fira Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Roboto",
+          "body": "Roboto Serif",
+          "label": "Roboto & Roboto Serif",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Lora",
+          "label": "PT Sans & Lora",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Alegreya Sans",
+          "body": "Merriweather",
+          "label": "Alegreya Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Epilogue",
+          "body": "Newsreader",
+          "label": "Epilogue & Newsreader",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Epilogue",
+          "body": "Spectral",
+          "label": "Epilogue & Spectral",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Spectral",
+          "label": "PT Sans & Spectral",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture firm",
+      "blurb": "Grotesque sans + monospace, or all-mono. Reduced palette. Folio of a quiet practice.",
+      "pairings": [
+        {
+          "display": "Archivo",
+          "body": "IBM Plex Mono",
+          "label": "Archivo & IBM Plex Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "JetBrains Mono",
+          "label": "Inter & JetBrains Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Inconsolata",
+          "label": "Inter & Inconsolata",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "IBM Plex Mono",
+          "label": "Manrope & IBM Plex Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "Geist Mono",
+          "label": "Manrope & Geist Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "DM Sans",
+          "body": "DM Mono",
+          "label": "DM Sans & DM Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Instrument Sans",
+          "body": "Geist Mono",
+          "label": "Instrument Sans & Geist Mono",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Karla",
+          "body": "Inconsolata",
+          "label": "Karla & Inconsolata",
+          "displayGenre": "grotesque-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "SUSE Mono",
+          "body": "SUSE",
+          "label": "SUSE Mono & SUSE",
+          "displayGenre": "monospace",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "IBM Plex Mono",
+          "body": "Inter",
+          "label": "IBM Plex Mono & Inter",
+          "displayGenre": "monospace",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "hospitality",
+      "name": "Restaurant / hospitality",
+      "blurb": "Old-style serif heading + warm humanist body. Or decorative display + humanist. Golden-hour mood.",
+      "pairings": [
+        {
+          "display": "Inknut Antiqua",
+          "body": "Work Sans",
+          "label": "Inknut Antiqua & Work Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "Nunito",
+          "label": "Cormorant Garamond & Nunito",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Nunito",
+          "label": "Abril Fatface & Nunito",
+          "displayGenre": "display-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Fira Sans",
+          "label": "Abril Fatface & Fira Sans",
+          "displayGenre": "display-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Roboto",
+          "label": "Abril Fatface & Roboto",
+          "displayGenre": "display-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Raleway",
+          "label": "Abril Fatface & Raleway",
+          "displayGenre": "display-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "PT Sans",
+          "label": "Abril Fatface & PT Sans",
+          "displayGenre": "display-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Work Sans",
+          "label": "Instrument Serif & Work Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Nunito",
+          "label": "Playfair Display & Nunito",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Source Sans Pro",
+          "label": "Playfair Display & Source Sans Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "outdoor-adventure",
+      "name": "Outdoor / adventure",
+      "blurb": "Condensed display + slab or transitional body. Trail guide, outfitter, athletic but earthy.",
+      "pairings": [
+        {
+          "display": "Archivo Narrow",
+          "body": "Gambetta",
+          "label": "Archivo Narrow & Gambetta",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Faustina",
+          "label": "Archivo Narrow & Faustina",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Lora",
+          "label": "Archivo Narrow & Lora",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Spectral",
+          "label": "Archivo Narrow & Spectral",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Source Serif 4",
+          "label": "Archivo Narrow & Source Serif 4",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "News Cycle",
+          "body": "Newsreader",
+          "label": "News Cycle & Newsreader",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Fira Sans Condensed",
+          "body": "Fira Sans",
+          "label": "Fira Sans Condensed & Fira Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "IBM Plex Sans Condensed",
+          "body": "IBM Plex Sans",
+          "label": "IBM Plex Sans Condensed & IBM Plex Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Barlow Condensed",
+          "body": "Barlow",
+          "label": "Barlow Condensed & Barlow",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "David Libre",
+          "label": "Archivo Narrow & David Libre",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "sustainable-eco",
+      "name": "Sustainable / eco",
+      "blurb": "Humanist sans + transitional serif. Materials-led, low-impact aesthetic.",
+      "pairings": [
+        {
+          "display": "Open Sans",
+          "body": "Lora",
+          "label": "Open Sans & Lora",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Open Sans",
+          "body": "Merriweather",
+          "label": "Open Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Nunito",
+          "body": "Merriweather",
+          "label": "Nunito & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Fira Sans",
+          "body": "Merriweather",
+          "label": "Fira Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Roboto",
+          "body": "Roboto Serif",
+          "label": "Roboto & Roboto Serif",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Lora",
+          "label": "PT Sans & Lora",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Alegreya Sans",
+          "body": "Merriweather",
+          "label": "Alegreya Sans & Merriweather",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Epilogue",
+          "body": "Newsreader",
+          "label": "Epilogue & Newsreader",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "Epilogue",
+          "body": "Spectral",
+          "label": "Epilogue & Spectral",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        },
+        {
+          "display": "PT Sans",
+          "body": "Spectral",
+          "label": "PT Sans & Spectral",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "transitional-serif",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "tech-research",
+      "name": "Tech research / academic",
+      "blurb": "Mono pair, or geometric sans + mono. Reads as careful and considered.",
+      "pairings": [
+        {
+          "display": "Archivo",
+          "body": "IBM Plex Mono",
+          "label": "Archivo & IBM Plex Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 6
+        },
+        {
+          "display": "IBM Plex Mono",
+          "body": "Inter",
+          "label": "IBM Plex Mono & Inter",
+          "displayGenre": "monospace",
+          "bodyGenre": "geometric-sans",
+          "score": 6
+        },
+        {
+          "display": "Manrope",
+          "body": "IBM Plex Mono",
+          "label": "Manrope & IBM Plex Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 6
+        },
+        {
+          "display": "Inter",
+          "body": "JetBrains Mono",
+          "label": "Inter & JetBrains Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Inter",
+          "body": "Inconsolata",
+          "label": "Inter & Inconsolata",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "Manrope",
+          "body": "Geist Mono",
+          "label": "Manrope & Geist Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "DM Sans",
+          "body": "DM Mono",
+          "label": "DM Sans & DM Mono",
+          "displayGenre": "geometric-sans",
+          "bodyGenre": "monospace",
+          "score": 4
+        },
+        {
+          "display": "JetBrains Mono",
+          "body": "Inter",
+          "label": "JetBrains Mono & Inter",
+          "displayGenre": "monospace",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "SUSE Mono",
+          "body": "SUSE",
+          "label": "SUSE Mono & SUSE",
+          "displayGenre": "monospace",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Work Sans",
+          "body": "JetBrains Mono",
+          "label": "Work Sans & JetBrains Mono",
+          "displayGenre": "humanist-sans",
+          "bodyGenre": "monospace",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "music-label",
+      "name": "Music / record label",
+      "blurb": "Display serif or decorative + geometric body. Sleeve-art typography.",
+      "pairings": [
+        {
+          "display": "Young Serif",
+          "body": "Geist",
+          "label": "Young Serif & Geist",
+          "displayGenre": "display-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Inter",
+          "label": "Abril Fatface & Inter",
+          "displayGenre": "display-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Gloock",
+          "body": "Inter",
+          "label": "Gloock & Inter",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "DM Serif Text",
+          "body": "DM Sans",
+          "label": "DM Serif Text & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "DM Serif Display",
+          "body": "DM Sans",
+          "label": "DM Serif Display & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Fraunces",
+          "body": "DM Sans",
+          "label": "Fraunces & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Arvo",
+          "body": "Geist",
+          "label": "Arvo & Geist",
+          "displayGenre": "slab-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Aleo",
+          "body": "Albert Sans",
+          "label": "Aleo & Albert Sans",
+          "displayGenre": "slab-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Aleo",
+          "body": "Archivo",
+          "label": "Aleo & Archivo",
+          "displayGenre": "slab-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Be Vietnam Pro",
+          "label": "Playfair Display & Be Vietnam Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "cinematic",
+      "name": "Cinema / film",
+      "blurb": "High-drama modern serif + geometric sans. Festival poster type.",
+      "pairings": [
+        {
+          "display": "Gloock",
+          "body": "Inter",
+          "label": "Gloock & Inter",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "DM Serif Text",
+          "body": "DM Sans",
+          "label": "DM Serif Text & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "DM Serif Display",
+          "body": "DM Sans",
+          "label": "DM Serif Display & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Fraunces",
+          "body": "DM Sans",
+          "label": "Fraunces & DM Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Be Vietnam Pro",
+          "label": "Playfair Display & Be Vietnam Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "General Sans",
+          "label": "Instrument Serif & General Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Inter",
+          "label": "Instrument Serif & Inter",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Young Serif",
+          "body": "Geist",
+          "label": "Young Serif & Geist",
+          "displayGenre": "display-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Work Sans",
+          "label": "Instrument Serif & Work Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Nunito",
+          "label": "Playfair Display & Nunito",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "wine-spirits",
+      "name": "Wine / spirits",
+      "blurb": "Old-style serif. Calligraphic warmth. Vineyard, cellar, small distillery.",
+      "pairings": [
+        {
+          "display": "Inknut Antiqua",
+          "body": "Work Sans",
+          "label": "Inknut Antiqua & Work Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "Nunito",
+          "label": "Cormorant Garamond & Nunito",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Inknut Antiqua",
+          "body": "DM Sans",
+          "label": "Inknut Antiqua & DM Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "DM Sans",
+          "label": "Cormorant Garamond & DM Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Inknut Antiqua",
+          "body": "Mulish",
+          "label": "Inknut Antiqua & Mulish",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "geometric-sans",
+          "score": 3
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Work Sans",
+          "label": "Instrument Serif & Work Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Abril Fatface",
+          "body": "Nunito",
+          "label": "Abril Fatface & Nunito",
+          "displayGenre": "display-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Nunito",
+          "label": "Playfair Display & Nunito",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Source Sans Pro",
+          "label": "Playfair Display & Source Sans Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Fira Sans",
+          "label": "Playfair Display & Fira Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": "athletic",
+      "name": "Sports / athletic",
+      "blurb": "Condensed sans + geometric body. Big, athletic, performance.",
+      "pairings": [
+        {
+          "display": "Voltaire",
+          "body": "Inter",
+          "label": "Voltaire & Inter",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Special Gothic Expanded One",
+          "body": "Inter",
+          "label": "Special Gothic Expanded One & Inter",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Alumni Sans",
+          "body": "DM Sans",
+          "label": "Alumni Sans & DM Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Staatliches",
+          "body": "DM Sans",
+          "label": "Staatliches & DM Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "BenchNine",
+          "body": "Archivo",
+          "label": "BenchNine & Archivo",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Archivo Black",
+          "body": "Archivo",
+          "label": "Archivo Black & Archivo",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Archivo",
+          "label": "Archivo Narrow & Archivo",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "General Sans",
+          "label": "Archivo Narrow & General Sans",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Be Vietnam Pro",
+          "label": "Archivo Narrow & Be Vietnam Pro",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        },
+        {
+          "display": "Archivo Narrow",
+          "body": "Inter",
+          "label": "Archivo Narrow & Inter",
+          "displayGenre": "condensed-sans",
+          "bodyGenre": "geometric-sans",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "boutique-hotel",
+      "name": "Boutique hotel",
+      "blurb": "Refined old-style or modern serif + understated humanist body. Lobby of a small Italian hotel.",
+      "pairings": [
+        {
+          "display": "Inknut Antiqua",
+          "body": "Work Sans",
+          "label": "Inknut Antiqua & Work Sans",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Cormorant Garamond",
+          "body": "Nunito",
+          "label": "Cormorant Garamond & Nunito",
+          "displayGenre": "old-style-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 4
+        },
+        {
+          "display": "Instrument Serif",
+          "body": "Work Sans",
+          "label": "Instrument Serif & Work Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Nunito",
+          "label": "Playfair Display & Nunito",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Source Sans Pro",
+          "label": "Playfair Display & Source Sans Pro",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Fira Sans",
+          "label": "Playfair Display & Fira Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Noto Serif Display",
+          "body": "Noto Sans",
+          "label": "Noto Serif Display & Noto Sans",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Playfair Display",
+          "body": "Roboto",
+          "label": "Playfair Display & Roboto",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Fraunces",
+          "body": "Epilogue",
+          "label": "Fraunces & Epilogue",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        },
+        {
+          "display": "Gloock",
+          "body": "Epilogue",
+          "label": "Gloock & Epilogue",
+          "displayGenre": "modern-serif",
+          "bodyGenre": "humanist-sans",
+          "score": 3
+        }
+      ]
+    }
+  ]
+}

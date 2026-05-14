@@ -1,0 +1,13 @@
+{
+  "name": "nebula",
+  "description": "Design a great single-page website from scratch. Built on top of impeccable. Sibling of stardust.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Paolo"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["design", "greenfield", "frontend", "skills", "impeccable"],
+  "dependencies": [
+    "impeccable@impeccable"
+  ]
+}

@@ -1,0 +1,2168 @@
+{
+  "_meta": {
+    "source": "fontpair.co/all + fontpair.co/fonts/google/<slug>",
+    "scrapedAt": "2026-05-14T11:07:56.199Z",
+    "slugsAttempted": 75,
+    "totalRaw": 510,
+    "uniquePairs": 381,
+    "filteredPairs": 308
+  },
+  "pairs": [
+    {
+      "display": "Epunda Slab",
+      "displayType": "google",
+      "body": "Epunda Sans",
+      "bodyType": "body",
+      "label": "Epunda Slab & Epunda Sans"
+    },
+    {
+      "display": "Work Sans",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Work Sans & Bitter"
+    },
+    {
+      "display": "Montserrat",
+      "displayType": "google",
+      "body": "Google Sans",
+      "bodyType": "body",
+      "label": "Montserrat & Google Sans"
+    },
+    {
+      "display": "Special Gothic Condensed One",
+      "displayType": "google",
+      "body": "Special Gothic",
+      "bodyType": "body",
+      "label": "Special Gothic Condensed One & Special Gothic"
+    },
+    {
+      "display": "Special Gothic Expanded One",
+      "displayType": "google",
+      "body": "Special Gothic",
+      "bodyType": "body",
+      "label": "Special Gothic Expanded One & Special Gothic"
+    },
+    {
+      "display": "SUSE Mono",
+      "displayType": "google",
+      "body": "SUSE",
+      "bodyType": "body",
+      "label": "SUSE Mono & SUSE"
+    },
+    {
+      "display": "TikTok Sans",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "TikTok Sans & Geist"
+    },
+    {
+      "display": "Unbounded",
+      "displayType": "google",
+      "body": "Albert Sans",
+      "bodyType": "body",
+      "label": "Unbounded & Albert Sans"
+    },
+    {
+      "display": "Urbanist",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Urbanist & Open Sans"
+    },
+    {
+      "display": "Voltaire",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Voltaire & Inter"
+    },
+    {
+      "display": "Ysabeau Infant",
+      "displayType": "google",
+      "body": "Ysabeau",
+      "bodyType": "body",
+      "label": "Ysabeau Infant & Ysabeau"
+    },
+    {
+      "display": "Ysabeau SC",
+      "displayType": "google",
+      "body": "Ysabeau",
+      "bodyType": "body",
+      "label": "Ysabeau SC & Ysabeau"
+    },
+    {
+      "display": "Zain",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Zain & Nunito"
+    },
+    {
+      "display": "Zen Kaku Gothic Antique",
+      "displayType": "google",
+      "body": "Zen Kaku Gothic New",
+      "bodyType": "body",
+      "label": "Zen Kaku Gothic Antique & Zen Kaku Gothic New"
+    },
+    {
+      "display": "Zalando Sans Expanded",
+      "displayType": "google",
+      "body": "Zalando Sans",
+      "bodyType": "body",
+      "label": "Zalando Sans Expanded & Zalando Sans"
+    },
+    {
+      "display": "Gloock",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Gloock & Inter"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Staatliches",
+      "bodyType": "body",
+      "label": "DM Sans & Staatliches"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "IBM Plex Mono",
+      "bodyType": "body",
+      "label": "Archivo & IBM Plex Mono"
+    },
+    {
+      "display": "EB Garamond",
+      "displayType": "google",
+      "body": "DM Mono",
+      "bodyType": "body",
+      "label": "EB Garamond & DM Mono"
+    },
+    {
+      "display": "Metal",
+      "displayType": "google",
+      "body": "EB Garamond",
+      "bodyType": "body",
+      "label": "Metal & EB Garamond"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "JetBrains Mono",
+      "bodyType": "body",
+      "label": "Inter & JetBrains Mono"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Inconsolata",
+      "bodyType": "body",
+      "label": "Inter & Inconsolata"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Inter & Fira Sans"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Inter & Roboto"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Poppins",
+      "bodyType": "body",
+      "label": "Inter & Poppins"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Montserrat",
+      "bodyType": "body",
+      "label": "Inter & Montserrat"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Inter & PT Sans"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Inter & Archivo"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Inter & Manrope"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "IBM Plex Sans",
+      "bodyType": "body",
+      "label": "Inter & IBM Plex Sans"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Inter & Source Sans Pro"
+    },
+    {
+      "display": "Inter",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Inter & Be Vietnam Pro"
+    },
+    {
+      "display": "Special Gothic Expanded One",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Special Gothic Expanded One & Inter"
+    },
+    {
+      "display": "Epilogue",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Epilogue & Inter"
+    },
+    {
+      "display": "Space Grotesk",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Space Grotesk & Inter"
+    },
+    {
+      "display": "IBM Plex Mono",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "IBM Plex Mono & Inter"
+    },
+    {
+      "display": "IBM Plex Sans",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "IBM Plex Sans & Inter"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "IBM Plex Mono",
+      "bodyType": "body",
+      "label": "Manrope & IBM Plex Mono"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Geist Mono",
+      "bodyType": "body",
+      "label": "Manrope & Geist Mono"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Manrope & Work Sans"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Faustina",
+      "bodyType": "body",
+      "label": "Manrope & Faustina"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Newsreader",
+      "bodyType": "body",
+      "label": "Manrope & Newsreader"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Manrope & Lora"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Sora",
+      "bodyType": "body",
+      "label": "Manrope & Sora"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Manrope & General Sans"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Manrope & Inter"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Manrope & Roboto"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Manrope & Merriweather"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Manrope & Nunito"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Manrope & Be Vietnam Pro"
+    },
+    {
+      "display": "Manrope",
+      "displayType": "google",
+      "body": "Raleway",
+      "bodyType": "body",
+      "label": "Manrope & Raleway"
+    },
+    {
+      "display": "Lora",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Lora & Manrope"
+    },
+    {
+      "display": "Domine",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Domine & Manrope"
+    },
+    {
+      "display": "Geist",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Geist & Manrope"
+    },
+    {
+      "display": "Petrona",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Petrona & Manrope"
+    },
+    {
+      "display": "Sora",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Sora & Geist"
+    },
+    {
+      "display": "Reddit Sans",
+      "displayType": "google",
+      "body": "Sora",
+      "bodyType": "body",
+      "label": "Reddit Sans & Sora"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Playfair Display",
+      "bodyType": "body",
+      "label": "DM Sans & Playfair Display"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "DM Mono",
+      "bodyType": "body",
+      "label": "DM Sans & DM Mono"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Varela Round",
+      "bodyType": "body",
+      "label": "DM Sans & Varela Round"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Epilogue",
+      "bodyType": "body",
+      "label": "DM Sans & Epilogue"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Source Serif 4",
+      "bodyType": "body",
+      "label": "DM Sans & Source Serif 4"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "DM Sans & Spectral"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "DM Sans & Lora"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "General Serif",
+      "bodyType": "body",
+      "label": "DM Sans & General Serif"
+    },
+    {
+      "display": "DM Sans",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "DM Sans & Inter"
+    },
+    {
+      "display": "Alumni Sans",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "Alumni Sans & DM Sans"
+    },
+    {
+      "display": "Staatliches",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "Staatliches & DM Sans"
+    },
+    {
+      "display": "DM Serif Text",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "DM Serif Text & DM Sans"
+    },
+    {
+      "display": "DM Serif Display",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "DM Serif Display & DM Sans"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "Libre Baskerville & DM Sans"
+    },
+    {
+      "display": "Inknut Antiqua",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "Inknut Antiqua & DM Sans"
+    },
+    {
+      "display": "Fraunces",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "Fraunces & DM Sans"
+    },
+    {
+      "display": "Cormorant Garamond",
+      "displayType": "google",
+      "body": "DM Sans",
+      "bodyType": "body",
+      "label": "Cormorant Garamond & DM Sans"
+    },
+    {
+      "display": "Besley",
+      "displayType": "google",
+      "body": "Figtree",
+      "bodyType": "body",
+      "label": "Besley & Figtree"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Figtree",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Figtree"
+    },
+    {
+      "display": "Space Grotesk",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Space Grotesk & General Sans"
+    },
+    {
+      "display": "Space Grotesk",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Space Grotesk & Be Vietnam Pro"
+    },
+    {
+      "display": "Space Grotesk",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Space Grotesk & Roboto"
+    },
+    {
+      "display": "Space Grotesk",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Space Grotesk & Lora"
+    },
+    {
+      "display": "Space Mono",
+      "displayType": "google",
+      "body": "Space Grotesk",
+      "bodyType": "body",
+      "label": "Space Mono & Space Grotesk"
+    },
+    {
+      "display": "Fraunces",
+      "displayType": "google",
+      "body": "Space Grotesk",
+      "bodyType": "body",
+      "label": "Fraunces & Space Grotesk"
+    },
+    {
+      "display": "Geist",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Geist & Inter"
+    },
+    {
+      "display": "Montserrat",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Montserrat & Geist"
+    },
+    {
+      "display": "Bricolage Grotesque",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Bricolage Grotesque & Geist"
+    },
+    {
+      "display": "Funnel Display",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Funnel Display & Geist"
+    },
+    {
+      "display": "Young Serif",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Young Serif & Geist"
+    },
+    {
+      "display": "Rethink Sans",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Rethink Sans & Geist"
+    },
+    {
+      "display": "Unbounded",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Unbounded & Geist"
+    },
+    {
+      "display": "Arvo",
+      "displayType": "google",
+      "body": "Geist",
+      "bodyType": "body",
+      "label": "Arvo & Geist"
+    },
+    {
+      "display": "Bricolage Grotesque",
+      "displayType": "google",
+      "body": "BioRhyme",
+      "bodyType": "body",
+      "label": "Bricolage Grotesque & BioRhyme"
+    },
+    {
+      "display": "Bricolage Grotesque",
+      "displayType": "google",
+      "body": "Ubuntu",
+      "bodyType": "body",
+      "label": "Bricolage Grotesque & Ubuntu"
+    },
+    {
+      "display": "Albert Sans",
+      "displayType": "google",
+      "body": "Barlow",
+      "bodyType": "body",
+      "label": "Albert Sans & Barlow"
+    },
+    {
+      "display": "Aleo",
+      "displayType": "google",
+      "body": "Albert Sans",
+      "bodyType": "body",
+      "label": "Aleo & Albert Sans"
+    },
+    {
+      "display": "Syne",
+      "displayType": "google",
+      "body": "Red Hat Text",
+      "bodyType": "body",
+      "label": "Syne & Red Hat Text"
+    },
+    {
+      "display": "Syne",
+      "displayType": "google",
+      "body": "TASA Orbiter",
+      "bodyType": "body",
+      "label": "Syne & TASA Orbiter"
+    },
+    {
+      "display": "Syne",
+      "displayType": "google",
+      "body": "Epilogue",
+      "bodyType": "body",
+      "label": "Syne & Epilogue"
+    },
+    {
+      "display": "Syne",
+      "displayType": "google",
+      "body": "Gloock",
+      "bodyType": "body",
+      "label": "Syne & Gloock"
+    },
+    {
+      "display": "Syne",
+      "displayType": "google",
+      "body": "Newsreader",
+      "bodyType": "body",
+      "label": "Syne & Newsreader"
+    },
+    {
+      "display": "Rosario",
+      "displayType": "google",
+      "body": "Syne",
+      "bodyType": "body",
+      "label": "Rosario & Syne"
+    },
+    {
+      "display": "Zen Kaku Gothic New",
+      "displayType": "google",
+      "body": "Syne",
+      "bodyType": "body",
+      "label": "Zen Kaku Gothic New & Syne"
+    },
+    {
+      "display": "Ovo",
+      "displayType": "google",
+      "body": "Syne",
+      "bodyType": "body",
+      "label": "Ovo & Syne"
+    },
+    {
+      "display": "Work Sans",
+      "displayType": "google",
+      "body": "JetBrains Mono",
+      "bodyType": "body",
+      "label": "Work Sans & JetBrains Mono"
+    },
+    {
+      "display": "Fira Code",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Fira Code & Work Sans"
+    },
+    {
+      "display": "Space Mono",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Space Mono & Work Sans"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Work Sans"
+    },
+    {
+      "display": "Inknut Antiqua",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Inknut Antiqua & Work Sans"
+    },
+    {
+      "display": "Instrument Serif",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Instrument Serif & Work Sans"
+    },
+    {
+      "display": "Poppins",
+      "displayType": "google",
+      "body": "Work Sans",
+      "bodyType": "body",
+      "label": "Poppins & Work Sans"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Open Sans & Archivo"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Open Sans & Roboto"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Open Sans & PT Sans"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Open Sans & Bitter"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Open Sans & Lora"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Open Sans & Source Sans Pro"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Poppins",
+      "bodyType": "body",
+      "label": "Open Sans & Poppins"
+    },
+    {
+      "display": "Open Sans",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Open Sans & Merriweather"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Roboto & Open Sans"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Merriweather & Open Sans"
+    },
+    {
+      "display": "PT Sans",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "PT Sans & Open Sans"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Fira Sans & Open Sans"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Nunito & Open Sans"
+    },
+    {
+      "display": "Be Vietnam Pro",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Be Vietnam Pro & Open Sans"
+    },
+    {
+      "display": "Montserrat",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Montserrat & Open Sans"
+    },
+    {
+      "display": "Raleway",
+      "displayType": "google",
+      "body": "Open Sans",
+      "bodyType": "body",
+      "label": "Raleway & Open Sans"
+    },
+    {
+      "display": "PT Serif",
+      "displayType": "google",
+      "body": "Lato",
+      "bodyType": "body",
+      "label": "PT Serif & Lato"
+    },
+    {
+      "display": "Yellowtail",
+      "displayType": "google",
+      "body": "Lato",
+      "bodyType": "body",
+      "label": "Yellowtail & Lato"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Lato",
+      "bodyType": "body",
+      "label": "Roboto & Lato"
+    },
+    {
+      "display": "Lustria",
+      "displayType": "google",
+      "body": "Mulish",
+      "bodyType": "body",
+      "label": "Lustria & Mulish"
+    },
+    {
+      "display": "Ovo",
+      "displayType": "google",
+      "body": "Mulish",
+      "bodyType": "body",
+      "label": "Ovo & Mulish"
+    },
+    {
+      "display": "Inknut Antiqua",
+      "displayType": "google",
+      "body": "Mulish",
+      "bodyType": "body",
+      "label": "Inknut Antiqua & Mulish"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Nunito & PT Sans"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Nunito Sans",
+      "bodyType": "body",
+      "label": "Nunito & Nunito Sans"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Supreme",
+      "bodyType": "body",
+      "label": "Nunito & Supreme"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Nunito & Bitter"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Poppins",
+      "bodyType": "body",
+      "label": "Nunito & Poppins"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Nunito & Inter"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Nunito & General Sans"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Nunito & Roboto"
+    },
+    {
+      "display": "Nunito",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Nunito & Merriweather"
+    },
+    {
+      "display": "Yellowtail",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Yellowtail & Nunito"
+    },
+    {
+      "display": "Montserrat",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Montserrat & Nunito"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Archivo & Nunito"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Abril Fatface & Nunito"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Playfair Display & Nunito"
+    },
+    {
+      "display": "Source Sans Pro",
+      "displayType": "google",
+      "body": "Source Code Pro",
+      "bodyType": "body",
+      "label": "Source Sans Pro & Source Code Pro"
+    },
+    {
+      "display": "Source Sans Pro",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Source Sans Pro & PT Sans"
+    },
+    {
+      "display": "Alegreya",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Alegreya & Source Sans Pro"
+    },
+    {
+      "display": "Source Serif 4",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Source Serif 4 & Source Sans Pro"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Roboto & Source Sans Pro"
+    },
+    {
+      "display": "Raleway",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Raleway & Source Sans Pro"
+    },
+    {
+      "display": "PT Sans",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "PT Sans & Source Sans Pro"
+    },
+    {
+      "display": "Montserrat",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Montserrat & Source Sans Pro"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Fira Sans & Source Sans Pro"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Playfair Display & Source Sans Pro"
+    },
+    {
+      "display": "Be Vietnam Pro",
+      "displayType": "google",
+      "body": "Source Sans Pro",
+      "bodyType": "body",
+      "label": "Be Vietnam Pro & Source Sans Pro"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Fira Sans & Manrope"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Raleway",
+      "bodyType": "body",
+      "label": "Fira Sans & Raleway"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Fira Sans & Archivo"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Fira Sans & Bitter"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Fira Sans & Merriweather"
+    },
+    {
+      "display": "Fira Sans",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Fira Sans & Be Vietnam Pro"
+    },
+    {
+      "display": "Fira Sans Condensed",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Fira Sans Condensed & Fira Sans"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Playfair Display & Fira Sans"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Abril Fatface & Fira Sans"
+    },
+    {
+      "display": "Be Vietnam Pro",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Be Vietnam Pro & Fira Sans"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Bitter & Fira Sans"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Roboto & Fira Sans"
+    },
+    {
+      "display": "Montserrat",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Montserrat & Fira Sans"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Fira Sans",
+      "bodyType": "body",
+      "label": "Archivo & Fira Sans"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Nunito Sans",
+      "bodyType": "body",
+      "label": "Roboto & Nunito Sans"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Roboto Serif",
+      "bodyType": "body",
+      "label": "Roboto & Roboto Serif"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Roboto Mono",
+      "bodyType": "body",
+      "label": "Roboto & Roboto Mono"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Roboto & Inter"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Poppins",
+      "bodyType": "body",
+      "label": "Roboto & Poppins"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Roboto & PT Sans"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Roboto & Nunito"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Roboto & Manrope"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Roboto & Be Vietnam Pro"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Roboto & Archivo"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Montserrat",
+      "bodyType": "body",
+      "label": "Roboto & Montserrat"
+    },
+    {
+      "display": "Roboto",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Roboto & Bitter"
+    },
+    {
+      "display": "Maitree",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Maitree & Roboto"
+    },
+    {
+      "display": "Roboto Serif",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Roboto Serif & Roboto"
+    },
+    {
+      "display": "Roboto Slab",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Roboto Slab & Roboto"
+    },
+    {
+      "display": "Noto Serif Display",
+      "displayType": "google",
+      "body": "Noto Sans",
+      "bodyType": "body",
+      "label": "Noto Serif Display & Noto Sans"
+    },
+    {
+      "display": "Noto Serif",
+      "displayType": "google",
+      "body": "Noto Sans",
+      "bodyType": "body",
+      "label": "Noto Serif & Noto Sans"
+    },
+    {
+      "display": "Rubik",
+      "displayType": "google",
+      "body": "Karla",
+      "bodyType": "body",
+      "label": "Rubik & Karla"
+    },
+    {
+      "display": "IBM Plex Sans Condensed",
+      "displayType": "google",
+      "body": "IBM Plex Sans",
+      "bodyType": "body",
+      "label": "IBM Plex Sans Condensed & IBM Plex Sans"
+    },
+    {
+      "display": "IBM Plex Serif",
+      "displayType": "google",
+      "body": "IBM Plex Sans",
+      "bodyType": "body",
+      "label": "IBM Plex Serif & IBM Plex Sans"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "IBM Plex Sans",
+      "bodyType": "body",
+      "label": "Libre Baskerville & IBM Plex Sans"
+    },
+    {
+      "display": "Barlow Semi Condensed",
+      "displayType": "google",
+      "body": "Barlow",
+      "bodyType": "body",
+      "label": "Barlow Semi Condensed & Barlow"
+    },
+    {
+      "display": "Barlow Condensed",
+      "displayType": "google",
+      "body": "Barlow",
+      "bodyType": "body",
+      "label": "Barlow Condensed & Barlow"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Ranade",
+      "bodyType": "body",
+      "label": "Archivo & Ranade"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Archivo & General Sans"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Manrope",
+      "bodyType": "body",
+      "label": "Archivo & Manrope"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Archivo & Spectral"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Archivo & Inter"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Archivo & Bitter"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Archivo & Lora"
+    },
+    {
+      "display": "Archivo",
+      "displayType": "google",
+      "body": "Raleway",
+      "bodyType": "body",
+      "label": "Archivo & Raleway"
+    },
+    {
+      "display": "BenchNine",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "BenchNine & Archivo"
+    },
+    {
+      "display": "Archivo Black",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Archivo Black & Archivo"
+    },
+    {
+      "display": "Aleo",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Aleo & Archivo"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Archivo"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Gambetta",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Gambetta"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Archivo Narrow & General Sans"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Be Vietnam Pro"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Inter"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Faustina",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Faustina"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "David Libre",
+      "bodyType": "body",
+      "label": "Archivo Narrow & David Libre"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Lora"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Spectral"
+    },
+    {
+      "display": "Archivo Narrow",
+      "displayType": "google",
+      "body": "Source Serif 4",
+      "bodyType": "body",
+      "label": "Archivo Narrow & Source Serif 4"
+    },
+    {
+      "display": "Geist Mono",
+      "displayType": "google",
+      "body": "EB Garamond",
+      "bodyType": "body",
+      "label": "Geist Mono & EB Garamond"
+    },
+    {
+      "display": "Cormorant Garamond",
+      "displayType": "google",
+      "body": "Nunito",
+      "bodyType": "body",
+      "label": "Cormorant Garamond & Nunito"
+    },
+    {
+      "display": "Crimson Pro",
+      "displayType": "google",
+      "body": "VT323",
+      "bodyType": "body",
+      "label": "Crimson Pro & VT323"
+    },
+    {
+      "display": "Crimson Pro",
+      "displayType": "google",
+      "body": "Crimson Text",
+      "bodyType": "body",
+      "label": "Crimson Pro & Crimson Text"
+    },
+    {
+      "display": "Crimson Text",
+      "displayType": "google",
+      "body": "Crimson Pro",
+      "bodyType": "body",
+      "label": "Crimson Text & Crimson Pro"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Satoshi",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Satoshi"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Libre Baskerville & General Sans"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Instrument Sans",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Instrument Sans"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Rosario",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Rosario"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Libre Franklin",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Libre Franklin"
+    },
+    {
+      "display": "Libre Baskerville",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Libre Baskerville & Inter"
+    },
+    {
+      "display": "Libre Franklin",
+      "displayType": "google",
+      "body": "Libre Baskerville",
+      "bodyType": "body",
+      "label": "Libre Franklin & Libre Baskerville"
+    },
+    {
+      "display": "Libre Caslon Display",
+      "displayType": "google",
+      "body": "Libre Caslon Text",
+      "bodyType": "body",
+      "label": "Libre Caslon Display & Libre Caslon Text"
+    },
+    {
+      "display": "Libre Caslon Display",
+      "displayType": "google",
+      "body": "Libre Franklin",
+      "bodyType": "body",
+      "label": "Libre Caslon Display & Libre Franklin"
+    },
+    {
+      "display": "Lora",
+      "displayType": "google",
+      "body": "Varela",
+      "bodyType": "body",
+      "label": "Lora & Varela"
+    },
+    {
+      "display": "Lora",
+      "displayType": "google",
+      "body": "Poppins",
+      "bodyType": "body",
+      "label": "Lora & Poppins"
+    },
+    {
+      "display": "Lora",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Lora & PT Sans"
+    },
+    {
+      "display": "Lora",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Lora & Merriweather"
+    },
+    {
+      "display": "Lora",
+      "displayType": "google",
+      "body": "Raleway",
+      "bodyType": "body",
+      "label": "Lora & Raleway"
+    },
+    {
+      "display": "Space Mono",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Space Mono & Lora"
+    },
+    {
+      "display": "Roboto Mono",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Roboto Mono & Lora"
+    },
+    {
+      "display": "Chivo",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Chivo & Lora"
+    },
+    {
+      "display": "Poppins",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Poppins & Lora"
+    },
+    {
+      "display": "Spectral",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Spectral & Lora"
+    },
+    {
+      "display": "PT Sans",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "PT Sans & Lora"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Abril Fatface & Lora"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Merriweather Sans",
+      "bodyType": "body",
+      "label": "Merriweather & Merriweather Sans"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Merriweather & Spectral"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Poppins",
+      "bodyType": "body",
+      "label": "Merriweather & Poppins"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Merriweather & Archivo"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Merriweather & Bitter"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Merriweather & Lora"
+    },
+    {
+      "display": "Merriweather",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Merriweather & Be Vietnam Pro"
+    },
+    {
+      "display": "Alegreya Sans",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Alegreya Sans & Merriweather"
+    },
+    {
+      "display": "Poppins",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Poppins & Merriweather"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Abril Fatface & Merriweather"
+    },
+    {
+      "display": "Spectral",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Spectral & Merriweather"
+    },
+    {
+      "display": "Be Vietnam Pro",
+      "displayType": "google",
+      "body": "Merriweather",
+      "bodyType": "body",
+      "label": "Be Vietnam Pro & Merriweather"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Playfair",
+      "bodyType": "body",
+      "label": "Playfair Display & Playfair"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Fira Code",
+      "bodyType": "body",
+      "label": "Playfair Display & Fira Code"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Playfair Display & Lora"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Playfair Display & Be Vietnam Pro"
+    },
+    {
+      "display": "Playfair Display",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Playfair Display & Roboto"
+    },
+    {
+      "display": "Playfair Display SC",
+      "displayType": "google",
+      "body": "Playfair",
+      "bodyType": "body",
+      "label": "Playfair Display SC & Playfair"
+    },
+    {
+      "display": "DM Serif Display",
+      "displayType": "google",
+      "body": "DM Serif Text",
+      "bodyType": "body",
+      "label": "DM Serif Display & DM Serif Text"
+    },
+    {
+      "display": "DM Serif Display",
+      "displayType": "google",
+      "body": "Roboto Mono",
+      "bodyType": "body",
+      "label": "DM Serif Display & Roboto Mono"
+    },
+    {
+      "display": "Fraunces",
+      "displayType": "google",
+      "body": "Epilogue",
+      "bodyType": "body",
+      "label": "Fraunces & Epilogue"
+    },
+    {
+      "display": "Fraunces",
+      "displayType": "google",
+      "body": "Instrument Sans",
+      "bodyType": "body",
+      "label": "Fraunces & Instrument Sans"
+    },
+    {
+      "display": "Instrument Serif",
+      "displayType": "google",
+      "body": "DM Mono",
+      "bodyType": "body",
+      "label": "Instrument Serif & DM Mono"
+    },
+    {
+      "display": "Instrument Serif",
+      "displayType": "google",
+      "body": "General Sans",
+      "bodyType": "body",
+      "label": "Instrument Serif & General Sans"
+    },
+    {
+      "display": "Instrument Serif",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Instrument Serif & Inter"
+    },
+    {
+      "display": "Instrument Serif",
+      "displayType": "google",
+      "body": "Instrument Sans",
+      "bodyType": "body",
+      "label": "Instrument Serif & Instrument Sans"
+    },
+    {
+      "display": "Instrument Sans",
+      "displayType": "google",
+      "body": "Instrument Serif",
+      "bodyType": "body",
+      "label": "Instrument Sans & Instrument Serif"
+    },
+    {
+      "display": "Gloock",
+      "displayType": "google",
+      "body": "Epilogue",
+      "bodyType": "body",
+      "label": "Gloock & Epilogue"
+    },
+    {
+      "display": "Gloock",
+      "displayType": "google",
+      "body": "Instrument Sans",
+      "bodyType": "body",
+      "label": "Gloock & Instrument Sans"
+    },
+    {
+      "display": "News Cycle",
+      "displayType": "google",
+      "body": "Newsreader",
+      "bodyType": "body",
+      "label": "News Cycle & Newsreader"
+    },
+    {
+      "display": "Inconsolata",
+      "displayType": "google",
+      "body": "Newsreader",
+      "bodyType": "body",
+      "label": "Inconsolata & Newsreader"
+    },
+    {
+      "display": "Karla",
+      "displayType": "google",
+      "body": "Newsreader",
+      "bodyType": "body",
+      "label": "Karla & Newsreader"
+    },
+    {
+      "display": "Epilogue",
+      "displayType": "google",
+      "body": "Newsreader",
+      "bodyType": "body",
+      "label": "Epilogue & Newsreader"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Raleway",
+      "bodyType": "body",
+      "label": "Bitter & Raleway"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Bitter & Inter"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Bitter & Spectral"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Bitter & PT Sans"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Lora",
+      "bodyType": "body",
+      "label": "Bitter & Lora"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Archivo",
+      "bodyType": "body",
+      "label": "Bitter & Archivo"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Bitter & Roboto"
+    },
+    {
+      "display": "Bitter",
+      "displayType": "google",
+      "body": "Be Vietnam Pro",
+      "bodyType": "body",
+      "label": "Bitter & Be Vietnam Pro"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Bitter",
+      "bodyType": "body",
+      "label": "Abril Fatface & Bitter"
+    },
+    {
+      "display": "Spectral",
+      "displayType": "google",
+      "body": "JetBrains Mono",
+      "bodyType": "body",
+      "label": "Spectral & JetBrains Mono"
+    },
+    {
+      "display": "Spectral",
+      "displayType": "google",
+      "body": "Karla",
+      "bodyType": "body",
+      "label": "Spectral & Karla"
+    },
+    {
+      "display": "Roboto Mono",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Roboto Mono & Spectral"
+    },
+    {
+      "display": "Inconsolata",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Inconsolata & Spectral"
+    },
+    {
+      "display": "Chivo",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Chivo & Spectral"
+    },
+    {
+      "display": "Epilogue",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Epilogue & Spectral"
+    },
+    {
+      "display": "Be Vietnam Pro",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "Be Vietnam Pro & Spectral"
+    },
+    {
+      "display": "PT Sans",
+      "displayType": "google",
+      "body": "Spectral",
+      "bodyType": "body",
+      "label": "PT Sans & Spectral"
+    },
+    {
+      "display": "Roboto Slab",
+      "displayType": "google",
+      "body": "Roboto Serif",
+      "bodyType": "body",
+      "label": "Roboto Slab & Roboto Serif"
+    },
+    {
+      "display": "Arvo",
+      "displayType": "google",
+      "body": "Montserrat",
+      "bodyType": "body",
+      "label": "Arvo & Montserrat"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Roboto",
+      "bodyType": "body",
+      "label": "Abril Fatface & Roboto"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Raleway",
+      "bodyType": "body",
+      "label": "Abril Fatface & Raleway"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "Abril Fatface & Inter"
+    },
+    {
+      "display": "Abril Fatface",
+      "displayType": "google",
+      "body": "PT Sans",
+      "bodyType": "body",
+      "label": "Abril Fatface & PT Sans"
+    },
+    {
+      "display": "Alfa Slab One",
+      "displayType": "google",
+      "body": "Gentium Book Plus",
+      "bodyType": "body",
+      "label": "Alfa Slab One & Gentium Book Plus"
+    },
+    {
+      "display": "JetBrains Mono",
+      "displayType": "google",
+      "body": "Inter",
+      "bodyType": "body",
+      "label": "JetBrains Mono & Inter"
+    },
+    {
+      "display": "JetBrains Mono",
+      "displayType": "google",
+      "body": "Roboto Mono",
+      "bodyType": "body",
+      "label": "JetBrains Mono & Roboto Mono"
+    },
+    {
+      "display": "Zalando Sans",
+      "displayType": "google",
+      "body": "JetBrains Mono",
+      "bodyType": "body",
+      "label": "Zalando Sans & JetBrains Mono"
+    },
+    {
+      "display": "Inconsolata",
+      "displayType": "google",
+      "body": "Fira Code",
+      "bodyType": "body",
+      "label": "Inconsolata & Fira Code"
+    },
+    {
+      "display": "David Libre",
+      "displayType": "google",
+      "body": "Fira Code",
+      "bodyType": "body",
+      "label": "David Libre & Fira Code"
+    },
+    {
+      "display": "Averia Serif Libre",
+      "displayType": "google",
+      "body": "Geist Mono",
+      "bodyType": "body",
+      "label": "Averia Serif Libre & Geist Mono"
+    },
+    {
+      "display": "Instrument Sans",
+      "displayType": "google",
+      "body": "Geist Mono",
+      "bodyType": "body",
+      "label": "Instrument Sans & Geist Mono"
+    },
+    {
+      "display": "Space Mono",
+      "displayType": "google",
+      "body": "Rethink Sans",
+      "bodyType": "body",
+      "label": "Space Mono & Rethink Sans"
+    },
+    {
+      "display": "Space Mono",
+      "displayType": "google",
+      "body": "Roboto Mono",
+      "bodyType": "body",
+      "label": "Space Mono & Roboto Mono"
+    },
+    {
+      "display": "Karla",
+      "displayType": "google",
+      "body": "Inconsolata",
+      "bodyType": "body",
+      "label": "Karla & Inconsolata"
+    },
+    {
+      "display": "Ubuntu",
+      "displayType": "google",
+      "body": "Roboto Mono",
+      "bodyType": "body",
+      "label": "Ubuntu & Roboto Mono"
+    }
+  ]
+}

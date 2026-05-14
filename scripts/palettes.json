@@ -1,0 +1,8671 @@
+{
+  "_meta": {
+    "source": "coolors.co/palettes/popular/<tag>",
+    "scrapedAt": "2026-05-14T10:33:23.998Z",
+    "tagsScraped": [
+      "cool",
+      "dark",
+      "light",
+      "bright",
+      "muted",
+      "vibrant",
+      "soft",
+      "pastel",
+      "neon",
+      "bold",
+      "monochrome",
+      "gradient",
+      "vintage",
+      "retro",
+      "modern",
+      "classic",
+      "autumn",
+      "spring",
+      "summer",
+      "winter",
+      "earth",
+      "sunset",
+      "sky",
+      "sand",
+      "natural",
+      "beach",
+      "sea",
+      "gold",
+      "stone",
+      "blue",
+      "red",
+      "green",
+      "orange",
+      "yellow",
+      "purple",
+      "brown",
+      "black",
+      "white",
+      "tropical",
+      "halloween",
+      "christmas"
+    ],
+    "paletteCount": 554
+  },
+  "palettes": [
+    {
+      "hex": [
+        "3A015C",
+        "4F0147",
+        "35012C",
+        "290025",
+        "11001C"
+      ],
+      "name": "Midnight Magic",
+      "likes": "3,318",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "0F0606",
+        "200B0B",
+        "2F0000",
+        "490000",
+        "650000"
+      ],
+      "name": "Fiery Red Inferno",
+      "likes": "825",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "002029",
+        "00303D",
+        "004052",
+        "005066",
+        "00607A"
+      ],
+      "name": "Ocean Blue Adventure",
+      "likes": "747",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "000000",
+        "000000",
+        "000000",
+        "000000"
+      ],
+      "name": "Blank Canvas",
+      "likes": "1,105",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "3A015C",
+        "32004F",
+        "220135",
+        "190028",
+        "11001C"
+      ],
+      "name": "Midnight Purple Hues",
+      "likes": "549",
+      "tags": [
+        "dark",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "191528",
+        "3C162F",
+        "5C162E",
+        "7C162E",
+        "110E1B"
+      ],
+      "name": "Dark Mysterious Night",
+      "likes": "603",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "780000",
+        "660000",
+        "520000",
+        "3D0000",
+        "290000"
+      ],
+      "name": "Dark Ember Flames",
+      "likes": "512",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "0D060F",
+        "1E2824",
+        "5D3C18",
+        "766B65",
+        "230000"
+      ],
+      "name": "Velvet Chocolate Delight",
+      "likes": "466",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "45040C",
+        "720714",
+        "000000",
+        "12562A",
+        "063A21"
+      ],
+      "name": "Dark Forest",
+      "likes": "251",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "2D0065",
+        "360153",
+        "46074D",
+        "560737",
+        "600028"
+      ],
+      "name": "Mystic Midnight Hues",
+      "likes": "280",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "72411B",
+        "592F0F",
+        "3D1A00",
+        "004439",
+        "0A5E5B"
+      ],
+      "name": "Chocolate Forest Adventure",
+      "likes": "204",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "1C1515",
+        "700C0C",
+        "5A0303",
+        "727070",
+        "615F5F"
+      ],
+      "name": "Dark Red Storm",
+      "likes": "198",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "292818",
+        "6F7A51",
+        "364022",
+        "4A2F1A",
+        "7B5A30"
+      ],
+      "name": "Mystical Forest Shadows",
+      "likes": "143",
+      "tags": [
+        "dark"
+      ]
+    },
+    {
+      "hex": [
+        "C200FB",
+        "EC0868",
+        "FC2F00",
+        "EC7D10",
+        "FFBC0A"
+      ],
+      "name": "Neon Fusion",
+      "likes": "4,268",
+      "tags": [
+        "light",
+        "bright",
+        "neon",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "E6C229",
+        "F17105",
+        "D11149",
+        "6610F2",
+        "1A8FE3"
+      ],
+      "name": "Electric Vibes",
+      "likes": "3,614",
+      "tags": [
+        "light",
+        "bright",
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "04E762",
+        "F5B700",
+        "DC0073",
+        "008BF8",
+        "89FC00"
+      ],
+      "name": "Neon Fusion",
+      "likes": "3,177",
+      "tags": [
+        "light",
+        "bright",
+        "neon",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "F3B700",
+        "FAA300",
+        "E57C04",
+        "FF6201",
+        "F63E02"
+      ],
+      "name": "Golden Hour",
+      "likes": "2,954",
+      "tags": [
+        "light",
+        "bright",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "E89005",
+        "EC7505",
+        "D84A05",
+        "F42B03",
+        "E70E02"
+      ],
+      "name": "Fiery Fusion",
+      "likes": "2,505",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "04E762",
+        "F5B700",
+        "00A1E4",
+        "DC0073",
+        "89FC00"
+      ],
+      "name": "Vibrant Fusion",
+      "likes": "2,523",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FFAE03",
+        "E67F0D",
+        "FE4E00",
+        "E9190F",
+        "FF0F80"
+      ],
+      "name": "Neon Burst",
+      "likes": "2,346",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "07C8F9",
+        "09A6F3",
+        "0A85ED",
+        "0C63E7",
+        "0D41E1"
+      ],
+      "name": "Electric Blue Blast",
+      "likes": "1,380",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "E28413",
+        "F56416",
+        "DD4B1A",
+        "EF271B",
+        "EA1744"
+      ],
+      "name": "Golden Amber Blaze",
+      "likes": "2,214",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "00CCFF",
+        "00FFCC",
+        "FFFF00",
+        "FF00CC",
+        "CC00FF"
+      ],
+      "name": "Neon Glow Party",
+      "likes": "816",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "17FFC4",
+        "CC17FF",
+        "6917D0",
+        "FF1791",
+        "17FFEE"
+      ],
+      "name": "Electric Rainbow Dreams",
+      "likes": "573",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FF00C1",
+        "9600FF",
+        "4900FF",
+        "00B8FF",
+        "00FFF9"
+      ],
+      "name": "Electric Neon Dreams",
+      "likes": "584",
+      "tags": [
+        "light",
+        "bright",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "0AFFC2",
+        "00CCF5",
+        "FF7700",
+        "F50076",
+        "FFCF00"
+      ],
+      "name": "Neon Blast Party",
+      "likes": "450",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "13D1FF",
+        "19A5FF",
+        "FEE719",
+        "FE4F19",
+        "F00C18"
+      ],
+      "name": "Ocean Fire Sky",
+      "likes": "272",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "005AE0",
+        "00B4DD",
+        "FFA10A",
+        "FF600A",
+        "F50062"
+      ],
+      "name": "Neon Bright Sparks",
+      "likes": "311",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FFFF24",
+        "FDC700",
+        "FC7B28",
+        "FA442A",
+        "F9172B"
+      ],
+      "name": "Bright Summer Fiesta",
+      "likes": "208",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "E81980",
+        "FF1B8D",
+        "FFD900",
+        "1BB2FF",
+        "0096E0"
+      ],
+      "name": "Glowing Neon Dream",
+      "likes": "268",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "00DBEB",
+        "FFA71A",
+        "F5009B",
+        "A323D1",
+        "4E00DE"
+      ],
+      "name": "Neon Fusion",
+      "likes": "255",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "10E0FF",
+        "0086EB",
+        "006EE9",
+        "FFCD00",
+        "FFEF00"
+      ],
+      "name": "Ocean Sunset Glow",
+      "likes": "156",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FF0000",
+        "FF5A00",
+        "FF9A00",
+        "FFCE00",
+        "FFE808"
+      ],
+      "name": "Gradient Flame Burst",
+      "likes": "145",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "ED0062",
+        "4300ED",
+        "00D37B",
+        "8400E2",
+        "C5F700"
+      ],
+      "name": "Neon Disco Party",
+      "likes": "168",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FF00A1",
+        "FF9400",
+        "FFEE00",
+        "B4FF2B",
+        "24DFE2"
+      ],
+      "name": "Vibrant Rainbow Burst",
+      "likes": "205",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FFAA00",
+        "FFB700",
+        "FFC300",
+        "FFD000",
+        "FFDD00"
+      ],
+      "name": "Golden Sunshine Glow",
+      "likes": "131",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "FF5C14",
+        "FF8A1B",
+        "FCD514",
+        "98DA00",
+        "1FD224"
+      ],
+      "name": "Vibrant Rainbow",
+      "likes": "139",
+      "tags": [
+        "light",
+        "bright"
+      ]
+    },
+    {
+      "hex": [
+        "264653",
+        "2A9D8F",
+        "E9C46A",
+        "F4A261",
+        "E76F51"
+      ],
+      "name": "Sunny Beach Day",
+      "likes": "124.7K",
+      "tags": [
+        "muted",
+        "vibrant",
+        "bold",
+        "modern",
+        "autumn",
+        "sunset",
+        "beach",
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "606C38",
+        "283618",
+        "FEFAE0",
+        "DDA15E",
+        "BC6C25"
+      ],
+      "name": "Olive Garden Feast",
+      "likes": "98K",
+      "tags": [
+        "muted",
+        "gradient",
+        "autumn",
+        "earth",
+        "natural",
+        "green",
+        "orange",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "CCD5AE",
+        "E9EDC9",
+        "FEFAE0",
+        "FAEDCD",
+        "D4A373"
+      ],
+      "name": "Golden Summer Fields",
+      "likes": "85.2K",
+      "tags": [
+        "muted",
+        "soft",
+        "pastel",
+        "gradient",
+        "vintage",
+        "retro",
+        "classic",
+        "spring",
+        "summer",
+        "earth",
+        "sand",
+        "natural",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "FFCDB2",
+        "FFB4A2",
+        "E5989B",
+        "B5838D",
+        "6D6875"
+      ],
+      "name": "Muted Earthy Tones",
+      "likes": "75.4K",
+      "tags": [
+        "muted",
+        "monochrome",
+        "gradient",
+        "sunset",
+        "natural",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "006D77",
+        "83C5BE",
+        "EDF6F9",
+        "FFDDD2",
+        "E29578"
+      ],
+      "name": "Ocean Pearl Delight",
+      "likes": "52.4K",
+      "tags": [
+        "muted",
+        "gradient",
+        "sand",
+        "natural",
+        "beach",
+        "sea",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "F4F1DE",
+        "E07A5F",
+        "3D405B",
+        "81B29A",
+        "F2CC8F"
+      ],
+      "name": "Neutral Harmony Bliss",
+      "likes": "48.3K",
+      "tags": [
+        "muted",
+        "bold",
+        "modern",
+        "beach",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "DAD7CD",
+        "A3B18A",
+        "588157",
+        "3A5A40",
+        "344E41"
+      ],
+      "name": "Earthy Forest Hues",
+      "likes": "49.2K",
+      "tags": [
+        "muted",
+        "monochrome",
+        "gradient",
+        "earth",
+        "natural",
+        "green",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "F6BD60",
+        "F7EDE2",
+        "F5CAC3",
+        "84A59D",
+        "F28482"
+      ],
+      "name": "Sweet Summer Melody",
+      "likes": "46.3K",
+      "tags": [
+        "muted",
+        "vibrant",
+        "spring",
+        "natural",
+        "beach",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "22223B",
+        "4A4E69",
+        "9A8C98",
+        "C9ADA7",
+        "F2E9E4"
+      ],
+      "name": "Soft Lavender",
+      "likes": "45.8K",
+      "tags": [
+        "muted",
+        "gradient",
+        "earth",
+        "stone",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "D8E2DC",
+        "FFE5D9",
+        "FFCAD4",
+        "F4ACB7",
+        "9D8189"
+      ],
+      "name": "Peachy Delight",
+      "likes": "43.9K",
+      "tags": [
+        "muted",
+        "gradient",
+        "spring",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "CAD2C5",
+        "84A98C",
+        "52796F",
+        "354F52",
+        "2F3E46"
+      ],
+      "name": "Earthy Green",
+      "likes": "38.4K",
+      "tags": [
+        "muted",
+        "monochrome",
+        "gradient",
+        "winter",
+        "earth",
+        "natural",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "FFB5A7",
+        "FCD5CE",
+        "F8EDEB",
+        "F9DCC4",
+        "FEC89A"
+      ],
+      "name": "Pastel Bliss",
+      "likes": "37.6K",
+      "tags": [
+        "muted",
+        "soft",
+        "pastel",
+        "gradient",
+        "spring",
+        "summer",
+        "natural",
+        "beach",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "0081A7",
+        "00AFB9",
+        "FDFCDC",
+        "FED9B7",
+        "F07167"
+      ],
+      "name": "Summer Dream",
+      "likes": "28.9K",
+      "tags": [
+        "muted",
+        "beach",
+        "sea",
+        "white",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "F08080",
+        "F4978E",
+        "F8AD9D",
+        "FBC4AB",
+        "FFDAB9"
+      ],
+      "name": "Peach Sorbet",
+      "likes": "32.1K",
+      "tags": [
+        "muted",
+        "soft",
+        "pastel",
+        "monochrome",
+        "gradient",
+        "summer",
+        "sunset",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "355070",
+        "6D597A",
+        "B56576",
+        "E56B6F",
+        "EAAC8B"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "29K",
+      "tags": [
+        "muted",
+        "gradient",
+        "autumn",
+        "sunset",
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "8E9AAF",
+        "CBC0D3",
+        "EFD3D7",
+        "FEEAFA",
+        "DEE2FF"
+      ],
+      "name": "Soft Lavender",
+      "likes": "31.6K",
+      "tags": [
+        "muted",
+        "gradient",
+        "stone",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "353535",
+        "3C6E71",
+        "FFFFFF",
+        "D9D9D9",
+        "284B63"
+      ],
+      "name": "Monochrome Beach",
+      "likes": "23.4K",
+      "tags": [
+        "muted",
+        "gradient",
+        "modern",
+        "stone",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "463F3A",
+        "8A817C",
+        "BCB8B1",
+        "F4F3EE",
+        "E0AFA0"
+      ],
+      "name": "Neutral Elegance",
+      "likes": "23.9K",
+      "tags": [
+        "muted",
+        "monochrome",
+        "modern",
+        "summer",
+        "stone",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "FFA69E",
+        "FAF3DD",
+        "B8F2E6",
+        "AED9E0",
+        "5E6472"
+      ],
+      "name": "Ocean Blue Serenity",
+      "likes": "21.4K",
+      "tags": [
+        "muted",
+        "spring",
+        "sand",
+        "beach",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "555B6E",
+        "89B0AE",
+        "BEE3DB",
+        "FAF9F9",
+        "FFD6BA"
+      ],
+      "name": "Earthly Tones",
+      "likes": "21.3K",
+      "tags": [
+        "muted",
+        "modern",
+        "sand",
+        "beach",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "D4E09B",
+        "F6F4D2",
+        "CBDFBD",
+        "F19C79",
+        "A44A3F"
+      ],
+      "name": "Pastel Comfort",
+      "likes": "20K",
+      "tags": [
+        "muted",
+        "spring",
+        "white",
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "EDAFB8",
+        "F7E1D7",
+        "DEDBD2",
+        "B0C4B1",
+        "4A5759"
+      ],
+      "name": "Earthy Tones",
+      "likes": "20K",
+      "tags": [
+        "muted",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "C9CBA3",
+        "FFE1A8",
+        "E26D5C",
+        "723D46",
+        "472D30"
+      ],
+      "name": "Golden Peachy Glow",
+      "likes": "18.1K",
+      "tags": [
+        "muted",
+        "autumn",
+        "summer",
+        "sunset",
+        "sand",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "6B9080",
+        "A4C3B2",
+        "CCE3DE",
+        "EAF4F4",
+        "F6FFF8"
+      ],
+      "name": "Serene Nature Tones",
+      "likes": "19.2K",
+      "tags": [
+        "muted",
+        "winter",
+        "sky",
+        "stone",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "0A0908",
+        "22333B",
+        "EAE0D5",
+        "C6AC8F",
+        "5E503F"
+      ],
+      "name": "Neutral Earth Tones",
+      "likes": "15.7K",
+      "tags": [
+        "muted",
+        "modern",
+        "earth",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "283D3B",
+        "197278",
+        "EDDDD4",
+        "C44536",
+        "772E25"
+      ],
+      "name": "Forest Hues",
+      "likes": "15.3K",
+      "tags": [
+        "muted",
+        "bold",
+        "autumn",
+        "earth",
+        "natural",
+        "sea",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "9C89B8",
+        "F0A6CA",
+        "EFC3E6",
+        "F0E6EF",
+        "B8BEDD"
+      ],
+      "name": "Soft Pastel",
+      "likes": "16.9K",
+      "tags": [
+        "muted",
+        "spring",
+        "winter"
+      ]
+    },
+    {
+      "hex": [
+        "ECF8F8",
+        "EEE4E1",
+        "E7D8C9",
+        "E6BEAE",
+        "B2967D"
+      ],
+      "name": "Warm Neutral Tones",
+      "likes": "17.4K",
+      "tags": [
+        "muted",
+        "spring",
+        "earth",
+        "natural",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "F9DBBD",
+        "FFA5AB",
+        "DA627D",
+        "A53860",
+        "450920"
+      ],
+      "name": "Bold Berry",
+      "likes": "13.3K",
+      "tags": [
+        "muted",
+        "modern",
+        "sunset",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "F7D1CD",
+        "E8C2CA",
+        "D1B3C4",
+        "B392AC",
+        "735D78"
+      ],
+      "name": "Soft Pastels",
+      "likes": "16.1K",
+      "tags": [
+        "muted",
+        "monochrome"
+      ]
+    },
+    {
+      "hex": [
+        "2C6E49",
+        "4C956C",
+        "FEFEE3",
+        "FFC9B9",
+        "D68C45"
+      ],
+      "name": "Earthy Tones",
+      "likes": "11.8K",
+      "tags": [
+        "muted",
+        "spring",
+        "earth",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "A3A380",
+        "D6CE93",
+        "EFEBCE",
+        "D8A48F",
+        "BB8588"
+      ],
+      "name": "Earthy Tones",
+      "likes": "12.8K",
+      "tags": [
+        "muted",
+        "autumn",
+        "spring",
+        "summer",
+        "earth"
+      ]
+    },
+    {
+      "hex": [
+        "FFAC81",
+        "FF928B",
+        "FEC3A6",
+        "EFE9AE",
+        "CDEAC0"
+      ],
+      "name": "Peachy Delight",
+      "likes": "11.4K",
+      "tags": [
+        "muted",
+        "soft",
+        "pastel",
+        "spring",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "50514F",
+        "F25F5C",
+        "FFE066",
+        "247BA0",
+        "70C1B3"
+      ],
+      "name": "Sunset Bliss",
+      "likes": "9,944",
+      "tags": [
+        "muted",
+        "vibrant",
+        "bold",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "FE938C",
+        "E6B89C",
+        "EAD2AC",
+        "9CAFB7",
+        "4281A4"
+      ],
+      "name": "Vintage Coral Scheme",
+      "likes": "10.9K",
+      "tags": [
+        "muted",
+        "sunset",
+        "sand",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "565264",
+        "706677",
+        "A6808C",
+        "CCB7AE",
+        "D6CFCB"
+      ],
+      "name": "Mauve Serenity",
+      "likes": "11K",
+      "tags": [
+        "muted",
+        "autumn"
+      ]
+    },
+    {
+      "hex": [
+        "C9E4CA",
+        "87BBA2",
+        "55828B",
+        "3B6064",
+        "364958"
+      ],
+      "name": "Forest Green Tones",
+      "likes": "9,375",
+      "tags": [
+        "muted",
+        "monochrome",
+        "winter",
+        "natural",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "D8E2DC",
+        "FFFFFF",
+        "FFCAD4",
+        "F4ACB7",
+        "9D8189"
+      ],
+      "name": "Soft Earth Tones",
+      "likes": "10.2K",
+      "tags": [
+        "muted",
+        "spring",
+        "stone",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "E63946",
+        "F1FAEE",
+        "A8DADC",
+        "457B9D",
+        "1D3557"
+      ],
+      "name": "Summer Ocean Breeze",
+      "likes": "79.3K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "gradient",
+        "modern",
+        "sea",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "8ECAE6",
+        "219EBC",
+        "023047",
+        "FFB703",
+        "FB8500"
+      ],
+      "name": "Refreshing Summer Fun",
+      "likes": "68.1K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "gradient",
+        "sky",
+        "beach",
+        "sea",
+        "blue",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "14213D",
+        "FCA311",
+        "E5E5E5",
+        "FFFFFF"
+      ],
+      "name": "Black & Gold Elegance",
+      "likes": "54.6K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "modern",
+        "stone",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "003049",
+        "D62828",
+        "F77F00",
+        "FCBF49",
+        "EAE2B7"
+      ],
+      "name": "Warm Autumn Glow",
+      "likes": "48.2K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "modern",
+        "sunset",
+        "orange",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "FFBE0B",
+        "FB5607",
+        "FF006E",
+        "8338EC",
+        "3A86FF"
+      ],
+      "name": "Vibrant Color Fiesta",
+      "likes": "45.4K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "gradient",
+        "sunset",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "EF476F",
+        "FFD166",
+        "06D6A0",
+        "118AB2",
+        "073B4C"
+      ],
+      "name": "Watermelon Sorbet",
+      "likes": "36.3K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "blue",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "000814",
+        "001D3D",
+        "003566",
+        "FFC300",
+        "FFD60A"
+      ],
+      "name": "Golden Twilight",
+      "likes": "24.7K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "gradient",
+        "modern",
+        "gold",
+        "blue",
+        "yellow",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "5F0F40",
+        "9A031E",
+        "FB8B24",
+        "E36414",
+        "0F4C5C"
+      ],
+      "name": "Fiery Palette",
+      "likes": "27.8K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "autumn",
+        "sunset",
+        "orange",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F72585",
+        "7209B7",
+        "3A0CA3",
+        "4361EE",
+        "4CC9F0"
+      ],
+      "name": "Bold Hues",
+      "likes": "23.3K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "gradient",
+        "modern",
+        "winter",
+        "blue",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "FF9F1C",
+        "FFBF69",
+        "FFFFFF",
+        "CBF3F0",
+        "2EC4B6"
+      ],
+      "name": "Tropical Sunrise",
+      "likes": "25.7K",
+      "tags": [
+        "vibrant",
+        "gradient",
+        "sunset",
+        "sand",
+        "beach",
+        "sea",
+        "orange",
+        "white",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "386641",
+        "6A994E",
+        "A7C957",
+        "F2E8CF",
+        "BC4749"
+      ],
+      "name": "Fresh Greens",
+      "likes": "23.2K",
+      "tags": [
+        "vibrant",
+        "natural",
+        "green",
+        "white",
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "9B5DE5",
+        "F15BB5",
+        "FEE440",
+        "00BBF9",
+        "00F5D4"
+      ],
+      "name": "Candy Pop",
+      "likes": "23.7K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "FF99C8",
+        "FCF6BD",
+        "D0F4DE",
+        "A9DEF9",
+        "E4C1F9"
+      ],
+      "name": "Pastel Dreams",
+      "likes": "25.7K",
+      "tags": [
+        "vibrant",
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "011627",
+        "FDFFFC",
+        "2EC4B6",
+        "E71D36",
+        "FF9F1C"
+      ],
+      "name": "Contrast Pop",
+      "likes": "19.8K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "modern",
+        "beach",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "390099",
+        "9E0059",
+        "FF0054",
+        "FF5400",
+        "FFBD00"
+      ],
+      "name": "Purple Sunset",
+      "likes": "17.4K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "autumn",
+        "sunset",
+        "sky",
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "FF595E",
+        "FFCA3A",
+        "8AC926",
+        "1982C4",
+        "6A4C93"
+      ],
+      "name": "Vibrant Summer",
+      "likes": "17.4K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold"
+      ]
+    },
+    {
+      "hex": [
+        "1A535C",
+        "4ECDC4",
+        "F7FFF7",
+        "FF6B6B",
+        "FFE66D"
+      ],
+      "name": "Oceanic Cactus",
+      "likes": "18.1K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "modern",
+        "spring",
+        "beach",
+        "white",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "70D6FF",
+        "FF70A6",
+        "FF9770",
+        "FFD670",
+        "E9FF70"
+      ],
+      "name": "Pastel Rainbow",
+      "likes": "17.6K",
+      "tags": [
+        "vibrant",
+        "soft",
+        "pastel",
+        "neon",
+        "spring",
+        "beach",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "00296B",
+        "003F88",
+        "00509D",
+        "FDC500",
+        "FFD500"
+      ],
+      "name": "Midnight Sky",
+      "likes": "12K",
+      "tags": [
+        "vibrant",
+        "gold",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "233D4D",
+        "FE7F2D",
+        "FCCA46",
+        "A1C181",
+        "619B8A"
+      ],
+      "name": "Sunrise Glow",
+      "likes": "14K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "autumn",
+        "orange",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "3D348B",
+        "7678ED",
+        "F7B801",
+        "F18701",
+        "F35B04"
+      ],
+      "name": "Colorful Daybreak",
+      "likes": "12.7K",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "sunset",
+        "orange",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F7B267",
+        "F79D65",
+        "F4845F",
+        "F27059",
+        "F25C54"
+      ],
+      "name": "Sunset Shades",
+      "likes": "15.3K",
+      "tags": [
+        "vibrant",
+        "monochrome",
+        "autumn",
+        "summer",
+        "sunset",
+        "sea",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "FFFFFF",
+        "00171F",
+        "003459",
+        "007EA7",
+        "00A8E8"
+      ],
+      "name": "Deep Sea",
+      "likes": "11.8K",
+      "tags": [
+        "vibrant",
+        "bold",
+        "modern",
+        "sea",
+        "blue",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "227C9D",
+        "17C3B2",
+        "FFCB77",
+        "FEF9EF",
+        "FE6D73"
+      ],
+      "name": "Tropical Bliss",
+      "likes": "10.7K",
+      "tags": [
+        "vibrant",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "588B8B",
+        "FFFFFF",
+        "FFD5C2",
+        "F28F3B",
+        "C8553D"
+      ],
+      "name": "Coral Reef",
+      "likes": "12.7K",
+      "tags": [
+        "vibrant",
+        "modern",
+        "earth",
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "FFBC42",
+        "D81159",
+        "8F2D56",
+        "218380",
+        "73D2DE"
+      ],
+      "name": "Sunset Bliss",
+      "likes": "9,952",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "sunset",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "FFFFFF",
+        "84DCC6",
+        "A5FFD6",
+        "FFA69E",
+        "FF686B"
+      ],
+      "name": "Peachy Sunrise",
+      "likes": "12.4K",
+      "tags": [
+        "vibrant",
+        "soft",
+        "pastel",
+        "spring",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "FDC5F5",
+        "F7AEF8",
+        "B388EB",
+        "8093F1",
+        "72DDF7"
+      ],
+      "name": "Pastel Dream",
+      "likes": "10.8K",
+      "tags": [
+        "vibrant",
+        "soft",
+        "pastel",
+        "winter",
+        "sky",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "540D6E",
+        "EE4266",
+        "FFD23F",
+        "3BCEAC",
+        "0EAD69"
+      ],
+      "name": "Vibrant Harmony",
+      "likes": "8,995",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "CC5803",
+        "E2711D",
+        "FF9505",
+        "FFB627",
+        "FFC971"
+      ],
+      "name": "Warm Autumn Glow",
+      "likes": "8,244",
+      "tags": [
+        "vibrant",
+        "monochrome",
+        "autumn",
+        "summer",
+        "sunset",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "07BEB8",
+        "3DCCC7",
+        "68D8D6",
+        "9CEAEF",
+        "C4FFF9"
+      ],
+      "name": "Turquoise Waters",
+      "likes": "8,693",
+      "tags": [
+        "vibrant",
+        "monochrome",
+        "winter",
+        "sky",
+        "sea",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "3C1642",
+        "086375",
+        "1DD3B0",
+        "AFFC41",
+        "B2FF9E"
+      ],
+      "name": "Vibrant Spring",
+      "likes": "7,799",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold",
+        "winter",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "EE6055",
+        "60D394",
+        "AAF683",
+        "FFD97D",
+        "FF9B85"
+      ],
+      "name": "Vibrant Nature Hues",
+      "likes": "7,868",
+      "tags": [
+        "vibrant",
+        "soft",
+        "pastel",
+        "bold",
+        "beach",
+        "red",
+        "green",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "177E89",
+        "084C61",
+        "DB3A34",
+        "FFC857",
+        "323031"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "7,515",
+      "tags": [
+        "vibrant",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "247BA0",
+        "70C1B3",
+        "B2DBBF",
+        "F3FFBD",
+        "FF1654"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "10.7K",
+      "tags": [
+        "vibrant",
+        "bold"
+      ]
+    },
+    {
+      "hex": [
+        "90F1EF",
+        "FFD6E0",
+        "FFEF9F",
+        "C1FBA4",
+        "7BF1A8"
+      ],
+      "name": "Refreshing Spring Hues",
+      "likes": "8,163",
+      "tags": [
+        "vibrant",
+        "soft",
+        "pastel",
+        "neon",
+        "spring",
+        "beach",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "F9C80E",
+        "F86624",
+        "EA3546",
+        "662E9B",
+        "43BCCD"
+      ],
+      "name": "Bright Bold Colors",
+      "likes": "6,907",
+      "tags": [
+        "vibrant",
+        "neon",
+        "bold"
+      ]
+    },
+    {
+      "hex": [
+        "CDB4DB",
+        "FFC8DD",
+        "FFAFCC",
+        "BDE0FE",
+        "A2D2FF"
+      ],
+      "name": "Pastel Dreamland Adventure",
+      "likes": "88.4K",
+      "tags": [
+        "soft",
+        "pastel",
+        "gradient",
+        "spring",
+        "winter",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "EDEDE9",
+        "D6CCC2",
+        "F5EBE0",
+        "E3D5CA",
+        "D5BDAF"
+      ],
+      "name": "Soft Sand",
+      "likes": "45.9K",
+      "tags": [
+        "soft",
+        "pastel",
+        "gradient",
+        "vintage",
+        "retro",
+        "classic",
+        "summer",
+        "earth",
+        "sand",
+        "natural",
+        "stone",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "FFD6FF",
+        "E7C6FF",
+        "C8B6FF",
+        "B8C0FF",
+        "BBD0FF"
+      ],
+      "name": "Soft Pastels",
+      "likes": "25.9K",
+      "tags": [
+        "soft",
+        "pastel",
+        "gradient",
+        "winter",
+        "blue",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "FFE5EC",
+        "FFC2D1",
+        "FFB3C6",
+        "FF8FAB",
+        "FB6F92"
+      ],
+      "name": "Soft Pink Delight",
+      "likes": "23.5K",
+      "tags": [
+        "soft",
+        "pastel",
+        "monochrome",
+        "gradient",
+        "summer",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "7BDFF2",
+        "B2F7EF",
+        "EFF7F6",
+        "F7D6E0",
+        "F2B5D4"
+      ],
+      "name": "Pastel Fantasy",
+      "likes": "15.9K",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring",
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "9381FF",
+        "B8B8FF",
+        "F8F7FF",
+        "FFEEDD",
+        "FFD8BE"
+      ],
+      "name": "Soft Lavender",
+      "likes": "13.6K",
+      "tags": [
+        "soft",
+        "pastel",
+        "sunset",
+        "beach",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "E27396",
+        "EA9AB2",
+        "EFCFE3",
+        "EAF2D7",
+        "B3DEE2"
+      ],
+      "name": "Pastel Serenity",
+      "likes": "8,072",
+      "tags": [
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "D3F8E2",
+        "E4C1F9",
+        "F694C1",
+        "EDE7B1",
+        "A9DEF9"
+      ],
+      "name": "Pastel Dreamland",
+      "likes": "8,030",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "D0B8AC",
+        "F3D8C7",
+        "EFE5DC",
+        "FBFEFB",
+        "FFFFFF"
+      ],
+      "name": "Soft Ivory",
+      "likes": "8,390",
+      "tags": [
+        "soft",
+        "pastel",
+        "monochrome",
+        "natural",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "809BCE",
+        "95B8D1",
+        "B8E0D2",
+        "D6EADF",
+        "EAC4D5"
+      ],
+      "name": "Pastel Dreams",
+      "likes": "7,922",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring",
+        "winter",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "5AA9E6",
+        "7FC8F8",
+        "F9F9F9",
+        "FFE45E",
+        "FF6392"
+      ],
+      "name": "Pastel Pop",
+      "likes": "5,838",
+      "tags": [
+        "soft",
+        "pastel",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "FFC09F",
+        "FFEE93",
+        "FCF5C7",
+        "A0CED9",
+        "ADF7B6"
+      ],
+      "name": "Sunrise Glow",
+      "likes": "6,425",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "EFD9CE",
+        "DEC0F1",
+        "B79CED",
+        "957FEF",
+        "7161EF"
+      ],
+      "name": "Dreamy Pastels",
+      "likes": "5,817",
+      "tags": [
+        "soft",
+        "pastel",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "FF69EB",
+        "FF86C8",
+        "FFA3A5",
+        "FFBF81",
+        "FFDC5E"
+      ],
+      "name": "Summer Splash",
+      "likes": "5,422",
+      "tags": [
+        "soft",
+        "pastel",
+        "neon",
+        "spring",
+        "sunset",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "E5D9F2",
+        "F5EFFF",
+        "CDC1FF",
+        "A594F9",
+        "7371FC"
+      ],
+      "name": "Pastel Skies",
+      "likes": "5,166",
+      "tags": [
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "BCF4DE",
+        "CDE5D7",
+        "DED6D1",
+        "EEC6CA",
+        "FFB7C3"
+      ],
+      "name": "Soft Serenade",
+      "likes": "5,327",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "F2CCC3",
+        "E78F8E",
+        "FFE6E8",
+        "ACD8AA",
+        "F48498"
+      ],
+      "name": "Raspberry Sorbet",
+      "likes": "4,720",
+      "tags": [
+        "soft",
+        "pastel",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "BAF2BB",
+        "BAF2D8",
+        "BAD7F2",
+        "F2BAC9",
+        "F2E2BA"
+      ],
+      "name": "Pastel Delight",
+      "likes": "4,811",
+      "tags": [
+        "soft",
+        "pastel",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "F7EDF0",
+        "F4CBC6",
+        "F4AFAB",
+        "F4EEA9",
+        "F4F482"
+      ],
+      "name": "Pastel Dream",
+      "likes": "4,631",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "79ADDC",
+        "FFC09F",
+        "FFEE93",
+        "FCF5C7",
+        "ADF7B6"
+      ],
+      "name": "Spring Delight",
+      "likes": "4,031",
+      "tags": [
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "B0F2B4",
+        "BAF2E9",
+        "BAD7F2",
+        "F2BAC9",
+        "F2E2BA"
+      ],
+      "name": "Whimsical Harmony",
+      "likes": "4,422",
+      "tags": [
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "A7BED3",
+        "C6E2E9",
+        "F1FFC4",
+        "FFCAAF",
+        "DAB894"
+      ],
+      "name": "Dreamy Pastels",
+      "likes": "4,517",
+      "tags": [
+        "soft",
+        "pastel",
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "D3AB9E",
+        "EAC9C1",
+        "EBD8D0",
+        "FFFBFF",
+        "FEFEFF"
+      ],
+      "name": "Soft Serenity",
+      "likes": "4,729",
+      "tags": [
+        "soft",
+        "pastel",
+        "sand",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "D6D2D2",
+        "F1E4F3",
+        "F4BBD3",
+        "F686BD",
+        "FE5D9F"
+      ],
+      "name": "Cotton Candy",
+      "likes": "3,890",
+      "tags": [
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "F2DFD7",
+        "FEF9FF",
+        "D4C1EC",
+        "9F9FED",
+        "736CED"
+      ],
+      "name": "Ethereal Hues",
+      "likes": "3,879",
+      "tags": [
+        "soft",
+        "pastel"
+      ]
+    },
+    {
+      "hex": [
+        "F9DC5C",
+        "FAE588",
+        "FCEFB4",
+        "FDF8E1",
+        "F9DC5C"
+      ],
+      "name": "Golden Glow",
+      "likes": "2,584",
+      "tags": [
+        "soft",
+        "pastel",
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FF7477",
+        "E69597",
+        "CEB5B7",
+        "B5D6D6",
+        "9CF6F6"
+      ],
+      "name": "Bubblegum Bliss",
+      "likes": "3,860",
+      "tags": [
+        "soft",
+        "pastel",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "0B132B",
+        "1C2541",
+        "3A506B",
+        "5BC0BE",
+        "6FFFE9"
+      ],
+      "name": "Deep Blue Sea",
+      "likes": "11.6K",
+      "tags": [
+        "neon",
+        "monochrome",
+        "winter",
+        "sea",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "0C0F0A",
+        "FF206E",
+        "FBFF12",
+        "41EAD4",
+        "FFFFFF"
+      ],
+      "name": "Neon Jungle",
+      "likes": "7,423",
+      "tags": [
+        "neon",
+        "bold",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "55DDE0",
+        "33658A",
+        "2F4858",
+        "F6AE2D",
+        "F26419"
+      ],
+      "name": "Sunny Ocean",
+      "likes": "6,019",
+      "tags": [
+        "neon",
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "080708",
+        "3772FF",
+        "DF2935",
+        "FDCA40",
+        "E6E8E6"
+      ],
+      "name": "Azure Skies",
+      "likes": "5,163",
+      "tags": [
+        "neon",
+        "modern"
+      ]
+    },
+    {
+      "hex": [
+        "D00000",
+        "FFBA08",
+        "3F88C5",
+        "032B43",
+        "136F63"
+      ],
+      "name": "Vibrant Fusion",
+      "likes": "4,643",
+      "tags": [
+        "neon",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "FF5E5B",
+        "D8D8D8",
+        "FFFFEA",
+        "00CECB",
+        "FFED66"
+      ],
+      "name": "Sunshine Hues",
+      "likes": "5,031",
+      "tags": [
+        "neon",
+        "stone",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "29BF12",
+        "ABFF4F",
+        "08BDBD",
+        "F21B3F",
+        "FF9914"
+      ],
+      "name": "Rainbow Burst",
+      "likes": "4,005",
+      "tags": [
+        "neon",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "26547C",
+        "EF476F",
+        "FFD166",
+        "06D6A0",
+        "FFFCF9"
+      ],
+      "name": "Summer Sunset",
+      "likes": "4,469",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "F6511D",
+        "FFB400",
+        "00A6ED",
+        "7FB800",
+        "0D2C54"
+      ],
+      "name": "Sunset Glow",
+      "likes": "4,485",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "EDF67D",
+        "F896D8",
+        "CA7DF9",
+        "724CF9",
+        "564592"
+      ],
+      "name": "Jelly Dream",
+      "likes": "4,264",
+      "tags": [
+        "neon",
+        "sky",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "0C090D",
+        "E01A4F",
+        "F15946",
+        "F9C22E",
+        "53B3CB"
+      ],
+      "name": "Midnight Fire",
+      "likes": "3,851",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "826AED",
+        "C879FF",
+        "FFB7FF",
+        "3BF4FB",
+        "CAFF8A"
+      ],
+      "name": "Magic Gardens",
+      "likes": "3,464",
+      "tags": [
+        "neon",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "1BE7FF",
+        "6EEB83",
+        "E4FF1A",
+        "FFB800",
+        "FF5714"
+      ],
+      "name": "Sunny Bliss",
+      "likes": "3,276",
+      "tags": [
+        "neon",
+        "green",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "EAC435",
+        "345995",
+        "03CEA4",
+        "FB4D3D",
+        "CA1551"
+      ],
+      "name": "Tropical Splash",
+      "likes": "2,971",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "FB8B24",
+        "D90368",
+        "820263",
+        "291720",
+        "04A777"
+      ],
+      "name": "Autumn Bliss",
+      "likes": "3,015",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "FCFCFC",
+        "F7567C",
+        "FFFAE3",
+        "99E1D9",
+        "5D576B"
+      ],
+      "name": "Sparkling Sorbet",
+      "likes": "3,267",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "1BE7FF",
+        "6EEB83",
+        "E4FF1A",
+        "E8AA14",
+        "FF5714"
+      ],
+      "name": "Rainbow Burst",
+      "likes": "3,272",
+      "tags": [
+        "neon",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "2274A5",
+        "F75C03",
+        "F1C40F",
+        "D90368",
+        "00CC66"
+      ],
+      "name": "Pop Art",
+      "likes": "2,607",
+      "tags": [
+        "neon"
+      ]
+    },
+    {
+      "hex": [
+        "2B2D42",
+        "8D99AE",
+        "EDF2F4",
+        "EF233C",
+        "D90429"
+      ],
+      "name": "Cool Coastal Vibes",
+      "likes": "34.4K",
+      "tags": [
+        "bold",
+        "gradient",
+        "modern",
+        "red",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "780000",
+        "C1121F",
+        "FDF0D5",
+        "003049",
+        "669BBC"
+      ],
+      "name": "Fiery Ocean",
+      "likes": "35.3K",
+      "tags": [
+        "bold",
+        "blue",
+        "red",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "335C67",
+        "FFF3B0",
+        "E09F3E",
+        "9E2A2B",
+        "540B0E"
+      ],
+      "name": "Dark Sunset",
+      "likes": "31.5K",
+      "tags": [
+        "bold",
+        "modern",
+        "autumn",
+        "earth",
+        "sunset",
+        "red",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "3D5A80",
+        "98C1D9",
+        "E0FBFC",
+        "EE6C4D",
+        "293241"
+      ],
+      "name": "Coastal Vibes",
+      "likes": "28.5K",
+      "tags": [
+        "bold",
+        "modern",
+        "beach",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "FFFCF2",
+        "CCC5B9",
+        "403D39",
+        "252422",
+        "EB5E28"
+      ],
+      "name": "Rustic Charm",
+      "likes": "18.5K",
+      "tags": [
+        "bold",
+        "gradient",
+        "modern",
+        "autumn",
+        "stone",
+        "black",
+        "white",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "0D3B66",
+        "FAF0CA",
+        "F4D35E",
+        "EE964B",
+        "F95738"
+      ],
+      "name": "Golden Summer Glow",
+      "likes": "15.3K",
+      "tags": [
+        "bold",
+        "autumn",
+        "sky",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "001427",
+        "708D81",
+        "F4D58D",
+        "BF0603",
+        "8D0801"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "12.6K",
+      "tags": [
+        "bold",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "220901",
+        "621708",
+        "941B0C",
+        "BC3908",
+        "F6AA1C"
+      ],
+      "name": "Fiery Red",
+      "likes": "11.3K",
+      "tags": [
+        "bold",
+        "autumn",
+        "sunset",
+        "natural",
+        "red",
+        "orange",
+        "black",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "FF6700",
+        "EBEBEB",
+        "C0C0C0",
+        "3A6EA5",
+        "004E98"
+      ],
+      "name": "Slate Gray Contrast",
+      "likes": "8,179",
+      "tags": [
+        "bold",
+        "beach",
+        "sea",
+        "stone",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "8C1C13",
+        "BF4342",
+        "E7D7C1",
+        "A78A7F",
+        "735751"
+      ],
+      "name": "Warm Earth Tones",
+      "likes": "7,911",
+      "tags": [
+        "bold",
+        "autumn",
+        "summer",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "05668D",
+        "427AA1",
+        "EBF2FA",
+        "679436",
+        "A5BE00"
+      ],
+      "name": "Sky Blue Freshness",
+      "likes": "6,942",
+      "tags": [
+        "bold",
+        "modern",
+        "earth",
+        "blue",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "2D3142",
+        "4F5D75",
+        "BFC0C0",
+        "FFFFFF",
+        "EF8354"
+      ],
+      "name": "Orange Sunset Sky",
+      "likes": "8,395",
+      "tags": [
+        "bold",
+        "modern",
+        "stone",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "006BA6",
+        "0496FF",
+        "FFBC42",
+        "D81159",
+        "8F2D56"
+      ],
+      "name": "Vibrant Color Blast",
+      "likes": "6,834",
+      "tags": [
+        "bold",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "ED6A5A",
+        "F4F1BB",
+        "9BC1BC",
+        "5CA4A9",
+        "E6EBE0"
+      ],
+      "name": "Blush Harmony",
+      "likes": "8,308",
+      "tags": [
+        "bold",
+        "spring",
+        "earth",
+        "sand",
+        "beach",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "03045E",
+        "0077B6",
+        "00B4D8",
+        "90E0EF",
+        "CAF0F8"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "28.8K",
+      "tags": [
+        "monochrome",
+        "gradient",
+        "winter",
+        "sky",
+        "sea",
+        "blue",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "0D1B2A",
+        "1B263B",
+        "415A77",
+        "778DA9",
+        "E0E1DD"
+      ],
+      "name": "Deep Sea",
+      "likes": "27.7K",
+      "tags": [
+        "monochrome",
+        "gradient",
+        "sky",
+        "sea",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "22577A",
+        "38A3A5",
+        "57CC99",
+        "80ED99",
+        "C7F9CC"
+      ],
+      "name": "Cool Waters",
+      "likes": "17.7K",
+      "tags": [
+        "monochrome",
+        "gradient",
+        "winter",
+        "sea",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "132A13",
+        "31572C",
+        "4F772D",
+        "90A955",
+        "ECF39E"
+      ],
+      "name": "Leafy Green Garden",
+      "likes": "17.2K",
+      "tags": [
+        "monochrome",
+        "spring",
+        "earth",
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "231942",
+        "5E548E",
+        "9F86C0",
+        "BE95C4",
+        "E0B1CB"
+      ],
+      "name": "Purple Dream",
+      "likes": "18.4K",
+      "tags": [
+        "monochrome",
+        "winter",
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "BEE9E8",
+        "62B6CB",
+        "1B4965",
+        "CAE9FF",
+        "5FA8D3"
+      ],
+      "name": "Beach Sunset",
+      "likes": "14.2K",
+      "tags": [
+        "monochrome",
+        "winter",
+        "sea",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "CFDBD5",
+        "E8EDDF",
+        "F5CB5C",
+        "242423",
+        "333533"
+      ],
+      "name": "Monochrome Harmony",
+      "likes": "13.6K",
+      "tags": [
+        "monochrome",
+        "modern",
+        "stone",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "E7ECEF",
+        "274C77",
+        "6096BA",
+        "A3CEF1",
+        "8B8C89"
+      ],
+      "name": "Serene Blue",
+      "likes": "12.3K",
+      "tags": [
+        "monochrome",
+        "stone",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "250902",
+        "38040E",
+        "640D14",
+        "800E13",
+        "AD2831"
+      ],
+      "name": "Crimson Hues",
+      "likes": "10.9K",
+      "tags": [
+        "monochrome",
+        "autumn",
+        "red",
+        "black",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "461220",
+        "8C2F39",
+        "B23A48",
+        "FCB9B2",
+        "FED0BB"
+      ],
+      "name": "Autumn Sunset",
+      "likes": "11.7K",
+      "tags": [
+        "monochrome",
+        "summer",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "0D1321",
+        "1D2D44",
+        "3E5C76",
+        "748CAB",
+        "F0EBD8"
+      ],
+      "name": "Deep Sea",
+      "likes": "11.4K",
+      "tags": [
+        "monochrome",
+        "sea",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "00A6FB",
+        "0582CA",
+        "006494",
+        "003554",
+        "051923"
+      ],
+      "name": "Blue Lagoon",
+      "likes": "8,399",
+      "tags": [
+        "monochrome",
+        "winter",
+        "sea",
+        "blue",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "EDEEC9",
+        "DDE7C7",
+        "BFD8BD",
+        "98C9A3",
+        "77BFA3"
+      ],
+      "name": "Cozy Green Garden",
+      "likes": "9,121",
+      "tags": [
+        "monochrome",
+        "spring",
+        "beach",
+        "sea",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "134074",
+        "13315C",
+        "0B2545",
+        "8DA9C4",
+        "EEF4ED"
+      ],
+      "name": "Deep Blue Sea",
+      "likes": "7,920",
+      "tags": [
+        "monochrome",
+        "winter",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "EF6351",
+        "F38375",
+        "F7A399",
+        "FBC3BC",
+        "FFE3E0"
+      ],
+      "name": "Coral Pink Delight",
+      "likes": "8,354",
+      "tags": [
+        "monochrome",
+        "summer",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "E0FBFC",
+        "C2DFE3",
+        "9DB4C0",
+        "5C6B73",
+        "253237"
+      ],
+      "name": "Silent Waters",
+      "likes": "8,080",
+      "tags": [
+        "monochrome",
+        "modern",
+        "winter",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "A1CCA5",
+        "8FB996",
+        "709775",
+        "415D43",
+        "111D13"
+      ],
+      "name": "Green Serenity",
+      "likes": "7,432",
+      "tags": [
+        "monochrome",
+        "winter",
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "FBFBF2",
+        "E5E6E4",
+        "CFD2CD",
+        "A6A2A2",
+        "847577"
+      ],
+      "name": "Soft Serenity",
+      "likes": "7,266",
+      "tags": [
+        "monochrome",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "05668D",
+        "028090",
+        "00A896",
+        "02C39A",
+        "F0F3BD"
+      ],
+      "name": "Turquoise Harmony",
+      "likes": "22.3K",
+      "tags": [
+        "gradient",
+        "spring",
+        "beach",
+        "sea",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "F0EAD2",
+        "DDE5B6",
+        "ADC178",
+        "A98467",
+        "6C584C"
+      ],
+      "name": "Earthy Tones",
+      "likes": "23.4K",
+      "tags": [
+        "gradient",
+        "vintage",
+        "retro",
+        "classic",
+        "spring",
+        "summer",
+        "earth",
+        "natural",
+        "green",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "9F7E69",
+        "D2BBA0",
+        "F2EFC7",
+        "F7FFE0",
+        "FFEEE2"
+      ],
+      "name": "Golden Glow",
+      "likes": "4,576",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "F8F4E3",
+        "D4CDC3",
+        "D5D0CD",
+        "A2A392",
+        "9A998C"
+      ],
+      "name": "Soft Serenity",
+      "likes": "3,644",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic",
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "92977E",
+        "E6E18F",
+        "FEFCAD",
+        "EADDA6",
+        "FFFAE2"
+      ],
+      "name": "Earthy Sunshine Bliss",
+      "likes": "2,007",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "FCB97D",
+        "EDD892",
+        "C6B89E",
+        "B5B8A3",
+        "AABA9E"
+      ],
+      "name": "Sunshine Serenity Bliss",
+      "likes": "2,108",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "EDE0D4",
+        "E6CCB2",
+        "DDB892",
+        "B08968",
+        "7F5539"
+      ],
+      "name": "Cozy Cinnamon Latte",
+      "likes": "1,326",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "E5CDB0",
+        "F3D6C2",
+        "FBF1EA",
+        "EFEDE6",
+        "D7D3C1"
+      ],
+      "name": "Sunny Sand Dunes",
+      "likes": "1,094",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "825F45",
+        "797D62",
+        "D08C60",
+        "FFCB69",
+        "997B66"
+      ],
+      "name": "Toasty Cinnamon Glow",
+      "likes": "820",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "C4CEA1",
+        "D9E0A3",
+        "FDF2B0",
+        "F3D17C",
+        "CF9963"
+      ],
+      "name": "Sunny Lemonade Fun",
+      "likes": "853",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "6F4E37",
+        "A67B5B",
+        "FED8B1",
+        "D99A6C",
+        "ECB176"
+      ],
+      "name": "Cozy Caramel Delight",
+      "likes": "670",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "FFA86B",
+        "FFBA78",
+        "FFCC84",
+        "FFD991",
+        "FFE69E"
+      ],
+      "name": "Sunny Citrus Burst",
+      "likes": "549",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "CB997E",
+        "EDDCD2",
+        "FFF1E6",
+        "A5A58D",
+        "826E5A"
+      ],
+      "name": "Cozy Neutral Comfort",
+      "likes": "726",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "797D62",
+        "9B9B7A",
+        "FFCB70",
+        "F0B27A",
+        "D08C60"
+      ],
+      "name": "Sunflower Meadow Glow",
+      "likes": "531",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "F7E1D3",
+        "EDBF9E",
+        "DA9461",
+        "FEDB72",
+        "C3CFA0"
+      ],
+      "name": "Warm Autumn Harvest",
+      "likes": "351",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "F5F4EF",
+        "F1DBCE",
+        "686763",
+        "B8B5B0",
+        "E5E2D9"
+      ],
+      "name": "Warm Earthy Neutrals",
+      "likes": "412",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "CB997E",
+        "DDBEA9",
+        "FFE8D6",
+        "B7B7A4",
+        "A5A58D"
+      ],
+      "name": "Neutral Earthy Harmony",
+      "likes": "489",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "F8F0E5",
+        "956B4B",
+        "E2C7AA",
+        "8F857B",
+        "B19A81"
+      ],
+      "name": "Rustic Earth Tones",
+      "likes": "312",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "E7DECD",
+        "EFE8DB",
+        "F4EFE6",
+        "FAF7F0",
+        "FBFAF8"
+      ],
+      "name": "Whimsical Winter Wonderland",
+      "likes": "329",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "CDD1BF",
+        "E8EAD9",
+        "FAF9EC",
+        "F3EDDE",
+        "BEA892"
+      ],
+      "name": "Earthy Neutral Tones",
+      "likes": "398",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "E6CCB2",
+        "DDB892",
+        "B08968",
+        "7F5539",
+        "9C6644"
+      ],
+      "name": "Cozy Fireside Hues",
+      "likes": "426",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "DEEFB7",
+        "C8DD96",
+        "9BB55F",
+        "728740",
+        "56682C"
+      ],
+      "name": "Meadow Morning Delight",
+      "likes": "300",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "E7E1DA",
+        "D3C8BB",
+        "BFAF9C",
+        "AB967D",
+        "A1896E"
+      ],
+      "name": "Earthy Neutral Tones",
+      "likes": "270",
+      "tags": [
+        "vintage",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "hex": [
+        "01161E",
+        "124559",
+        "598392",
+        "AEC3B0",
+        "EFF6E0"
+      ],
+      "name": "Ocean Serenity",
+      "likes": "12K",
+      "tags": [
+        "modern",
+        "sea",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "EEE2DF",
+        "EED7C5",
+        "C89F9C",
+        "C97C5D",
+        "B36A5E"
+      ],
+      "name": "Autumn Hues",
+      "likes": "13.4K",
+      "tags": [
+        "modern",
+        "autumn",
+        "spring",
+        "summer",
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "16697A",
+        "489FB5",
+        "82C0CC",
+        "EDE7E3",
+        "FFA62B"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "10.3K",
+      "tags": [
+        "modern",
+        "beach",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "2D3142",
+        "BFC0C0",
+        "FFFFFF",
+        "EF8354",
+        "4F5D75"
+      ],
+      "name": "Minimalist Elegance",
+      "likes": "9,007",
+      "tags": [
+        "modern",
+        "stone",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "022B3A",
+        "1F7A8C",
+        "BFDBF7",
+        "E1E5F2",
+        "FFFFFF"
+      ],
+      "name": "Gentle Sea Breeze",
+      "likes": "7,987",
+      "tags": [
+        "modern",
+        "sea",
+        "stone",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "7C6A0A",
+        "BABD8D",
+        "FFDAC6",
+        "FA9500",
+        "EB6424"
+      ],
+      "name": "Golden Glow",
+      "likes": "7,243",
+      "tags": [
+        "modern",
+        "autumn",
+        "summer",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "2B2D42",
+        "8D99AE",
+        "EDF2F4",
+        "EF233C",
+        "D80032"
+      ],
+      "name": "Monochrome Red",
+      "likes": "6,511",
+      "tags": [
+        "modern",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "495867",
+        "577399",
+        "BDD5EA",
+        "F7F7FF",
+        "FE5F55"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "7,665",
+      "tags": [
+        "modern",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "DCDCDD",
+        "C5C3C6",
+        "46494C",
+        "4C5C68",
+        "1985A1"
+      ],
+      "name": "Industrial Blue",
+      "likes": "7,518",
+      "tags": [
+        "modern",
+        "winter",
+        "stone",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "083D77",
+        "EBEBD3",
+        "F4D35E",
+        "EE964B",
+        "F95738"
+      ],
+      "name": "Dusk Horizon",
+      "likes": "6,072",
+      "tags": [
+        "modern",
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "EFF1ED",
+        "373D20",
+        "717744",
+        "BCBD8B",
+        "766153"
+      ],
+      "name": "Nature Harmony",
+      "likes": "6,072",
+      "tags": [
+        "modern",
+        "earth",
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "223843",
+        "EFF1F3",
+        "DBD3D8",
+        "D8B4A0",
+        "D77A61"
+      ],
+      "name": "Misty Morning",
+      "likes": "6,292",
+      "tags": [
+        "modern",
+        "sand",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "031926",
+        "468189",
+        "77ACA2",
+        "9DBEBB",
+        "F4E9CD"
+      ],
+      "name": "Mystic Waters",
+      "likes": "5,902",
+      "tags": [
+        "modern",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "586BA4",
+        "324376",
+        "F5DD90",
+        "F68E5F",
+        "F76C5E"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "5,469",
+      "tags": [
+        "modern",
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "231F20",
+        "BB4430",
+        "7EBDC2",
+        "F3DFA2",
+        "EFE6DD"
+      ],
+      "name": "Cozy Fireside",
+      "likes": "5,137",
+      "tags": [
+        "modern"
+      ]
+    },
+    {
+      "hex": [
+        "F1DAC4",
+        "A69CAC",
+        "474973",
+        "161B33",
+        "0D0C1D"
+      ],
+      "name": "Vintage Vibes",
+      "likes": "5,378",
+      "tags": [
+        "modern"
+      ]
+    },
+    {
+      "hex": [
+        "13293D",
+        "006494",
+        "247BA0",
+        "1B98E0",
+        "E8F1F2"
+      ],
+      "name": "Deep Sea",
+      "likes": "4,635",
+      "tags": [
+        "modern"
+      ]
+    },
+    {
+      "hex": [
+        "C3A995",
+        "AB947E",
+        "6F5E53",
+        "8A7968",
+        "593D3B"
+      ],
+      "name": "Cozy Cabin",
+      "likes": "4,969",
+      "tags": [
+        "modern",
+        "summer",
+        "natural",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "474448",
+        "2D232E",
+        "E0DDCF",
+        "534B52",
+        "F1F0EA"
+      ],
+      "name": "Monochrome Chic",
+      "likes": "4,333",
+      "tags": [
+        "modern",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "131515",
+        "2B2C28",
+        "339989",
+        "7DE2D1",
+        "FFFAFB"
+      ],
+      "name": "Forest Adventure",
+      "likes": "3,926",
+      "tags": [
+        "modern",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "6F1D1B",
+        "BB9457",
+        "432818",
+        "99582A",
+        "FFE6A7"
+      ],
+      "name": "Autumn Harvest",
+      "likes": "23K",
+      "tags": [
+        "autumn",
+        "summer",
+        "earth",
+        "natural",
+        "brown",
+        "white"
+      ]
+    },
+    {
+      "hex": [
+        "001524",
+        "15616D",
+        "FFECD1",
+        "FF7D00",
+        "78290F"
+      ],
+      "name": "Sunny Beach Day",
+      "likes": "16K",
+      "tags": [
+        "autumn",
+        "black",
+        "white",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "4F000B",
+        "720026",
+        "CE4257",
+        "FF7F51",
+        "FF9B54"
+      ],
+      "name": "Red Sunburst",
+      "likes": "14.3K",
+      "tags": [
+        "autumn",
+        "sunset",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "8CB369",
+        "F4E285",
+        "F4A259",
+        "5B8E7D",
+        "BC4B51"
+      ],
+      "name": "Spring Garden",
+      "likes": "10.2K",
+      "tags": [
+        "autumn",
+        "spring",
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "780116",
+        "F7B538",
+        "DB7C26",
+        "D8572A",
+        "C32F27"
+      ],
+      "name": "Autumn Glow",
+      "likes": "9,078",
+      "tags": [
+        "autumn",
+        "summer",
+        "sunset",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "585123",
+        "EEC170",
+        "F2A65A",
+        "F58549",
+        "772F1A"
+      ],
+      "name": "Warm Rustic Palette",
+      "likes": "8,918",
+      "tags": [
+        "autumn",
+        "summer",
+        "earth",
+        "sunset",
+        "sand",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "FB6107",
+        "F3DE2C",
+        "7CB518",
+        "5C8001",
+        "FBB02D"
+      ],
+      "name": "Golden Meadow",
+      "likes": "5,166",
+      "tags": [
+        "autumn",
+        "green",
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "EA8C55",
+        "C75146",
+        "AD2E24",
+        "81171B",
+        "540804"
+      ],
+      "name": "Fiery Sunset",
+      "likes": "6,947",
+      "tags": [
+        "autumn",
+        "summer",
+        "sunset",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "202C39",
+        "283845",
+        "B8B08D",
+        "F2D492",
+        "F29559"
+      ],
+      "name": "Autumn Harvest",
+      "likes": "7,216",
+      "tags": [
+        "autumn",
+        "earth",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "1A1423",
+        "372549",
+        "774C60",
+        "B75D69",
+        "EACDC2"
+      ],
+      "name": "Mystic Evening",
+      "likes": "7,639",
+      "tags": [
+        "autumn",
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "04151F",
+        "183A37",
+        "EFD6AC",
+        "C44900",
+        "432534"
+      ],
+      "name": "Vintage Charm",
+      "likes": "6,314",
+      "tags": [
+        "autumn",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "A4243B",
+        "D8C99B",
+        "D8973C",
+        "BD632F",
+        "273E47"
+      ],
+      "name": "Cherry Blossom",
+      "likes": "6,259",
+      "tags": [
+        "autumn",
+        "earth",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "A41623",
+        "F85E00",
+        "FFB563",
+        "FFD29D",
+        "918450"
+      ],
+      "name": "Fruit Punch",
+      "likes": "5,204",
+      "tags": [
+        "autumn",
+        "summer",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "1F2041",
+        "4B3F72",
+        "FFC857",
+        "119DA4",
+        "19647E"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "5,379",
+      "tags": [
+        "autumn"
+      ]
+    },
+    {
+      "hex": [
+        "FBBA72",
+        "CA5310",
+        "BB4D00",
+        "8F250C",
+        "691E06"
+      ],
+      "name": "Spicy Delight",
+      "likes": "5,304",
+      "tags": [
+        "autumn",
+        "summer",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "484A47",
+        "5C6D70",
+        "A37774",
+        "E88873",
+        "E0AC9D"
+      ],
+      "name": "Earthy Tones",
+      "likes": "6,431",
+      "tags": [
+        "autumn",
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "3C1518",
+        "69140E",
+        "A44200",
+        "D58936",
+        "F2F3AE"
+      ],
+      "name": "Autumn Glow",
+      "likes": "4,665",
+      "tags": [
+        "autumn",
+        "summer",
+        "earth",
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "AEB4A9",
+        "E0C1B3",
+        "D89A9E",
+        "C37D92",
+        "846267"
+      ],
+      "name": "Whimsy Chic",
+      "likes": "5,147",
+      "tags": [
+        "autumn",
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "F4E409",
+        "EEBA0B",
+        "C36F09",
+        "A63C06",
+        "710000"
+      ],
+      "name": "Sunset Glow",
+      "likes": "3,451",
+      "tags": [
+        "autumn",
+        "summer",
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "124E78",
+        "F0F0C9",
+        "F2BB05",
+        "D74E09",
+        "6E0E0A"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "3,909",
+      "tags": [
+        "autumn"
+      ]
+    },
+    {
+      "hex": [
+        "5E0B15",
+        "90323D",
+        "D9CAB3",
+        "BC8034",
+        "8C7A6B"
+      ],
+      "name": "Dusty Nomad",
+      "likes": "4,112",
+      "tags": [
+        "autumn",
+        "sand",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "B39C4D",
+        "768948",
+        "607744",
+        "34623F",
+        "1E2F23"
+      ],
+      "name": "Mossy Meadow",
+      "likes": "4,081",
+      "tags": [
+        "autumn",
+        "earth",
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "D88C9A",
+        "F2D0A9",
+        "F1E3D3",
+        "99C1B9",
+        "8E7DBE"
+      ],
+      "name": "Pastel Harmony",
+      "likes": "9,506",
+      "tags": [
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "BCE784",
+        "5DD39E",
+        "348AA7",
+        "525174",
+        "513B56"
+      ],
+      "name": "Spring Blooms",
+      "likes": "7,244",
+      "tags": [
+        "spring",
+        "winter",
+        "beach",
+        "sea",
+        "green",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "B09E99",
+        "FEE9E1",
+        "FAD4C0",
+        "64B6AC",
+        "C0FDFB"
+      ],
+      "name": "Whimsical Hues",
+      "likes": "5,960",
+      "tags": [
+        "spring",
+        "sky",
+        "sand",
+        "natural",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "5D2A42",
+        "FB6376",
+        "FCB1A6",
+        "FFDCCC",
+        "FFF9EC"
+      ],
+      "name": "Sweet Sorbet",
+      "likes": "5,410",
+      "tags": [
+        "spring",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "5BC0EB",
+        "FDE74C",
+        "9BC53D",
+        "E55934",
+        "FA7921"
+      ],
+      "name": "Sunrise Glow",
+      "likes": "5,827",
+      "tags": [
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "666A86",
+        "788AA3",
+        "92B6B1",
+        "B2C9AB",
+        "E8DDB5"
+      ],
+      "name": "Pastel Dreams",
+      "likes": "6,135",
+      "tags": [
+        "spring",
+        "earth",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "EFC7C2",
+        "FFE5D4",
+        "BFD3C1",
+        "68A691",
+        "694F5D"
+      ],
+      "name": "Whimsical Garden",
+      "likes": "5,811",
+      "tags": [
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "F7F4EA",
+        "DED9E2",
+        "C0B9DD",
+        "80A1D4",
+        "75C9C8"
+      ],
+      "name": "Lavender Serenity",
+      "likes": "5,127",
+      "tags": [
+        "spring",
+        "sky",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "424B54",
+        "93A8AC",
+        "FFFFFF",
+        "E2B4BD",
+        "9B6A6C"
+      ],
+      "name": "Nature's Embrace",
+      "likes": "5,063",
+      "tags": [
+        "spring"
+      ]
+    },
+    {
+      "hex": [
+        "F3E9DC",
+        "C08552",
+        "5E3023",
+        "895737",
+        "DAB49D"
+      ],
+      "name": "Autumn Harvest",
+      "likes": "8,183",
+      "tags": [
+        "summer",
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "CC8B86",
+        "F9EAE1",
+        "7D4F50",
+        "D1BE9C",
+        "AA998F"
+      ],
+      "name": "Antique Rose",
+      "likes": "8,565",
+      "tags": [
+        "summer"
+      ]
+    },
+    {
+      "hex": [
+        "595959",
+        "7F7F7F",
+        "A5A5A5",
+        "CCCCCC",
+        "F2F2F2"
+      ],
+      "name": "Silver Lining",
+      "likes": "5,170",
+      "tags": [
+        "summer",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "CC444B",
+        "DA5552",
+        "DF7373",
+        "E39695",
+        "E4B1AB"
+      ],
+      "name": "Cherry Blossom",
+      "likes": "6,620",
+      "tags": [
+        "summer",
+        "sunset",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "C4BBAF",
+        "A5978B",
+        "5C4742",
+        "8D5B4C",
+        "5A2A27"
+      ],
+      "name": "Earthy Tones",
+      "likes": "5,142",
+      "tags": [
+        "summer"
+      ]
+    },
+    {
+      "hex": [
+        "2F6690",
+        "3A7CA5",
+        "D9DCD6",
+        "16425B",
+        "81C3D7"
+      ],
+      "name": "Deep Blue Waters",
+      "likes": "7,820",
+      "tags": [
+        "winter",
+        "sky",
+        "sea",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "6F2DBD",
+        "A663CC",
+        "B298DC",
+        "B8D0EB",
+        "B9FAF8"
+      ],
+      "name": "Purple Rainy Day",
+      "likes": "8,239",
+      "tags": [
+        "winter",
+        "sunset",
+        "sea",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "64A6BD",
+        "90A8C3",
+        "ADA7C9",
+        "D7B9D5",
+        "F4CAE0"
+      ],
+      "name": "Pastel Lavender Shades",
+      "likes": "10.1K",
+      "tags": [
+        "winter",
+        "sunset",
+        "sky",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "004E64",
+        "00A5CF",
+        "9FFFCB",
+        "25A18E",
+        "7AE582"
+      ],
+      "name": "Refreshing Aqua Tones",
+      "likes": "6,113",
+      "tags": [
+        "winter",
+        "sea",
+        "blue",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "1F363D",
+        "40798C",
+        "70A9A1",
+        "9EC1A3",
+        "CFE0C3"
+      ],
+      "name": "Tranquil Waters",
+      "likes": "7,088",
+      "tags": [
+        "winter",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "CCDBDC",
+        "9AD1D4",
+        "80CED7",
+        "007EA7",
+        "003249"
+      ],
+      "name": "Marine Blue",
+      "likes": "6,110",
+      "tags": [
+        "winter",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "1F2421",
+        "216869",
+        "49A078",
+        "9CC5A1",
+        "DCE1DE"
+      ],
+      "name": "Forest Green",
+      "likes": "5,834",
+      "tags": [
+        "winter",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "DD6E42",
+        "E8DAB2",
+        "4F6D7A",
+        "C0D6DF",
+        "EAEAEA"
+      ],
+      "name": "Earthy Neutrals",
+      "likes": "7,426",
+      "tags": [
+        "earth",
+        "sand",
+        "beach",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "FAF3DD",
+        "C8D5B9",
+        "8FC0A9",
+        "68B0AB",
+        "4A7C59"
+      ],
+      "name": "Soft Pastels",
+      "likes": "7,459",
+      "tags": [
+        "earth",
+        "sand",
+        "beach",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "160F29",
+        "246A73",
+        "368F8B",
+        "F3DFC1",
+        "DDBEA8"
+      ],
+      "name": "Coastal Vibes",
+      "likes": "7,279",
+      "tags": [
+        "earth",
+        "sand",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "0A0908",
+        "22333B",
+        "F2F4F3",
+        "A9927D",
+        "5E503F"
+      ],
+      "name": "Mocha Latte",
+      "likes": "5,915",
+      "tags": [
+        "earth",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "7A6C5D",
+        "2A3D45",
+        "DDC9B4",
+        "BCAC9B",
+        "C17C74"
+      ],
+      "name": "Cozy Cabin",
+      "likes": "6,667",
+      "tags": [
+        "earth",
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "96BBBB",
+        "618985",
+        "414535",
+        "F2E3BC",
+        "C19875"
+      ],
+      "name": "Mint Chocolate",
+      "likes": "5,064",
+      "tags": [
+        "earth",
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "424B54",
+        "B38D97",
+        "D5ACA9",
+        "EBCFB2",
+        "C5BAAF"
+      ],
+      "name": "Muted Pastels",
+      "likes": "5,345",
+      "tags": [
+        "earth"
+      ]
+    },
+    {
+      "hex": [
+        "F7F7F2",
+        "E4E6C3",
+        "899878",
+        "222725",
+        "121113"
+      ],
+      "name": "Earthy Harmony",
+      "likes": "4,748",
+      "tags": [
+        "earth"
+      ]
+    },
+    {
+      "hex": [
+        "352208",
+        "E1BB80",
+        "7B6B43",
+        "685634",
+        "806443"
+      ],
+      "name": "Rustic Chic",
+      "likes": "4,221",
+      "tags": [
+        "earth",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "283044",
+        "78A1BB",
+        "EBF5EE",
+        "BFA89E",
+        "8B786D"
+      ],
+      "name": "Vintage Charm",
+      "likes": "4,648",
+      "tags": [
+        "earth",
+        "sand",
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "667761",
+        "545E56",
+        "917C78",
+        "B79492",
+        "EAE1DF"
+      ],
+      "name": "Misty Morning",
+      "likes": "4,620",
+      "tags": [
+        "earth"
+      ]
+    },
+    {
+      "hex": [
+        "F7DBA7",
+        "F1AB86",
+        "C57B57",
+        "1E2D2F",
+        "041F1E"
+      ],
+      "name": "Sunny Sorbet",
+      "likes": "4,352",
+      "tags": [
+        "earth"
+      ]
+    },
+    {
+      "hex": [
+        "ECC8AF",
+        "E7AD99",
+        "CE796B",
+        "C18C5D",
+        "495867"
+      ],
+      "name": "Earthy Terracotta Tones",
+      "likes": "9,422",
+      "tags": [
+        "sunset",
+        "sand",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "2364AA",
+        "3DA5D9",
+        "73BFB8",
+        "FEC601",
+        "EA7317"
+      ],
+      "name": "Vibrant Summer",
+      "likes": "5,629",
+      "tags": [
+        "sunset",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "FAA275",
+        "FF8C61",
+        "CE6A85",
+        "985277",
+        "5C374C"
+      ],
+      "name": "Warm Sunset",
+      "likes": "6,403",
+      "tags": [
+        "sunset",
+        "sand",
+        "beach",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "11151C",
+        "212D40",
+        "364156",
+        "7D4E57",
+        "D66853"
+      ],
+      "name": "Twilight Hues",
+      "likes": "6,068",
+      "tags": [
+        "sunset",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "E8D6CB",
+        "D0ADA7",
+        "AD6A6C",
+        "5D2E46",
+        "B58DB6"
+      ],
+      "name": "Rustic Charm",
+      "likes": "6,600",
+      "tags": [
+        "sunset",
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "6E44FF",
+        "B892FF",
+        "FFC2E2",
+        "FF90B3",
+        "EF7A85"
+      ],
+      "name": "Magical Melody",
+      "likes": "4,867",
+      "tags": [
+        "sunset",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "3A2E39",
+        "1E555C",
+        "F4D8CD",
+        "EDB183",
+        "F15152"
+      ],
+      "name": "Autumn Harmony",
+      "likes": "5,105",
+      "tags": [
+        "sunset"
+      ]
+    },
+    {
+      "hex": [
+        "0A1128",
+        "001F54",
+        "034078",
+        "1282A2",
+        "FEFCFB"
+      ],
+      "name": "Deep Ocean Blue",
+      "likes": "8,022",
+      "tags": [
+        "sky",
+        "sea",
+        "blue",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "F8FFE5",
+        "06D6A0",
+        "1B9AAA",
+        "EF476F",
+        "FFC43D"
+      ],
+      "name": "Bright Contrasts",
+      "likes": "6,988",
+      "tags": [
+        "sky",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "072AC8",
+        "1E96FC",
+        "A2D6F9",
+        "FCF300",
+        "FFC600"
+      ],
+      "name": "Summer Sky",
+      "likes": "5,009",
+      "tags": [
+        "sky",
+        "sea",
+        "gold",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "5465FF",
+        "788BFF",
+        "9BB1FF",
+        "BFD7FF",
+        "E2FDFF"
+      ],
+      "name": "Pastel Dreams",
+      "likes": "5,631",
+      "tags": [
+        "sky",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "0C1821",
+        "1B2A41",
+        "324A5F",
+        "CCC9DC"
+      ],
+      "name": "Midnight Blues",
+      "likes": "4,645",
+      "tags": [
+        "sky",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "E7E6F7",
+        "E3D0D8",
+        "AEA3B0",
+        "827081",
+        "C6D2ED"
+      ],
+      "name": "Vintage Lavender",
+      "likes": "5,295",
+      "tags": [
+        "sky",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "CEE5F2",
+        "ACCBE1",
+        "7C98B3",
+        "637081",
+        "536B78"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "4,976",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "03256C",
+        "2541B2",
+        "1768AC",
+        "06BEE1",
+        "FFFFFF"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "3,887",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "04080F",
+        "507DBC",
+        "A1C6EA",
+        "BBD1EA",
+        "DAE3E5"
+      ],
+      "name": "Blue Lagoon",
+      "likes": "4,038",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "DBC2CF",
+        "9FA2B2",
+        "3C7A89",
+        "2E4756",
+        "16262E"
+      ],
+      "name": "Soft Serenity",
+      "likes": "4,260",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "C5D5EA",
+        "759EB8",
+        "7392B7",
+        "B3C5D7",
+        "D8E1E9"
+      ],
+      "name": "Seaside Escape",
+      "likes": "4,100",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "D4AFB9",
+        "D1CFE2",
+        "9CADCE",
+        "7EC4CF",
+        "52B2CF"
+      ],
+      "name": "Whispering Waves",
+      "likes": "3,902",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "FFB8D1",
+        "E4B4C2",
+        "E7CEE3",
+        "E0E1E9",
+        "DDFDFE"
+      ],
+      "name": "Monochrome Magic",
+      "likes": "4,053",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "78C0E0",
+        "449DD1",
+        "192BC2",
+        "150578",
+        "0E0E52"
+      ],
+      "name": "Blue Lagoon",
+      "likes": "3,039",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "CFE8EF",
+        "C6DBF0",
+        "AED1E6",
+        "A0C4E2",
+        "85C7DE"
+      ],
+      "name": "Serene Skies",
+      "likes": "3,820",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "251605",
+        "C57B57",
+        "F1AB86",
+        "F7DBA7",
+        "9CAFB7"
+      ],
+      "name": "Rustic Charm",
+      "likes": "3,550",
+      "tags": [
+        "sky",
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "F4E8C1",
+        "A0C1B9",
+        "70A0AF",
+        "706993",
+        "331E38"
+      ],
+      "name": "Sunset Symphony",
+      "likes": "3,461",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "BBDEF0",
+        "00A6A6",
+        "EFCA08",
+        "F49F0A",
+        "F08700"
+      ],
+      "name": "Sunshine Beach",
+      "likes": "3,074",
+      "tags": [
+        "sky",
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "36213E",
+        "554971",
+        "63768D",
+        "8AC6D0",
+        "B8F3FF"
+      ],
+      "name": "Mystic Voyage",
+      "likes": "3,509",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "0D0221",
+        "0F084B",
+        "26408B",
+        "A6CFD5",
+        "C2E7D9"
+      ],
+      "name": "Starlit Sky",
+      "likes": "3,096",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "C9CAD9",
+        "D1D2F9",
+        "A3BCF9",
+        "7796CB",
+        "576490"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "3,387",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "141B41",
+        "306BAC",
+        "6F9CEB",
+        "98B9F2",
+        "918EF4"
+      ],
+      "name": "Starry Night",
+      "likes": "2,908",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "73FBD3",
+        "44E5E7",
+        "59D2FE",
+        "4A8FE7",
+        "5C7AFF"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "2,525",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "A682FF",
+        "715AFF",
+        "5887FF",
+        "55C1FF",
+        "102E4A"
+      ],
+      "name": "Magical Skies",
+      "likes": "2,633",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "D8DCFF",
+        "AEADF0",
+        "C38D94",
+        "A76571",
+        "565676"
+      ],
+      "name": "Whimsy Wonderland",
+      "likes": "2,827",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "E8E9F3",
+        "CECECE",
+        "A6A6A8",
+        "272635",
+        "B1E5F2"
+      ],
+      "name": "Mystic Night",
+      "likes": "2,659",
+      "tags": [
+        "sky"
+      ]
+    },
+    {
+      "hex": [
+        "0FA3B1",
+        "B5E2FA",
+        "F9F7F3",
+        "EDDEA4",
+        "F7A072"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "7,243",
+      "tags": [
+        "sand",
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "F79256",
+        "FBD1A2",
+        "7DCFB6",
+        "00B2CA",
+        "1D4E89"
+      ],
+      "name": "Summer Sunset",
+      "likes": "7,285",
+      "tags": [
+        "sand",
+        "beach",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "DDD8C4",
+        "A3C9A8",
+        "84B59F",
+        "69A297",
+        "50808E"
+      ],
+      "name": "Elegant Greens",
+      "likes": "6,005",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "0FA3B1",
+        "D9E5D6",
+        "EDDEA4",
+        "F7A072",
+        "FF9B42"
+      ],
+      "name": "Sunny Ochre",
+      "likes": "4,279",
+      "tags": [
+        "sand",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "F7F0F5",
+        "DECBB7",
+        "8F857D",
+        "5C5552",
+        "433633"
+      ],
+      "name": "Cozy Neutrals",
+      "likes": "4,333",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "1A1423",
+        "3D314A",
+        "684756",
+        "96705B",
+        "AB8476"
+      ],
+      "name": "Mystic Mauve",
+      "likes": "3,968",
+      "tags": [
+        "sand",
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "EBBAB9",
+        "C9C5BA",
+        "97B1A6",
+        "698996",
+        "407076"
+      ],
+      "name": "Misty Morning",
+      "likes": "3,555",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "050505",
+        "1B9AAA",
+        "DDDBCB",
+        "F5F1E3",
+        "FFFFFF"
+      ],
+      "name": "Monochrome Charm",
+      "likes": "3,137",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "443742",
+        "846C5B",
+        "CEA07E",
+        "EDD9A3",
+        "E2E8C0"
+      ],
+      "name": "Warm Embrace",
+      "likes": "3,275",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "2B4162",
+        "385F71",
+        "F5F0F6",
+        "D7B377",
+        "8F754F"
+      ],
+      "name": "Whimsical Earth",
+      "likes": "3,029",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "813405",
+        "D45113",
+        "F9A03F",
+        "F8DDA4",
+        "DDF9C1"
+      ],
+      "name": "Caramel Delight",
+      "likes": "2,841",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "DBCFB0",
+        "BFC8AD",
+        "90B494",
+        "718F94",
+        "545775"
+      ],
+      "name": "Earthy Harmony",
+      "likes": "3,147",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "75DBCD",
+        "C9DBBA",
+        "DCDBA8",
+        "F5CDA7",
+        "FAA381"
+      ],
+      "name": "Natural Harmony",
+      "likes": "3,051",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "EDD4B2",
+        "D0A98F",
+        "4D243D",
+        "CAC2B5",
+        "ECDCC9"
+      ],
+      "name": "Rustic Beauty",
+      "likes": "2,972",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "12263A",
+        "06BCC1",
+        "C5D8D1",
+        "F4EDEA",
+        "F4D1AE"
+      ],
+      "name": "Midnight Breeze",
+      "likes": "2,462",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "A57548",
+        "FCD7AD",
+        "F6C28B",
+        "5296A5",
+        "82DDF0"
+      ],
+      "name": "Sandy Serenity",
+      "likes": "2,807",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "FC9F5B",
+        "FBD1A2",
+        "ECE4B7",
+        "7DCFB6",
+        "33CA7F"
+      ],
+      "name": "Tropical Bliss",
+      "likes": "2,685",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "FEFEFF",
+        "D6EFFF",
+        "FED18C",
+        "FED99B",
+        "FE654F"
+      ],
+      "name": "Sunset Glow",
+      "likes": "2,697",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "074F57",
+        "077187",
+        "74A57F",
+        "9ECE9A",
+        "E4C5AF"
+      ],
+      "name": "Whimsical Greens",
+      "likes": "2,575",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "E2DBBE",
+        "D5D6AA",
+        "9DBBAE",
+        "769FB6",
+        "188FA7"
+      ],
+      "name": "Earth Tones",
+      "likes": "2,671",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "CDC392",
+        "E8E5DA",
+        "9EB7E5",
+        "648DE5",
+        "304C89"
+      ],
+      "name": "Vintage Blues",
+      "likes": "2,178",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "46B1C9",
+        "84C0C6",
+        "9FB7B9",
+        "BCC1BA",
+        "F2E2D2"
+      ],
+      "name": "Calm Waters",
+      "likes": "2,673",
+      "tags": [
+        "sand"
+      ]
+    },
+    {
+      "hex": [
+        "252323",
+        "70798C",
+        "F5F1ED",
+        "DAD2BC",
+        "A99985"
+      ],
+      "name": "Earthy Tones",
+      "likes": "6,259",
+      "tags": [
+        "natural",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "74D3AE",
+        "678D58",
+        "A6C48A",
+        "F6E7CB",
+        "DD9787"
+      ],
+      "name": "Pastel Meadows",
+      "likes": "5,168",
+      "tags": [
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "F4DBD8",
+        "BEA8A7",
+        "C09891",
+        "775144",
+        "2A0800"
+      ],
+      "name": "Autumn Hues",
+      "likes": "5,426",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "CCDAD1",
+        "9CAEA9",
+        "788585",
+        "6F6866",
+        "38302E"
+      ],
+      "name": "Grayscale Harmony",
+      "likes": "4,316",
+      "tags": [
+        "natural",
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "134611",
+        "3E8914",
+        "3DA35D",
+        "96E072",
+        "E8FCCF"
+      ],
+      "name": "Enchanted Forest",
+      "likes": "3,145",
+      "tags": [
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "966B9D",
+        "C98686",
+        "F2B880",
+        "FFF4EC",
+        "E7CFBC"
+      ],
+      "name": "Pastel Paradise",
+      "likes": "4,004",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "3F0D12",
+        "A71D31",
+        "F1F0CC",
+        "D5BF86",
+        "8D775F"
+      ],
+      "name": "Vintage Charm",
+      "likes": "3,443",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "5D737E",
+        "64B6AC",
+        "C0FDFB",
+        "DAFFEF",
+        "FCFFFD"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "3,828",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "E54B4B",
+        "FFA987",
+        "F7EBE8",
+        "444140",
+        "1E1E24"
+      ],
+      "name": "Candy Crush",
+      "likes": "3,531",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "3A606E",
+        "607B7D",
+        "828E82",
+        "AAAE8E",
+        "E0E0E0"
+      ],
+      "name": "Mystic Forest",
+      "likes": "3,711",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "F5FDC6",
+        "F5C396",
+        "D0B17A",
+        "A89F68",
+        "41521F"
+      ],
+      "name": "Golden Glow",
+      "likes": "3,449",
+      "tags": [
+        "natural",
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "EFF9F0",
+        "DDC8C4",
+        "896A67",
+        "6B4D57",
+        "13070C"
+      ],
+      "name": "Earthy Harmony",
+      "likes": "3,633",
+      "tags": [
+        "natural"
+      ]
+    },
+    {
+      "hex": [
+        "FF6B35",
+        "F7C59F",
+        "EFEFD0",
+        "004E89",
+        "1A659E"
+      ],
+      "name": "Summer Sunset",
+      "likes": "9,532",
+      "tags": [
+        "beach",
+        "sea",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "0B3954",
+        "087E8B",
+        "BFD7EA",
+        "FF5A5F",
+        "C81D25"
+      ],
+      "name": "Crimson Coast",
+      "likes": "6,816",
+      "tags": [
+        "beach",
+        "sea",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "2F4858",
+        "33658A",
+        "86BBD8",
+        "F6AE2D",
+        "F26419"
+      ],
+      "name": "Ocean Sunset",
+      "likes": "6,872",
+      "tags": [
+        "beach",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "031D44",
+        "04395E",
+        "70A288",
+        "DAB785",
+        "D5896F"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "7,427",
+      "tags": [
+        "beach",
+        "sea",
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "114B5F",
+        "1A936F",
+        "88D498",
+        "C6DABF",
+        "F3E9D2"
+      ],
+      "name": "Green Oasis",
+      "likes": "7,136",
+      "tags": [
+        "beach",
+        "sea"
+      ]
+    },
+    {
+      "hex": [
+        "25CED1",
+        "FFFFFF",
+        "FCEADE",
+        "FF8A5B",
+        "EA526F"
+      ],
+      "name": "Tropical Bliss",
+      "likes": "6,215",
+      "tags": [
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "033F63",
+        "28666E",
+        "7C9885",
+        "B5B682",
+        "FEDC97"
+      ],
+      "name": "Seaside Serenity",
+      "likes": "5,989",
+      "tags": [
+        "beach"
+      ]
+    },
+    {
+      "hex": [
+        "D6D6D6",
+        "FFEE32",
+        "FFD100",
+        "202020",
+        "333533"
+      ],
+      "name": "Sunflower Fields",
+      "likes": "5,303",
+      "tags": [
+        "gold",
+        "stone",
+        "yellow",
+        "black"
+      ]
+    },
+    {
+      "hex": [
+        "FDC921",
+        "FDD85D",
+        "FFFDF7",
+        "99D6EA",
+        "6798C0"
+      ],
+      "name": "Sunny Beach",
+      "likes": "2,023",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "3D0066",
+        "510087",
+        "5C0099",
+        "FDC500",
+        "FFD500"
+      ],
+      "name": "Sunset Disco Dance",
+      "likes": "1,308",
+      "tags": [
+        "gold",
+        "yellow",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "2D2A32",
+        "DDD92A",
+        "EAE151",
+        "EEEFA8",
+        "FAFDF6"
+      ],
+      "name": "Vintage Lemonade",
+      "likes": "1,916",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "000814",
+        "001D3D",
+        "003566",
+        "CCA000",
+        "F5CC00"
+      ],
+      "name": "Midnight Sunburst Gold",
+      "likes": "948",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "BF211E",
+        "E9CE2C",
+        "F9DC5C",
+        "E5F993",
+        "69A197"
+      ],
+      "name": "Fiesta Sunshine Beach",
+      "likes": "1,296",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "DF9A57",
+        "FC7A57",
+        "FCD757",
+        "EEFC57",
+        "5E5B52"
+      ],
+      "name": "Toasty Campfire Glow",
+      "likes": "1,211",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "11296B",
+        "00509D",
+        "EDEDED",
+        "FFDB57",
+        "FFCB05"
+      ],
+      "name": "Oceanic Sunburst",
+      "likes": "720",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "372B2B",
+        "850A0A",
+        "A70B0B",
+        "F1BA0A",
+        "F6DE26"
+      ],
+      "name": "Golden Fire Sunset",
+      "likes": "568",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "F9A620",
+        "FFD449",
+        "AAB03C",
+        "548C2F",
+        "104911"
+      ],
+      "name": "Golden Harvest Sunset",
+      "likes": "685",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "0B0C0C",
+        "2A2E34",
+        "E9EAEC",
+        "FBE134",
+        "E4B61A"
+      ],
+      "name": "Moonlit Golden Glow",
+      "likes": "624",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FFF75E",
+        "FFE94E",
+        "FFDA3D",
+        "FDC43F",
+        "FDB833"
+      ],
+      "name": "Sunshine Citrus Burst",
+      "likes": "479",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FE6A86",
+        "FD969A",
+        "FFDCE0",
+        "FEE255",
+        "FFDD13"
+      ],
+      "name": "Lemonade Sunshine",
+      "likes": "606",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "06837F",
+        "02CECB",
+        "B4FFFF",
+        "FED811",
+        "FDC100"
+      ],
+      "name": "Neon Summer Glow",
+      "likes": "531",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "3D0066",
+        "C670FF",
+        "EEC7FC",
+        "FFE047",
+        "FFCE1F"
+      ],
+      "name": "Vivid Electric Dreams",
+      "likes": "482",
+      "tags": [
+        "gold",
+        "yellow",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "01200F",
+        "1E4F2A",
+        "3A7D44",
+        "FDC500",
+        "FFD500"
+      ],
+      "name": "Enchanted Forest",
+      "likes": "417",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FFE100",
+        "FFC917",
+        "F00000",
+        "8C0000",
+        "050505"
+      ],
+      "name": "Fire and Gold",
+      "likes": "335",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "560BAD",
+        "7209B7",
+        "F72585",
+        "FDC500",
+        "FFD500"
+      ],
+      "name": "Electric Purple Lemonade",
+      "likes": "391",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "47026C",
+        "C86BFA",
+        "E4AFFF",
+        "F5CF05",
+        "FBE300"
+      ],
+      "name": "Mystical Sunset Glow",
+      "likes": "406",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FFE169",
+        "EDC531",
+        "C9A227",
+        "A47E1B",
+        "805B10"
+      ],
+      "name": "Golden Harvest Glow",
+      "likes": "256",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "82E1DF",
+        "EA96DF",
+        "FF65B3",
+        "FCD72C",
+        "FFDD63"
+      ],
+      "name": "Pastel Rainbow Bliss",
+      "likes": "444",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "1C1C1C",
+        "111111",
+        "FFFED5",
+        "FEE402",
+        "FDCA00"
+      ],
+      "name": "Monochrome Sunshine",
+      "likes": "328",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FFF23E",
+        "FFD12F",
+        "FFAB3B",
+        "FF792E",
+        "191919"
+      ],
+      "name": "Golden Amber Dusk",
+      "likes": "279",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "28AFFA",
+        "054A91",
+        "FFF952",
+        "FFCE22",
+        "E71D36"
+      ],
+      "name": "Ocean Sunset Adventure",
+      "likes": "290",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FFDD55",
+        "FCC602",
+        "F5BB06",
+        "663399",
+        "522888"
+      ],
+      "name": "Golden Twilight",
+      "likes": "320",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "D40000",
+        "E12C2C",
+        "FFA500",
+        "FFD700",
+        "FFDF00"
+      ],
+      "name": "Fiery Citrus Burst",
+      "likes": "242",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "001D3D",
+        "003566",
+        "CCA000",
+        "F5CC00",
+        "EBEBEB"
+      ],
+      "name": "Navy Gold Sunshine",
+      "likes": "336",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "FEE231",
+        "C2CD4B",
+        "84BA63",
+        "4AA77C",
+        "28947F"
+      ],
+      "name": "Sunny Meadow Shades",
+      "likes": "335",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "F3DCAF",
+        "FBC107",
+        "ADAC33",
+        "B1652B",
+        "893302"
+      ],
+      "name": "Golden Harvest Fields",
+      "likes": "278",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "DC562E",
+        "001D3D",
+        "003566",
+        "FFC300",
+        "FFD60A"
+      ],
+      "name": "Bold Retro Fusion",
+      "likes": "278",
+      "tags": [
+        "gold",
+        "yellow"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "2F4550",
+        "586F7C",
+        "B8DBD9",
+        "F4F4F9"
+      ],
+      "name": "Monochrome Sky",
+      "likes": "6,659",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "393D3F",
+        "FDFDFF",
+        "C6C5B9",
+        "62929E",
+        "546A7B"
+      ],
+      "name": "Moonlit Mist",
+      "likes": "5,881",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "E0E2DB",
+        "D2D4C8",
+        "B8BDB5",
+        "889696",
+        "5F7470"
+      ],
+      "name": "Silver Sage",
+      "likes": "5,345",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "DDD5D0",
+        "CFC0BD",
+        "B8B8AA",
+        "7F9183",
+        "586F6B"
+      ],
+      "name": "Mystic Moss",
+      "likes": "5,015",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "D5C5C8",
+        "9DA3A4",
+        "604D53",
+        "DB7F8E",
+        "FFDBDA"
+      ],
+      "name": "Soft Whisper",
+      "likes": "5,128",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "B4B8AB",
+        "153243",
+        "284B63",
+        "F4F9E9",
+        "EEF0EB"
+      ],
+      "name": "Minty Serenity",
+      "likes": "4,354",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "9A8F97",
+        "C3BABA",
+        "E9E3E6",
+        "B2B2B2",
+        "736F72"
+      ],
+      "name": "Cozy Neutrals",
+      "likes": "4,697",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "73877B",
+        "839788",
+        "BDBBB6",
+        "E5D1D0",
+        "F5E4D7"
+      ],
+      "name": "Tranquil Earth",
+      "likes": "4,758",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "1C1C1C",
+        "DADDD8",
+        "ECEBE4",
+        "EEF0F2",
+        "FAFAFF"
+      ],
+      "name": "White Elegance",
+      "likes": "3,985",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "119DA4",
+        "0C7489",
+        "13505B",
+        "040404",
+        "D7D9CE"
+      ],
+      "name": "Aqua Whimsy",
+      "likes": "3,979",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "BFC3BA",
+        "A9ACA9",
+        "60495A",
+        "3F3244",
+        "2F2235"
+      ],
+      "name": "Mystic Garden",
+      "likes": "4,450",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "93B7BE",
+        "F1FFFA",
+        "D5C7BC",
+        "785964",
+        "454545"
+      ],
+      "name": "Vintage Rose",
+      "likes": "4,246",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "102542",
+        "F87060",
+        "CDD7D6",
+        "B3A394",
+        "FFFFFF"
+      ],
+      "name": "Sunset Bliss",
+      "likes": "3,882",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "3D2645",
+        "832161",
+        "DA4167",
+        "F0EFF4"
+      ],
+      "name": "Gothic Glam",
+      "likes": "3,603",
+      "tags": [
+        "stone"
+      ]
+    },
+    {
+      "hex": [
+        "EDAE49",
+        "D1495B",
+        "00798C",
+        "30638E",
+        "003D5B"
+      ],
+      "name": "Warm Summer Palette",
+      "likes": "8,060",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "27187E",
+        "758BFD",
+        "AEB8FE",
+        "F1F2F6",
+        "FF8600"
+      ],
+      "name": "Midnight Sky",
+      "likes": "5,117",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "00072D",
+        "001C55",
+        "0A2472",
+        "0E6BA8",
+        "A6E1FA"
+      ],
+      "name": "Nautical Blues",
+      "likes": "5,223",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "133C55",
+        "386FA4",
+        "59A5D8",
+        "84D2F6",
+        "91E5F6"
+      ],
+      "name": "Summer Splash",
+      "likes": "5,476",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "06AED5",
+        "086788",
+        "F0C808",
+        "FFF1D0",
+        "DD1C1A"
+      ],
+      "name": "Sunshine Bliss",
+      "likes": "5,408",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "21295C",
+        "1B3B6F",
+        "065A82",
+        "1C7293",
+        "9EB3C2"
+      ],
+      "name": "Deep Sea",
+      "likes": "5,392",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "FF499E",
+        "D264B6",
+        "A480CF",
+        "779BE7",
+        "49B6FF"
+      ],
+      "name": "Pink Fantasy",
+      "likes": "5,409",
+      "tags": [
+        "blue"
+      ]
+    },
+    {
+      "hex": [
+        "97DFFC",
+        "858AE3",
+        "613DC1",
+        "4E148C",
+        "2C0735"
+      ],
+      "name": "Twilight Dreams",
+      "likes": "4,636",
+      "tags": [
+        "blue",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "D62839",
+        "BA324F",
+        "175676",
+        "4BA3C3",
+        "CCE6F4"
+      ],
+      "name": "Bold Ocean",
+      "likes": "4,382",
+      "tags": [
+        "blue",
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "880D1E",
+        "DD2D4A",
+        "F26A8D",
+        "F49CBB",
+        "CBEEF3"
+      ],
+      "name": "Rose Petal",
+      "likes": "6,183",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "D7263D",
+        "F46036",
+        "2E294E",
+        "1B998B",
+        "C5D86D"
+      ],
+      "name": "Floral Delight",
+      "likes": "5,985",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "FFFFFF",
+        "FFCAD4",
+        "B0D0D3",
+        "C08497",
+        "F7AF9D"
+      ],
+      "name": "Whimsical Romance",
+      "likes": "6,518",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "0A100D",
+        "B9BAA3",
+        "D6D5C9",
+        "A22C29",
+        "902923"
+      ],
+      "name": "Mossy Woods",
+      "likes": "4,811",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "EBD4CB",
+        "DA9F93",
+        "B6465F",
+        "890620",
+        "2C0703"
+      ],
+      "name": "Cherry Blossom",
+      "likes": "5,281",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "EF798A",
+        "F7A9A8",
+        "7D82B8",
+        "613F75",
+        "E5C3D1"
+      ],
+      "name": "Pastel Romance",
+      "likes": "4,991",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "FFC857",
+        "E9724C",
+        "C5283D",
+        "481D24",
+        "255F85"
+      ],
+      "name": "Golden Hues",
+      "likes": "4,017",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "EE6352",
+        "59CD90",
+        "3FA7D6",
+        "FAC05E",
+        "F79D84"
+      ],
+      "name": "Sunset Bliss",
+      "likes": "4,158",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "C52233",
+        "A51C30",
+        "A7333F",
+        "74121D",
+        "580C1F"
+      ],
+      "name": "Cherry Crush",
+      "likes": "3,898",
+      "tags": [
+        "red",
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "BEBBBB",
+        "444054",
+        "2F243A",
+        "FAC9B8",
+        "DB8A74"
+      ],
+      "name": "Mauve Magic",
+      "likes": "4,151",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "FFAF87",
+        "FF8E72",
+        "ED6A5E",
+        "4CE0B3",
+        "377771"
+      ],
+      "name": "Sunset Bliss",
+      "likes": "3,917",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "273043",
+        "9197AE",
+        "EFF6EE",
+        "F02D3A",
+        "DD0426"
+      ],
+      "name": "Midnight Fire",
+      "likes": "3,330",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "A31621",
+        "BFDBF7",
+        "053C5E",
+        "1F7A8C",
+        "DB222A"
+      ],
+      "name": "Scarlet Seas",
+      "likes": "3,079",
+      "tags": [
+        "red"
+      ]
+    },
+    {
+      "hex": [
+        "DA2C38",
+        "226F54",
+        "87C38F",
+        "F4F0BB",
+        "43291F"
+      ],
+      "name": "Vibrant Nature",
+      "likes": "4,245",
+      "tags": [
+        "green",
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "A8D5E2",
+        "F9A620",
+        "FFD449",
+        "548C2F",
+        "104911"
+      ],
+      "name": "Nature's Glow",
+      "likes": "3,464",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "5BBA6F",
+        "3FA34D",
+        "2A9134",
+        "137547",
+        "054A29"
+      ],
+      "name": "Lush Harmony",
+      "likes": "3,689",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "5603AD",
+        "8367C7",
+        "B3E9C7",
+        "C2F8CB",
+        "F0FFF1"
+      ],
+      "name": "Ethereal Hues",
+      "likes": "3,706",
+      "tags": [
+        "green",
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "020202",
+        "0D2818",
+        "04471C",
+        "058C42",
+        "16DB65"
+      ],
+      "name": "Green Oasis",
+      "likes": "3,444",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "0D0A0B",
+        "454955",
+        "F3EFF5",
+        "72B01D",
+        "3F7D20"
+      ],
+      "name": "Forest Whispers",
+      "likes": "3,254",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "F2C57C",
+        "DDAE7E",
+        "7FB685",
+        "426A5A",
+        "EF6F6C"
+      ],
+      "name": "Tropical Fiesta",
+      "likes": "3,676",
+      "tags": [
+        "green",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "D0EFB1",
+        "B3D89C",
+        "9DC3C2",
+        "77A6B6",
+        "4D7298"
+      ],
+      "name": "Fresh Greens",
+      "likes": "3,652",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "F5FFC6",
+        "B4E1FF",
+        "AB87FF",
+        "FFACE4",
+        "C1FF9B"
+      ],
+      "name": "Spring Fling",
+      "likes": "3,599",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "5FAD56",
+        "F2C14E",
+        "F78154",
+        "4D9078",
+        "B4436C"
+      ],
+      "name": "Vibrant Mix",
+      "likes": "3,389",
+      "tags": [
+        "green",
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "011936",
+        "465362",
+        "82A3A1",
+        "9FC490",
+        "C0DFA1"
+      ],
+      "name": "Whimsical Garden",
+      "likes": "3,443",
+      "tags": [
+        "green"
+      ]
+    },
+    {
+      "hex": [
+        "33658A",
+        "86BBD8",
+        "2F4858",
+        "F6AE2D",
+        "F26419"
+      ],
+      "name": "Ocean Breeze",
+      "likes": "4,700",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "FF8811",
+        "F4D06F",
+        "FFF8F0",
+        "9DD9D2",
+        "392F5A"
+      ],
+      "name": "Tropical Fusion",
+      "likes": "4,011",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "31393C",
+        "2176FF",
+        "33A1FD",
+        "FDCA40",
+        "F79824"
+      ],
+      "name": "Moonlit Jazz",
+      "likes": "3,583",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "4E598C",
+        "FFFFFF",
+        "F9C784",
+        "FCAF58",
+        "FF8C42"
+      ],
+      "name": "Pastel Dreams",
+      "likes": "3,738",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "33658A",
+        "86BBD8",
+        "758E4F",
+        "F6AE2D",
+        "F26419"
+      ],
+      "name": "Golden Meadow",
+      "likes": "3,520",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "EBF5DF",
+        "BAD4AA",
+        "D4D4AA",
+        "EDB458",
+        "E8871E"
+      ],
+      "name": "Spring Meadow",
+      "likes": "3,719",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "485696",
+        "E7E7E7",
+        "F9C784",
+        "FC7A1E",
+        "F24C00"
+      ],
+      "name": "Sunset Symphony",
+      "likes": "3,023",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "8EA604",
+        "F5BB00",
+        "EC9F05",
+        "D76A03",
+        "BF3100"
+      ],
+      "name": "Citrus Burst",
+      "likes": "3,280",
+      "tags": [
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "BFBDC1",
+        "6D6A75",
+        "37323E",
+        "DEB841",
+        "DE9E36"
+      ],
+      "name": "Muted Elegance",
+      "likes": "3,256",
+      "tags": [
+        "orange"
+      ]
+    },
+    {
+      "hex": [
+        "F08700",
+        "F49F0A",
+        "EFCA08",
+        "00A6A6",
+        "BBDEF0"
+      ],
+      "name": "Autumn Splendor",
+      "likes": "3,268",
+      "tags": [
+        "orange",
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "02010A",
+        "04052E",
+        "140152",
+        "22007C",
+        "0D00A4"
+      ],
+      "name": "Midnight Magic",
+      "likes": "3,958",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "DABFFF",
+        "907AD6",
+        "4F518C",
+        "2C2A4A",
+        "7FDEFF"
+      ],
+      "name": "Enchanted Forest",
+      "likes": "3,685",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "360568",
+        "5B2A86",
+        "7785AC",
+        "9AC6C5",
+        "A5E6BA"
+      ],
+      "name": "Mystic Waters",
+      "likes": "3,387",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "E2CFEA",
+        "A06CD5",
+        "6247AA",
+        "102B3F",
+        "062726"
+      ],
+      "name": "Velvet Night",
+      "likes": "3,072",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "EA7AF4",
+        "B43E8F",
+        "6200B3",
+        "3B0086",
+        "290628"
+      ],
+      "name": "Magic Unicorn",
+      "likes": "2,699",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "531CB3",
+        "944BBB",
+        "AA7BC3",
+        "CC92C2",
+        "DBA8AC"
+      ],
+      "name": "Mystic Hues",
+      "likes": "2,716",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "CAA8F5",
+        "9984D4",
+        "592E83",
+        "230C33",
+        "B27C66"
+      ],
+      "name": "Pastel Paradise Dreams",
+      "likes": "2,265",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "5E2BFF",
+        "C04CFD",
+        "FC6DAB",
+        "F7F6C5",
+        "F3FAE1"
+      ],
+      "name": "Electric Orchid Harmony",
+      "likes": "2,175",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "471CA8",
+        "884AB2",
+        "FF930A",
+        "F24B04",
+        "D1105A"
+      ],
+      "name": "Purple Sunset Delight",
+      "likes": "1,510",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "F4EFFA",
+        "2F184B",
+        "532B88",
+        "9B72CF",
+        "C8B1E4"
+      ],
+      "name": "Mystical Midnight Dreams",
+      "likes": "1,163",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "AF99FF",
+        "CAADFF",
+        "FFC2E2",
+        "FFADC7",
+        "FF99B6"
+      ],
+      "name": "Lavender Rose Embrace",
+      "likes": "763",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "9667E0",
+        "D4BBFC",
+        "EBD9FC",
+        "F2EBFB",
+        "FBFAFF"
+      ],
+      "name": "Pearly Lavender Whisper",
+      "likes": "758",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "2E005D",
+        "5C008B",
+        "8E008B",
+        "FF8300",
+        "FF6200"
+      ],
+      "name": "Magical Twilight Sky",
+      "likes": "497",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "5D16A6",
+        "9683EC",
+        "F7B801",
+        "F18701",
+        "F35B04"
+      ],
+      "name": "Mystical Galactic Hues",
+      "likes": "498",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "FCD6F9",
+        "FFC6FE",
+        "F6B2FF",
+        "CEAFFF",
+        "C19BFF"
+      ],
+      "name": "Fairy Floss Dream",
+      "likes": "595",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "301466",
+        "5C3D99",
+        "38A3A5",
+        "57CC99",
+        "80ED99"
+      ],
+      "name": "Ethereal Lavender Sky",
+      "likes": "522",
+      "tags": [
+        "purple"
+      ]
+    },
+    {
+      "hex": [
+        "ABC4AB",
+        "A39171",
+        "DCC9B6",
+        "727D71",
+        "6D4C3D"
+      ],
+      "name": "Cozy Earthtones",
+      "likes": "5,651",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "0A0908",
+        "49111C",
+        "F2F4F3",
+        "A9927D",
+        "5E503F"
+      ],
+      "name": "Gothic Romance",
+      "likes": "4,778",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "242331",
+        "533E2D",
+        "A27035",
+        "B88B4A",
+        "DDCA7D"
+      ],
+      "name": "Toasty Ember",
+      "likes": "2,891",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "6E0D25",
+        "FFFFB3",
+        "DCAB6B",
+        "774E24",
+        "6A381F"
+      ],
+      "name": "Golden Fields",
+      "likes": "2,781",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "210F04",
+        "452103",
+        "690500",
+        "934B00",
+        "BB6B00"
+      ],
+      "name": "Chocolate Delight",
+      "likes": "2,805",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "515A47",
+        "D7BE82",
+        "7A4419",
+        "755C1B",
+        "400406"
+      ],
+      "name": "Rustic Charm",
+      "likes": "3,016",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "171614",
+        "3A2618",
+        "754043",
+        "9A8873",
+        "37423D"
+      ],
+      "name": "Cozy Cafe",
+      "likes": "2,880",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "582707",
+        "972D07",
+        "FF4B3E",
+        "FFB20F",
+        "FFE548"
+      ],
+      "name": "Sunny Delight",
+      "likes": "2,404",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "141204",
+        "262A10",
+        "54442B",
+        "A9714B",
+        "E8985E"
+      ],
+      "name": "Rustic Wood",
+      "likes": "2,715",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "FBF2C0",
+        "48392A",
+        "43281C",
+        "C06E52",
+        "F96F5D"
+      ],
+      "name": "Warm Hearth",
+      "likes": "2,517",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "BBE1C3",
+        "A7CDBD",
+        "869D7A",
+        "91785D",
+        "8B5D33"
+      ],
+      "name": "Green Oasis",
+      "likes": "2,709",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "550C18",
+        "443730",
+        "786452",
+        "A5907E",
+        "F7DAD9"
+      ],
+      "name": "Cozy Cabin",
+      "likes": "2,579",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "231C07",
+        "392A16",
+        "634133",
+        "B86F52",
+        "F78764"
+      ],
+      "name": "Rustic Autumn Harvest",
+      "likes": "2,457",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "2F1000",
+        "621B00",
+        "945600",
+        "C75000"
+      ],
+      "name": "Midnight Bonfire Glow",
+      "likes": "2,179",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "B07156",
+        "AB4E68",
+        "533745",
+        "9D9171",
+        "C4A287"
+      ],
+      "name": "Cozy Coffee Cream",
+      "likes": "2,380",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "5B3000",
+        "66462C",
+        "726953",
+        "76877D",
+        "82A6B1"
+      ],
+      "name": "Toasty Coffee Hues",
+      "likes": "2,213",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "60463B",
+        "856A5D",
+        "CCC9E7",
+        "6C6F7D",
+        "2E3138"
+      ],
+      "name": "Rustic Cozy Retreat",
+      "likes": "2,075",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "7F5539",
+        "A68A64",
+        "EDE0D4",
+        "656D4A",
+        "414833"
+      ],
+      "name": "Rustic Earthy Tones",
+      "likes": "1,202",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "E71D36",
+        "AF4319",
+        "772014",
+        "3F220F",
+        "19180A"
+      ],
+      "name": "Fiery Autumn Glow",
+      "likes": "1,691",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "9B8816",
+        "F98948",
+        "5D3A00",
+        "684E32",
+        "F9EA9A"
+      ],
+      "name": "Golden Sunset",
+      "likes": "1,598",
+      "tags": [
+        "brown",
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "020202",
+        "503B31",
+        "705D56",
+        "9097C0",
+        "A7BBEC"
+      ],
+      "name": "Dark Night",
+      "likes": "1,707",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "9BE564",
+        "D7F75B",
+        "D19C1D",
+        "7D451B",
+        "472C1B"
+      ],
+      "name": "Sunny Lemonade Stand",
+      "likes": "1,310",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "73683B",
+        "583E23",
+        "13262F",
+        "B0A084",
+        "E9E6FF"
+      ],
+      "name": "Golden Summer Harmony",
+      "likes": "1,450",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "8EDCE6",
+        "D5DCF9",
+        "A7B0CA",
+        "725E54",
+        "443627"
+      ],
+      "name": "Oceanic Dreamy Tones",
+      "likes": "1,309",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "48ACF0",
+        "594236",
+        "6F584B",
+        "93A3BC",
+        "CCDDE2"
+      ],
+      "name": "Whimsical Woodland Retreat",
+      "likes": "1,240",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "524632",
+        "8F7E4F",
+        "C3C49E",
+        "D8FFDD",
+        "DEDBD8"
+      ],
+      "name": "Earthy Serenity Scene",
+      "likes": "1,291",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "413620",
+        "9C6615",
+        "9F7833",
+        "FFD791",
+        "CDD1DE"
+      ],
+      "name": "Cozy Caramel Delight",
+      "likes": "1,103",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "594F3B",
+        "776258",
+        "896279",
+        "9C7CA5",
+        "ADB2D3"
+      ],
+      "name": "Whimsical Earth Tones",
+      "likes": "1,318",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "5E3719",
+        "735238",
+        "886E58",
+        "9D8977",
+        "B2A496"
+      ],
+      "name": "Cozy Cabin Retreat",
+      "likes": "1,089",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "9BA2FF",
+        "A499BE",
+        "9E8576",
+        "7A542E",
+        "2A2E45"
+      ],
+      "name": "Dreamy Golden Glow",
+      "likes": "1,210",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "650D1B",
+        "823200",
+        "9B3D12",
+        "AE8E1C",
+        "C1DF1F"
+      ],
+      "name": "Fiery Autumn Gold",
+      "likes": "1,018",
+      "tags": [
+        "brown"
+      ]
+    },
+    {
+      "hex": [
+        "042A2B",
+        "5EB1BF",
+        "CDEDF6",
+        "EF7B45",
+        "D84727"
+      ],
+      "name": "Tropical Tones",
+      "likes": "5,052",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "6C9A8B",
+        "E8998D",
+        "EED2CC",
+        "FBF7F4",
+        "A1683A"
+      ],
+      "name": "Whimsical Fall",
+      "likes": "4,200",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "FF4E00",
+        "8EA604",
+        "F5BB00",
+        "EC9F05",
+        "BF3100"
+      ],
+      "name": "Vibrant Sunset",
+      "likes": "3,093",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "DD614A",
+        "F48668",
+        "F4A698",
+        "C5C392",
+        "73A580"
+      ],
+      "name": "Rosy Glow",
+      "likes": "3,448",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "A9E5BB",
+        "FCF6B1",
+        "F7B32B",
+        "F72C25",
+        "2D1E2F"
+      ],
+      "name": "Sunshine Burst",
+      "likes": "2,951",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "577590",
+        "F3CA40",
+        "F2A541",
+        "F08A4B",
+        "D78A76"
+      ],
+      "name": "Sunrise Glow",
+      "likes": "2,968",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "1C77C3",
+        "39A9DB",
+        "40BCD8",
+        "F39237",
+        "D63230"
+      ],
+      "name": "Oceanic Blaze",
+      "likes": "2,548",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "E4572E",
+        "17BEBB",
+        "FFC914",
+        "2E282A",
+        "76B041"
+      ],
+      "name": "Fiesta Delight",
+      "likes": "2,317",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "F2F230",
+        "C2F261",
+        "91F291",
+        "61F2C2",
+        "30F2F2"
+      ],
+      "name": "Luminous Glow",
+      "likes": "2,239",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "ABE188",
+        "F7EF99",
+        "F1BB87",
+        "F78E69",
+        "5D675B"
+      ],
+      "name": "Sunset Glow",
+      "likes": "2,499",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "00A878",
+        "D8F1A0",
+        "F3C178",
+        "FE5E41",
+        "0B0500"
+      ],
+      "name": "Tropical Sunshine Bliss",
+      "likes": "2,027",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "17BEBB",
+        "2E282A",
+        "CD5334",
+        "EDB88B",
+        "FAD8D6"
+      ],
+      "name": "Bold Mysterious Romance",
+      "likes": "2,076",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "0267C1",
+        "0075C4",
+        "EFA00B",
+        "D65108",
+        "591F0A"
+      ],
+      "name": "Sapphire Golden Sunset",
+      "likes": "1,825",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "2D7DD2",
+        "97CC04",
+        "EEB902",
+        "F45D01",
+        "474647"
+      ],
+      "name": "Nautical Golden Autumn",
+      "likes": "1,640",
+      "tags": [
+        "tropical"
+      ]
+    },
+    {
+      "hex": [
+        "44355B",
+        "31263E",
+        "221E22",
+        "ECA72C",
+        "EE5622"
+      ],
+      "name": "Enchanted Sunset",
+      "likes": "3,176",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F06543",
+        "E8E9EB",
+        "E0DFD5",
+        "313638",
+        "F09D51"
+      ],
+      "name": "Earthy Elegance",
+      "likes": "3,287",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "FFC15E",
+        "F7B05B",
+        "F7934C",
+        "CC5803",
+        "1F1300"
+      ],
+      "name": "Tropical Spice",
+      "likes": "3,048",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F0A202",
+        "F18805",
+        "D95D39",
+        "0E1428",
+        "7B9E89"
+      ],
+      "name": "Autumn Blaze",
+      "likes": "2,921",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "320A28",
+        "511730",
+        "8E443D",
+        "CB9173",
+        "E0D68A"
+      ],
+      "name": "Chocolate Sunset",
+      "likes": "3,417",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "FCDE9C",
+        "FFA552",
+        "BA5624",
+        "381D2A",
+        "C4D6B0"
+      ],
+      "name": "Golden Harvest",
+      "likes": "2,896",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F2F3AE",
+        "EDD382",
+        "FC9E4F",
+        "F4442E",
+        "020122"
+      ],
+      "name": "Golden Sunset",
+      "likes": "2,823",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "EAEAEA",
+        "893168",
+        "4A1942",
+        "2E1C2B",
+        "050404"
+      ],
+      "name": "Monochrome Magic",
+      "likes": "3,087",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "130303",
+        "2D080A",
+        "7C3626",
+        "F5853F",
+        "FFCDBC"
+      ],
+      "name": "Sunset Glow",
+      "likes": "2,845",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F75C03",
+        "D90368",
+        "820263",
+        "291720",
+        "04A777"
+      ],
+      "name": "Bold Harmony",
+      "likes": "2,555",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "FFF05A",
+        "FFD25A",
+        "FFAA5A",
+        "FF785A",
+        "191919"
+      ],
+      "name": "Sunny Sunsets",
+      "likes": "2,632",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "85FFC7",
+        "297373",
+        "FF8552",
+        "E6E6E6",
+        "39393A"
+      ],
+      "name": "Minty Splash",
+      "likes": "2,589",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "FFFFFC",
+        "BEB7A4",
+        "FF7F11",
+        "FF3F00"
+      ],
+      "name": "Dark Magic",
+      "likes": "2,370",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "2E1F27",
+        "854D27",
+        "DD7230",
+        "F4C95D",
+        "E7E393"
+      ],
+      "name": "Mystic Sunset",
+      "likes": "2,401",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "000000",
+        "CF5C36",
+        "EEE5E9",
+        "7C7C7C",
+        "EFC88B"
+      ],
+      "name": "Monochrome Magic",
+      "likes": "2,392",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "628395",
+        "96897B",
+        "DFD5A5",
+        "DBAD6A",
+        "CF995F"
+      ],
+      "name": "Muted Earth",
+      "likes": "2,441",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "F46036",
+        "5B85AA",
+        "414770",
+        "372248",
+        "171123"
+      ],
+      "name": "Fiery Ocean Night",
+      "likes": "2,153",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "EFF8E2",
+        "CECFC7",
+        "ADA8B6",
+        "23022E",
+        "573280"
+      ],
+      "name": "Soft Lilac Whisper",
+      "likes": "2,186",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "262626",
+        "ACBFA4",
+        "E2E8CE",
+        "FF7F11",
+        "FF1B1C"
+      ],
+      "name": "Wildfire Moonshine Madness",
+      "likes": "1,782",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "1A090D",
+        "4A314D",
+        "6B6570",
+        "A8BA9A",
+        "ACE894"
+      ],
+      "name": "Plum Velvet Dreams",
+      "likes": "1,937",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "6BD425",
+        "618B25",
+        "42113C",
+        "370926",
+        "1C0118"
+      ],
+      "name": "Enchanted Forest Whimsy",
+      "likes": "1,942",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "333333",
+        "643173",
+        "7D5BA6",
+        "86A59C",
+        "89CE94"
+      ],
+      "name": "Mystic Earthy Oasis",
+      "likes": "1,634",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "010001",
+        "2B0504",
+        "874000",
+        "BC5F04",
+        "F4442E"
+      ],
+      "name": "Spicy Autumn Adventure",
+      "likes": "1,529",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "0D160B",
+        "785589",
+        "977390",
+        "AC7B7D",
+        "BB8A89"
+      ],
+      "name": "Magical Night",
+      "likes": "1,741",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "1E212B",
+        "4D8B31",
+        "FFC800",
+        "FF8427",
+        "FFFFFF"
+      ],
+      "name": "Tropical Sun Bliss",
+      "likes": "1,217",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "C8C8C8",
+        "B3B3B3",
+        "BBB891",
+        "DC965A",
+        "242325"
+      ],
+      "name": "Silver Serenity Glow",
+      "likes": "1,329",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "EE6C4D",
+        "F38D68",
+        "662C91",
+        "17A398",
+        "33312E"
+      ],
+      "name": "Funky Midnight Vibes",
+      "likes": "1,178",
+      "tags": [
+        "halloween"
+      ]
+    },
+    {
+      "hex": [
+        "071E22",
+        "1D7874",
+        "679289",
+        "F4C095",
+        "EE2E31"
+      ],
+      "name": "Vintage Charm",
+      "likes": "3,942",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "EF233C",
+        "D5F2E3",
+        "73BA9B",
+        "003E1F",
+        "D90429"
+      ],
+      "name": "Enchanted Forest",
+      "likes": "2,049",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "F2545B",
+        "A93F55",
+        "19323C",
+        "F3F7F0",
+        "8C5E58"
+      ],
+      "name": "Cherry Blossom",
+      "likes": "2,858",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "BA2D0B",
+        "D5F2E3",
+        "73BA9B",
+        "003E1F",
+        "01110A"
+      ],
+      "name": "Earthly Serenade",
+      "likes": "2,572",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "931621",
+        "28464B",
+        "326771",
+        "2C8C99",
+        "42D9C8"
+      ],
+      "name": "Dark Waters",
+      "likes": "2,464",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "C33149",
+        "A8C256",
+        "F3D9B1",
+        "C29979",
+        "A22522"
+      ],
+      "name": "Passionate Flamenco Fiesta",
+      "likes": "2,193",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "CFFCFF",
+        "AAEFDF",
+        "9EE37D",
+        "63C132",
+        "358600"
+      ],
+      "name": "Fresh Spring Meadow",
+      "likes": "1,924",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "C5D1EB",
+        "92AFD7",
+        "5A7684",
+        "395B50",
+        "1F2F16"
+      ],
+      "name": "Oceanic Blue Serenade",
+      "likes": "2,316",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "931F1D",
+        "937B63",
+        "8A9B68",
+        "B6C197",
+        "D5DDBC"
+      ],
+      "name": "Rustic Earth Tones",
+      "likes": "1,997",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "C03221",
+        "F7F7FF",
+        "F2D0A4",
+        "545E75",
+        "3F826D"
+      ],
+      "name": "Scarlet Moonlight Serenade",
+      "likes": "1,476",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "BB010B",
+        "CD1624",
+        "006F57",
+        "23856D",
+        "FAF8F8"
+      ],
+      "name": "Ruby Emerald Harmony",
+      "likes": "706",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "901B22",
+        "C2242D",
+        "FDFFFF",
+        "A3BF50",
+        "778B3B"
+      ],
+      "name": "Scarlet Bloom Field",
+      "likes": "346",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "F3F4F6",
+        "8E0413",
+        "CB0B0A",
+        "568D66",
+        "004733"
+      ],
+      "name": "Cherry Forest Oasis",
+      "likes": "151",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "F79256",
+        "FEEEDD",
+        "274B44",
+        "EB0027",
+        "0F7868"
+      ],
+      "name": "Tropical Sunset",
+      "likes": "77",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "005F54",
+        "00BE9C",
+        "F2F3F8",
+        "E60031",
+        "6C001A"
+      ],
+      "name": "Vibrant Summer Fun",
+      "likes": "37",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "BB010B",
+        "4C191B",
+        "006F57",
+        "72B01D",
+        "FAF8F8"
+      ],
+      "name": "Passionate Forest Hike",
+      "likes": "34",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "7C7F65",
+        "C20114",
+        "132A13",
+        "FFCF99",
+        "342A21"
+      ],
+      "name": "Sunset Citrus Grove",
+      "likes": "21",
+      "tags": [
+        "christmas"
+      ]
+    },
+    {
+      "hex": [
+        "7B0000",
+        "970202",
+        "C40909",
+        "E82828",
+        "FF5555"
+      ],
+      "name": "Fiery Red Delight",
+      "likes": "8",
+      "tags": [
+        "christmas"
+      ]
+    }
+  ]
+}

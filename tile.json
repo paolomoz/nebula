@@ -1,0 +1,14 @@
+{
+  "name": "nebula",
+  "version": "0.1.0",
+  "summary": "Design a great single-page website from scratch. Built on top of impeccable.",
+  "skills": {
+    "nebula": { "path": "skills/nebula/SKILL.md" },
+    "brief": { "path": "skills/brief/SKILL.md" },
+    "direct": { "path": "skills/direct/SKILL.md" },
+    "render": { "path": "skills/render/SKILL.md" }
+  },
+  "softDependencies": [
+    "impeccable"
+  ]
+}

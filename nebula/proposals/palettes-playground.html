@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>nebula · palette catalog</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0e0f12;
+    --panel:#15171c;
+    --panel-2:#1d1f26;
+    --line:#2a2d35;
+    --line-soft:#1f2229;
+    --text:#e6e6ea;
+    --text-mute:#8e92a0;
+    --text-dim:#5a5e6c;
+    --accent:#7a9eff;
+    --accent-2:#b59cff;
+    --pos:#5fd6a4;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --font-ui:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif;
+    --font-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-ui);
+    font-size:14px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* Layout */
+  .app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+  /* Sidebar */
+  .sidebar{
+    position:sticky;top:0;align-self:start;height:100vh;
+    background:var(--panel);border-right:1px solid var(--line);
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  .brand{padding:18px 18px 12px;border-bottom:1px solid var(--line-soft)}
+  .brand h1{font-size:14px;font-weight:600;letter-spacing:.02em}
+  .brand .sub{font-size:11px;color:var(--text-mute);margin-top:2px;line-height:1.4}
+  .intent-list{flex:1;overflow-y:auto;padding:8px 0}
+  .intent-link{
+    display:flex;justify-content:space-between;align-items:center;gap:8px;
+    padding:8px 18px;font-size:12.5px;color:var(--text-mute);
+    cursor:pointer;border-left:2px solid transparent;
+    transition:color .15s,border-color .15s,background .15s;
+  }
+  .intent-link:hover{color:var(--text);background:rgba(255,255,255,.02)}
+  .intent-link.has-picks{color:var(--text)}
+  .intent-link .count{
+    font-family:var(--font-mono);font-size:11px;color:var(--text-dim);
+    padding:2px 6px;border-radius:999px;border:1px solid var(--line);
+    min-width:34px;text-align:center;
+  }
+  .intent-link.has-picks .count{color:var(--pos);border-color:rgba(95,214,164,.35)}
+  .sidebar-foot{padding:14px 18px;border-top:1px solid var(--line-soft);font-size:11px;color:var(--text-dim);line-height:1.5}
+  /* Main */
+  .main{padding:0 28px 80px}
+  .topbar{
+    position:sticky;top:0;z-index:20;background:rgba(14,15,18,.85);backdrop-filter:blur(12px);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:16px 0;margin-bottom:8px;border-bottom:1px solid var(--line-soft);
+  }
+  .topbar .stats{font-size:13px;color:var(--text-mute)}
+  .topbar .stats strong{color:var(--text);font-weight:600}
+  .btn{
+    background:var(--accent);color:#0e0f12;border:none;border-radius:8px;
+    padding:9px 14px;font:600 12.5px/1 var(--font-ui);letter-spacing:.01em;
+    cursor:pointer;transition:transform .12s,filter .12s;
+  }
+  .btn:hover{filter:brightness(1.08)}
+  .btn:active{transform:translateY(1px)}
+  .btn-ghost{background:transparent;color:var(--text-mute);border:1px solid var(--line)}
+  .btn-ghost:hover{color:var(--text);border-color:var(--text-dim)}
+  /* Intent section */
+  .intent{padding:32px 0 8px;scroll-margin-top:72px}
+  .intent h2{font-size:20px;font-weight:600;letter-spacing:-.01em}
+  .intent .blurb{color:var(--text-mute);font-size:13px;margin-top:4px;max-width:60ch}
+  .intent .meta{margin-top:6px;font-size:11.5px;color:var(--text-dim);font-family:var(--font-mono);letter-spacing:.02em}
+  .palette-grid{
+    margin-top:18px;display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:14px;
+  }
+  /* Palette card — mock */
+  .pcard{
+    --pbg:#fff;--pink:#111;--paccent:#444;--psurface:#eee;--psurface2:#ddd;
+    position:relative;border-radius:12px;overflow:hidden;
+    background:var(--pbg);color:var(--pink);
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+    box-shadow:0 1px 0 rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.18);
+  }
+  .pcard:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(0,0,0,.04),0 12px 30px rgba(0,0,0,.25)}
+  .pcard.picked{border-color:var(--pos);box-shadow:0 0 0 1px rgba(95,214,164,.4),0 12px 30px rgba(0,0,0,.3)}
+  .pcard .pcheck{
+    position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;
+    background:#fff;color:#0e0f12;display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;line-height:1;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);
+    opacity:0;transform:scale(.85);transition:opacity .15s,transform .15s;
+    z-index:3;pointer-events:none;
+  }
+  .pcard.picked .pcheck{opacity:1;transform:scale(1);background:var(--pos)}
+  .pmock{padding:20px 18px 14px;min-height:280px;display:flex;flex-direction:column;gap:10px}
+  .peyebrow{
+    display:inline-flex;align-items:center;align-self:flex-start;
+    font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    padding:4px 8px;border-radius:999px;
+    background:var(--paccent);color:var(--pbg);
+  }
+  .pheading{font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-.01em;color:var(--pink)}
+  .pbody{font-size:12.5px;line-height:1.55;color:var(--pink);opacity:.78}
+  .pbtn-row{display:flex;gap:8px;margin-top:2px}
+  .pbtn{
+    display:inline-flex;align-items:center;padding:7px 12px;border-radius:7px;
+    font-size:11.5px;font-weight:600;letter-spacing:.01em;border:1px solid transparent;
+    background:var(--paccent);color:var(--pbg);
+  }
+  .pbtn.secondary{background:transparent;color:var(--pink);border-color:var(--pink);opacity:.6}
+  .psurface{
+    background:var(--psurface);color:var(--pink);
+    border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.5;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .psurface .pdot{width:6px;height:6px;border-radius:50%;background:var(--paccent)}
+  .pstrip{display:flex;height:8px}
+  .pstrip > div{flex:1}
+  .pfoot{
+    background:var(--panel);color:var(--text);
+    padding:10px 14px 12px;font-size:11px;
+  }
+  .pfoot .pname{font-size:12px;color:var(--text);font-weight:600;letter-spacing:.005em;line-height:1.3}
+  .pfoot .pmeta{margin-top:3px;color:var(--text-dim);font-family:var(--font-mono);font-size:10.5px;display:flex;gap:6px;flex-wrap:wrap}
+  .pfoot .pmeta .ptag{padding:1px 6px;border:1px solid var(--line);border-radius:4px;color:var(--text-mute)}
+  /* Modal */
+  .modal-bd{
+    position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;
+    z-index:100;padding:24px;
+  }
+  .modal-bd.open{display:flex}
+  .modal{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    width:min(820px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line-soft)}
+  .modal-head h2{font-size:14px;font-weight:600}
+  .modal-head .close{background:transparent;border:none;color:var(--text-mute);font-size:18px;cursor:pointer;padding:4px}
+  .modal-head .close:hover{color:var(--text)}
+  .modal-body{padding:16px 20px 20px;overflow-y:auto}
+  .promptbox{
+    background:#0a0b0e;border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;font-family:var(--font-mono);font-size:12px;line-height:1.6;
+    color:var(--text);white-space:pre-wrap;word-break:break-word;
+    max-height:60vh;overflow-y:auto;
+  }
+  .modal-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 20px 16px;border-top:1px solid var(--line-soft)}
+  /* Misc */
+  .empty{padding:40px 0;color:var(--text-dim);font-style:italic}
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);
+    background:var(--pos);color:#0e0f12;padding:8px 14px;border-radius:999px;
+    font-size:12.5px;font-weight:600;
+    opacity:0;transition:opacity .2s,transform .2s;
+    pointer-events:none;z-index:200;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* Sticky reset row */
+  .reset-row{display:flex;gap:8px;align-items:center}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>nebula · palettes</h1>
+      <div class="sub">20 intents × 10 palettes from Coolors. Click cards to select. Copy the prompt back to Claude when done.</div>
+    </div>
+    <nav class="intent-list" id="intentList"></nav>
+    <div class="sidebar-foot">Source: coolors.co/palettes/popular/&lt;tag&gt;<br>554 palettes scraped, 200 surfaced here.</div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="stats"><strong id="picked-count">0</strong> palettes selected across <strong id="intents-touched">0</strong> intents</div>
+      <div class="reset-row">
+        <button class="btn-ghost btn" id="reset-btn">Reset</button>
+        <button class="btn" id="copy-btn">Copy prompt</button>
+      </div>
+    </div>
+    <div id="intents"></div>
+  </main>
+</div>
+
+<div class="modal-bd" id="modal-bd">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Prompt for Claude</h2>
+      <button class="close" id="modal-close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="promptbox" id="promptbox"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost btn" id="modal-close-2">Close</button>
+      <button class="btn" id="copy-now-btn">Copy to clipboard</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+const CATALOG = {"_meta":{"source":{"source":"coolors.co/palettes/popular/<tag>","scrapedAt":"2026-05-14T10:33:23.998Z","tagsScraped":["cool","dark","light","bright","muted","vibrant","soft","pastel","neon","bold","monochrome","gradient","vintage","retro","modern","classic","autumn","spring","summer","winter","earth","sunset","sky","sand","natural","beach","sea","gold","stone","blue","red","green","orange","yellow","purple","brown","black","white","tropical","halloween","christmas"],"paletteCount":554},"builtAt":"2026-05-14T10:35:22.773Z","intentCount":20,"palettesPerIntent":10},"intents":[{"id":"trust-fintech","name":"Trust-led B2B / fintech","blurb":"Cool, restrained, single accent. The kind of palette a serious-tone B2B SaaS would not embarrass anyone with.","palettes":[{"hex":["353535","3C6E71","FFFFFF","D9D9D9","284B63"],"name":"Monochrome Beach","likes":"23.4K","tags":["muted","gradient","modern","stone","black","white"],"roles":{"bg":"FFFFFF","ink":"353535","accent":"284B63","surface1":"D9D9D9","surface2":"3C6E71"},"score":8},{"hex":["05668D","427AA1","EBF2FA","679436","A5BE00"],"name":"Sky Blue Freshness","likes":"6,942","tags":["bold","modern","earth","blue","green"],"roles":{"bg":"EBF2FA","ink":"05668D","accent":"A5BE00","surface1":"427AA1","surface2":"679436"},"score":8},{"hex":["022B3A","1F7A8C","BFDBF7","E1E5F2","FFFFFF"],"name":"Gentle Sea Breeze","likes":"7,987","tags":["modern","sea","stone","blue"],"roles":{"bg":"FFFFFF","ink":"022B3A","accent":"BFDBF7","surface1":"E1E5F2","surface2":"1F7A8C"},"score":8},{"hex":["FF6700","EBEBEB","C0C0C0","3A6EA5","004E98"],"name":"Slate Gray Contrast","likes":"8,179","tags":["bold","beach","sea","stone","blue"],"roles":{"bg":"EBEBEB","ink":"004E98","accent":"FF6700","surface1":"C0C0C0","surface2":"3A6EA5"},"score":7},{"hex":["E7ECEF","274C77","6096BA","A3CEF1","8B8C89"],"name":"Serene Blue","likes":"12.3K","tags":["monochrome","stone","blue"],"roles":{"bg":"E7ECEF","ink":"274C77","accent":"A3CEF1","surface1":"6096BA","surface2":"8B8C89"},"score":7},{"hex":["2F6690","3A7CA5","D9DCD6","16425B","81C3D7"],"name":"Deep Blue Waters","likes":"7,820","tags":["winter","sky","sea","blue"],"roles":{"bg":"D9DCD6","ink":"16425B","accent":"81C3D7","surface1":"3A7CA5","surface2":"2F6690"},"score":7},{"hex":["F4F1DE","E07A5F","3D405B","81B29A","F2CC8F"],"name":"Neutral Harmony Bliss","likes":"48.3K","tags":["muted","bold","modern","beach","white"],"roles":{"bg":"F4F1DE","ink":"3D405B","accent":"F2CC8F","surface1":"E07A5F","surface2":"81B29A"},"score":6},{"hex":["22223B","4A4E69","9A8C98","C9ADA7","F2E9E4"],"name":"Soft Lavender","likes":"45.8K","tags":["muted","gradient","earth","stone","black","white"],"roles":{"bg":"F2E9E4","ink":"22223B","accent":"C9ADA7","surface1":"9A8C98","surface2":"4A4E69"},"score":6},{"hex":["CAD2C5","84A98C","52796F","354F52","2F3E46"],"name":"Earthy Green","likes":"38.4K","tags":["muted","monochrome","gradient","winter","earth","natural","sea"],"roles":{"bg":"CAD2C5","ink":"2F3E46","accent":"354F52","surface1":"84A98C","surface2":"52796F"},"score":6},{"hex":["463F3A","8A817C","BCB8B1","F4F3EE","E0AFA0"],"name":"Neutral Elegance","likes":"23.9K","tags":["muted","monochrome","modern","summer","stone","black","white"],"roles":{"bg":"F4F3EE","ink":"463F3A","accent":"E0AFA0","surface1":"BCB8B1","surface2":"8A817C"},"score":6}]},{"id":"editorial","name":"Editorial / publication","blurb":"Cream-and-ink editorial. The page should read like printed paper with one hairline accent.","palettes":[{"hex":["EDEDE9","D6CCC2","F5EBE0","E3D5CA","D5BDAF"],"name":"Soft Sand","likes":"45.9K","tags":["soft","pastel","gradient","vintage","retro","classic","summer","earth","sand","natural","stone","white"],"roles":{"bg":"EDEDE9","ink":"D5BDAF","accent":"F5EBE0","surface1":"E3D5CA","surface2":"D6CCC2"},"score":9},{"hex":["F8F4E3","D4CDC3","D5D0CD","A2A392","9A998C"],"name":"Soft Serenity","likes":"3,644","tags":["vintage","retro","classic","sand"],"roles":{"bg":"F8F4E3","ink":"9A998C","accent":"D4CDC3","surface1":"D5D0CD","surface2":"A2A392"},"score":9},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":8},{"hex":["555B6E","89B0AE","BEE3DB","FAF9F9","FFD6BA"],"name":"Earthly Tones","likes":"21.3K","tags":["muted","modern","sand","beach","white"],"roles":{"bg":"FAF9F9","ink":"555B6E","accent":"FFD6BA","surface1":"BEE3DB","surface2":"89B0AE"},"score":6},{"hex":["F0EAD2","DDE5B6","ADC178","A98467","6C584C"],"name":"Earthy Tones","likes":"23.4K","tags":["gradient","vintage","retro","classic","spring","summer","earth","natural","green","brown"],"roles":{"bg":"F0EAD2","ink":"6C584C","accent":"DDE5B6","surface1":"ADC178","surface2":"A98467"},"score":6},{"hex":["F5F4EF","F1DBCE","686763","B8B5B0","E5E2D9"],"name":"Warm Earthy Neutrals","likes":"412","tags":["vintage","retro","classic"],"roles":{"bg":"F5F4EF","ink":"686763","accent":"F1DBCE","surface1":"E5E2D9","surface2":"B8B5B0"},"score":6},{"hex":["F8F0E5","956B4B","E2C7AA","8F857B","B19A81"],"name":"Rustic Earth Tones","likes":"312","tags":["vintage","retro","classic"],"roles":{"bg":"F8F0E5","ink":"956B4B","accent":"E2C7AA","surface1":"B19A81","surface2":"8F857B"},"score":6},{"hex":["E7DECD","EFE8DB","F4EFE6","FAF7F0","FBFAF8"],"name":"Whimsical Winter Wonderland","likes":"329","tags":["vintage","retro","classic"],"roles":{"bg":"FBFAF8","ink":"E7DECD","accent":"FAF7F0","surface1":"F4EFE6","surface2":"EFE8DB"},"score":6},{"hex":["CDD1BF","E8EAD9","FAF9EC","F3EDDE","BEA892"],"name":"Earthy Neutral Tones","likes":"398","tags":["vintage","retro","classic"],"roles":{"bg":"FAF9EC","ink":"BEA892","accent":"F3EDDE","surface1":"E8EAD9","surface2":"CDD1BF"},"score":6},{"hex":["E7E1DA","D3C8BB","BFAF9C","AB967D","A1896E"],"name":"Earthy Neutral Tones","likes":"270","tags":["vintage","retro","classic"],"roles":{"bg":"E7E1DA","ink":"A1896E","accent":"AB967D","surface1":"D3C8BB","surface2":"BFAF9C"},"score":6}]},{"id":"brutalist","name":"Brutalist statement","blurb":"Stark mono base + one loud accent. Type carries the page; color punches in one place.","palettes":[{"hex":["000000","14213D","FCA311","E5E5E5","FFFFFF"],"name":"Black & Gold Elegance","likes":"54.6K","tags":["vibrant","bold","modern","stone","black","white"],"roles":{"bg":"FFFFFF","ink":"000000","accent":"FCA311","surface1":"E5E5E5","surface2":"14213D"},"score":10},{"hex":["FFFFFF","00171F","003459","007EA7","00A8E8"],"name":"Deep Sea","likes":"11.8K","tags":["vibrant","bold","modern","sea","blue","black"],"roles":{"bg":"FFFFFF","ink":"00171F","accent":"00A8E8","surface1":"007EA7","surface2":"003459"},"score":10},{"hex":["0C0F0A","FF206E","FBFF12","41EAD4","FFFFFF"],"name":"Neon Jungle","likes":"7,423","tags":["neon","bold","black"],"roles":{"bg":"FFFFFF","ink":"0C0F0A","accent":"FF206E","surface1":"41EAD4","surface2":"FBFF12"},"score":10},{"hex":["FFFCF2","CCC5B9","403D39","252422","EB5E28"],"name":"Rustic Charm","likes":"18.5K","tags":["bold","gradient","modern","autumn","stone","black","white","halloween"],"roles":{"bg":"FFFCF2","ink":"252422","accent":"EB5E28","surface1":"CCC5B9","surface2":"403D39"},"score":10},{"hex":["2D3142","4F5D75","BFC0C0","FFFFFF","EF8354"],"name":"Orange Sunset Sky","likes":"8,395","tags":["bold","modern","stone","black"],"roles":{"bg":"FFFFFF","ink":"2D3142","accent":"EF8354","surface1":"BFC0C0","surface2":"4F5D75"},"score":10},{"hex":["CFDBD5","E8EDDF","F5CB5C","242423","333533"],"name":"Monochrome Harmony","likes":"13.6K","tags":["monochrome","modern","stone","black"],"roles":{"bg":"E8EDDF","ink":"242423","accent":"F5CB5C","surface1":"CFDBD5","surface2":"333533"},"score":10},{"hex":["50514F","F25F5C","FFE066","247BA0","70C1B3"],"name":"Sunset Bliss","likes":"9,944","tags":["muted","vibrant","bold","black"],"roles":{"bg":"FFE066","ink":"50514F","accent":"F25F5C","surface1":"70C1B3","surface2":"247BA0"},"score":8},{"hex":["2D3142","BFC0C0","FFFFFF","EF8354","4F5D75"],"name":"Minimalist Elegance","likes":"9,007","tags":["modern","stone","black"],"roles":{"bg":"FFFFFF","ink":"2D3142","accent":"EF8354","surface1":"BFC0C0","surface2":"4F5D75"},"score":8},{"hex":["D6D6D6","FFEE32","FFD100","202020","333533"],"name":"Sunflower Fields","likes":"5,303","tags":["gold","stone","yellow","black"],"roles":{"bg":"D6D6D6","ink":"202020","accent":"FFEE32","surface1":"FFD100","surface2":"333533"},"score":8},{"hex":["003049","D62828","F77F00","FCBF49","EAE2B7"],"name":"Warm Autumn Glow","likes":"48.2K","tags":["vibrant","bold","modern","sunset","orange","black","white"],"roles":{"bg":"EAE2B7","ink":"003049","accent":"F77F00","surface1":"FCBF49","surface2":"D62828"},"score":7}]},{"id":"quiet-craft","name":"Quiet craft / atelier","blurb":"Muted earth, low contrast warm. Studio-of-a-ceramicist palette.","palettes":[{"hex":["ECF8F8","EEE4E1","E7D8C9","E6BEAE","B2967D"],"name":"Warm Neutral Tones","likes":"17.4K","tags":["muted","spring","earth","natural","stone"],"roles":{"bg":"ECF8F8","ink":"B2967D","accent":"E6BEAE","surface1":"EEE4E1","surface2":"E7D8C9"},"score":13},{"hex":["EDEDE9","D6CCC2","F5EBE0","E3D5CA","D5BDAF"],"name":"Soft Sand","likes":"45.9K","tags":["soft","pastel","gradient","vintage","retro","classic","summer","earth","sand","natural","stone","white"],"roles":{"bg":"EDEDE9","ink":"D5BDAF","accent":"F5EBE0","surface1":"E3D5CA","surface2":"D6CCC2"},"score":12},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":11},{"hex":["D0B8AC","F3D8C7","EFE5DC","FBFEFB","FFFFFF"],"name":"Soft Ivory","likes":"8,390","tags":["soft","pastel","monochrome","natural","stone"],"roles":{"bg":"FFFFFF","ink":"D0B8AC","accent":"F3D8C7","surface1":"FBFEFB","surface2":"EFE5DC"},"score":10},{"hex":["DAD7CD","A3B18A","588157","3A5A40","344E41"],"name":"Earthy Forest Hues","likes":"49.2K","tags":["muted","monochrome","gradient","earth","natural","green","white"],"roles":{"bg":"DAD7CD","ink":"344E41","accent":"3A5A40","surface1":"A3B18A","surface2":"588157"},"score":9},{"hex":["CAD2C5","84A98C","52796F","354F52","2F3E46"],"name":"Earthy Green","likes":"38.4K","tags":["muted","monochrome","gradient","winter","earth","natural","sea"],"roles":{"bg":"CAD2C5","ink":"2F3E46","accent":"354F52","surface1":"84A98C","surface2":"52796F"},"score":9},{"hex":["FFB5A7","FCD5CE","F8EDEB","F9DCC4","FEC89A"],"name":"Pastel Bliss","likes":"37.6K","tags":["muted","soft","pastel","gradient","spring","summer","natural","beach","white"],"roles":{"bg":"F8EDEB","ink":"FEC89A","accent":"FFB5A7","surface1":"FCD5CE","surface2":"F9DCC4"},"score":9},{"hex":["606C38","283618","FEFAE0","DDA15E","BC6C25"],"name":"Olive Garden Feast","likes":"98K","tags":["muted","gradient","autumn","earth","natural","green","orange","white"],"roles":{"bg":"FEFAE0","ink":"283618","accent":"BC6C25","surface1":"DDA15E","surface2":"606C38"},"score":8},{"hex":["22223B","4A4E69","9A8C98","C9ADA7","F2E9E4"],"name":"Soft Lavender","likes":"45.8K","tags":["muted","gradient","earth","stone","black","white"],"roles":{"bg":"F2E9E4","ink":"22223B","accent":"C9ADA7","surface1":"9A8C98","surface2":"4A4E69"},"score":8},{"hex":["463F3A","8A817C","BCB8B1","F4F3EE","E0AFA0"],"name":"Neutral Elegance","likes":"23.9K","tags":["muted","monochrome","modern","summer","stone","black","white"],"roles":{"bg":"F4F3EE","ink":"463F3A","accent":"E0AFA0","surface1":"BCB8B1","surface2":"8A817C"},"score":8}]},{"id":"vibrant-playful","name":"Vibrant consumer / playful","blurb":"Saturated, multi-accent. Confident pop palette for consumer brands that want to be felt.","palettes":[{"hex":["264653","2A9D8F","E9C46A","F4A261","E76F51"],"name":"Sunny Beach Day","likes":"124.7K","tags":["muted","vibrant","bold","modern","autumn","sunset","beach","orange","tropical"],"roles":{"bg":"F4A261","ink":"264653","accent":"E76F51","surface1":"E9C46A","surface2":"2A9D8F"},"score":11},{"hex":["1A535C","4ECDC4","F7FFF7","FF6B6B","FFE66D"],"name":"Oceanic Cactus","likes":"18.1K","tags":["vibrant","bold","modern","spring","beach","white","tropical"],"roles":{"bg":"F7FFF7","ink":"1A535C","accent":"FFE66D","surface1":"FF6B6B","surface2":"4ECDC4"},"score":11},{"hex":["FFBC42","D81159","8F2D56","218380","73D2DE"],"name":"Sunset Bliss","likes":"9,952","tags":["vibrant","neon","bold","sunset","tropical"],"roles":{"bg":"73D2DE","ink":"218380","accent":"FFBC42","surface1":"D81159","surface2":"8F2D56"},"score":11},{"hex":["540D6E","EE4266","FFD23F","3BCEAC","0EAD69"],"name":"Vibrant Harmony","likes":"8,995","tags":["vibrant","neon","bold","tropical"],"roles":{"bg":"FFD23F","ink":"540D6E","accent":"0EAD69","surface1":"EE4266","surface2":"3BCEAC"},"score":11},{"hex":["003049","D62828","F77F00","FCBF49","EAE2B7"],"name":"Warm Autumn Glow","likes":"48.2K","tags":["vibrant","bold","modern","sunset","orange","black","white"],"roles":{"bg":"EAE2B7","ink":"003049","accent":"F77F00","surface1":"FCBF49","surface2":"D62828"},"score":10},{"hex":["FFBE0B","FB5607","FF006E","8338EC","3A86FF"],"name":"Vibrant Color Fiesta","likes":"45.4K","tags":["vibrant","neon","bold","gradient","sunset","orange"],"roles":{"bg":"3A86FF","ink":"FF006E","accent":"FFBE0B","surface1":"8338EC","surface2":"FB5607"},"score":10},{"hex":["EF476F","FFD166","06D6A0","118AB2","073B4C"],"name":"Watermelon Sorbet","likes":"36.3K","tags":["vibrant","neon","bold","blue","black"],"roles":{"bg":"FFD166","ink":"073B4C","accent":"06D6A0","surface1":"EF476F","surface2":"118AB2"},"score":10},{"hex":["5F0F40","9A031E","FB8B24","E36414","0F4C5C"],"name":"Fiery Palette","likes":"27.8K","tags":["vibrant","neon","bold","autumn","sunset","orange","halloween"],"roles":{"bg":"FB8B24","ink":"0F4C5C","accent":"9A031E","surface1":"E36414","surface2":"5F0F40"},"score":10},{"hex":["9B5DE5","F15BB5","FEE440","00BBF9","00F5D4"],"name":"Candy Pop","likes":"23.7K","tags":["vibrant","neon","bold","spring"],"roles":{"bg":"F15BB5","ink":"00F5D4","accent":"00BBF9","surface1":"9B5DE5","surface2":"FEE440"},"score":10},{"hex":["011627","FDFFFC","2EC4B6","E71D36","FF9F1C"],"name":"Contrast Pop","likes":"19.8K","tags":["vibrant","bold","modern","beach","black","white"],"roles":{"bg":"FDFFFC","ink":"011627","accent":"FF9F1C","surface1":"E71D36","surface2":"2EC4B6"},"score":10}]},{"id":"clinical","name":"Healthcare / clinical","blurb":"Light, cool, low-saturation. Reads as careful and competent without being cold.","palettes":[{"hex":["EDEDE9","D6CCC2","F5EBE0","E3D5CA","D5BDAF"],"name":"Soft Sand","likes":"45.9K","tags":["soft","pastel","gradient","vintage","retro","classic","summer","earth","sand","natural","stone","white"],"roles":{"bg":"EDEDE9","ink":"D5BDAF","accent":"F5EBE0","surface1":"E3D5CA","surface2":"D6CCC2"},"score":9},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":8},{"hex":["FFB5A7","FCD5CE","F8EDEB","F9DCC4","FEC89A"],"name":"Pastel Bliss","likes":"37.6K","tags":["muted","soft","pastel","gradient","spring","summer","natural","beach","white"],"roles":{"bg":"F8EDEB","ink":"FEC89A","accent":"FFB5A7","surface1":"FCD5CE","surface2":"F9DCC4"},"score":8},{"hex":["FFE5EC","FFC2D1","FFB3C6","FF8FAB","FB6F92"],"name":"Soft Pink Delight","likes":"23.5K","tags":["soft","pastel","monochrome","gradient","summer","white"],"roles":{"bg":"FFE5EC","ink":"FB6F92","accent":"FFC2D1","surface1":"FFB3C6","surface2":"FF8FAB"},"score":8},{"hex":["809BCE","95B8D1","B8E0D2","D6EADF","EAC4D5"],"name":"Pastel Dreams","likes":"7,922","tags":["soft","pastel","spring","winter","sea"],"roles":{"bg":"D6EADF","ink":"809BCE","accent":"EAC4D5","surface1":"B8E0D2","surface2":"95B8D1"},"score":8},{"hex":["FF99C8","FCF6BD","D0F4DE","A9DEF9","E4C1F9"],"name":"Pastel Dreams","likes":"25.7K","tags":["vibrant","soft","pastel"],"roles":{"bg":"D0F4DE","ink":"FF99C8","accent":"FCF6BD","surface1":"E4C1F9","surface2":"A9DEF9"},"score":7},{"hex":["FDC5F5","F7AEF8","B388EB","8093F1","72DDF7"],"name":"Pastel Dream","likes":"10.8K","tags":["vibrant","soft","pastel","winter","sky","blue"],"roles":{"bg":"FDC5F5","ink":"72DDF7","accent":"F7AEF8","surface1":"B388EB","surface2":"8093F1"},"score":7},{"hex":["CDB4DB","FFC8DD","FFAFCC","BDE0FE","A2D2FF"],"name":"Pastel Dreamland Adventure","likes":"88.4K","tags":["soft","pastel","gradient","spring","winter","blue"],"roles":{"bg":"FFC8DD","ink":"CDB4DB","accent":"FFAFCC","surface1":"BDE0FE","surface2":"A2D2FF"},"score":7},{"hex":["FFD6FF","E7C6FF","C8B6FF","B8C0FF","BBD0FF"],"name":"Soft Pastels","likes":"25.9K","tags":["soft","pastel","gradient","winter","blue","purple"],"roles":{"bg":"FFD6FF","ink":"C8B6FF","accent":"E7C6FF","surface1":"BBD0FF","surface2":"B8C0FF"},"score":7},{"hex":["9381FF","B8B8FF","F8F7FF","FFEEDD","FFD8BE"],"name":"Soft Lavender","likes":"13.6K","tags":["soft","pastel","sunset","beach","blue"],"roles":{"bg":"F8F7FF","ink":"9381FF","accent":"FFEEDD","surface1":"FFD8BE","surface2":"B8B8FF"},"score":7}]},{"id":"civic","name":"Civic / institutional","blurb":"Classic, restrained, mid-saturation blue/red. Government, museum, library.","palettes":[{"hex":["022B3A","1F7A8C","BFDBF7","E1E5F2","FFFFFF"],"name":"Gentle Sea Breeze","likes":"7,987","tags":["modern","sea","stone","blue"],"roles":{"bg":"FFFFFF","ink":"022B3A","accent":"BFDBF7","surface1":"E1E5F2","surface2":"1F7A8C"},"score":6},{"hex":["D62839","BA324F","175676","4BA3C3","CCE6F4"],"name":"Bold Ocean","likes":"4,382","tags":["blue","red"],"roles":{"bg":"CCE6F4","ink":"175676","accent":"D62839","surface1":"4BA3C3","surface2":"BA324F"},"score":6},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":5},{"hex":["2B2D42","8D99AE","EDF2F4","EF233C","D90429"],"name":"Cool Coastal Vibes","likes":"34.4K","tags":["bold","gradient","modern","red","black","white"],"roles":{"bg":"EDF2F4","ink":"2B2D42","accent":"D90429","surface1":"8D99AE","surface2":"EF233C"},"score":5},{"hex":["FF6700","EBEBEB","C0C0C0","3A6EA5","004E98"],"name":"Slate Gray Contrast","likes":"8,179","tags":["bold","beach","sea","stone","blue"],"roles":{"bg":"EBEBEB","ink":"004E98","accent":"FF6700","surface1":"C0C0C0","surface2":"3A6EA5"},"score":5},{"hex":["BEE9E8","62B6CB","1B4965","CAE9FF","5FA8D3"],"name":"Beach Sunset","likes":"14.2K","tags":["monochrome","winter","sea","blue"],"roles":{"bg":"CAE9FF","ink":"1B4965","accent":"5FA8D3","surface1":"BEE9E8","surface2":"62B6CB"},"score":5},{"hex":["E7ECEF","274C77","6096BA","A3CEF1","8B8C89"],"name":"Serene Blue","likes":"12.3K","tags":["monochrome","stone","blue"],"roles":{"bg":"E7ECEF","ink":"274C77","accent":"A3CEF1","surface1":"6096BA","surface2":"8B8C89"},"score":5},{"hex":["F0EAD2","DDE5B6","ADC178","A98467","6C584C"],"name":"Earthy Tones","likes":"23.4K","tags":["gradient","vintage","retro","classic","spring","summer","earth","natural","green","brown"],"roles":{"bg":"F0EAD2","ink":"6C584C","accent":"DDE5B6","surface1":"ADC178","surface2":"A98467"},"score":5},{"hex":["9F7E69","D2BBA0","F2EFC7","F7FFE0","FFEEE2"],"name":"Golden Glow","likes":"4,576","tags":["vintage","retro","classic"],"roles":{"bg":"FFEEE2","ink":"9F7E69","accent":"F7FFE0","surface1":"F2EFC7","surface2":"D2BBA0"},"score":5},{"hex":["FCB97D","EDD892","C6B89E","B5B8A3","AABA9E"],"name":"Sunshine Serenity Bliss","likes":"2,108","tags":["vintage","retro","classic"],"roles":{"bg":"EDD892","ink":"AABA9E","accent":"FCB97D","surface1":"C6B89E","surface2":"B5B8A3"},"score":5}]},{"id":"luxury-fashion","name":"Luxury fashion / fragrance","blurb":"Dark, monochrome, gold accent. Quiet money palette.","palettes":[{"hex":["000814","001D3D","003566","FFC300","FFD60A"],"name":"Golden Twilight","likes":"24.7K","tags":["vibrant","bold","gradient","modern","gold","blue","yellow","black"],"roles":{"bg":"FFD60A","ink":"000814","accent":"FFC300","surface1":"003566","surface2":"001D3D"},"score":9},{"hex":["00296B","003F88","00509D","FDC500","FFD500"],"name":"Midnight Sky","likes":"12K","tags":["vibrant","gold","blue","yellow"],"roles":{"bg":"FFD500","ink":"00296B","accent":"FDC500","surface1":"00509D","surface2":"003F88"},"score":7},{"hex":["3D0066","510087","5C0099","FDC500","FFD500"],"name":"Sunset Disco Dance","likes":"1,308","tags":["gold","yellow","purple"],"roles":{"bg":"FFD500","ink":"3D0066","accent":"FDC500","surface1":"5C0099","surface2":"510087"},"score":7},{"hex":["000814","001D3D","003566","CCA000","F5CC00"],"name":"Midnight Sunburst Gold","likes":"948","tags":["gold","yellow"],"roles":{"bg":"F5CC00","ink":"000814","accent":"CCA000","surface1":"003566","surface2":"001D3D"},"score":7},{"hex":["372B2B","850A0A","A70B0B","F1BA0A","F6DE26"],"name":"Golden Fire Sunset","likes":"568","tags":["gold","yellow"],"roles":{"bg":"F6DE26","ink":"372B2B","accent":"F1BA0A","surface1":"A70B0B","surface2":"850A0A"},"score":7},{"hex":["01200F","1E4F2A","3A7D44","FDC500","FFD500"],"name":"Enchanted Forest","likes":"417","tags":["gold","yellow"],"roles":{"bg":"FFD500","ink":"01200F","accent":"FDC500","surface1":"3A7D44","surface2":"1E4F2A"},"score":7},{"hex":["FFE100","FFC917","F00000","8C0000","050505"],"name":"Fire and Gold","likes":"335","tags":["gold","yellow"],"roles":{"bg":"FFC917","ink":"050505","accent":"FFE100","surface1":"F00000","surface2":"8C0000"},"score":7},{"hex":["DC562E","001D3D","003566","FFC300","FFD60A"],"name":"Bold Retro Fusion","likes":"278","tags":["gold","yellow"],"roles":{"bg":"DC562E","ink":"001D3D","accent":"FFD60A","surface1":"FFC300","surface2":"003566"},"score":7},{"hex":["3A015C","4F0147","35012C","290025","11001C"],"name":"Midnight Magic","likes":"3,318","tags":["dark"],"roles":{"bg":"3A015C","ink":"11001C","accent":"290025","surface1":"4F0147","surface2":"35012C"},"score":5},{"hex":["0F0606","200B0B","2F0000","490000","650000"],"name":"Fiery Red Inferno","likes":"825","tags":["dark"],"roles":{"bg":"650000","ink":"0F0606","accent":"490000","surface1":"2F0000","surface2":"200B0B"},"score":5}]},{"id":"indie-game","name":"Indie game / playful tech","blurb":"Neon, vibrant, multi-accent. The kind of palette that announces \"this is fun.\"","palettes":[{"hex":["EF476F","FFD166","06D6A0","118AB2","073B4C"],"name":"Watermelon Sorbet","likes":"36.3K","tags":["vibrant","neon","bold","blue","black"],"roles":{"bg":"FFD166","ink":"073B4C","accent":"06D6A0","surface1":"EF476F","surface2":"118AB2"},"score":9},{"hex":["9B5DE5","F15BB5","FEE440","00BBF9","00F5D4"],"name":"Candy Pop","likes":"23.7K","tags":["vibrant","neon","bold","spring"],"roles":{"bg":"F15BB5","ink":"00F5D4","accent":"00BBF9","surface1":"9B5DE5","surface2":"FEE440"},"score":9},{"hex":["FF595E","FFCA3A","8AC926","1982C4","6A4C93"],"name":"Vibrant Summer","likes":"17.4K","tags":["vibrant","neon","bold"],"roles":{"bg":"FF595E","ink":"1982C4","accent":"FFCA3A","surface1":"8AC926","surface2":"6A4C93"},"score":9},{"hex":["70D6FF","FF70A6","FF9770","FFD670","E9FF70"],"name":"Pastel Rainbow","likes":"17.6K","tags":["vibrant","soft","pastel","neon","spring","beach","orange"],"roles":{"bg":"70D6FF","ink":"E9FF70","accent":"FF70A6","surface1":"FF9770","surface2":"FFD670"},"score":9},{"hex":["FFBC42","D81159","8F2D56","218380","73D2DE"],"name":"Sunset Bliss","likes":"9,952","tags":["vibrant","neon","bold","sunset","tropical"],"roles":{"bg":"73D2DE","ink":"218380","accent":"FFBC42","surface1":"D81159","surface2":"8F2D56"},"score":9},{"hex":["540D6E","EE4266","FFD23F","3BCEAC","0EAD69"],"name":"Vibrant Harmony","likes":"8,995","tags":["vibrant","neon","bold","tropical"],"roles":{"bg":"FFD23F","ink":"540D6E","accent":"0EAD69","surface1":"EE4266","surface2":"3BCEAC"},"score":9},{"hex":["3C1642","086375","1DD3B0","AFFC41","B2FF9E"],"name":"Vibrant Spring","likes":"7,799","tags":["vibrant","neon","bold","winter","green"],"roles":{"bg":"B2FF9E","ink":"3C1642","accent":"AFFC41","surface1":"1DD3B0","surface2":"086375"},"score":9},{"hex":["F9C80E","F86624","EA3546","662E9B","43BCCD"],"name":"Bright Bold Colors","likes":"6,907","tags":["vibrant","neon","bold"],"roles":{"bg":"EA3546","ink":"662E9B","accent":"F9C80E","surface1":"F86624","surface2":"43BCCD"},"score":9},{"hex":["E6C229","F17105","D11149","6610F2","1A8FE3"],"name":"Electric Vibes","likes":"3,614","tags":["light","bright","neon"],"roles":{"bg":"E6C229","ink":"D11149","accent":"F17105","surface1":"6610F2","surface2":"1A8FE3"},"score":8},{"hex":["04E762","F5B700","DC0073","008BF8","89FC00"],"name":"Neon Fusion","likes":"3,177","tags":["light","bright","neon","green"],"roles":{"bg":"89FC00","ink":"DC0073","accent":"008BF8","surface1":"F5B700","surface2":"04E762"},"score":8}]},{"id":"documentary","name":"Documentary / journalism","blurb":"Muted earth, sepia-adjacent, high body/heading contrast. Long-read magazine palette.","palettes":[{"hex":["22223B","4A4E69","9A8C98","C9ADA7","F2E9E4"],"name":"Soft Lavender","likes":"45.8K","tags":["muted","gradient","earth","stone","black","white"],"roles":{"bg":"F2E9E4","ink":"22223B","accent":"C9ADA7","surface1":"9A8C98","surface2":"4A4E69"},"score":8},{"hex":["0A0908","22333B","EAE0D5","C6AC8F","5E503F"],"name":"Neutral Earth Tones","likes":"15.7K","tags":["muted","modern","earth","black","white"],"roles":{"bg":"EAE0D5","ink":"0A0908","accent":"C6AC8F","surface1":"5E503F","surface2":"22333B"},"score":8},{"hex":["A3A380","D6CE93","EFEBCE","D8A48F","BB8588"],"name":"Earthy Tones","likes":"12.8K","tags":["muted","autumn","spring","summer","earth"],"roles":{"bg":"EFEBCE","ink":"A3A380","accent":"D8A48F","surface1":"D6CE93","surface2":"BB8588"},"score":8},{"hex":["F0EAD2","DDE5B6","ADC178","A98467","6C584C"],"name":"Earthy Tones","likes":"23.4K","tags":["gradient","vintage","retro","classic","spring","summer","earth","natural","green","brown"],"roles":{"bg":"F0EAD2","ink":"6C584C","accent":"DDE5B6","surface1":"ADC178","surface2":"A98467"},"score":8},{"hex":["606C38","283618","FEFAE0","DDA15E","BC6C25"],"name":"Olive Garden Feast","likes":"98K","tags":["muted","gradient","autumn","earth","natural","green","orange","white"],"roles":{"bg":"FEFAE0","ink":"283618","accent":"BC6C25","surface1":"DDA15E","surface2":"606C38"},"score":7},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":7},{"hex":["283D3B","197278","EDDDD4","C44536","772E25"],"name":"Forest Hues","likes":"15.3K","tags":["muted","bold","autumn","earth","natural","sea","black"],"roles":{"bg":"EDDDD4","ink":"283D3B","accent":"197278","surface1":"C44536","surface2":"772E25"},"score":7},{"hex":["ECF8F8","EEE4E1","E7D8C9","E6BEAE","B2967D"],"name":"Warm Neutral Tones","likes":"17.4K","tags":["muted","spring","earth","natural","stone"],"roles":{"bg":"ECF8F8","ink":"B2967D","accent":"E6BEAE","surface1":"EEE4E1","surface2":"E7D8C9"},"score":7},{"hex":["0A0908","22333B","F2F4F3","A9927D","5E503F"],"name":"Mocha Latte","likes":"5,915","tags":["earth","brown"],"roles":{"bg":"F2F4F3","ink":"0A0908","accent":"22333B","surface1":"A9927D","surface2":"5E503F"},"score":7},{"hex":["DAD7CD","A3B18A","588157","3A5A40","344E41"],"name":"Earthy Forest Hues","likes":"49.2K","tags":["muted","monochrome","gradient","earth","natural","green","white"],"roles":{"bg":"DAD7CD","ink":"344E41","accent":"3A5A40","surface1":"A3B18A","surface2":"588157"},"score":6}]},{"id":"architecture","name":"Architecture firm","blurb":"Stone, monochrome, hairline. The folio of a quiet practice.","palettes":[{"hex":["463F3A","8A817C","BCB8B1","F4F3EE","E0AFA0"],"name":"Neutral Elegance","likes":"23.9K","tags":["muted","monochrome","modern","summer","stone","black","white"],"roles":{"bg":"F4F3EE","ink":"463F3A","accent":"E0AFA0","surface1":"BCB8B1","surface2":"8A817C"},"score":13},{"hex":["353535","3C6E71","FFFFFF","D9D9D9","284B63"],"name":"Monochrome Beach","likes":"23.4K","tags":["muted","gradient","modern","stone","black","white"],"roles":{"bg":"FFFFFF","ink":"353535","accent":"284B63","surface1":"D9D9D9","surface2":"3C6E71"},"score":10},{"hex":["FBFBF2","E5E6E4","CFD2CD","A6A2A2","847577"],"name":"Soft Serenity","likes":"7,266","tags":["monochrome","stone"],"roles":{"bg":"FBFBF2","ink":"847577","accent":"CFD2CD","surface1":"E5E6E4","surface2":"A6A2A2"},"score":9},{"hex":["DAD7CD","A3B18A","588157","3A5A40","344E41"],"name":"Earthy Forest Hues","likes":"49.2K","tags":["muted","monochrome","gradient","earth","natural","green","white"],"roles":{"bg":"DAD7CD","ink":"344E41","accent":"3A5A40","surface1":"A3B18A","surface2":"588157"},"score":8},{"hex":["CFDBD5","E8EDDF","F5CB5C","242423","333533"],"name":"Monochrome Harmony","likes":"13.6K","tags":["monochrome","modern","stone","black"],"roles":{"bg":"E8EDDF","ink":"242423","accent":"F5CB5C","surface1":"CFDBD5","surface2":"333533"},"score":8},{"hex":["22223B","4A4E69","9A8C98","C9ADA7","F2E9E4"],"name":"Soft Lavender","likes":"45.8K","tags":["muted","gradient","earth","stone","black","white"],"roles":{"bg":"F2E9E4","ink":"22223B","accent":"C9ADA7","surface1":"9A8C98","surface2":"4A4E69"},"score":7},{"hex":["000000","14213D","FCA311","E5E5E5","FFFFFF"],"name":"Black & Gold Elegance","likes":"54.6K","tags":["vibrant","bold","modern","stone","black","white"],"roles":{"bg":"FFFFFF","ink":"000000","accent":"FCA311","surface1":"E5E5E5","surface2":"14213D"},"score":7},{"hex":["FFFCF2","CCC5B9","403D39","252422","EB5E28"],"name":"Rustic Charm","likes":"18.5K","tags":["bold","gradient","modern","autumn","stone","black","white","halloween"],"roles":{"bg":"FFFCF2","ink":"252422","accent":"EB5E28","surface1":"CCC5B9","surface2":"403D39"},"score":7},{"hex":["0D1B2A","1B263B","415A77","778DA9","E0E1DD"],"name":"Deep Sea","likes":"27.7K","tags":["monochrome","gradient","sky","sea","black","white"],"roles":{"bg":"E0E1DD","ink":"0D1B2A","accent":"1B263B","surface1":"778DA9","surface2":"415A77"},"score":7},{"hex":["DCDCDD","C5C3C6","46494C","4C5C68","1985A1"],"name":"Industrial Blue","likes":"7,518","tags":["modern","winter","stone","black"],"roles":{"bg":"DCDCDD","ink":"46494C","accent":"1985A1","surface1":"C5C3C6","surface2":"4C5C68"},"score":7}]},{"id":"hospitality","name":"Restaurant / hospitality","blurb":"Warm, rich, lived-in. A neighborhood place at golden hour.","palettes":[{"hex":["335C67","FFF3B0","E09F3E","9E2A2B","540B0E"],"name":"Dark Sunset","likes":"31.5K","tags":["bold","modern","autumn","earth","sunset","red","white"],"roles":{"bg":"FFF3B0","ink":"540B0E","accent":"E09F3E","surface1":"9E2A2B","surface2":"335C67"},"score":8},{"hex":["6F1D1B","BB9457","432818","99582A","FFE6A7"],"name":"Autumn Harvest","likes":"23K","tags":["autumn","summer","earth","natural","brown","white"],"roles":{"bg":"FFE6A7","ink":"432818","accent":"6F1D1B","surface1":"BB9457","surface2":"99582A"},"score":8},{"hex":["585123","EEC170","F2A65A","F58549","772F1A"],"name":"Warm Rustic Palette","likes":"8,918","tags":["autumn","summer","earth","sunset","sand","orange"],"roles":{"bg":"EEC170","ink":"585123","accent":"F58549","surface1":"F2A65A","surface2":"772F1A"},"score":8},{"hex":["3C1518","69140E","A44200","D58936","F2F3AE"],"name":"Autumn Glow","likes":"4,665","tags":["autumn","summer","earth","sunset"],"roles":{"bg":"F2F3AE","ink":"3C1518","accent":"A44200","surface1":"D58936","surface2":"69140E"},"score":8},{"hex":["264653","2A9D8F","E9C46A","F4A261","E76F51"],"name":"Sunny Beach Day","likes":"124.7K","tags":["muted","vibrant","bold","modern","autumn","sunset","beach","orange","tropical"],"roles":{"bg":"F4A261","ink":"264653","accent":"E76F51","surface1":"E9C46A","surface2":"2A9D8F"},"score":7},{"hex":["355070","6D597A","B56576","E56B6F","EAAC8B"],"name":"Ocean Sunset","likes":"29K","tags":["muted","gradient","autumn","sunset","sky"],"roles":{"bg":"EAAC8B","ink":"355070","accent":"E56B6F","surface1":"B56576","surface2":"6D597A"},"score":7},{"hex":["C9CBA3","FFE1A8","E26D5C","723D46","472D30"],"name":"Golden Peachy Glow","likes":"18.1K","tags":["muted","autumn","summer","sunset","sand","white"],"roles":{"bg":"FFE1A8","ink":"472D30","accent":"E26D5C","surface1":"C9CBA3","surface2":"723D46"},"score":7},{"hex":["EA8C55","C75146","AD2E24","81171B","540804"],"name":"Fiery Sunset","likes":"6,947","tags":["autumn","summer","sunset","red"],"roles":{"bg":"EA8C55","ink":"540804","accent":"81171B","surface1":"C75146","surface2":"AD2E24"},"score":7},{"hex":["606C38","283618","FEFAE0","DDA15E","BC6C25"],"name":"Olive Garden Feast","likes":"98K","tags":["muted","gradient","autumn","earth","natural","green","orange","white"],"roles":{"bg":"FEFAE0","ink":"283618","accent":"BC6C25","surface1":"DDA15E","surface2":"606C38"},"score":6},{"hex":["283D3B","197278","EDDDD4","C44536","772E25"],"name":"Forest Hues","likes":"15.3K","tags":["muted","bold","autumn","earth","natural","sea","black"],"roles":{"bg":"EDDDD4","ink":"283D3B","accent":"197278","surface1":"C44536","surface2":"772E25"},"score":6}]},{"id":"outdoor-adventure","name":"Outdoor / adventure","blurb":"Natural greens and sky blues. Trail guide, outfitter, conservation.","palettes":[{"hex":["BCE784","5DD39E","348AA7","525174","513B56"],"name":"Spring Blooms","likes":"7,244","tags":["spring","winter","beach","sea","green","tropical"],"roles":{"bg":"BCE784","ink":"513B56","accent":"5DD39E","surface1":"348AA7","surface2":"525174"},"score":6},{"hex":["CAD2C5","84A98C","52796F","354F52","2F3E46"],"name":"Earthy Green","likes":"38.4K","tags":["muted","monochrome","gradient","winter","earth","natural","sea"],"roles":{"bg":"CAD2C5","ink":"2F3E46","accent":"354F52","surface1":"84A98C","surface2":"52796F"},"score":5},{"hex":["C9E4CA","87BBA2","55828B","3B6064","364958"],"name":"Forest Green Tones","likes":"9,375","tags":["muted","monochrome","winter","natural","sea"],"roles":{"bg":"C9E4CA","ink":"364958","accent":"87BBA2","surface1":"55828B","surface2":"3B6064"},"score":5},{"hex":["0D1B2A","1B263B","415A77","778DA9","E0E1DD"],"name":"Deep Sea","likes":"27.7K","tags":["monochrome","gradient","sky","sea","black","white"],"roles":{"bg":"E0E1DD","ink":"0D1B2A","accent":"1B263B","surface1":"778DA9","surface2":"415A77"},"score":5},{"hex":["22577A","38A3A5","57CC99","80ED99","C7F9CC"],"name":"Cool Waters","likes":"17.7K","tags":["monochrome","gradient","winter","sea","green"],"roles":{"bg":"C7F9CC","ink":"22577A","accent":"80ED99","surface1":"57CC99","surface2":"38A3A5"},"score":5},{"hex":["B09E99","FEE9E1","FAD4C0","64B6AC","C0FDFB"],"name":"Whimsical Hues","likes":"5,960","tags":["spring","sky","sand","natural","beach"],"roles":{"bg":"FEE9E1","ink":"64B6AC","accent":"C0FDFB","surface1":"FAD4C0","surface2":"B09E99"},"score":5},{"hex":["2F6690","3A7CA5","D9DCD6","16425B","81C3D7"],"name":"Deep Blue Waters","likes":"7,820","tags":["winter","sky","sea","blue"],"roles":{"bg":"D9DCD6","ink":"16425B","accent":"81C3D7","surface1":"3A7CA5","surface2":"2F6690"},"score":5},{"hex":["004E64","00A5CF","9FFFCB","25A18E","7AE582"],"name":"Refreshing Aqua Tones","likes":"6,113","tags":["winter","sea","blue","green"],"roles":{"bg":"9FFFCB","ink":"004E64","accent":"00A5CF","surface1":"7AE582","surface2":"25A18E"},"score":5},{"hex":["F8FFE5","06D6A0","1B9AAA","EF476F","FFC43D"],"name":"Bright Contrasts","likes":"6,988","tags":["sky","beach"],"roles":{"bg":"F8FFE5","ink":"1B9AAA","accent":"FFC43D","surface1":"EF476F","surface2":"06D6A0"},"score":5},{"hex":["04E762","F5B700","DC0073","008BF8","89FC00"],"name":"Neon Fusion","likes":"3,177","tags":["light","bright","neon","green"],"roles":{"bg":"89FC00","ink":"DC0073","accent":"008BF8","surface1":"F5B700","surface2":"04E762"},"score":4}]},{"id":"sustainable-eco","name":"Sustainable / eco","blurb":"Muted greens and earth tones. Materials-led, low-impact aesthetic.","palettes":[{"hex":["DAD7CD","A3B18A","588157","3A5A40","344E41"],"name":"Earthy Forest Hues","likes":"49.2K","tags":["muted","monochrome","gradient","earth","natural","green","white"],"roles":{"bg":"DAD7CD","ink":"344E41","accent":"3A5A40","surface1":"A3B18A","surface2":"588157"},"score":10},{"hex":["606C38","283618","FEFAE0","DDA15E","BC6C25"],"name":"Olive Garden Feast","likes":"98K","tags":["muted","gradient","autumn","earth","natural","green","orange","white"],"roles":{"bg":"FEFAE0","ink":"283618","accent":"BC6C25","surface1":"DDA15E","surface2":"606C38"},"score":8},{"hex":["CAD2C5","84A98C","52796F","354F52","2F3E46"],"name":"Earthy Green","likes":"38.4K","tags":["muted","monochrome","gradient","winter","earth","natural","sea"],"roles":{"bg":"CAD2C5","ink":"2F3E46","accent":"354F52","surface1":"84A98C","surface2":"52796F"},"score":8},{"hex":["132A13","31572C","4F772D","90A955","ECF39E"],"name":"Leafy Green Garden","likes":"17.2K","tags":["monochrome","spring","earth","natural","green"],"roles":{"bg":"ECF39E","ink":"132A13","accent":"4F772D","surface1":"90A955","surface2":"31572C"},"score":8},{"hex":["F0EAD2","DDE5B6","ADC178","A98467","6C584C"],"name":"Earthy Tones","likes":"23.4K","tags":["gradient","vintage","retro","classic","spring","summer","earth","natural","green","brown"],"roles":{"bg":"F0EAD2","ink":"6C584C","accent":"DDE5B6","surface1":"ADC178","surface2":"A98467"},"score":8},{"hex":["EFF1ED","373D20","717744","BCBD8B","766153"],"name":"Nature Harmony","likes":"6,072","tags":["modern","earth","natural","green"],"roles":{"bg":"EFF1ED","ink":"373D20","accent":"BCBD8B","surface1":"766153","surface2":"717744"},"score":8},{"hex":["B39C4D","768948","607744","34623F","1E2F23"],"name":"Mossy Meadow","likes":"4,081","tags":["autumn","earth","natural","green"],"roles":{"bg":"B39C4D","ink":"1E2F23","accent":"768948","surface1":"607744","surface2":"34623F"},"score":8},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":6},{"hex":["283D3B","197278","EDDDD4","C44536","772E25"],"name":"Forest Hues","likes":"15.3K","tags":["muted","bold","autumn","earth","natural","sea","black"],"roles":{"bg":"EDDDD4","ink":"283D3B","accent":"197278","surface1":"C44536","surface2":"772E25"},"score":6},{"hex":["ECF8F8","EEE4E1","E7D8C9","E6BEAE","B2967D"],"name":"Warm Neutral Tones","likes":"17.4K","tags":["muted","spring","earth","natural","stone"],"roles":{"bg":"ECF8F8","ink":"B2967D","accent":"E6BEAE","surface1":"EEE4E1","surface2":"E7D8C9"},"score":6}]},{"id":"tech-research","name":"Tech research / academic","blurb":"Cool, restrained, single accent. The site of a research lab or thoughtful tech writeup.","palettes":[{"hex":["353535","3C6E71","FFFFFF","D9D9D9","284B63"],"name":"Monochrome Beach","likes":"23.4K","tags":["muted","gradient","modern","stone","black","white"],"roles":{"bg":"FFFFFF","ink":"353535","accent":"284B63","surface1":"D9D9D9","surface2":"3C6E71"},"score":6},{"hex":["F4F1DE","E07A5F","3D405B","81B29A","F2CC8F"],"name":"Neutral Harmony Bliss","likes":"48.3K","tags":["muted","bold","modern","beach","white"],"roles":{"bg":"F4F1DE","ink":"3D405B","accent":"F2CC8F","surface1":"E07A5F","surface2":"81B29A"},"score":4},{"hex":["22223B","4A4E69","9A8C98","C9ADA7","F2E9E4"],"name":"Soft Lavender","likes":"45.8K","tags":["muted","gradient","earth","stone","black","white"],"roles":{"bg":"F2E9E4","ink":"22223B","accent":"C9ADA7","surface1":"9A8C98","surface2":"4A4E69"},"score":4},{"hex":["CAD2C5","84A98C","52796F","354F52","2F3E46"],"name":"Earthy Green","likes":"38.4K","tags":["muted","monochrome","gradient","winter","earth","natural","sea"],"roles":{"bg":"CAD2C5","ink":"2F3E46","accent":"354F52","surface1":"84A98C","surface2":"52796F"},"score":4},{"hex":["355070","6D597A","B56576","E56B6F","EAAC8B"],"name":"Ocean Sunset","likes":"29K","tags":["muted","gradient","autumn","sunset","sky"],"roles":{"bg":"EAAC8B","ink":"355070","accent":"E56B6F","surface1":"B56576","surface2":"6D597A"},"score":4},{"hex":["463F3A","8A817C","BCB8B1","F4F3EE","E0AFA0"],"name":"Neutral Elegance","likes":"23.9K","tags":["muted","monochrome","modern","summer","stone","black","white"],"roles":{"bg":"F4F3EE","ink":"463F3A","accent":"E0AFA0","surface1":"BCB8B1","surface2":"8A817C"},"score":4},{"hex":["0A0908","22333B","EAE0D5","C6AC8F","5E503F"],"name":"Neutral Earth Tones","likes":"15.7K","tags":["muted","modern","earth","black","white"],"roles":{"bg":"EAE0D5","ink":"0A0908","accent":"C6AC8F","surface1":"5E503F","surface2":"22333B"},"score":4},{"hex":["9C89B8","F0A6CA","EFC3E6","F0E6EF","B8BEDD"],"name":"Soft Pastel","likes":"16.9K","tags":["muted","spring","winter"],"roles":{"bg":"F0E6EF","ink":"9C89B8","accent":"F0A6CA","surface1":"EFC3E6","surface2":"B8BEDD"},"score":4},{"hex":["565264","706677","A6808C","CCB7AE","D6CFCB"],"name":"Mauve Serenity","likes":"11K","tags":["muted","autumn"],"roles":{"bg":"D6CFCB","ink":"565264","accent":"CCB7AE","surface1":"A6808C","surface2":"706677"},"score":4},{"hex":["C9E4CA","87BBA2","55828B","3B6064","364958"],"name":"Forest Green Tones","likes":"9,375","tags":["muted","monochrome","winter","natural","sea"],"roles":{"bg":"C9E4CA","ink":"364958","accent":"87BBA2","surface1":"55828B","surface2":"3B6064"},"score":4}]},{"id":"music-label","name":"Music / record label","blurb":"Retro, gradient-leaning, bold. A small label that ships sleeves you want to keep.","palettes":[{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":7},{"hex":["EDEDE9","D6CCC2","F5EBE0","E3D5CA","D5BDAF"],"name":"Soft Sand","likes":"45.9K","tags":["soft","pastel","gradient","vintage","retro","classic","summer","earth","sand","natural","stone","white"],"roles":{"bg":"EDEDE9","ink":"D5BDAF","accent":"F5EBE0","surface1":"E3D5CA","surface2":"D6CCC2"},"score":6},{"hex":["F0EAD2","DDE5B6","ADC178","A98467","6C584C"],"name":"Earthy Tones","likes":"23.4K","tags":["gradient","vintage","retro","classic","spring","summer","earth","natural","green","brown"],"roles":{"bg":"F0EAD2","ink":"6C584C","accent":"DDE5B6","surface1":"ADC178","surface2":"A98467"},"score":6},{"hex":["9F7E69","D2BBA0","F2EFC7","F7FFE0","FFEEE2"],"name":"Golden Glow","likes":"4,576","tags":["vintage","retro","classic"],"roles":{"bg":"FFEEE2","ink":"9F7E69","accent":"F7FFE0","surface1":"F2EFC7","surface2":"D2BBA0"},"score":6},{"hex":["92977E","E6E18F","FEFCAD","EADDA6","FFFAE2"],"name":"Earthy Sunshine Bliss","likes":"2,007","tags":["vintage","retro","classic"],"roles":{"bg":"FFFAE2","ink":"92977E","accent":"FEFCAD","surface1":"EADDA6","surface2":"E6E18F"},"score":6},{"hex":["C4CEA1","D9E0A3","FDF2B0","F3D17C","CF9963"],"name":"Sunny Lemonade Fun","likes":"853","tags":["vintage","retro","classic"],"roles":{"bg":"FDF2B0","ink":"CF9963","accent":"F3D17C","surface1":"D9E0A3","surface2":"C4CEA1"},"score":6},{"hex":["6F4E37","A67B5B","FED8B1","D99A6C","ECB176"],"name":"Cozy Caramel Delight","likes":"670","tags":["vintage","retro","classic"],"roles":{"bg":"FED8B1","ink":"6F4E37","accent":"ECB176","surface1":"D99A6C","surface2":"A67B5B"},"score":6},{"hex":["797D62","9B9B7A","FFCB70","F0B27A","D08C60"],"name":"Sunflower Meadow Glow","likes":"531","tags":["vintage","retro","classic"],"roles":{"bg":"FFCB70","ink":"797D62","accent":"F0B27A","surface1":"D08C60","surface2":"9B9B7A"},"score":6},{"hex":["F7E1D3","EDBF9E","DA9461","FEDB72","C3CFA0"],"name":"Warm Autumn Harvest","likes":"351","tags":["vintage","retro","classic"],"roles":{"bg":"F7E1D3","ink":"DA9461","accent":"FEDB72","surface1":"EDBF9E","surface2":"C3CFA0"},"score":6},{"hex":["F8F4E3","D4CDC3","D5D0CD","A2A392","9A998C"],"name":"Soft Serenity","likes":"3,644","tags":["vintage","retro","classic","sand"],"roles":{"bg":"F8F4E3","ink":"9A998C","accent":"D4CDC3","surface1":"D5D0CD","surface2":"A2A392"},"score":5}]},{"id":"cinematic","name":"Cinema / film","blurb":"Dark cinematic, deep saturation, low-key. A festival poster palette.","palettes":[{"hex":["3A015C","4F0147","35012C","290025","11001C"],"name":"Midnight Magic","likes":"3,318","tags":["dark"],"roles":{"bg":"3A015C","ink":"11001C","accent":"290025","surface1":"4F0147","surface2":"35012C"},"score":6},{"hex":["0F0606","200B0B","2F0000","490000","650000"],"name":"Fiery Red Inferno","likes":"825","tags":["dark"],"roles":{"bg":"650000","ink":"0F0606","accent":"490000","surface1":"2F0000","surface2":"200B0B"},"score":6},{"hex":["002029","00303D","004052","005066","00607A"],"name":"Ocean Blue Adventure","likes":"747","tags":["dark"],"roles":{"bg":"00607A","ink":"002029","accent":"005066","surface1":"004052","surface2":"00303D"},"score":6},{"hex":["000000","000000","000000","000000","000000"],"name":"Blank Canvas","likes":"1,105","tags":["dark"],"roles":{"bg":"000000","ink":"000000","accent":"000000","surface1":"000000","surface2":"000000"},"score":6},{"hex":["3A015C","32004F","220135","190028","11001C"],"name":"Midnight Purple Hues","likes":"549","tags":["dark","purple"],"roles":{"bg":"3A015C","ink":"11001C","accent":"32004F","surface1":"220135","surface2":"190028"},"score":6},{"hex":["191528","3C162F","5C162E","7C162E","110E1B"],"name":"Dark Mysterious Night","likes":"603","tags":["dark"],"roles":{"bg":"7C162E","ink":"110E1B","accent":"5C162E","surface1":"3C162F","surface2":"191528"},"score":6},{"hex":["780000","660000","520000","3D0000","290000"],"name":"Dark Ember Flames","likes":"512","tags":["dark"],"roles":{"bg":"780000","ink":"290000","accent":"660000","surface1":"520000","surface2":"3D0000"},"score":6},{"hex":["0D060F","1E2824","5D3C18","766B65","230000"],"name":"Velvet Chocolate Delight","likes":"466","tags":["dark"],"roles":{"bg":"766B65","ink":"0D060F","accent":"230000","surface1":"5D3C18","surface2":"1E2824"},"score":6},{"hex":["45040C","720714","000000","12562A","063A21"],"name":"Dark Forest","likes":"251","tags":["dark"],"roles":{"bg":"720714","ink":"000000","accent":"45040C","surface1":"12562A","surface2":"063A21"},"score":6},{"hex":["2D0065","360153","46074D","560737","600028"],"name":"Mystic Midnight Hues","likes":"280","tags":["dark"],"roles":{"bg":"2D0065","ink":"46074D","accent":"600028","surface1":"560737","surface2":"360153"},"score":6}]},{"id":"wine-spirits","name":"Wine / spirits","blurb":"Wine reds and deep earths. Cellar, vineyard, small distillery.","palettes":[{"hex":["220901","621708","941B0C","BC3908","F6AA1C"],"name":"Fiery Red","likes":"11.3K","tags":["bold","autumn","sunset","natural","red","orange","black","halloween"],"roles":{"bg":"F6AA1C","ink":"220901","accent":"BC3908","surface1":"941B0C","surface2":"621708"},"score":6},{"hex":["8C1C13","BF4342","E7D7C1","A78A7F","735751"],"name":"Warm Earth Tones","likes":"7,911","tags":["bold","autumn","summer","red"],"roles":{"bg":"E7D7C1","ink":"8C1C13","accent":"BF4342","surface1":"A78A7F","surface2":"735751"},"score":6},{"hex":["250902","38040E","640D14","800E13","AD2831"],"name":"Crimson Hues","likes":"10.9K","tags":["monochrome","autumn","red","black","halloween"],"roles":{"bg":"AD2831","ink":"250902","accent":"38040E","surface1":"800E13","surface2":"640D14"},"score":6},{"hex":["6F1D1B","BB9457","432818","99582A","FFE6A7"],"name":"Autumn Harvest","likes":"23K","tags":["autumn","summer","earth","natural","brown","white"],"roles":{"bg":"FFE6A7","ink":"432818","accent":"6F1D1B","surface1":"BB9457","surface2":"99582A"},"score":6},{"hex":["4F000B","720026","CE4257","FF7F51","FF9B54"],"name":"Red Sunburst","likes":"14.3K","tags":["autumn","sunset","red","orange"],"roles":{"bg":"FF9B54","ink":"4F000B","accent":"FF7F51","surface1":"CE4257","surface2":"720026"},"score":6},{"hex":["EA8C55","C75146","AD2E24","81171B","540804"],"name":"Fiery Sunset","likes":"6,947","tags":["autumn","summer","sunset","red"],"roles":{"bg":"EA8C55","ink":"540804","accent":"81171B","surface1":"C75146","surface2":"AD2E24"},"score":6},{"hex":["FBBA72","CA5310","BB4D00","8F250C","691E06"],"name":"Spicy Delight","likes":"5,304","tags":["autumn","summer","red","orange"],"roles":{"bg":"FBBA72","ink":"691E06","accent":"BB4D00","surface1":"CA5310","surface2":"8F250C"},"score":6},{"hex":["F7B267","F79D65","F4845F","F27059","F25C54"],"name":"Sunset Shades","likes":"15.3K","tags":["vibrant","monochrome","autumn","summer","sunset","sea","red","orange"],"roles":{"bg":"F7B267","ink":"F25C54","accent":"F79D65","surface1":"F4845F","surface2":"F27059"},"score":5},{"hex":["2B2D42","8D99AE","EDF2F4","EF233C","D90429"],"name":"Cool Coastal Vibes","likes":"34.4K","tags":["bold","gradient","modern","red","black","white"],"roles":{"bg":"EDF2F4","ink":"2B2D42","accent":"D90429","surface1":"8D99AE","surface2":"EF233C"},"score":5},{"hex":["780000","C1121F","FDF0D5","003049","669BBC"],"name":"Fiery Ocean","likes":"35.3K","tags":["bold","blue","red","white"],"roles":{"bg":"FDF0D5","ink":"003049","accent":"780000","surface1":"669BBC","surface2":"C1121F"},"score":5}]},{"id":"athletic","name":"Sports / athletic","blurb":"Bold primary, high-contrast, performance-coded. Running club, gym, kit launch.","palettes":[{"hex":["000814","001D3D","003566","FFC300","FFD60A"],"name":"Golden Twilight","likes":"24.7K","tags":["vibrant","bold","gradient","modern","gold","blue","yellow","black"],"roles":{"bg":"FFD60A","ink":"000814","accent":"FFC300","surface1":"003566","surface2":"001D3D"},"score":8},{"hex":["FFFFFF","00171F","003459","007EA7","00A8E8"],"name":"Deep Sea","likes":"11.8K","tags":["vibrant","bold","modern","sea","blue","black"],"roles":{"bg":"FFFFFF","ink":"00171F","accent":"00A8E8","surface1":"007EA7","surface2":"003459"},"score":8},{"hex":["8ECAE6","219EBC","023047","FFB703","FB8500"],"name":"Refreshing Summer Fun","likes":"68.1K","tags":["vibrant","bold","gradient","sky","beach","sea","blue","orange"],"roles":{"bg":"8ECAE6","ink":"023047","accent":"FFB703","surface1":"FB8500","surface2":"219EBC"},"score":7},{"hex":["000000","14213D","FCA311","E5E5E5","FFFFFF"],"name":"Black & Gold Elegance","likes":"54.6K","tags":["vibrant","bold","modern","stone","black","white"],"roles":{"bg":"FFFFFF","ink":"000000","accent":"FCA311","surface1":"E5E5E5","surface2":"14213D"},"score":7},{"hex":["003049","D62828","F77F00","FCBF49","EAE2B7"],"name":"Warm Autumn Glow","likes":"48.2K","tags":["vibrant","bold","modern","sunset","orange","black","white"],"roles":{"bg":"EAE2B7","ink":"003049","accent":"F77F00","surface1":"FCBF49","surface2":"D62828"},"score":7},{"hex":["EF476F","FFD166","06D6A0","118AB2","073B4C"],"name":"Watermelon Sorbet","likes":"36.3K","tags":["vibrant","neon","bold","blue","black"],"roles":{"bg":"FFD166","ink":"073B4C","accent":"06D6A0","surface1":"EF476F","surface2":"118AB2"},"score":7},{"hex":["F72585","7209B7","3A0CA3","4361EE","4CC9F0"],"name":"Bold Hues","likes":"23.3K","tags":["vibrant","neon","bold","gradient","modern","winter","blue","purple"],"roles":{"bg":"4CC9F0","ink":"3A0CA3","accent":"F72585","surface1":"4361EE","surface2":"7209B7"},"score":7},{"hex":["011627","FDFFFC","2EC4B6","E71D36","FF9F1C"],"name":"Contrast Pop","likes":"19.8K","tags":["vibrant","bold","modern","beach","black","white"],"roles":{"bg":"FDFFFC","ink":"011627","accent":"FF9F1C","surface1":"E71D36","surface2":"2EC4B6"},"score":7},{"hex":["3C1642","086375","1DD3B0","AFFC41","B2FF9E"],"name":"Vibrant Spring","likes":"7,799","tags":["vibrant","neon","bold","winter","green"],"roles":{"bg":"B2FF9E","ink":"3C1642","accent":"AFFC41","surface1":"1DD3B0","surface2":"086375"},"score":7},{"hex":["EE6055","60D394","AAF683","FFD97D","FF9B85"],"name":"Vibrant Nature Hues","likes":"7,868","tags":["vibrant","soft","pastel","bold","beach","red","green","tropical"],"roles":{"bg":"FF9B85","ink":"60D394","accent":"FFD97D","surface1":"AAF683","surface2":"EE6055"},"score":7}]},{"id":"boutique-hotel","name":"Boutique hotel","blurb":"Muted gold and sand. The lobby of a small Italian hotel, not a chain.","palettes":[{"hex":["555B6E","89B0AE","BEE3DB","FAF9F9","FFD6BA"],"name":"Earthly Tones","likes":"21.3K","tags":["muted","modern","sand","beach","white"],"roles":{"bg":"FAF9F9","ink":"555B6E","accent":"FFD6BA","surface1":"BEE3DB","surface2":"89B0AE"},"score":6},{"hex":["CCD5AE","E9EDC9","FEFAE0","FAEDCD","D4A373"],"name":"Golden Summer Fields","likes":"85.2K","tags":["muted","soft","pastel","gradient","vintage","retro","classic","spring","summer","earth","sand","natural","white"],"roles":{"bg":"FEFAE0","ink":"D4A373","accent":"FAEDCD","surface1":"E9EDC9","surface2":"CCD5AE"},"score":5},{"hex":["22223B","4A4E69","9A8C98","C9ADA7","F2E9E4"],"name":"Soft Lavender","likes":"45.8K","tags":["muted","gradient","earth","stone","black","white"],"roles":{"bg":"F2E9E4","ink":"22223B","accent":"C9ADA7","surface1":"9A8C98","surface2":"4A4E69"},"score":5},{"hex":["0A0908","22333B","EAE0D5","C6AC8F","5E503F"],"name":"Neutral Earth Tones","likes":"15.7K","tags":["muted","modern","earth","black","white"],"roles":{"bg":"EAE0D5","ink":"0A0908","accent":"C6AC8F","surface1":"5E503F","surface2":"22333B"},"score":5},{"hex":["283D3B","197278","EDDDD4","C44536","772E25"],"name":"Forest Hues","likes":"15.3K","tags":["muted","bold","autumn","earth","natural","sea","black"],"roles":{"bg":"EDDDD4","ink":"283D3B","accent":"197278","surface1":"C44536","surface2":"772E25"},"score":5},{"hex":["ECF8F8","EEE4E1","E7D8C9","E6BEAE","B2967D"],"name":"Warm Neutral Tones","likes":"17.4K","tags":["muted","spring","earth","natural","stone"],"roles":{"bg":"ECF8F8","ink":"B2967D","accent":"E6BEAE","surface1":"EEE4E1","surface2":"E7D8C9"},"score":5},{"hex":["A3A380","D6CE93","EFEBCE","D8A48F","BB8588"],"name":"Earthy Tones","likes":"12.8K","tags":["muted","autumn","spring","summer","earth"],"roles":{"bg":"EFEBCE","ink":"A3A380","accent":"D8A48F","surface1":"D6CE93","surface2":"BB8588"},"score":5},{"hex":["EDEDE9","D6CCC2","F5EBE0","E3D5CA","D5BDAF"],"name":"Soft Sand","likes":"45.9K","tags":["soft","pastel","gradient","vintage","retro","classic","summer","earth","sand","natural","stone","white"],"roles":{"bg":"EDEDE9","ink":"D5BDAF","accent":"F5EBE0","surface1":"E3D5CA","surface2":"D6CCC2"},"score":5},{"hex":["ED6A5A","F4F1BB","9BC1BC","5CA4A9","E6EBE0"],"name":"Blush Harmony","likes":"8,308","tags":["bold","spring","earth","sand","beach","sea"],"roles":{"bg":"E6EBE0","ink":"5CA4A9","accent":"ED6A5A","surface1":"F4F1BB","surface2":"9BC1BC"},"score":5},{"hex":["DD6E42","E8DAB2","4F6D7A","C0D6DF","EAEAEA"],"name":"Earthy Neutrals","likes":"7,426","tags":["earth","sand","beach","sea"],"roles":{"bg":"EAEAEA","ink":"4F6D7A","accent":"DD6E42","surface1":"C0D6DF","surface2":"E8DAB2"},"score":5}]}]};
+const STORAGE_KEY = 'nebula-palette-picks';
+
+// state: map of "intentId|hexkey" -> true
+const state = { picks: new Map() };
+
+// hydrate
+try {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    const obj = JSON.parse(raw);
+    for (const k of obj) state.picks.set(k, true);
+  }
+} catch (e) {}
+
+function persist() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.picks.keys()])); } catch (e) {}
+}
+
+function paletteKey(intentId, hex) {
+  return intentId + '|' + hex.join('-');
+}
+
+function pickedCountForIntent(intentId) {
+  let n = 0;
+  for (const k of state.picks.keys()) if (k.startsWith(intentId + '|')) n++;
+  return n;
+}
+
+function totalPicked() {
+  return state.picks.size;
+}
+
+function intentsTouched() {
+  const seen = new Set();
+  for (const k of state.picks.keys()) seen.add(k.split('|')[0]);
+  return seen.size;
+}
+
+function makeMock(p) {
+  const bg = '#' + p.roles.bg;
+  const ink = '#' + p.roles.ink;
+  const accent = '#' + p.roles.accent;
+  const surface1 = '#' + p.roles.surface1;
+  const surface2 = '#' + p.roles.surface2;
+  const strip = p.hex.map(h => '<div style="background:#' + h + '"></div>').join('');
+  return `<div class="pmock" style="--pbg:${bg};--pink:${ink};--paccent:${accent};--psurface:${surface1};--psurface2:${surface2};background:${bg};color:${ink}">
+    <span class="peyebrow">— New release</span>
+    <div class="pheading">A composed page<br>begins with color.</div>
+    <div class="pbody">Calm body text sits against the background while the accent fires for one important action below.</div>
+    <div class="pbtn-row">
+      <span class="pbtn">Get started</span>
+      <span class="pbtn secondary">Read more</span>
+    </div>
+    <div class="psurface" style="background:${surface1};color:${ink}">
+      <span>Card surface · subtitle</span>
+      <span class="pdot" style="background:${accent}"></span>
+    </div>
+    <div style="flex:1"></div>
+    <div class="pstrip">${strip}</div>
+  </div>`;
+}
+
+function makeCard(intentId, p) {
+  const key = paletteKey(intentId, p.hex);
+  const isPicked = state.picks.has(key);
+  const tagText = (p.tags || []).slice(0, 4).map(t => '<span class="ptag">' + t + '</span>').join('');
+  return `<div class="pcard ${isPicked ? 'picked' : ''}" data-intent="${intentId}" data-key="${key}">
+    <div class="pcheck">✓</div>
+    ${makeMock(p)}
+    <div class="pfoot">
+      <div class="pname">${p.name}</div>
+      <div class="pmeta">${tagText}</div>
+    </div>
+  </div>`;
+}
+
+function renderSidebar() {
+  const list = document.getElementById('intentList');
+  list.innerHTML = CATALOG.intents.map(it => {
+    const n = pickedCountForIntent(it.id);
+    return `<a class="intent-link ${n > 0 ? 'has-picks' : ''}" href="#sec-${it.id}">
+      <span>${it.name}</span>
+      <span class="count">${n}/10</span>
+    </a>`;
+  }).join('');
+}
+
+function renderMain() {
+  const main = document.getElementById('intents');
+  main.innerHTML = CATALOG.intents.map(it => `
+    <section class="intent" id="sec-${it.id}">
+      <h2>${it.name}</h2>
+      <div class="blurb">${it.blurb}</div>
+      <div class="meta">${it.palettes.length} palettes · click to select</div>
+      <div class="palette-grid">${it.palettes.map(p => makeCard(it.id, p)).join('')}</div>
+    </section>
+  `).join('');
+}
+
+function renderStats() {
+  document.getElementById('picked-count').textContent = totalPicked();
+  document.getElementById('intents-touched').textContent = intentsTouched();
+}
+
+function renderAll() {
+  renderSidebar();
+  renderMain();
+  renderStats();
+}
+
+renderAll();
+
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.pcard');
+  if (!card) return;
+  const key = card.dataset.key;
+  if (state.picks.has(key)) state.picks.delete(key);
+  else state.picks.set(key, true);
+  card.classList.toggle('picked');
+  // sidebar count + topbar stats
+  const intentId = card.dataset.intent;
+  const link = document.querySelector('.intent-link[href="#sec-' + intentId + '"]');
+  const n = pickedCountForIntent(intentId);
+  link.querySelector('.count').textContent = n + '/10';
+  link.classList.toggle('has-picks', n > 0);
+  renderStats();
+  persist();
+});
+
+function buildPrompt() {
+  if (state.picks.size === 0) {
+    return '# No palettes selected yet.\nGo back and click some palettes you like — the prompt will fill in here.';
+  }
+  const picksByIntent = new Map();
+  for (const k of state.picks.keys()) {
+    const [intentId, hexKey] = k.split('|');
+    if (!picksByIntent.has(intentId)) picksByIntent.set(intentId, []);
+    picksByIntent.get(intentId).push(hexKey);
+  }
+  let out = '';
+  out += 'I selected ' + state.picks.size + ' palettes from the nebula Coolors catalog (' + picksByIntent.size + ' intents covered). Please append each to skills/direct/reference/curated-pools/palettes.md as a new P<n> entry, following the schema defined at the top of that file.\n\n';
+  out += 'For each palette:\n';
+  out += '  • **Source.** Replace the Coolors name with a real-world named reference you can defend (a specific magazine spread, film, building, piece of pottery, etc.). If you cannot confidently name a real source, write "Source: TODO (Coolors-curated; original Coolors name: \"<name>\")" and Paolo will fill in.\n';
+  out += '  • **Colors.** Convert each hex to OKLCH and assign role names per the suggested mapping (bg / ink / accent / surface1 / surface2). Role names should be brand-native, not "primary/secondary".\n';
+  out += '  • Fill the remaining schema fields (Neutral temperature, Contrast strategy, Accent allowance, Fits, Avoid for) inferred from the palette character. Mark inferences "(<!-- inferred -->)".\n\n';
+  out += '## Selected palettes\n\n';
+  for (const intentId of picksByIntent.keys()) {
+    const intent = CATALOG.intents.find(i => i.id === intentId);
+    out += '### Intent: ' + intent.name + ' (`' + intentId + '`)\n\n';
+    for (const hexKey of picksByIntent.get(intentId)) {
+      const p = intent.palettes.find(pp => pp.hex.join('-') === hexKey);
+      out += '- **' + p.name + '** · `#' + p.hex.join('` `#') + '`  \n';
+      out += '  Suggested roles: bg=`#' + p.roles.bg + '`, ink=`#' + p.roles.ink + '`, accent=`#' + p.roles.accent + '`, surface1=`#' + p.roles.surface1 + '`, surface2=`#' + p.roles.surface2 + '`  \n';
+      out += '  Coolors tags: `' + p.tags.join('`, `') + '` · Likes: ' + p.likes + '\n\n';
+    }
+  }
+  return out;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast('Copied · paste back to Claude');
+  } catch (e) {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Copied · paste back to Claude');
+  }
+}
+
+const modalBd = document.getElementById('modal-bd');
+const promptbox = document.getElementById('promptbox');
+document.getElementById('copy-btn').addEventListener('click', () => {
+  promptbox.textContent = buildPrompt();
+  modalBd.classList.add('open');
+});
+document.getElementById('modal-close').addEventListener('click', () => modalBd.classList.remove('open'));
+document.getElementById('modal-close-2').addEventListener('click', () => modalBd.classList.remove('open'));
+modalBd.addEventListener('click', (e) => { if (e.target === modalBd) modalBd.classList.remove('open'); });
+document.getElementById('copy-now-btn').addEventListener('click', () => copyToClipboard(promptbox.textContent));
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if (state.picks.size === 0) return;
+  if (!confirm('Clear all ' + state.picks.size + ' selections?')) return;
+  state.picks.clear();
+  persist();
+  renderAll();
+});
+</script>
+</body>
+</html>

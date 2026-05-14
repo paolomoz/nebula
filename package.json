@@ -1,0 +1,15 @@
+{
+  "name": "nebula-tooling",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Internal scripts for authoring the nebula plugin's curated content (palette catalog, etc.). Not part of the plugin runtime.",
+  "type": "module",
+  "scripts": {
+    "probe:coolors": "node scripts/probe-coolors.mjs",
+    "scrape:coolors": "node scripts/scrape-coolors.mjs",
+    "build:catalog": "node scripts/build-catalog.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.1"
+  }
+}
