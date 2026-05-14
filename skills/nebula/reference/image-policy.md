@@ -62,6 +62,53 @@ priority order:
 
 3. **Default.** `imagePolicy: "unsplash"`.
 
+## Default hero treatment
+
+**The hero section defaults to a full-bleed photographic background
+image (M1 photographic hero) unless the brief or anchor signals
+otherwise.** This is the most load-bearing default in the plugin:
+
+- The hero is the page's first viewport — its impression sets the page.
+- A full-bleed photograph carries subject, mood, and register all at
+  once, in less type than a type-led hero would need.
+- Pairs strongly with the **dark palette default** (see
+  `direct/SKILL.md` Phase 2 § Default leans) — dark `bg` role +
+  photographic hero is the strongest first-viewport contrast available
+  in the plugin's vocabulary.
+
+**Override conditions** (each silently switches the default; surface
+the substitution in `direct`'s gate report so the user can correct):
+
+- Brief signals a non-photo hero: *"type-led hero"*, *"abstract hero"*,
+  *"logo-only hero"*, *"no hero image"*, *"minimal hero"*, *"hero is
+  the headline"*.
+- Anchor family in the no-photos column (Codex / Op-Ed / Manifesto /
+  brutalist / type-led / Utilitarian Tight / Data Dense / civic
+  institutional in restrained mode) — the per-anchor skip rule
+  excludes M1 entirely.
+
+## Photography prominence (when M1 is picked)
+
+When M1 is in play (the default + most picked-cases), photography
+must be **prominent and well-handled**, not boxed and apologetic:
+
+- **Full-bleed scale.** The hero element uses `min-height: 90vh` to
+  `100vh` so the photograph fills the first viewport. No 16:9-letterboxed
+  hero with a header above and a CTA-section below it — the hero *is* the
+  photo.
+- **Text contrast care.** Apply `Pitfall A` scrim correctly — scrim is
+  on the **parent section's** `::after`, never on the filtered photo's
+  pseudo-element. Verify WCAG AA at the densest type area at minimum;
+  AAA where the brief demands.
+- **Brand-anchored keywords.** When sourcing from Unsplash, the slot's
+  `keywords[]` array must read as specific to the brand subject — *not*
+  stock-photo clichés. For a ceramicist:
+  `[ceramic-studio, hands-at-wheel, warm-light, raw-clay]`, not
+  `[creative, studio, work, business]`.
+- **Subject-side scrim weight.** Vertical scrim is darker at the band
+  carrying type (heading + body + CTA); horizontal scrim is heavier on
+  the side carrying the type column. M1's recipe encodes this.
+
 ## How `direct` picks image slots
 
 When the picked moves include the photographic family (M1–M5), derive

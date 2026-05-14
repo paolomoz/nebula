@@ -79,6 +79,31 @@ The 5 axes:
 For each axis, also record **the obvious default for this anchor** alongside
 the choice — so the distinctiveness check at Phase 4 has data to operate on.
 
+#### Default leans (apply unless the brief signals otherwise)
+
+These are nebula's design defaults — applied silently and surfaced in the
+gate report so the user sees them and can override.
+
+- **Palette (axis A3) — lean dark.** Default to a palette where the
+  `bg` role sits at low lightness (ink-on-dark surface) rather than
+  paper-on-light. Dark palettes give photographic heroes their best
+  surface and produce the strongest first-viewport contrast available
+  in the plugin's vocabulary. Inside `palettes.md`, prefer entries
+  whose ink-on-bg contrast ratio implies the surface is dark — e.g.,
+  *Midnight Magic*, *Black & Gold Elegance*, *Deep Sea*, *Crimson
+  Hues*, *Dark Sunset*. **Override** when the brief signals *"light"*,
+  *"airy"*, *"open"*, *"paper"*, *"clinical"*, *"cream"*, or when the
+  anchor implies a print/editorial register (Codex, Editorial Sparse,
+  Gentle Craft, Hospitality Calm, Atelier Folio, Op-Ed — these
+  typically want lighter palettes).
+- **Hero treatment** — see Phase 4 § Hero default.
+- **Image source** — Unsplash by default (see Phase 4c).
+
+Distinctiveness check (Phase 5) operates against the **LLM-default**,
+not against nebula's default leans. A dark-leaning palette pick can
+still be distinctive if the chosen palette isn't the obvious choice
+for the anchor.
+
 ### Phase 3 — Name the tension
 
 Commit to **one named tension** the design exploits — a productive
@@ -98,6 +123,34 @@ recipes to execute.
 If the moves library does not yet contain entries that fit, surface this
 to the user — do not invent moves. The library grows over time as the user
 adds new ones.
+
+#### Hero default
+
+Default: **include M1 (Photographic hero, full-bleed)** in the picked
+moves. The hero is the page's first viewport — a full-bleed
+photographic background carries subject and mood from the very first
+scroll-point, and pairs strongly with the dark-palette default for
+type contrast (apply `Pitfall A` scrim care — scrim on parent's
+`::after`, never on the filtered photo).
+
+When M1 is picked, photography must read as **prominent**, not
+apologetic — `min-height: 90–100vh` on the hero, full-bleed scale,
+contrast-verified at the densest type area. See `image-policy.md` §
+Photography prominence.
+
+**Override** when:
+
+- Brief explicitly signals a non-photo hero (*"type-led hero"*,
+  *"abstract hero"*, *"logo-only hero"*, *"no hero image"*, *"minimal
+  hero"*, *"hero is the headline"*).
+- Anchor family in the no-photos column (per `image-policy.md` §
+  per-anchor defaults): Codex, Op-Ed, Manifesto, brutalist, type-led,
+  Utilitarian Tight, Data Dense, civic institutional in restrained
+  mode.
+
+When overriding, surface the substitution and the substitute hero
+treatment in the gate report (e.g., *"M1 substituted with type-led
+hero per brief; no photo slot for hero."*).
 
 ### Phase 4b — Pick signatures (0–2, optional)
 
@@ -240,6 +293,11 @@ Signatures:  <S-ids, or "none — type-led">
 Hovers:      <H-ids per host, or "none">
 Image slots: <N total, broken down: hero ×1, card ×3 …>
 Image policy: <unsplash | user-supplied | generate (will fall back to unsplash)>
+
+Default leans applied:
+  palette       <dark | light (overridden because: …)>
+  hero          <photo-bg (M1) | type-led (overridden because: …)>
+  image source  <unsplash | user-supplied | generate>
 
 Distinctiveness: <N>/5 axes diverge from default.
 ```
