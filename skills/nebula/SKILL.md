@@ -103,5 +103,9 @@ what was synthesized vs. authored, and what other artifacts were read.
   `reference/signatures/<slug>/index.html`. Carries the composition rule
   (1 motion vocabulary + 0–2 signatures per page) and per-anchor tech-stack
   budget.
+- `reference/image-policy.md` — image source policy (Unsplash by default,
+  user-supplied takes priority, generation opt-in only), the 3-way
+  resolution chain, slot schema, per-anchor skip rules, Unsplash discipline
+  (max 4 photos / brand-anchored keywords).
 - `reference/pitfalls.md` — named rules that must not be violated.
 - `reference/state-machine.md` — lifecycle, state report format, stale rules.

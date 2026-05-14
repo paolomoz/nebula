@@ -96,6 +96,33 @@ Generate `nebula/index.html` as a **self-contained** file:
   no glassmorphism, no side stripes, no gradient text, ≥1.25 type ratio
   for brand register, AA contrast minimum.
 
+**Resolve each image slot** in `DESIGN.json.extensions.imageSlots[]`
+through the chain defined in `skills/nebula/reference/image-policy.md`:
+
+1. **User-supplied first.** Check `nebula/assets/images/<role>.<ext>`
+   (webp, jpg, jpeg, png in that preference order). If a file matches
+   the slot role, use it. Mark `data-img-source="user"`.
+2. **Unsplash Source URL** (the default).
+   `https://source.unsplash.com/featured/<w>x<h>/?<keywords>` where
+   `<w>x<h>` derives from `slot.dimensions` and `<keywords>` is the
+   slot's `keywords[]` joined by commas. Mark
+   `data-img-source="unsplash"`.
+3. **Generated.** Only if `imagePolicy === "generate"`. **Currently
+   NOT implemented** — when this policy fires, surface a warning to
+   the user that generation is on the roadmap, and fall back to
+   Unsplash for this render.
+4. **Labeled placeholder.** If the above fails (network, no fit),
+   render a CSS-only block with the slot's `altText` as visible text
+   and `data-img-source="placeholder"`. Placeholders are visible TODOs,
+   not polished defaults.
+
+Every rendered photographic element must carry:
+- `data-img-source="<user|unsplash|generated|placeholder>"`
+- `data-img-slot-id="<slot.id>"` (back-reference to DESIGN.json)
+- `alt="<slot.altText>"` — describing the subject, not the design role
+- `loading="lazy"` (except hero / above-the-fold, which may be eager)
+- `decoding="async"` for non-critical photos
+
 For each picked signature, **adapt the specimen — never inline it
 verbatim**. The specimen demonstrates the technique; render adapts it
 to the brand:
@@ -136,6 +163,13 @@ Also run nebula-specific checks:
   picked signature. No orphan signatures either direction.
 - **Move integrity.** Same rule for `data-move="<M-id>"` against the
   picked moves in `DESIGN.json`.
+- **Image slot integrity.** Every slot in
+  `DESIGN.json.extensions.imageSlots[]` resolved to a rendered image
+  (or a labeled placeholder). Every rendered photo carries
+  `data-img-source` + `data-img-slot-id` + a non-empty `alt`. Total
+  photo count is within the Unsplash-discipline budget (≤ 4 photos
+  unless the anchor is Catalog with an M2 card grid as the only photo
+  set).
 
 ### Phase 5 — Surface and iterate
 
@@ -206,4 +240,7 @@ Update `nebula/state.json`:
   executes.
 - `skills/nebula/reference/signatures.md` — the signature catalog;
   specimens live at `signatures/<slug>/index.html`.
+- `skills/nebula/reference/image-policy.md` — image source policy
+  (Unsplash by default; user-supplied takes priority; generation
+  opt-in) + slot schema + provenance + validation rules.
 - `skills/nebula/reference/pitfalls.md` — nebula-specific render rules.

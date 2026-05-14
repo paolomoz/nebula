@@ -132,6 +132,56 @@ propagate to `DESIGN.json` under `extensions.signatures[]`. Each entry:
 `{ id, name, sectionRole, specimen }` where `specimen` is either the
 local path or the literal string `"external-only"`.
 
+### Phase 4c — Image slots and policy
+
+Read `skills/nebula/reference/image-policy.md`. Decide the page's
+**image policy** and derive **image slots** from the picked moves.
+
+**Policy detection** (priority order):
+
+1. Check whether `nebula/assets/images/` exists with at least one
+   recognised file (webp/jpg/jpeg/png). If yes →
+   `imagePolicy: "user-supplied"`.
+2. Check the brief for explicit generation requests (phrases like
+   *"generate the imagery"*, *"AI-generated photos"*, *"images by
+   model"*). If yes → `imagePolicy: "generate"`. Surface to the user
+   that generation is currently NOT implemented and Unsplash will be
+   used as fallback.
+3. Default → `imagePolicy: "unsplash"`.
+
+**Slot derivation**:
+
+For each picked move from the photographic family (M1–M5), produce
+slots per the table in `image-policy.md` § "How direct picks image
+slots." M5 reuses M1's slot at a heavier filter; do not produce a new
+slot for it.
+
+For each slot, author:
+- `role` (e.g., `hero`, `card-1`, `atmos-band`, `subject-portrait`)
+- `moveId` (the move that placed it)
+- `aspectRatio` + computed `dimensions`
+- **`keywords[]`** — brand-anchored terms derived from the anchor + brief.
+  *Not* stock clichés ("creative," "studio," "work"); specific terms
+  the anchor implies ("ceramic-studio," "pottery-wheel," "warm-light").
+- **`altText`** — describe the photographic subject, not the design role.
+
+**Per-anchor skip rule**:
+
+If the brief's anchor family is in the no-photos column of
+`image-policy.md` (Codex / Op-Ed / Manifesto / brutalist / type-led /
+Utilitarian Tight / Data Dense), do **not** pick photographic moves
+(M1–M5) in Phase 4. If you already picked one, revisit Phase 4 — the
+anchor disallows it.
+
+**Budget check**:
+
+Total slot count must be ≤ 4 photos per page (the Catalog anchor with
+an M2 card grid is the exception: card slots may exceed 4 *only* if no
+other photo slot is present). Surface if the budget is breached.
+
+Record all slots and the policy in `DESIGN.json.extensions.imageSlots[]`
+and `DESIGN.json.extensions.imagePolicy`.
+
 ### Phase 5 — Distinctiveness check (gate)
 
 Before writing the target spec, run the distinctiveness check. For each
@@ -161,6 +211,8 @@ Axes:
 
 Moves:       <M-ids>
 Signatures:  <S-ids, or "none — type-led">
+Image slots: <N total, broken down: hero ×1, card ×3 …>
+Image policy: <unsplash | user-supplied | generate (will fall back to unsplash)>
 
 Distinctiveness: <N>/5 axes diverge from default.
 ```
@@ -250,6 +302,9 @@ Next: $nebula render
   family.
 - `skills/nebula/reference/signatures.md` — signature effects catalog;
   composition rule + tech-stack budget per anchor family.
+- `skills/nebula/reference/image-policy.md` — image source policy
+  (Unsplash by default; user-supplied takes priority; generation
+  opt-in only) + per-anchor skip rules + slot schema.
 - `reference/anchor-selection.md` — the 3-candidate generator + scoring
   procedure.
 - `reference/curated-pools/` — human-curated content for each axis.

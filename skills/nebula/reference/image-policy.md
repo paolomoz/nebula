@@ -1,0 +1,161 @@
+# Image policy
+
+> Policy decision: 2026-05-14.
+>
+> **Default source: Unsplash.** Pages render with Unsplash photography unless
+> the user has supplied assets (which takes priority) or has explicitly asked
+> for generated imagery (opt-in, future).
+>
+> Same human-sourced principle that governs palettes and typefaces holds for
+> images: real photography by real humans. AI image generation is reserved
+> for briefs that *explicitly request* generative-as-the-aesthetic — never
+> as a silent default.
+
+## The 3-way resolution chain
+
+`render` resolves each image slot in `DESIGN.json.extensions.imageSlots[]`
+through this chain, in order:
+
+1. **User-supplied** (`nebula/assets/images/<role>.<ext>`)
+   - Check the local directory first. Recognised extensions: `webp`,
+     `jpg`, `jpeg`, `png`.
+   - If a file matching the slot's `role` is present, use it.
+   - Mark `data-img-source="user"` on the rendered element.
+
+2. **Unsplash Source URL** (default)
+   - Construct: `https://source.unsplash.com/featured/<w>x<h>/?<keywords>`
+     where `<w>x<h>` derives from the slot's `aspectRatio` and the
+     desired render size, and `<keywords>` is comma-separated terms
+     from the slot's `keywords[]` array.
+   - Mark `data-img-source="unsplash"`.
+   - This URL is **free, no API key required**, and returns a featured
+     photograph matching the keywords on every request.
+
+3. **Generated** (opt-in only, future implementation)
+   - When `DESIGN.json.extensions.imagePolicy === "generate"`,
+     a future revision will integrate with a generation service.
+   - **Currently NOT IMPLEMENTED.** When the policy is set, render
+     surfaces this clearly and falls back to Unsplash with a warning.
+   - Mark `data-img-source="generated"` once implemented.
+
+4. **Labeled placeholder** (final fallback)
+   - If none of the above produces an image (network error, invalid
+     response), render a CSS-only placeholder card with the slot's
+     `altText` as visible text and `data-img-source="placeholder"`.
+   - Placeholders are a *visible TODO*, not a polished default.
+
+## How `direct` picks the policy
+
+The `imagePolicy` field on `DESIGN.json` is derived at direct time, in this
+priority order:
+
+1. **User-supplied assets present.** If `nebula/assets/images/` exists and
+   contains at least one file matching a slot role, set
+   `imagePolicy: "user-supplied"`. Render still falls back to Unsplash for
+   slots without a matching file.
+
+2. **Brief explicitly requests generation.** If the brief contains phrases
+   like *"generate the imagery"*, *"AI-generated photos"*, *"images by
+   model"*, *"render with generated images"*, set
+   `imagePolicy: "generate"`. Surface to the user that generation is
+   currently not implemented and Unsplash will be used as fallback.
+
+3. **Default.** `imagePolicy: "unsplash"`.
+
+## How `direct` picks image slots
+
+When the picked moves include the photographic family (M1–M5), derive
+slots one-to-one with the moves' image requirements:
+
+| Move | Slots produced | Aspect ratio | Notes |
+|---|---|---|---|
+| M1 Photographic hero | 1 slot, role `hero` | `16:9` or `21:9` | keywords from anchor + brief |
+| M2 Photographic card | N slots, roles `card-1` … `card-N` | `3:4` | N = card-grid count, typically 3–6 |
+| M3 Atmospheric band | 1 slot, role `atmos-band` | `21:9` | keywords from anchor mood; filter applied |
+| M4 Fade-into-page mask | 1–2 slots, role `subject-portrait` | `4:5` or `3:4` | masked at top/bottom |
+| M5 Cinematic closer | reuses M1's image at heavier filter | (inherited) | no new slot — same source URL |
+
+Each slot encodes:
+
+```json
+{
+  "id": "hero-1",
+  "role": "hero",
+  "moveId": "M1",
+  "aspectRatio": "16:9",
+  "dimensions": { "w": 1600, "h": 900 },
+  "keywords": ["ceramic-studio", "pottery-wheel", "warm-light", "hands"],
+  "altText": "A ceramicist's hands on the wheel in a warm-lit studio."
+}
+```
+
+## Per-anchor defaults: when to skip image slots entirely
+
+Some anchor families don't want photography. For these, `direct`
+**should not pick M1–M5** from the moves library; the renderer has no
+image slots to resolve.
+
+| Anchor family | Photo policy |
+|---|---|
+| Codex, Op-Ed, Manifesto (long-form text-led) | no photos; CSS-generated geometry only |
+| Brutalist statement | no photos; geometric / rule-line composition |
+| Type-led / type-foundry anchors | no photos; type as the surface |
+| Utilitarian Tight, Data Dense | no photos; data / panel composition |
+| Civic-institutional (publication-only register) | no photos by default; brief can override |
+| Catalog (D11) | **photos required** — but as product cards (M2), never as hero (M1) |
+| Hospitality, boutique hotel, music label, cinema, festival, luxury fashion, editorial, documentary | photos earn moves M1–M5 by default |
+
+When an anchor in the no-photos column is paired with a brief that
+*does* call for imagery (e.g., editorial-essay brief on a Codex
+anchor), `direct` may pick M4 (fade-into-page mask) as a measured
+single-photo exception. M1, M2, M3, M5 stay forbidden.
+
+## Unsplash discipline
+
+To avoid the "every nebula page looks Unsplash-flavored" failure mode:
+
+- **Max 4 photos per page** across all slots. A six-card M2 grid is OK
+  *only* if it's the only photo set on the page; otherwise cap card
+  count at 3 to stay under the budget.
+- **Mix subject and texture.** Not all 4 photos should be of human
+  subjects; at least one should be atmospheric / environmental
+  (M3 territory).
+- **Brand-anchored keywords, not stock clichés.** For a ceramicist:
+  prefer `ceramic-studio, hands, pottery-wheel, warm-light` over
+  `creative, studio, work`. The keyword list lives in the slot and is
+  authored by `direct` from anchor + brief — never from "what stock
+  photos exist for X."
+
+## User asset convention
+
+When the user wants to ship with their own photography:
+
+- Create `nebula/assets/images/` in the project root (not inside the
+  plugin — alongside `nebula/brief.md`, `nebula/direction.md`, etc.).
+- Name files by slot role: `hero.webp`, `card-1.jpg`, `card-2.jpg`,
+  `subject-portrait.png`, etc.
+- Recommended formats: WebP (best compression for photographs), JPEG
+  (universally supported), PNG (only for transparency / illustration).
+- `direct` doesn't need to know the files exist — `render` checks at
+  resolution time and falls back per the chain.
+
+## Provenance and accessibility
+
+Every rendered image must carry:
+
+- `data-img-source="<user|unsplash|generated|placeholder>"`
+- `data-img-slot-id="<slot-id>"` (back-reference to DESIGN.json)
+- `alt="<slot.altText>"` — always present; describe the photographic
+  subject, not the design role
+- `loading="lazy"` (except hero / above-the-fold, which may be eager)
+- `decoding="async"` for non-critical photos
+
+## Validation at render
+
+The `render` skill's Phase 4 (validations) must check:
+
+- Every slot in `DESIGN.json.extensions.imageSlots[]` resolved to a
+  rendered image (or a labeled placeholder).
+- Every rendered photographic element has a `data-img-source` attribute.
+- Total photo count is within the Unsplash-discipline budget (≤ 4 unless
+  the anchor is Catalog with a card grid).
