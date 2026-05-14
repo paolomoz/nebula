@@ -1,0 +1,15 @@
+{
+  "name": "nebula",
+  "owner": {
+    "name": "paolomoz"
+  },
+  "description": "Design a great single-page website from scratch. Built on top of impeccable.",
+  "plugins": [
+    {
+      "name": "nebula",
+      "source": "./",
+      "description": "Design a great single-page website from scratch. Built on top of impeccable. Sibling of stardust.",
+      "version": "0.1.0"
+    }
+  ]
+}

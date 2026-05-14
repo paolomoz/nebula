@@ -2,249 +2,115 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>nebula · density tuner</title>
+<title>nebula · density (gallery)</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#0e0f12; --panel:#15171c; --panel-2:#1d1f26;
+    --bg:#0e0f12; --panel:#15171c;
     --line:#2a2d35; --line-soft:#1f2229;
     --text:#e6e6ea; --text-mute:#8e92a0; --text-dim:#5a5e6c;
-    --accent:#7a9eff; --pos:#5fd6a4; --warn:#f4b740;
+    --accent:#7a9eff; --pos:#5fd6a4;
     --shadow:0 10px 30px rgba(0,0,0,.45);
     --font-ui:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif;
     --font-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --paper:#F6F2EA; --ink:#1A1815; --mute:#7C766C; --rule:#D9D2C5; --spark:#B14A39;
   }
   html,body{height:100%}
   body{background:var(--bg);color:var(--text);font-family:var(--font-ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .app{display:grid;grid-template-columns:340px 1fr;min-height:100vh}
-  /* Sidebar */
-  .sidebar{position:sticky;top:0;align-self:start;height:100vh;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
-  .brand{padding:18px 18px 14px;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-  .brand-text h1{font-size:14px;font-weight:600;letter-spacing:.02em}
-  .brand-text .sub{font-size:11.5px;color:var(--text-mute);margin-top:3px;line-height:1.4}
-  .copy-btn-top{background:var(--accent);color:#0e0f12;border:none;border-radius:7px;padding:6px 10px;font:600 11.5px/1 var(--font-ui);cursor:pointer;white-space:nowrap}
-  .copy-btn-top:hover{filter:brightness(1.08)}
-  .sidebar-scroll{flex:1;overflow-y:auto}
-  .sec{padding:14px 18px 6px;border-bottom:1px solid var(--line-soft)}
-  .sec h2{font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px;font-weight:600}
-  /* Controls */
-  .ctl{margin-bottom:12px}
-  .ctl .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
-  .ctl .row label{font-size:12px;color:var(--text)}
-  .ctl .row .val{font-family:var(--font-mono);font-size:11.5px;color:var(--accent);min-width:54px;text-align:right}
-  .ctl input[type=range]{width:100%;accent-color:var(--accent);-webkit-appearance:none;appearance:none;height:18px;background:transparent;cursor:pointer}
-  .ctl input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--line);border-radius:2px}
-  .ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);border:none;margin-top:-6px}
-  /* Preset chips */
-  .presets{display:flex;flex-wrap:wrap;gap:6px}
-  .preset-chip{background:transparent;color:var(--text-mute);border:1px solid var(--line);padding:5px 9px;border-radius:999px;font-size:11px;cursor:pointer;font-family:var(--font-ui)}
-  .preset-chip:hover{color:var(--text);border-color:var(--text-dim)}
-  /* Save row */
-  .save-row{display:flex;gap:6px;margin-top:6px;margin-bottom:8px}
-  .save-row input{flex:1;background:#0a0b0e;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:7px 10px;font:500 12px/1 var(--font-ui)}
-  .save-row input:focus{outline:none;border-color:var(--accent)}
-  .save-row button{background:var(--pos);color:#0e0f12;border:none;border-radius:7px;padding:7px 11px;font:600 12px/1 var(--font-ui);cursor:pointer}
-  .save-row button:disabled{opacity:.45;cursor:not-allowed}
-  /* Saved schools */
-  .schools-list{display:flex;flex-direction:column;gap:6px;margin-top:4px;padding-bottom:12px}
-  .school{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#0a0b0e;border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;transition:border-color .12s}
-  .school:hover{border-color:var(--accent)}
-  .school .name{font-size:12px;color:var(--text);font-weight:500}
-  .school .vals{font-size:10.5px;color:var(--text-dim);font-family:var(--font-mono);margin-top:2px}
-  .school .left{flex:1;min-width:0}
-  .school .x{background:transparent;border:none;color:var(--text-dim);font-size:14px;cursor:pointer;padding:2px 6px;line-height:1}
-  .school .x:hover{color:var(--warn)}
-  .empty{font-size:11.5px;color:var(--text-dim);font-style:italic;padding:8px 0}
-  /* Main / preview */
-  .main{padding:0}
-  .preview-bar{position:sticky;top:0;z-index:30;background:rgba(14,15,18,.85);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--line-soft)}
-  .preview-bar .stats{font-size:13px;color:var(--text-mute)}
-  .preview-bar .stats strong{color:var(--text);font-weight:600}
-  .preview-bar .stats .live{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);margin-left:14px}
+  .topbar{position:sticky;top:0;z-index:30;background:rgba(14,15,18,.85);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 28px;border-bottom:1px solid var(--line-soft)}
+  .topbar h1{font-size:14px;font-weight:600}
+  .topbar .sub{color:var(--text-mute);font-size:11.5px;margin-top:2px;max-width:80ch}
+  .topbar .stats{color:var(--text-mute);font-size:13px}
+  .topbar .stats strong{color:var(--text)}
+  .banner{padding:10px 28px;background:#16201e;color:#8de3bf;font-size:12px;border-bottom:1px solid var(--line-soft);font-family:var(--font-mono);line-height:1.5}
+  .btn{background:var(--accent);color:#0e0f12;border:none;border-radius:8px;padding:9px 14px;font:600 12.5px/1 var(--font-ui);letter-spacing:.01em;cursor:pointer}
+  .btn:hover{filter:brightness(1.08)}
+  .btn-ghost{background:transparent;color:var(--text-mute);border:1px solid var(--line)}
+  .btn-ghost:hover{color:var(--text);border-color:var(--text-dim)}
+  .wrap{padding:24px 28px 80px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:14px}
 
-  /* THE PAGE MOCK — all density-tuned values come in via CSS vars */
-  .preview{
+  .dcard{position:relative;border-radius:12px;overflow:hidden;background:var(--paper);color:var(--ink);border:2px solid transparent;transition:border-color .15s,box-shadow .15s;box-shadow:0 1px 0 rgba(0,0,0,.05),0 6px 18px rgba(0,0,0,.20)}
+  .dcard.picked{border-color:var(--pos);box-shadow:0 0 0 1px rgba(95,214,164,.4),0 12px 30px rgba(0,0,0,.30)}
+  .dcheck{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.92);color:#0e0f12;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.18);cursor:pointer;z-index:5;transition:background .15s,transform .12s}
+  .dcheck:hover{transform:scale(1.06)}
+  .dcheck.on{background:var(--pos);color:#0e0f12}
+
+  /* Demo — fixed height, real values applied; overflow-hidden so
+     sparse schools visibly breathe and dense schools visibly pack. */
+  .ddemo{position:relative;height:360px;overflow:hidden;border-bottom:1px solid var(--rule);background:#FFFCF4}
+  .ddemo .stage{
+    /* school values set inline by JS — these are fallback defaults */
     --pad: 80px;
     --lh-body: 1.55;
     --lh-display: 1.15;
     --scale: 1.25;
     --base: 16px;
     --rhythm: 20px;
-    --container: 1280px;
     --grid-gap: 24px;
 
-    /* Neutral mock palette so density carries, not color */
-    --paper: #F6F2EA;
-    --ink: #1A1815;
-    --mute: #7C766C;
-    --rule: #D9D2C5;
-    --spark: #B14A39;
-
-    /* derived sizes */
-    --h3: calc(var(--base) * var(--scale));
-    --h2: calc(var(--base) * var(--scale) * var(--scale));
-    --h1: calc(var(--base) * var(--scale) * var(--scale) * var(--scale));
-    --eyebrow: calc(var(--base) * 0.72);
-
-    background:var(--paper);color:var(--ink);
-    font-family:Georgia, 'Iowan Old Style', 'Charter', serif;
-    font-size:var(--base);
-    line-height:var(--lh-body);
+    padding: var(--pad) 24px;
+    font-family: Georgia, 'Iowan Old Style', serif;
+    font-size: var(--base);
+    line-height: var(--lh-body);
+    color: var(--ink);
+    min-height: 100%;
   }
-  .preview .container{max-width:var(--container);margin:0 auto;padding:0 32px}
-  .preview .display{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-weight:700;line-height:var(--lh-display);letter-spacing:-.015em}
+  .ddemo .eyebrow{display:inline-block;font-size:calc(var(--base) * 0.7);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--spark);border-bottom:1.5px solid var(--spark);padding-bottom:2px;margin-bottom:var(--rhythm)}
+  .ddemo .h1{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;font-size:calc(var(--base) * var(--scale) * var(--scale));line-height:var(--lh-display);letter-spacing:-0.015em;color:var(--ink);margin-bottom:var(--rhythm)}
+  .ddemo .body{font-size:var(--base);line-height:var(--lh-body);color:var(--ink);opacity:.92;max-width:46ch;margin-bottom:var(--rhythm)}
+  .ddemo .cta{display:inline-block;background:var(--ink);color:#FFFCF4;font-family:-apple-system,sans-serif;font-size:calc(var(--base) * 0.92);font-weight:600;padding:calc(var(--base) * 0.6) calc(var(--base) * 1.05);line-height:1;margin-bottom:var(--rhythm)}
+  .ddemo .cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--grid-gap)}
+  .ddemo .mini{background:#F0EAD7;border:1px solid var(--rule);padding:calc(var(--rhythm) * 0.55) calc(var(--rhythm) * 0.7)}
+  .ddemo .mini h5{font-family:-apple-system,sans-serif;font-weight:600;font-size:calc(var(--base) * 0.85);line-height:var(--lh-display);margin-bottom:calc(var(--rhythm) * 0.3)}
+  .ddemo .mini p{font-size:calc(var(--base) * 0.78);line-height:var(--lh-body);color:var(--mute)}
 
-  /* Sections */
-  .p-hero{padding:calc(var(--pad) * 1.5) 0 var(--pad)}
-  .p-hero .eyebrow{display:inline-block;font-size:var(--eyebrow);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--spark);border-bottom:1.5px solid var(--spark);padding-bottom:3px;margin-bottom:var(--rhythm)}
-  .p-hero h1{font-size:var(--h1);max-width:18ch}
-  .p-hero p{font-size:calc(var(--base) * 1.125);max-width:54ch;color:var(--ink);margin-top:var(--rhythm)}
-  .p-hero .actions{display:flex;gap:var(--rhythm);margin-top:calc(var(--rhythm) * 1.5)}
-  .p-hero .cta-primary{background:var(--ink);color:var(--paper);border:none;padding:13px 22px;font-size:calc(var(--base) * 0.95);font-weight:600;border-radius:0;cursor:pointer;font-family:inherit}
-  .p-hero .cta-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);padding:13px 22px;font-size:calc(var(--base) * 0.95);font-weight:600;border-radius:0;cursor:pointer;font-family:inherit}
+  /* Card meta + footer */
+  .dmeta{padding:14px 16px 12px}
+  .dname{font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.005em}
+  .dcaption{font-size:11.5px;color:var(--mute);margin-top:3px;line-height:1.5}
+  .vtags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .vtag{font-size:10px;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;color:var(--mute);font-family:var(--font-mono);letter-spacing:.04em}
+  .dfoot{background:#0e0f12;color:var(--text-dim);padding:9px 14px 11px;font-size:10.5px;line-height:1.55;font-family:var(--font-mono)}
+  .dfoot .lbl{color:var(--text-mute)}
+  .dfoot .val{color:var(--text)}
+  .dfoot .rename-hint{color:var(--accent);font-size:10px;margin-top:4px;display:block}
 
-  .p-strip{padding:var(--pad) 0;border-top:1px solid var(--rule)}
-  .p-strip .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--grid-gap) * 2)}
-  .p-strip h3{font-size:var(--h3);font-family:-apple-system,sans-serif;font-weight:600;line-height:var(--lh-display);letter-spacing:-.01em;margin-bottom:var(--rhythm)}
-  .p-strip p{font-size:calc(var(--base) * 0.97);color:var(--mute)}
-  .p-strip .glyph{width:32px;height:32px;border:1.5px solid var(--ink);border-radius:50%;margin-bottom:var(--rhythm)}
-
-  .p-features{padding:var(--pad) 0;background:#F0EBE0}
-  .p-features .head{margin-bottom:calc(var(--rhythm) * 2)}
-  .p-features h2{font-size:var(--h2);max-width:22ch;font-family:-apple-system,sans-serif;font-weight:700;line-height:var(--lh-display);letter-spacing:-.012em}
-  .p-features .sub{font-size:calc(var(--base) * 1.04);color:var(--mute);max-width:50ch;margin-top:var(--rhythm)}
-  .p-features .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap)}
-  .p-features .card{background:var(--paper);padding:calc(var(--rhythm) * 1.2);border:1px solid var(--rule)}
-  .p-features .card h4{font-size:calc(var(--base) * 1.0625);font-family:-apple-system,sans-serif;font-weight:600;line-height:var(--lh-display);margin-bottom:calc(var(--rhythm) * 0.5)}
-  .p-features .card p{font-size:calc(var(--base) * 0.95);color:var(--mute)}
-  .p-features .card .meta{font-size:calc(var(--base) * 0.78);color:var(--mute);text-transform:uppercase;letter-spacing:.08em;margin-top:var(--rhythm);font-family:-apple-system,sans-serif}
-
-  .p-quote{padding:var(--pad) 0}
-  .p-quote blockquote{font-size:var(--h2);max-width:34ch;line-height:1.25;font-style:italic;color:var(--ink)}
-  .p-quote cite{display:block;margin-top:var(--rhythm);font-size:calc(var(--base) * 0.85);color:var(--mute);font-style:normal;letter-spacing:.06em;text-transform:uppercase;font-family:-apple-system,sans-serif}
-
-  .p-closer{padding:var(--pad) 0;border-top:1px solid var(--rule);text-align:center}
-  .p-closer h2{font-size:var(--h2);max-width:24ch;margin:0 auto var(--rhythm);font-family:-apple-system,sans-serif;font-weight:700;line-height:var(--lh-display)}
-  .p-closer button{background:var(--ink);color:var(--paper);border:none;padding:15px 28px;font-size:calc(var(--base) * 0.95);font-weight:600;cursor:pointer;font-family:inherit;border-radius:0}
-
-  /* Modal */
+  /* Modal etc */
   .modal-bd{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
   .modal-bd.open{display:flex}
   .modal{background:var(--panel);border:1px solid var(--line);border-radius:14px;width:min(820px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
   .modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line-soft)}
   .modal-head h2{font-size:14px;font-weight:600}
   .modal-head .close{background:transparent;border:none;color:var(--text-mute);font-size:18px;cursor:pointer;padding:4px}
-  .modal-head .close:hover{color:var(--text)}
   .modal-body{padding:16px 20px 20px;overflow-y:auto}
   .promptbox{background:#0a0b0e;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text);white-space:pre-wrap;word-break:break-word;max-height:60vh;overflow-y:auto}
   .modal-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 20px 16px;border-top:1px solid var(--line-soft)}
-  .btn{background:var(--accent);color:#0e0f12;border:none;border-radius:8px;padding:9px 14px;font:600 12.5px/1 var(--font-ui);letter-spacing:.01em;cursor:pointer}
-  .btn:hover{filter:brightness(1.08)}
-  .btn-ghost{background:transparent;color:var(--text-mute);border:1px solid var(--line)}
-  .btn-ghost:hover{color:var(--text);border-color:var(--text-dim)}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--pos);color:#0e0f12;padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:600;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:200}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-text">
-        <h1>nebula · density</h1>
-        <div class="sub">Dial values, watch the mock respond. Save settings as named schools. Copy the prompt when done.</div>
-      </div>
-      <button class="copy-btn-top" id="copy-btn">Copy</button>
-    </div>
-    <div class="sidebar-scroll">
-      <div class="sec">
-        <h2>Presets</h2>
-        <div class="presets" id="presets"></div>
-      </div>
-      <div class="sec">
-        <h2>Controls</h2>
-        <div id="controls"></div>
-      </div>
-      <div class="sec">
-        <h2>Save current as school</h2>
-        <div class="save-row">
-          <input id="school-name" placeholder="e.g. Editorial Sparse" maxlength="40">
-          <button id="save-btn">Save</button>
-        </div>
-        <h2 style="margin-top:6px">Saved schools <span style="color:var(--text-dim);font-weight:500" id="saved-count"></span></h2>
-        <div class="schools-list" id="schools"></div>
-      </div>
-    </div>
-  </aside>
-  <main class="main">
-    <div class="preview-bar">
-      <div class="stats"><strong id="schools-count">0</strong> schools saved <span class="live" id="live-vals"></span></div>
-      <div style="display:flex;gap:8px">
-        <button class="btn-ghost btn" id="reset-btn">Reset</button>
-        <button class="btn" id="copy-btn-main">Copy prompt</button>
-      </div>
-    </div>
-
-    <div class="preview" id="preview">
-      <section class="p-hero">
-        <div class="container">
-          <span class="eyebrow">— New release</span>
-          <h1 class="display">Density is the unspoken stance of a page.</h1>
-          <p>It decides whether the reader leans in or leans back, before the words register. Tune the system rhythm here; the page recomposes as you slide.</p>
-          <div class="actions">
-            <button class="cta-primary">Get started</button>
-            <button class="cta-secondary">Read the brief</button>
-          </div>
-        </div>
-      </section>
-      <section class="p-strip">
-        <div class="container">
-          <div class="grid3">
-            <div><div class="glyph"></div><h3>Measure</h3><p>Reading width, line length, and pace — the silent grammar that decides reading comfort across the page.</p></div>
-            <div><div class="glyph"></div><h3>Rhythm</h3><p>Inter-element spacing that holds the eye's beat. Too tight feels rushed; too loose drops the thread.</p></div>
-            <div><div class="glyph"></div><h3>Section</h3><p>The breath between bands. A page either insists on transitions or hides them — that is a posture.</p></div>
-          </div>
-        </div>
-      </section>
-      <section class="p-features">
-        <div class="container">
-          <div class="head">
-            <h2>What the body learns from the spacing it walks through.</h2>
-            <p class="sub">Six fragments of a content surface, set in the system you're tuning. Watch line wrapping, breathing room, and overall page calm respond.</p>
-          </div>
-          <div class="grid">
-            <div class="card"><h4>Field telemetry</h4><p>Live sampling of session entries, dwell time, and exit pattern by segment.</p><div class="meta">Updated hourly</div></div>
-            <div class="card"><h4>Quiet diagnostics</h4><p>Surface health and tail-latency rolling indicators; one quiet column per region.</p><div class="meta">Region-aware</div></div>
-            <div class="card"><h4>Audit trail</h4><p>Per-event signed records; queryable, exportable, with reasoned summaries.</p><div class="meta">Compliance-grade</div></div>
-            <div class="card"><h4>Cohort drift</h4><p>Per-week composition shifts and trend signals across acquisition channels.</p><div class="meta">Weekly</div></div>
-            <div class="card"><h4>Inbound queue</h4><p>Priority-sorted incoming items with SLA timers and assignment history.</p><div class="meta">Live</div></div>
-            <div class="card"><h4>Capacity plan</h4><p>Forward-looking headroom and burndown across the next four quarters.</p><div class="meta">Forecast</div></div>
-          </div>
-        </div>
-      </section>
-      <section class="p-quote">
-        <div class="container">
-          <blockquote>"Two pages can have the same words and the same colors and read as different products. Density is doing that work, quietly."</blockquote>
-          <cite>— field notes on nebula, vol. ii</cite>
-        </div>
-      </section>
-      <section class="p-closer">
-        <div class="container">
-          <h2>Ship a page that breathes the way the brand thinks.</h2>
-          <button>Begin</button>
-        </div>
-      </section>
-    </div>
-  </main>
+<div class="topbar">
+  <div>
+    <h1>nebula · density (gallery)</h1>
+    <div class="sub">10 candidate density schools. Each card runs a mini page mock with that school's real values — sparse schools visibly breathe, dense schools visibly pack. Pick the ones to add to the pool.</div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <span class="stats"><strong id="picked-count">0</strong> picked</span>
+    <button class="btn-ghost btn" id="reset-btn">Reset</button>
+    <button class="btn" id="copy-btn">Copy prompt</button>
+  </div>
 </div>
+
+<div class="banner">rounds 1–2 already in density.md (6 schools): D1 Confident Product · D2 Editorial Sparse · D3 Gentle Craft · D4 Atelier Folio · D5 Balanced Product · D6 Utilitarian Tight. Round 3 below adds variations across new registers.</div>
+
+<div class="wrap"><div class="grid" id="grid"></div></div>
 
 <div class="modal-bd" id="modal-bd">
   <div class="modal">
-    <div class="modal-head">
-      <h2>Prompt for Claude</h2>
-      <button class="close" id="modal-close">×</button>
-    </div>
+    <div class="modal-head"><h2>Prompt for Claude</h2><button class="close" id="modal-close">×</button></div>
     <div class="modal-body"><div class="promptbox" id="promptbox"></div></div>
     <div class="modal-foot">
       <button class="btn-ghost btn" id="modal-close-2">Close</button>
@@ -252,197 +118,170 @@
     </div>
   </div>
 </div>
-
-<div class="toast" id="toast">Saved</div>
+<div class="toast" id="toast">Copied</div>
 
 <script>
-const STORAGE_KEY = 'nebula-density-state';
+const STORAGE_KEY = 'nebula-density-picks-r3';
 
-// Each control: key, label, min, max, step, suffix
-const CONTROLS = [
-  { key: 'pad',         label: 'Section padding (desktop)', min: 24,   max: 160,  step: 4,    suffix: 'px' },
-  { key: 'lhBody',      label: 'Body line height',          min: 1.3,  max: 1.9,  step: 0.025,suffix: '' },
-  { key: 'lhDisplay',   label: 'Display line height',       min: 1.0,  max: 1.3,  step: 0.025,suffix: '' },
-  { key: 'scale',       label: 'Type scale ratio',          min: 1.1,  max: 1.6,  step: 0.01, suffix: '' },
-  { key: 'base',        label: 'Base body size',            min: 14,   max: 20,   step: 0.5,  suffix: 'px' },
-  { key: 'rhythm',      label: 'Inter-element rhythm',      min: 8,    max: 40,   step: 1,    suffix: 'px' },
-  { key: 'container',   label: 'Container max width',       min: 1024, max: 1440, step: 8,    suffix: 'px' },
-  { key: 'gridGap',     label: 'Grid gap',                  min: 8,    max: 48,   step: 1,    suffix: 'px' },
+const SCHOOLS = [
+  {
+    id: 'codex',
+    name: 'Codex',
+    caption: 'Beyond Editorial Sparse — extreme slow scholarly register. 144px sections, 18px body, 1.75 line-height, 1.35 scale, narrow 1020 container. Manuscripts, deep-archive editions, monographs.',
+    values: { pad: 144, lhBody: 1.75, lhDisplay: 1.18, scale: 1.35, base: 18, rhythm: 28, container: 1020, gridGap: 36 },
+  },
+  {
+    id: 'manifesto',
+    name: 'Manifesto',
+    caption: 'Declarative register — bold display contrast meets editorial breath. 112px sections, 18px body, 1.50 type scale, 26px rhythm, 1100 container. Mission pages, brand statements, hero-led campaigns.',
+    values: { pad: 112, lhBody: 1.55, lhDisplay: 1.05, scale: 1.50, base: 18, rhythm: 26, container: 1100, gridGap: 24 },
+  },
+  {
+    id: 'op-ed',
+    name: 'Op-Ed',
+    caption: 'Essay register — slow body + display authority + narrow column. 96px sections, 17px body, 1.72 line-height, 1.35 scale, 1020 container. Long-form opinion, essays, manifestos.',
+    values: { pad: 96, lhBody: 1.72, lhDisplay: 1.18, scale: 1.35, base: 17, rhythm: 24, container: 1020, gridGap: 24 },
+  },
+  {
+    id: 'journal',
+    name: 'Journal',
+    caption: 'Daily-essay register. Standard padding (84px) + slow body (1.70 lh) + modest 1.28 scale + 16px base. Newsletter, substack, daily-thought sites.',
+    values: { pad: 84, lhBody: 1.70, lhDisplay: 1.18, scale: 1.28, base: 16, rhythm: 22, container: 1080, gridGap: 22 },
+  },
+  {
+    id: 'hospitality-calm',
+    name: 'Hospitality Calm',
+    caption: 'Warm restaurant / boutique-hotel register — between Gentle Craft and Balanced. 92px sections, 17px body, 1.65 line-height, 1.28 scale, 1180 container. Restaurants, hotels, hospitality.',
+    values: { pad: 92, lhBody: 1.65, lhDisplay: 1.18, scale: 1.28, base: 17, rhythm: 24, container: 1180, gridGap: 22 },
+  },
+  {
+    id: 'showroom',
+    name: 'Showroom',
+    caption: 'Design-studio register — gallery breath meets product utility. 96px sections, 17px body, 1.60 line-height, 1.32 scale, 1180 container, 28px grid. Agency pages, studio capability showcases.',
+    values: { pad: 96, lhBody: 1.60, lhDisplay: 1.15, scale: 1.32, base: 17, rhythm: 26, container: 1180, gridGap: 28 },
+  },
+  {
+    id: 'sleeve',
+    name: 'Sleeve',
+    caption: 'Music label / cinema register — heading-forward, mid-padding. 80px sections, 16px body, 1.50 line-height, 1.40 scale, 1100 container. Records, festival pages, film microsites.',
+    values: { pad: 80, lhBody: 1.50, lhDisplay: 1.12, scale: 1.40, base: 16, rhythm: 22, container: 1100, gridGap: 20 },
+  },
+  {
+    id: 'type-forward-product',
+    name: 'Type-Forward Product',
+    caption: 'Compact display-led variant — tighter than Confident Product. 72px sections, 15px body, 1.50 line-height, 1.45 scale, 18px rhythm. Tech with strong type identity; type-foundry sites.',
+    values: { pad: 72, lhBody: 1.50, lhDisplay: 1.10, scale: 1.45, base: 15, rhythm: 18, container: 1280, gridGap: 18 },
+  },
+  {
+    id: 'broadsheet',
+    name: 'Broadsheet',
+    caption: 'Print-news register — denser than long-form, more editorial than Newsroom. 72px sections, 17px body, 1.55 line-height, 1.30 scale, 1200 container, 18px grid. Weekly publications, longform-mixed sites.',
+    values: { pad: 72, lhBody: 1.55, lhDisplay: 1.10, scale: 1.30, base: 17, rhythm: 20, container: 1200, gridGap: 18 },
+  },
+  {
+    id: 'catalog',
+    name: 'Catalog',
+    caption: 'Commerce / shop register — calm reading, wider container. 64px sections, 16px body, 1.55 line-height, 1.25 scale, 1320 container, 18px grid. E-commerce, product catalogs, indie shops.',
+    values: { pad: 64, lhBody: 1.55, lhDisplay: 1.12, scale: 1.25, base: 16, rhythm: 18, container: 1320, gridGap: 18 },
+  },
 ];
 
-const PRESETS = {
-  'Editorial Sparse': { pad: 120, lhBody: 1.7, lhDisplay: 1.15, scale: 1.333, base: 18, rhythm: 24, container: 1080, gridGap: 32 },
-  'Balanced Product': { pad: 80,  lhBody: 1.55,lhDisplay: 1.15, scale: 1.25,  base: 16, rhythm: 20, container: 1280, gridGap: 24 },
-  'Utilitarian Tight': { pad: 48, lhBody: 1.5, lhDisplay: 1.1,  scale: 1.2,   base: 15, rhythm: 14, container: 1280, gridGap: 16 },
-  'Gentle Craft':    { pad: 96,  lhBody: 1.7, lhDisplay: 1.2,  scale: 1.25,  base: 17, rhythm: 28, container: 1080, gridGap: 28 },
-  'Data Dense':      { pad: 32,  lhBody: 1.45,lhDisplay: 1.05, scale: 1.15,  base: 14, rhythm: 10, container: 1440, gridGap: 10 },
-};
-
-const DEFAULT = PRESETS['Balanced Product'];
-
-const state = {
-  current: { ...DEFAULT },
-  schools: [], // [{ name, values }]
-};
-
-// hydrate
+const state = { picks: new Set() };
 try {
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) {
-    const obj = JSON.parse(raw);
-    if (obj.current) state.current = obj.current;
-    if (Array.isArray(obj.schools)) state.schools = obj.schools;
-  }
+  if (raw) for (const k of JSON.parse(raw)) state.picks.add(k);
 } catch (e) {}
+function persist() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.picks])); } catch (e) {} }
 
-function persist() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+function stageStyle(v) {
+  return [
+    '--pad:' + v.pad + 'px',
+    '--lh-body:' + v.lhBody,
+    '--lh-display:' + v.lhDisplay,
+    '--scale:' + v.scale,
+    '--base:' + v.base + 'px',
+    '--rhythm:' + v.rhythm + 'px',
+    '--grid-gap:' + v.gridGap + 'px',
+  ].join(';');
 }
 
-function fmtVal(c, v) {
-  if (c.step < 1) return v.toFixed(c.step < 0.05 ? 3 : 2);
-  return v.toString();
+function tagsFor(s) {
+  const v = s.values;
+  return `<span class="vtag">pad ${v.pad}px</span><span class="vtag">scale ${v.scale}</span><span class="vtag">body ${v.base}px / ${v.lhBody}</span>`;
 }
 
-function applyToPreview() {
-  const p = document.getElementById('preview');
-  p.style.setProperty('--pad', state.current.pad + 'px');
-  p.style.setProperty('--lh-body', state.current.lhBody);
-  p.style.setProperty('--lh-display', state.current.lhDisplay);
-  p.style.setProperty('--scale', state.current.scale);
-  p.style.setProperty('--base', state.current.base + 'px');
-  p.style.setProperty('--rhythm', state.current.rhythm + 'px');
-  p.style.setProperty('--container', state.current.container + 'px');
-  p.style.setProperty('--grid-gap', state.current.gridGap + 'px');
-
-  // live values readout
-  const lv = document.getElementById('live-vals');
-  const c = state.current;
-  lv.textContent = `pad ${c.pad}px · lh ${c.lhBody.toFixed(2)} · scale ${c.scale.toFixed(3)} · base ${c.base}px · rhythm ${c.rhythm}px`;
-}
-
-function renderControls() {
-  const root = document.getElementById('controls');
-  root.innerHTML = CONTROLS.map(c => `
-    <div class="ctl">
-      <div class="row">
-        <label>${c.label}</label>
-        <span class="val" id="val-${c.key}">${fmtVal(c, state.current[c.key])}${c.suffix}</span>
-      </div>
-      <input type="range" min="${c.min}" max="${c.max}" step="${c.step}" value="${state.current[c.key]}" data-key="${c.key}">
+function demoMarkup(s) {
+  return `<div class="stage" style="${stageStyle(s.values)}">
+    <span class="eyebrow">— Field guide</span>
+    <div class="h1">A page that breathes the way its brand thinks.</div>
+    <div class="body">Density is the silent stance of a page. The values shown here propagate to section padding, line rhythm, type scale, and grid gaps — together they decide whether the reader leans in or leans back.</div>
+    <span class="cta">Read on</span>
+    <div class="cards">
+      <div class="mini"><h5>Card one</h5><p>Two columns of brief notes, separated by the school's grid gap.</p></div>
+      <div class="mini"><h5>Card two</h5><p>The gap is tight in dense schools, generous in editorial schools.</p></div>
     </div>
-  `).join('');
-  for (const el of root.querySelectorAll('input[type=range]')) {
-    el.addEventListener('input', (e) => {
-      const k = el.dataset.key;
-      const v = parseFloat(e.target.value);
-      state.current[k] = v;
-      const ctl = CONTROLS.find(c => c.key === k);
-      document.getElementById('val-' + k).textContent = fmtVal(ctl, v) + ctl.suffix;
-      applyToPreview();
-      persist();
-    });
-  }
+  </div>`;
 }
 
-function renderPresets() {
-  const root = document.getElementById('presets');
-  root.innerHTML = Object.keys(PRESETS).map(name => `<button class="preset-chip" data-preset="${name}">${name}</button>`).join('');
-  for (const el of root.querySelectorAll('.preset-chip')) {
-    el.addEventListener('click', () => {
-      const name = el.dataset.preset;
-      state.current = { ...PRESETS[name] };
-      // also seed the save-name input with the preset name (user can adjust)
-      document.getElementById('school-name').value = name;
-      renderControls();
-      applyToPreview();
-      persist();
-    });
-  }
-}
-
-function renderSchools() {
-  const root = document.getElementById('schools');
-  const count = state.schools.length;
-  document.getElementById('saved-count').textContent = count ? `(${count})` : '';
-  document.getElementById('schools-count').textContent = count;
-  if (count === 0) {
-    root.innerHTML = '<div class="empty">No schools saved yet. Tune values, name it, hit Save.</div>';
-    return;
-  }
-  root.innerHTML = state.schools.map((s, i) => `
-    <div class="school" data-i="${i}">
-      <div class="left">
-        <div class="name">${s.name}</div>
-        <div class="vals">pad ${s.values.pad}px · lh ${s.values.lhBody.toFixed(2)} · scale ${s.values.scale.toFixed(3)} · base ${s.values.base}px</div>
+function renderGrid() {
+  const root = document.getElementById('grid');
+  root.innerHTML = SCHOOLS.map(s => {
+    const v = s.values;
+    return `
+    <div class="dcard ${state.picks.has(s.id) ? 'picked' : ''}" data-id="${s.id}">
+      <div class="dcheck ${state.picks.has(s.id) ? 'on' : ''}" data-id="${s.id}">✓</div>
+      <div class="ddemo">${demoMarkup(s)}</div>
+      <div class="dmeta">
+        <div class="dname">${s.name}</div>
+        <div class="dcaption">${s.caption}</div>
+        <div class="vtags">${tagsFor(s)}</div>
       </div>
-      <button class="x" title="Delete" data-i="${i}">×</button>
-    </div>
-  `).join('');
-  for (const el of root.querySelectorAll('.school')) {
-    el.addEventListener('click', (e) => {
-      if (e.target.classList.contains('x')) return;
-      const i = parseInt(el.dataset.i, 10);
-      state.current = { ...state.schools[i].values };
-      document.getElementById('school-name').value = state.schools[i].name;
-      renderControls();
-      applyToPreview();
-      persist();
-    });
-  }
-  for (const el of root.querySelectorAll('.school .x')) {
-    el.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const i = parseInt(el.dataset.i, 10);
-      if (!confirm('Delete school "' + state.schools[i].name + '"?')) return;
-      state.schools.splice(i, 1);
-      renderSchools();
-      persist();
-    });
-  }
+      <div class="dfoot">
+        <span class="lbl">pad:</span> <span class="val">${v.pad}px</span> · <span class="lbl">lh body/display:</span> <span class="val">${v.lhBody.toFixed(2)} / ${v.lhDisplay.toFixed(2)}</span><br>
+        <span class="lbl">scale × base:</span> <span class="val">${v.scale.toFixed(3)} × ${v.base}px</span> · <span class="lbl">rhythm:</span> <span class="val">${v.rhythm}px</span><br>
+        <span class="lbl">container:</span> <span class="val">${v.container}px</span> · <span class="lbl">grid gap:</span> <span class="val">${v.gridGap}px</span>
+      </div>
+    </div>`;
+  }).join('');
+  updateStats();
 }
 
-function saveCurrent() {
-  const nameInput = document.getElementById('school-name');
-  const name = nameInput.value.trim();
-  if (!name) {
-    nameInput.focus();
-    showToast('Give it a name first');
-    return;
-  }
-  // replace by name if exists
-  const existing = state.schools.findIndex(s => s.name === name);
-  const entry = { name, values: { ...state.current } };
-  if (existing >= 0) state.schools[existing] = entry;
-  else state.schools.push(entry);
-  renderSchools();
+function updateStats() { document.getElementById('picked-count').textContent = state.picks.size; }
+
+document.addEventListener('click', (ev) => {
+  const check = ev.target.closest('.dcheck');
+  if (!check) return;
+  const id = check.dataset.id;
+  if (state.picks.has(id)) state.picks.delete(id);
+  else state.picks.add(id);
+  const card = check.closest('.dcard');
+  card.classList.toggle('picked');
+  check.classList.toggle('on');
+  updateStats();
   persist();
-  showToast('Saved "' + name + '"');
-  nameInput.value = '';
-}
+});
 
 function buildPrompt() {
-  if (state.schools.length === 0) {
-    return '# No density schools saved yet.\nGo back, tune values, save a few schools by name. The prompt will fill in here.';
-  }
+  if (state.picks.size === 0) return '# No density schools picked yet.\nClick the ✓ on each card to select.';
+  const picked = SCHOOLS.filter(s => state.picks.has(s.id));
   let out = '';
-  out += 'I tuned ' + state.schools.length + ' density schools using the nebula density playground. Please append each to skills/direct/reference/curated-pools/density.md as a D<n> entry, following the schema defined at the top of that file.\n\n';
+  out += 'I selected ' + picked.length + ' additional density schools from the nebula density gallery (round 3). Append each to skills/direct/reference/curated-pools/density.md as a new D<n> entry (numbering continues from D6).\n\n';
   out += 'For each school, use these values verbatim for desktop:\n';
   out += '  • Section padding (desktop)\n';
   out += '  • Body line height + display line height\n';
   out += '  • Type scale ratio\n';
   out += '  • Base body size\n';
-  out += '  • Inter-element rhythm (gap between heading / body / button in a stack)\n';
+  out += '  • Inter-element rhythm\n';
   out += '  • Container max width\n';
-  out += '  • Grid gap (gap between cards / columns)\n\n';
-  out += 'Derive tablet/mobile section padding by ratio: tablet = round(desktop × 0.7), mobile = round(desktop × 0.5). State the derivation in the entry.\n\n';
+  out += '  • Grid gap\n\n';
+  out += 'Derive tablet/mobile section padding by ratio: tablet = round(desktop × 0.7), mobile = round(desktop × 0.5).\n\n';
   out += 'For each school, write:\n';
-  out += '  • **Character.** One paragraph capturing how the school FEELS — the name should be doing real work (e.g., "Editorial Sparse" reads as deliberately slow and editorial; "Data Dense" reads as utilitarian and information-led). Marked (<!-- inferred -->) only if you cannot lift the character directly from the name + values.\n';
-  out += '  • **Information density per viewport.** Estimate sections-per-scroll and text density.\n';
-  out += '  • **Fits.** Brief patterns / anchor families the school serves.\n';
-  out += '  • **Avoid for.** The complement.\n\n';
-  out += '## Saved schools\n\n';
-  for (const s of state.schools) {
+  out += '  • **Character.** One paragraph reading the values, not just listing them — say what the school FEELS like.\n';
+  out += '  • **Information density per viewport.** Estimate sections per scroll + text density.\n';
+  out += '  • **Fits.** Brief patterns / anchor families.\n';
+  out += '  • **Avoid for.** Complement.\n\n';
+  out += '## Selected schools\n\n';
+  for (const s of picked) {
     const v = s.values;
     out += '### ' + s.name + '\n';
     out += '  desktop section padding: ' + v.pad + 'px\n';
@@ -457,49 +296,29 @@ function buildPrompt() {
   return out;
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 1500);
-}
+function showToast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 1600); }
 async function copyToClipboard(text) {
   try { await navigator.clipboard.writeText(text); showToast('Copied · paste back to Claude'); }
   catch (e) {
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    const ta = document.createElement('textarea'); ta.value = text;
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
     showToast('Copied · paste back to Claude');
   }
 }
-
 const modalBd = document.getElementById('modal-bd');
 const promptbox = document.getElementById('promptbox');
-
-function openModal() {
-  promptbox.textContent = buildPrompt();
-  modalBd.classList.add('open');
-}
-document.getElementById('copy-btn').addEventListener('click', openModal);
-document.getElementById('copy-btn-main').addEventListener('click', openModal);
+document.getElementById('copy-btn').addEventListener('click', () => { promptbox.textContent = buildPrompt(); modalBd.classList.add('open'); });
 document.getElementById('modal-close').addEventListener('click', () => modalBd.classList.remove('open'));
 document.getElementById('modal-close-2').addEventListener('click', () => modalBd.classList.remove('open'));
-modalBd.addEventListener('click', (e) => { if (e.target === modalBd) modalBd.classList.remove('open'); });
+modalBd.addEventListener('click', (ev) => { if (ev.target === modalBd) modalBd.classList.remove('open'); });
 document.getElementById('copy-now-btn').addEventListener('click', () => copyToClipboard(promptbox.textContent));
-
-document.getElementById('save-btn').addEventListener('click', saveCurrent);
-document.getElementById('school-name').addEventListener('keydown', (e) => { if (e.key === 'Enter') saveCurrent(); });
 document.getElementById('reset-btn').addEventListener('click', () => {
-  if (!confirm('Reset current tuning to defaults? (Saved schools will not be cleared.)')) return;
-  state.current = { ...DEFAULT };
-  renderControls();
-  applyToPreview();
-  persist();
+  if (state.picks.size === 0) return;
+  if (!confirm('Clear all ' + state.picks.size + ' picks?')) return;
+  state.picks.clear(); persist(); renderGrid();
 });
 
-renderPresets();
-renderControls();
-renderSchools();
-applyToPreview();
+renderGrid();
 </script>
 </body>
 </html>
