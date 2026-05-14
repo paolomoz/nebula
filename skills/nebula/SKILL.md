@@ -117,6 +117,11 @@ what was synthesized vs. authored, and what other artifacts were read.
   page applied to all buttons; tech-stack budget per anchor family
   (CSS-only for restrained anchors; canvas particle / WebGL only
   when the anchor earns it).
+- `reference/links.md` — inline-link effect catalog (L1–L12 from
+  Codrops Creative Link Effects: Sansa, Boa, Wilcox, Levin, Roald,
+  Almos, Aratron, Magnus, Pinkerton, Eachann, Ergon, Anpan). 0–1
+  per page applied uniformly to every body-prose `<a>`; CTAs and
+  nav exempt. All CSS-only.
 - `reference/retrieval.md` — the index-first retrieval pattern. Every
   pool / library has a sidecar `<pool>.index.json` for fast
   filtering. `direct` reads the index, narrows to top-k candidates,

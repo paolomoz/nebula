@@ -1,0 +1,258 @@
+{
+  "_meta": {
+    "pool": "links",
+    "schemaVersion": 1,
+    "builtAt": "2026-05-14T17:42:59.981Z",
+    "sourceFile": "skills/nebula/reference/links.md",
+    "count": 12
+  },
+  "entries": [
+    {
+      "id": "L1",
+      "name": "Sansa",
+      "anchor": "l1-sansa",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic",
+        "documentary",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "indie-game",
+        "music-label"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L2",
+      "name": "Boa",
+      "anchor": "l2-boa",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "brutalist"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L3",
+      "name": "Wilcox",
+      "anchor": "l3-wilcox",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "clinical",
+        "civic",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [
+        "brutalist",
+        "vibrant-playful",
+        "indie-game"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L4",
+      "name": "Levin",
+      "anchor": "l4-levin",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "luxury-fashion",
+        "documentary",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L5",
+      "name": "Roald",
+      "anchor": "l5-roald",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS + minimal markup (letter wrapping)",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L6",
+      "name": "Almos",
+      "anchor": "l6-almos",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "indie-game",
+        "documentary",
+        "tech-research",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "vibrant-playful",
+        "clinical",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L7",
+      "name": "Aratron",
+      "anchor": "l7-aratron",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "indie-game",
+        "documentary",
+        "hospitality",
+        "music-label"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L8",
+      "name": "Magnus",
+      "anchor": "l8-magnus",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "luxury-fashion",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "clinical",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L9",
+      "name": "Pinkerton",
+      "anchor": "l9-pinkerton",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "civic",
+        "documentary"
+      ],
+      "avoid": [],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L10",
+      "name": "Eachann",
+      "anchor": "l10-eachann",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "editorial",
+        "documentary",
+        "tech-research"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "vibrant-playful",
+        "hospitality",
+        "music-label"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L11",
+      "name": "Ergon",
+      "anchor": "l11-ergon",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "architecture",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [
+        "trust-fintech",
+        "editorial",
+        "clinical",
+        "civic"
+      ],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    },
+    {
+      "id": "L12",
+      "name": "Anpan",
+      "anchor": "l12-anpan",
+      "filePath": "skills/nebula/reference/links.md",
+      "fits": [
+        "trust-fintech",
+        "clinical",
+        "civic",
+        "sustainable-eco",
+        "tech-research"
+      ],
+      "avoid": [],
+      "techStack": "Vanilla CSS",
+      "trigger": "Hover",
+      "specimenStatus": "external-only"
+    }
+  ]
+}

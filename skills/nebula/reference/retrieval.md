@@ -33,6 +33,7 @@ in the markdown.
 | signatures | `skills/nebula/reference/signatures.md`             | `…/signatures.index.json` |
 | hovers    | `skills/nebula/reference/hovers.md`                  | `…/hovers.index.json`    |
 | buttons   | `skills/nebula/reference/buttons.md`                 | `…/buttons.index.json`   |
+| links     | `skills/nebula/reference/links.md`                   | `…/links.index.json`     |
 
 ## Index format
 
@@ -80,6 +81,7 @@ Plus pool-specific extras:
 | signatures | `sectionRole`, `techStack`, `antiPairs: []`, `specimen`, `specimenStatus` |
 | hovers    | `appliedTo: []`, `techStack`, `trigger`, `specimen`, `specimenStatus` |
 | buttons   | `techStack`, `tier`, `trigger`, `specimenStatus` |
+| links     | `techStack`, `trigger`, `specimenStatus` |
 
 ## The retrieval pattern (used by `direct`)
 

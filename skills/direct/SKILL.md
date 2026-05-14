@@ -302,6 +302,40 @@ the entry's "Fits" list (or close adjacency). Anchors in the entry's
 Record the picked entry in `DESIGN.json.extensions.buttonAnimation`
 as `{ id, name, tier, primaryRecipe, secondaryRecipe, specimen }`.
 
+### Phase 4f — Pick link effect (0–1 per page)
+
+Read `skills/nebula/reference/links.md` (via its index sidecar per
+the retrieval pattern). Pick **exactly one** link effect (or zero on
+rare ops/utility briefs). The picked effect applies *uniformly* to
+every inline `<a>` in body prose across the page — mixing two link
+decorations in the same paragraph is the loudest possible
+reading-flow inconsistency.
+
+**Default**: L1 Sansa (slim left-to-right underline). It fits any
+anchor that wants visible link cues; L12 Anpan (color-only) is the
+quietest alternative for trust-led B2B / clinical / civic where
+underline decorations read as too much.
+
+**Constraints to verify**:
+
+1. **Anchor-family fits.** Brief's anchor appears in the entry's
+   "Fits" list (or close adjacency).
+2. **Tech budget.** All Codrops link effects are CSS-only — no
+   tech-budget concern. The recommended-range table at the top of
+   `links.md` narrows candidates by anchor.
+3. **Accessibility.** L12 Anpan requires the focus-visible outline
+   in its recipe (color-only differentiation fails WCAG 1.4.1 on
+   its own). If the brief signals "accessibility-first" or "AAA
+   contrast", prefer L1 Sansa or L3 Wilcox (always-visible
+   underline cue).
+4. **Semantic specificity.** L9 Pinkerton (strikethrough draw-in)
+   is reserved for *semantic* uses (deletion, superseded refs) —
+   don't pick it as a default link decoration.
+
+Record the picked entry in `DESIGN.json.extensions.linkEffect` as
+`{ id, name, recipe }`. Render applies it to every `<a>` in body
+prose.
+
 ### Phase 5 — Distinctiveness check (gate)
 
 Before writing the target spec, run the distinctiveness check. For each
@@ -333,6 +367,7 @@ Moves:       <M-ids>
 Signatures:  <S-ids, or "none — type-led">
 Hovers:      <H-ids per host, or "none">
 Buttons:     <B-id> (<tier>)
+Links:       <L-id> (e.g., L1 Sansa)
 Image slots: <N total, broken down: hero ×1, card ×3 …>
 Image policy: <unsplash | user-supplied | generate (will fall back to unsplash)>
 
@@ -438,6 +473,10 @@ Next: $nebula render
 - `skills/nebula/reference/buttons.md` — button animation catalog
   (B1–B12). Each entry is a *button system* (primary + secondary
   recipes); 0–1 per page; tech-stack budget per anchor family.
+- `skills/nebula/reference/links.md` — inline-link effect catalog
+  (L1–L12 from Codrops Creative Link Effects). 0–1 per page;
+  applied uniformly to every `<a>` in body prose. CSS-only
+  universally; anchor decides which entry fits.
 - `skills/nebula/reference/retrieval.md` — the index-first retrieval
   pattern used by every Phase 2 / 4 / 4b / 4d / 4e pick. Index
   sidecars live next to each pool's markdown (`<pool>.index.json`).

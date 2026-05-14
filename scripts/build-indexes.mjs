@@ -27,6 +27,7 @@ const POOLS = [
   { name: 'signatures', file: 'skills/nebula/reference/signatures.md',    idPrefix: 'S', extras: 'signatures' },
   { name: 'hovers',     file: 'skills/nebula/reference/hovers.md',        idPrefix: 'H', extras: 'hovers'     },
   { name: 'buttons',    file: 'skills/nebula/reference/buttons.md',       idPrefix: 'B', extras: 'buttons'    },
+  { name: 'links',      file: 'skills/nebula/reference/links.md',         idPrefix: 'L', extras: 'links'      },
 ];
 
 // -----------------------------------------------------------------------------
@@ -309,6 +310,22 @@ function fieldShortest(body, fieldName) {
   return firstLine;
 }
 
+function extrasForLinks(body) {
+  // Links are CSS-only universally; trigger is hover for all.
+  // Track tech stack (string), trigger (string), specimen status.
+  const techStack = stripTrailingDot(fieldShortest(body, 'Tech stack'));
+  const trigger   = stripTrailingDot(fieldShortest(body, 'Trigger'));
+  const specimen  = (field(body, 'Specimen') || '').trim();
+  const specimenStatus = specimen.includes('external-only') ? 'external-only'
+                       : specimen.toLowerCase().startsWith('inline-complete') ? 'inline'
+                       : 'local';
+  return {
+    techStack,
+    trigger,
+    specimenStatus,
+  };
+}
+
 const EXTRAS = {
   typefaces:  extrasForTypefaces,
   palettes:   extrasForPalettes,
@@ -319,6 +336,7 @@ const EXTRAS = {
   signatures: extrasForSignatures,
   hovers:     extrasForHovers,
   buttons:    extrasForButtons,
+  links:      extrasForLinks,
 };
 
 // -----------------------------------------------------------------------------

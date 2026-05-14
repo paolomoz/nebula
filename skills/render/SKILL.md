@@ -123,6 +123,21 @@ Every rendered photographic element must carry:
 - `loading="lazy"` (except hero / above-the-fold, which may be eager)
 - `decoding="async"` for non-critical photos
 
+**Apply the picked link effect** from
+`DESIGN.json.extensions.linkEffect` to every inline `<a>` in body
+prose:
+
+- Look up the entry in `skills/nebula/reference/links.md` (via its
+  index for the recipe location).
+- Add the `.lnk` class to every body-prose `<a>` element (or adapt
+  the class name to the page namespace).
+- Inline the CSS recipe; for letter-stagger entries (L5 Roald) or
+  text-swap entries (L8 Magnus), wrap link text per the entry's
+  declared markup (split letters into spans, add `data-replace`,
+  etc.).
+- Do **not** apply the link effect to button-like `<a>` elements
+  (CTAs, nav items). Only body-prose links carry this decoration.
+
 **Apply the picked button animation** from
 `DESIGN.json.extensions.buttonAnimation` to the page's button system:
 
@@ -216,6 +231,11 @@ Also run nebula-specific checks:
   animation was substituted by render (e.g., external-only specimen
   not available, fell back to B1), the substitution is recorded in
   the render report.
+- **Link-effect integrity.** The picked link effect
+  (`DESIGN.json.extensions.linkEffect`) is applied uniformly to
+  every inline `<a>` in body prose. CTAs and nav links are exempt
+  (they're button-system territory). No paragraph contains two
+  different link decorations.
 
 ### Phase 5 — Surface and iterate
 
@@ -294,4 +314,7 @@ Update `nebula/state.json`:
 - `skills/nebula/reference/buttons.md` — button animation catalog
   (B1–B12). Each entry defines a primary + secondary recipe applied
   page-wide.
+- `skills/nebula/reference/links.md` — inline-link effect catalog
+  (L1–L12 from Codrops Creative Link Effects). One effect applied to
+  every body-prose `<a>` page-wide; CTAs and nav exempt.
 - `skills/nebula/reference/pitfalls.md` — nebula-specific render rules.
