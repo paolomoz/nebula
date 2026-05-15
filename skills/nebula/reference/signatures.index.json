@@ -2,9 +2,9 @@
   "_meta": {
     "pool": "signatures",
     "schemaVersion": 1,
-    "builtAt": "2026-05-15T10:49:25.990Z",
+    "builtAt": "2026-05-15T15:30:29.344Z",
     "sourceFile": "skills/nebula/reference/signatures.md",
-    "count": 17
+    "count": 20
   },
   "entries": [
     {
@@ -392,6 +392,73 @@
       ],
       "specimenStatus": "local",
       "specimen": "signatures/rain-lenses/index.html"
+    },
+    {
+      "id": "S18",
+      "name": "Sticky-stack panel narrative",
+      "anchor": "s18-sticky-stack-panel-narrative",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Page-spine narrative. Multiple sticky panels stack vertically, each rising into view as the user scrolls; the page tells its story in pinned beats rather than continuous scrolling",
+      "techStack": "Vanilla JS + CSS. `position: sticky` panels in a tall outer (5 × 100vh = 500vh) with scroll-progress-driven entry animations on each panel's image and copy",
+      "antiPairs": [
+        "V6",
+        "V11",
+        "V4"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/sticky-stack-panels/index.html"
+    },
+    {
+      "id": "S19",
+      "name": "Hex-grid breathing dots",
+      "anchor": "s19-hex-grid-breathing-dots",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero / above-the-fold ambient. A bold continuous Canvas 2D surface that announces the brand as digitally-native without needing WebGL",
+      "techStack": "Canvas 2D + vanilla JS. Three independent canvases (one per RGB channel) drawn each frame; phase offset between the three creates chromatic-aberration trailing",
+      "antiPairs": [
+        "V9",
+        "V5",
+        "V7"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/breathing-dots/index.html"
+    },
+    {
+      "id": "S20",
+      "name": "Rainbow H1 hover",
+      "anchor": "s20-rainbow-h1-hover",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero H1 atom — a per-character treatment of a single heading. Atypical for a signature (not a section, not page-wide chrome) but registered here as a *named hero atom* because it carries page identity disproportionately",
+      "techStack": "Vanilla CSS + minimal JS. JS wraps each character in a `<span>` at render time and sets `--c` per character based on index (1/N of the rainbow). On hover, JS re-rolls `--rot` and `--dx` custom properties per span (CCW rotation in `-8deg..0`, leftward shift in `-4px..0`). CSS handles the transition",
+      "antiPairs": [
+        "V6",
+        "V11",
+        "V7"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/h1-rainbow-hover/index.html"
     }
   ]
 }

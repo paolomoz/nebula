@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H1 char-hover colorize — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Inter',sans-serif;
+    background:#fff;color:#0a0a0a;
+    -webkit-font-smoothing:antialiased;
+    padding:6vh 6vw;
+    min-height:100vh;
+  }
+
+  /* the H1 — each character is wrapped in a span by JS at boot. Each span
+     has a --c CSS variable set to its hover color (a position-determined
+     rainbow hue). On hover the span transitions to that color. */
+  h1.colorize{
+    font-weight:900;
+    font-size:clamp(48px, 8vw, 120px);
+    line-height:1.02;letter-spacing:-0.035em;
+    max-width:13ch;margin:0 0 1.5rem;
+    cursor:default;
+  }
+  h1.colorize span{
+    display:inline-block;
+    color:#0a0a0a;
+    /* exact transition curve from coolors.co — applies to BOTH color and
+       transform, so the colorize and the small rotate+shift run together. */
+    transition:.3s cubic-bezier(0.6, 0.4, 0, 1);
+    transition-property:color, transform;
+  }
+  h1.colorize span:hover{
+    color:var(--c, #ef4444);
+  }
+  /* the line breaks become spaces; preserve word breaks */
+  h1.colorize .w{display:inline-block;white-space:nowrap}
+
+  /* sub */
+  p.lede{
+    font-size:clamp(15px, 1.4vw, 19px);font-weight:500;color:#404040;
+    max-width:46ch;line-height:1.45;margin-bottom:2rem;
+  }
+  .ctas{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;
+    background:#2454ff;color:#fff;font-weight:500;font-size:15px;
+    padding:12px 22px;border-radius:8px;
+    text-decoration:none;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);background:#1d44d4}
+  .btn-ghost{
+    background:#f2f2f2;color:#0a0a0a;
+  }
+  .btn-ghost:hover{background:#e5e5e5}
+
+  .credit{
+    position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
+    font-size:11px;color:#888;
+  }
+  .credit a{color:inherit;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<h1 class="colorize" id="title">The super fast color palettes generator!</h1>
+
+<p class="lede">Hover any character to flash its position-determined rainbow color. Identical transition curve (0.3s, cubic-bezier 0.6 0.4 0 1) to the coolors.co source.</p>
+
+<div class="ctas">
+  <a href="#" class="btn">Start the Generator</a>
+  <a href="#" class="btn btn-ghost">Explore 10M+ Palettes</a>
+</div>
+
+<p class="credit">Clean-room replica of the H1 hover effect on <a href="https://coolors.co/" target="_blank" rel="noopener">coolors.co</a></p>
+
+<script>
+(function(){
+  "use strict";
+  const h1 = document.getElementById("title");
+  // Cycle length — number of chars per full hue rotation. ~17 matches coolors.
+  const CYCLE = 17;
+  // Hue offset — start at 0° (red). Saturation 65, lightness 45 match the
+  // visible color depth on the source (slightly muted, not full 500-shade).
+  const SAT = 65, LIGHT = 45;
+
+  // Walk the text, wrap each non-space character in a <span> with --c set
+  // to its position-derived rainbow color. Wrap whole words in a .w wrapper
+  // so they don't break mid-word at the line edges.
+  const text = h1.textContent;
+  h1.textContent = "";
+  let charIdx = 0;
+  const charSpans = [];
+  const words = text.split(/(\s+)/);
+  for (const tok of words){
+    if (/^\s+$/.test(tok)){
+      h1.appendChild(document.createTextNode(" "));
+      continue;
+    }
+    const wordSpan = document.createElement("span");
+    wordSpan.className = "w";
+    for (const ch of tok){
+      const s = document.createElement("span");
+      s.textContent = ch;
+      const hue = (charIdx % CYCLE) * (360 / CYCLE);
+      s.style.setProperty("--c", `hsl(${hue}, ${SAT}%, ${LIGHT}%)`);
+      wordSpan.appendChild(s);
+      charSpans.push(s);
+      charIdx++;
+    }
+    h1.appendChild(wordSpan);
+  }
+
+  // The motion: on mouseenter, generate a small random CCW rotation + leftward
+  // shift (re-randomized each hover so the same char wiggles differently each
+  // time). On leave, snap back. The shared 0.3s transition handles the rest.
+  charSpans.forEach(s => {
+    s.addEventListener("mouseenter", () => {
+      const rot = -(1 + Math.random() * 1.5);      // -1° to -2.5°
+      const tx  = -(3 + Math.random() * 4);        // -3 to -7 px
+      s.style.transform = `translateX(${tx.toFixed(2)}px) rotate(${rot.toFixed(2)}deg)`;
+    });
+    s.addEventListener("mouseleave", () => {
+      s.style.transform = "";
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

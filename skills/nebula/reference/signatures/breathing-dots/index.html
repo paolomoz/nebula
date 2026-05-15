@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breathing dots — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#000;color:#fff;
+    font-family:'Inter',sans-serif;
+    overflow:hidden;-webkit-font-smoothing:antialiased;
+  }
+  canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
+  .text-overlay{
+    position:fixed;inset:0;display:grid;place-items:center;z-index:10;
+    pointer-events:none;
+  }
+  .text-overlay h1{
+    font-weight:900;
+    font-size:clamp(48px, 9vw, 130px);
+    line-height:1;letter-spacing:-0.02em;color:#fff;
+    text-shadow:0 4px 32px rgba(0,0,0,.45);
+    text-align:center;
+  }
+  .frame{
+    position:fixed;top:1.25rem;left:1.25rem;right:1.25rem;z-index:30;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.04em;line-height:1.4;
+    pointer-events:none;
+  }
+  .frame a{color:inherit;text-decoration:underline;pointer-events:auto}
+  .frame nav{display:flex;gap:1rem;pointer-events:auto}
+  .controls{
+    position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);z-index:30;
+    display:flex;gap:.6rem;pointer-events:auto;
+  }
+  .controls button{
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.2);
+    color:#fff;font:inherit;font-size:11px;font-weight:500;letter-spacing:.08em;
+    padding:6px 12px;border-radius:3px;cursor:pointer;
+  }
+  .controls button:hover{background:rgba(255,255,255,.22)}
+  .controls button.active{background:#fff;color:#000}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div class="text-overlay"><h1>Spirit of Rhythm</h1></div>
+
+<header class="frame" role="banner">
+  <div>
+    Recreating a <a href="https://twitter.com/beesandbombs/status/1329796242298245124" target="_blank" rel="noopener">Dave Whyte</a> animation<br>
+    in pure Canvas 2D
+  </div>
+  <nav>
+    <a href="https://tympanus.net/Tutorials/BreathingDots/#/demo1" target="_blank" rel="noopener">Source</a>
+    <a href="https://github.com/mattrossman/breathing-dots-tutorial" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<div class="controls">
+  <button data-mode="loop" class="active">Infinite Loop</button>
+  <button data-mode="interactive">Press &amp; Hold</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d", { alpha: false });
+
+  // ───────────────────────────────────────────────────────────────
+  // Grid setup — 80×80 dots in a hex pattern (every other column offset)
+  // The source uses 100×100 = 10000; we use 80×80 = 6400 to keep Canvas
+  // 2D snappy at 60fps (the source has Three.js + GPU instancing).
+  // ───────────────────────────────────────────────────────────────
+  const COLS = 80, ROWS = 80;
+  const ZOOM = 14;                 // pixels per grid unit (= camera zoom)
+  const DOT_R = 0.15 * ZOOM;       // radius in pixels
+  const WAVE_PERIOD = 3.8;         // seconds — full ripple cycle
+  const WAVE_F = 1 / WAVE_PERIOD;
+  const WAVE_AMP = 0.4;
+
+  // Build dots once. Each carries its precomputed position + distance-with-
+  // octagonal-modulation (the "+cos(angle*8)*0.5" term that gives the
+  // ripple its star-shaped wavefront).
+  const dots = [];
+  for (let i = 0; i < COLS * ROWS; i++){
+    const x0 = (i % COLS) - COLS / 2;
+    const y0 = Math.floor(i / COLS) - ROWS / 2 + (i % 2) * 0.5;
+    // tiny jitter to avoid moire patterns
+    const x = x0 + (Math.random() - 0.5) * 0.3;
+    const y = y0 + (Math.random() - 0.5) * 0.3;
+    const len = Math.sqrt(x*x + y*y);
+    // angle from +x axis
+    const ang = Math.atan2(y, x);
+    // octagonal distance modulation (8-fold symmetry)
+    const dist = len + Math.cos(Math.abs(ang) * 8) * 0.5;
+    dots.push({ x, y, dist });
+  }
+
+  // ───────────────────────────────────────────────────────────────
+  // 3 rotating offscreen buffers — one per RGB channel.
+  // Each buffer is updated once every 3 frames with the CURRENT dot
+  // positions, drawn in its fixed channel color (red/green/blue).
+  // Composite all 3 with globalCompositeOperation:'lighter' →
+  // unmoved dots = R+G+B = white; moving dots leave colored trails
+  // because each channel reflects a slightly different time slice.
+  // ───────────────────────────────────────────────────────────────
+  const COLORS = ["#ff0000", "#00ff00", "#0000ff"];
+  const buffers = [
+    document.createElement("canvas"),
+    document.createElement("canvas"),
+    document.createElement("canvas"),
+  ];
+  const bufCtxs = buffers.map(b => b.getContext("2d"));
+
+  let W, H, cx, cy;
+  function resize(){
+    const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+    W = Math.floor(window.innerWidth * dpr);
+    H = Math.floor(window.innerHeight * dpr);
+    canvas.width = W; canvas.height = H;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    cx = W / 2; cy = H / 2;
+    for (const b of buffers){
+      b.width = W; b.height = H;
+    }
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  // rounded-square-wave — copied from the source. f = frequency, a = amplitude,
+  // delta controls sharpness (small δ → sharp square; large δ → smooth sine).
+  function roundedSquareWave(t, delta, a, f){
+    return (2 * a / Math.PI) * Math.atan(Math.sin(2 * Math.PI * t * f) / delta);
+  }
+
+  // interaction mode
+  let mode = "loop";              // "loop" or "interactive"
+  let pulsePhase = 0;             // virtual time used in interactive mode
+  let isPressed = false;
+  let lastT = performance.now();
+
+  document.querySelectorAll("[data-mode]").forEach(btn => {
+    btn.addEventListener("click", e => {
+      mode = btn.dataset.mode;
+      document.querySelectorAll("[data-mode]").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      // reset phase so the wave starts fresh in the new mode
+      pulsePhase = 0;
+    });
+  });
+  document.addEventListener("pointerdown", () => { isPressed = true; });
+  document.addEventListener("pointerup",   () => { isPressed = false; });
+  document.addEventListener("pointerleave",() => { isPressed = false; });
+
+  let frameIdx = 0;
+  const startMs = performance.now();
+
+  function drawDotsTo(bufCtx, t, color){
+    bufCtx.clearRect(0, 0, W, H);
+    bufCtx.fillStyle = color;
+    const scale = ZOOM * (W / window.innerWidth);   // dpr-aware
+    const dotR = 0.15 * scale;
+    for (let i = 0; i < dots.length; i++){
+      const d = dots[i];
+      // Wave phase is delayed by distance — that's what makes the ripple
+      // propagate outward. δ grows with distance so outer dots have smoother
+      // (more sinusoidal) oscillation while inner dots near 0 are squarish.
+      const phase = t - d.dist / 25;
+      const wave = roundedSquareWave(phase, 0.15 + (0.2 * d.dist) / 72, WAVE_AMP, WAVE_F);
+      const m = wave + 1.3;
+      const sx = cx + d.x * m * scale;
+      const sy = cy + d.y * m * scale;
+      bufCtx.beginPath();
+      bufCtx.arc(sx, sy, dotR, 0, Math.PI * 2);
+      bufCtx.fill();
+    }
+  }
+
+  function tick(now){
+    const dt = (now - lastT) / 1000;
+    lastT = now;
+
+    // pick a t for "wave phase". Loop mode = real elapsed time.
+    // Interactive mode = pulsePhase, which only advances while pressed and
+    // decays back when released.
+    let t;
+    if (mode === "loop"){
+      t = (now - startMs) / 1000;
+    } else {
+      if (isPressed){
+        pulsePhase += dt;
+      } else if (pulsePhase > 0){
+        // settle back toward 0 (silent state) with smooth decay
+        pulsePhase = Math.max(0, pulsePhase - dt * 0.8);
+      }
+      t = pulsePhase;
+    }
+
+    // Update the OLDEST buffer with the current dot positions, in its
+    // channel color. Buffers rotate; each gets refreshed once every 3 frames.
+    const bufI = frameIdx % 3;
+    drawDotsTo(bufCtxs[bufI], t, COLORS[bufI]);
+    frameIdx++;
+
+    // Composite — black bg + all 3 buffers in "lighter" mode
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    for (const b of buffers) ctx.drawImage(b, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>

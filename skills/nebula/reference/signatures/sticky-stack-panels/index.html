@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MekaVerse — clean-room replica</title>
+
+<style>
+  /* ─── Roobert + GT America Mono — fetched from themekaverse.com/fonts/ ─── */
+  @font-face{font-family:Roobert;font-style:normal;font-weight:300;src:url('./meka-fonts/Roobert-Medium.woff2') format('woff2')}
+  @font-face{font-family:Roobert;font-style:normal;font-weight:400;src:url('./meka-fonts/Roobert-SemiBold.woff2') format('woff2')}
+  @font-face{font-family:'GT America Mono Regular';font-style:normal;font-weight:400;src:url('./meka-fonts/GTAmericaMonoRegular.woff2') format('woff2')}
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  /* exact CSS vars from themekaverse.com :root */
+  :root{
+    --page-red:#bc1010;
+    --page-blue:#2e9ec3;
+    --page-blue-light:#20b0d7;
+    --page-blue-grey:#9faac0;
+    --page-pink:#d69dbb;
+    --page-grey:#b8bab9;
+    --red:#d4423b;
+    --green:#7dd796;
+    --dark:#151416;
+    --background:#fff;
+    --color:#000;
+  }
+
+  html,body{height:100%}
+  body{
+    font-family:'Roobert',-apple-system,system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.4;
+    color:var(--color);
+    background:var(--background);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+  /* ─── NAV ─── */
+  /* On page load the nav appears as a centered silver "loading bar" that
+     expands left-to-right; once expanded, the inner items stagger in;
+     finally the silver background fades out and the nav drops to its
+     transparent floating state. Driven by the .loaded class added by JS
+     on next frame after DOMContentLoaded. */
+  .nav{
+    position:fixed;top:1rem;left:1rem;right:1rem;z-index:100;
+    height:3.25rem;padding:0 1.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    color:#fff;border-radius:10px;
+    background:var(--page-grey);
+    transition:color .3s ease, background .8s ease .4s, top .8s ease, height .8s ease, border-radius .8s ease;
+    /* Left → right reveal via explicit polygon keyframes — animates the
+       two right-side polygon vertices from x=0 to x=100% over 1.2s. */
+    clip-path:polygon(0 0, 0 0, 0 100%, 0 100%);
+    animation:navFill 1.2s cubic-bezier(.7,0,.2,1) .1s forwards;
+    will-change:clip-path,background;
+  }
+  @keyframes navFill{
+    from{clip-path:polygon(0 0, 0 0, 0 100%, 0 100%);}
+    to  {clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+  }
+  /* Stage 1 marker — kept for the JS hooks below, no longer drives clip-path. */
+  .nav.loaded{}
+  /* Stage 2: silver bg fades to transparent, contents now floating */
+  .nav.settled{
+    background:transparent;
+    top:0;height:5rem;border-radius:0;
+    transition:color .3s ease, background .6s ease, top .6s ease .2s, height .6s ease .2s, border-radius .6s ease .2s;
+  }
+  /* nav inner content fade-in (staggered) */
+  .nav > *{
+    opacity:0;transform:translateY(-4px);
+    transition:opacity .45s ease, transform .45s ease;
+  }
+  .nav.loaded > *{opacity:1;transform:none}
+  .nav.loaded .nav__logo{transition-delay:.45s}
+  .nav.loaded .nav__links{transition-delay:.7s}
+  .nav.loaded .nav__right{transition-delay:.85s}
+
+  .nav.light{color:#fff}
+  .nav.dark{color:#000}
+  .nav__logo{
+    display:flex;align-items:center;gap:.6rem;
+    font-family:'Roobert',sans-serif;font-weight:400;font-size:1.0625rem;
+    letter-spacing:.005em;
+  }
+  .nav__logo .mark{
+    width:1.5rem;height:1.5rem;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .nav__logo .mark svg{width:100%;height:100%}
+  .nav__logo .reg{font-family:'GT America Mono Regular',monospace;font-size:.5rem;vertical-align:super;margin-left:1px;opacity:.85}
+  .nav__links{
+    position:absolute;left:50%;transform:translateX(-50%);
+    display:flex;gap:1.75rem;font-size:.9375rem;
+    align-items:center;
+  }
+  .nav__links a{
+    position:relative;padding:.25rem 0;
+    transition:opacity .2s ease;
+  }
+  .nav__links a:hover{opacity:.7}
+  .nav__links a sup{font-family:'GT America Mono Regular',monospace;font-size:.5rem;margin-left:.15rem;opacity:.85}
+  .nav__right{display:flex;gap:1rem;align-items:center;font-size:.9375rem}
+  .nav__right .currency{display:flex;align-items:center;gap:.35rem;cursor:pointer}
+  .nav__right .cart{display:flex;align-items:center;gap:.5rem;cursor:pointer}
+  .nav__right .cart::before{content:"";width:1rem;height:1rem;background:currentColor;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'><path d='M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z'/><line x1='3' y1='6' x2='21' y2='6'/><path d='M16 10a4 4 0 01-8 0'/></svg>") center/contain no-repeat;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'><path d='M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z'/><line x1='3' y1='6' x2='21' y2='6'/><path d='M16 10a4 4 0 01-8 0'/></svg>") center/contain no-repeat}
+  .nav__right .wallet{
+    padding:.7rem 1.25rem;
+    border:1px solid currentColor;border-radius:999px;
+    font-size:.875rem;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav__right .wallet:hover{background:currentColor;color:#000}
+  .nav.dark .nav__right .wallet:hover{color:#fff}
+  @media (max-width:980px){.nav__links{display:none}}
+
+  /* ─── PANELS ─── */
+  /* Sticky stack: each panel sticks to top:0 in body's normal flow.
+     Because siblings with sticky top:0 each stick for their own 100vh
+     range, the next panel rises FROM BELOW over the previous one as
+     the user scrolls — a hard horizontal edge revealing the new image
+     upward. This is the "vertical revelation" the source uses. */
+  .panels{position:relative;z-index:1}
+  .panel{
+    position:sticky;top:0;
+    width:100vw;height:100vh;min-height:600px;
+    overflow:hidden;
+    color:#fff;
+  }
+  /* The first panel also reveals from below ON PAGE LOAD via a clip-path
+     that starts at inset(100% 0 0 0) (fully clipped from top) and ends
+     at inset(0). JS adds .revealed once everything is loaded. */
+  .panel{
+    clip-path:inset(0 0 0 0);
+  }
+  .panel.intro{
+    clip-path:inset(100% 0 0 0);
+    transition:clip-path 1.1s cubic-bezier(.55,0,.2,1) .8s;
+  }
+  .panel.intro.revealed{
+    clip-path:inset(0 0 0 0);
+  }
+  .panel__bg{
+    position:absolute;inset:0;z-index:0;
+    transform:scale(1.05);
+  }
+  .panel__bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.18) 100%);
+    pointer-events:none;
+  }
+  .panel__content{
+    position:absolute;inset:0;z-index:2;
+    padding:7.5rem 4rem 4rem;
+    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  }
+  .panel__kicker{
+    font-family:'GT America Mono Regular',monospace;
+    font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;
+    margin-bottom:1rem;opacity:.85;
+  }
+  .panel__title{
+    font-family:'Roobert',sans-serif;font-weight:400;
+    font-size:5rem;line-height:1;text-transform:uppercase;
+    letter-spacing:-.005em;
+    color:#fff;margin-bottom:2rem;
+  }
+  .panel__title em{font-style:normal}
+  .panel__sub{
+    font-family:'Roobert',sans-serif;font-weight:300;
+    font-size:1rem;line-height:1.5;
+    max-width:36ch;margin-bottom:2rem;opacity:.9;
+  }
+  .panel__btn{
+    display:inline-flex;align-items:center;gap:.75rem;
+    padding:.85rem 1.5rem;
+    border:1px solid #fff;border-radius:999px;
+    font-size:.9375rem;color:#fff;
+    transition:background .25s ease, color .25s ease;
+    cursor:pointer;
+  }
+  .panel__btn:hover{background:#fff;color:#000}
+  .panel__btn::after{
+    content:"";width:.875rem;height:.875rem;
+    background:currentColor;
+    mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'><line x1='5' y1='12' x2='19' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>") center/contain no-repeat;
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'><line x1='5' y1='12' x2='19' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>") center/contain no-repeat;
+  }
+
+  /* dark panel variant — for the orb */
+  .panel--dark{background:#000;color:#fff}
+
+  /* ─── footer ─── */
+  .footer{
+    background:#000;color:#fff;
+    padding:7rem 4rem 2.5rem;
+    position:relative;
+  }
+  .footer__grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:5rem;
+    max-width:1320px;margin:0 auto 6rem;
+  }
+  .footer__cta h2{
+    font-family:'Roobert',sans-serif;font-weight:400;
+    font-size:3rem;line-height:1.1;color:#fff;
+    max-width:14ch;margin-bottom:2rem;
+  }
+  .footer__cta .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:#fff;color:#000;
+    padding:.85rem 1.5rem;border-radius:999px;
+    font-size:.9375rem;font-weight:400;
+  }
+  .footer__bots{
+    width:280px;height:280px;
+    align-self:center;justify-self:end;grid-column:3;grid-row:1;
+    position:relative;
+  }
+  .footer__bots img{position:absolute;width:100%;height:100%;object-fit:contain}
+  .footer__bots .b2{transform:translate(40%, 25%) rotate(-15deg);width:65%;height:65%;opacity:.85}
+
+  .footer__cols{
+    display:contents;
+  }
+  .footer__col{font-family:'Roobert',sans-serif}
+  .footer__col h4{
+    font-family:'GT America Mono Regular',monospace;
+    font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(255,255,255,.5);margin-bottom:1rem;font-weight:400;
+  }
+  .footer__col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;font-size:.9375rem}
+  .footer__col a{transition:color .15s ease}
+  .footer__col a:hover{color:#fff}
+  .footer__bottom{
+    max-width:1320px;margin:0 auto;
+    border-top:1px solid rgba(255,255,255,.12);padding-top:2rem;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font-size:.75rem;color:rgba(255,255,255,.55);
+    font-family:'GT America Mono Regular',monospace;letter-spacing:.04em;
+  }
+  .footer__bottom .markFooter{
+    width:3.5rem;height:3.5rem;display:inline-block;
+  }
+  .footer__bottom .markFooter svg{width:100%;height:100%}
+  .footer__bottom a{text-decoration:underline}
+
+  /* the brand mark — geometric "/V" wedge logo */
+
+  /* credit */
+  .credit{
+    position:fixed;bottom:.5rem;right:.5rem;z-index:200;
+    font-size:.625rem;color:rgba(255,255,255,.45);pointer-events:none;
+    font-family:'GT America Mono Regular',monospace;
+    mix-blend-mode:difference;
+  }
+  .credit a{color:inherit;text-decoration:underline;pointer-events:auto}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<header class="nav" id="nav">
+  <a href="#" class="nav__logo">
+    <span class="mark">
+      <svg viewBox="0 0 36 36" fill="none">
+        <path d="M6 8 L18 28 L30 8 L24 8 L18 18 L12 8 Z" fill="currentColor"/>
+      </svg>
+    </span>
+    <span>MekaVerse<span class="reg">®</span></span>
+  </a>
+  <nav class="nav__links">
+    <a href="#">Home<sup>1</sup></a>
+    <a href="#">Gallery<sup>2</sup></a>
+    <a href="#">Shop<sup>3</sup></a>
+  </nav>
+  <div class="nav__right">
+    <div class="currency">($)&nbsp;⌄</div>
+    <div class="cart">(0)</div>
+    <a href="#" class="wallet">Connect Wallet</a>
+  </div>
+</header>
+
+<!-- ─── PANELS (sticky stack so each new image reveals from below) ─── -->
+<main class="panels">
+<!-- ─── PANEL 1: WORLD MAP / SEASON 2 ─── -->
+<section class="panel intro" data-nav="light">
+  <div class="panel__bg">
+    <img src="https://themekaverse.com/_nuxt/image/8affe8.webp"
+         onerror="this.src='https://picsum.photos/seed/meka-worldmap/1800/1200'"
+         alt="World Map">
+  </div>
+  <div class="panel__content">
+    <p class="panel__kicker">01 / Meka World</p>
+    <h2 class="panel__title">World Map<br>Season&nbsp;2</h2>
+    <button class="panel__btn">Explore</button>
+  </div>
+</section>
+
+<!-- ─── PANEL 2: MEKAVERSE / CITADEL ─── -->
+<section class="panel" data-nav="light">
+  <div class="panel__bg">
+    <img src="https://themekaverse.com/_nuxt/image/944163.webp"
+         onerror="this.src='https://picsum.photos/seed/meka-citadel/1800/1200'"
+         alt="Citadel">
+  </div>
+  <div class="panel__content">
+    <p class="panel__kicker">02 / Architecture</p>
+    <h2 class="panel__title">MekaVerse<br>Citadel</h2>
+    <button class="panel__btn">View in 3D</button>
+  </div>
+</section>
+
+<!-- ─── PANEL 3: THE MEKAVERSE / COLLECTION ─── -->
+<section class="panel" data-nav="light">
+  <div class="panel__bg">
+    <img src="https://themekaverse.com/_nuxt/image/afdb47.webp"
+         onerror="this.src='https://picsum.photos/seed/meka-collection/1800/1200'"
+         alt="The Mekaverse Collection">
+  </div>
+  <div class="panel__content">
+    <p class="panel__kicker">03 / Characters</p>
+    <h2 class="panel__title">The Mekaverse<br>Collection</h2>
+    <button class="panel__btn">View on OpenSea</button>
+  </div>
+</section>
+
+<!-- ─── PANEL 4: MEKABOTS / COLLECTION ─── -->
+<section class="panel panel--dark" data-nav="light">
+  <div class="panel__bg">
+    <img src="https://themekaverse.com/_nuxt/image/b5839f.webp"
+         onerror="this.src='https://picsum.photos/seed/meka-bots/1800/1200'"
+         alt="MekaBots">
+  </div>
+  <div class="panel__content">
+    <p class="panel__kicker">04 / Companions</p>
+    <h2 class="panel__title">MekaBots<br>Collection</h2>
+    <button class="panel__btn">View on OpenSea</button>
+  </div>
+</section>
+
+<!-- ─── PANEL 5: CHANGE YOUR MEKA / BACKGROUND ─── -->
+<section class="panel" data-nav="dark">
+  <div class="panel__bg">
+    <img src="https://themekaverse.com/_nuxt/image/55b59a.webp"
+         onerror="this.src='https://picsum.photos/seed/meka-background/1800/1200'"
+         alt="Change your background">
+  </div>
+  <div class="panel__content" style="align-items:flex-end;text-align:right;color:#000">
+    <p class="panel__kicker" style="opacity:.7">05 / Customise</p>
+    <h2 class="panel__title" style="color:#000">Change your Meka<br>Background</h2>
+    <button class="panel__btn" style="border-color:#000;color:#000">Try it now</button>
+  </div>
+</section>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__cta">
+      <h2>Join our Discord to get the news as soon as possible</h2>
+      <a href="#" class="btn">Join our Discord</a>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Join MekaVerse</h4>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Meka-Worldmap</a></li>
+          <li><a href="#">Meka-Citadel</a></li>
+          <li><a href="#">Meka-Lore</a></li>
+          <li><a href="#">Customize Background</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>OpenSea</h4>
+        <ul>
+          <li><a href="#">MekaVerse</a></li>
+          <li><a href="#">MekaFactory</a></li>
+          <li><a href="#">MekaBots</a></li>
+          <li><a href="#">MekaDrivers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bots">
+      <img src="https://themekaverse.com/images/temp/FooterBots1.png"
+           onerror="this.src='https://picsum.photos/seed/meka-bot-1/400/400'" alt="Bot 1">
+      <img class="b2" src="https://themekaverse.com/images/temp/FooterBots2.png"
+           onerror="this.style.display='none'" alt="Bot 2">
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span class="markFooter">
+      <svg viewBox="0 0 36 36" fill="none">
+        <path d="M6 8 L18 28 L30 8 L24 8 L18 18 L12 8 Z" fill="currentColor"/>
+      </svg>
+    </span>
+    <span>MekaVerse is a registered trademark of MekaLabs.<br>Website by <a href="#">Antinomy Labs</a></span>
+  </div>
+</footer>
+
+<p class="credit">Clean-room replica of <a href="https://themekaverse.com/?ref=godly" target="_blank" rel="noopener">themekaverse.com</a> · exact colors, fonts (Roobert + GT America Mono from source), and CDN images</p>
+
+<script>
+(function(){
+  "use strict";
+
+  // ─── intro sequence ───
+  // Stage A (0ms):    .nav has class neither — narrow silver pill, contents invisible.
+  // Stage B (~50ms):  .loaded → pill clip-path expands to full width, contents stagger in.
+  // Stage C (~1300ms): first panel's .intro.revealed → image curtain-reveals up from below.
+  // Stage D (~2400ms): .nav.settled → silver background fades to transparent.
+  const nav = document.getElementById("nav");
+  const firstPanel = document.querySelector(".panel.intro");
+  requestAnimationFrame(() => {
+    nav.classList.add("loaded");
+    setTimeout(() => { if (firstPanel) firstPanel.classList.add("revealed"); }, 1300);
+    setTimeout(() => { nav.classList.add("settled"); }, 2400);
+  });
+
+  // ─── nav color shifts based on which panel is currently filling viewport ───
+  const panels = document.querySelectorAll("[data-nav]");
+  function updateNav(){
+    let bestMode = "light";
+    let bestDist = Infinity;
+    panels.forEach(p => {
+      const r = p.getBoundingClientRect();
+      const center = r.top + r.height / 2;
+      const dist = Math.abs(center - window.innerHeight / 2);
+      if (dist < bestDist){
+        bestDist = dist;
+        bestMode = p.dataset.nav;
+      }
+    });
+    nav.classList.toggle("light", bestMode === "light");
+    nav.classList.toggle("dark", bestMode === "dark");
+  }
+  let raf = null;
+  function onScroll(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => { updateNav(); raf = null; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  updateNav();
+})();
+</script>
+
+</body>
+</html>

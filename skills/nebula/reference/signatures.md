@@ -1,6 +1,6 @@
 # Signatures library
 
-> **Status: rounds 1–2 authored (17 signatures — 12 with specimens, 5 external-only). Round 1 2026-05-14; round 2 2026-05-15.**
+> **Status: rounds 1–3 authored (20 signatures — 15 with specimens, 5 external-only). Round 1 2026-05-14; rounds 2–3 2026-05-15.**
 >
 > This file catalogs named *set-piece effects* — discrete dramatic
 > moments that occupy a specific section role. Signatures are distinct
@@ -327,7 +327,7 @@ in load-bearing-details above.
 
 ## S10 — Clipped-section reveal
 
-**Source / inspiration.** Codrops-adjacent scroll pattern — pinned sections with `clip-path` scrubbed by scroll progress, plus a center photo crossfade and a 3D perspective gallery as the concluding band.
+**Source / inspiration.** [onscroll-clipped-sections.vercel.app](https://onscroll-clipped-sections.vercel.app/) — stacked sections with vertical `clip-path` reveal driven by scroll progress; each new full-bleed section unmasks over the previous. The vendored specimen also concludes with a center photo crossfade + 3D perspective gallery band.
 
 **Section role.** Full-page scroll narrative; vertical hero-to-band-to-gallery transition mechanism. Sits as the *spine* of a long-form page rather than a single section.
 
@@ -576,4 +576,134 @@ The picker UI in the source HTML lets a designer test all 7; in production, `dir
   reimpl: clean-room (Canvas 2D particle system; no Three.js)
   author: Paolo
 -->
+
+---
+
+## S18 — Sticky-stack panel narrative
+
+**Source / inspiration.** [themekaverse.com](https://themekaverse.com) replica — left-to-right loading-bar header reveal, then 5 sticky-stack panels (World Map / Citadel / Mekaverse Collection / MekaBots / Change Background) where each new image rises from below as the previous panel pins; concludes with a black Discord-CTA footer.
+
+**Section role.** Page-spine narrative. Multiple sticky panels stack vertically, each rising into view as the user scrolls; the page tells its story in pinned beats rather than continuous scrolling.
+
+**Tech stack.** Vanilla JS + CSS. `position: sticky` panels in a tall outer (5 × 100vh = 500vh) with scroll-progress-driven entry animations on each panel's image and copy.
+
+**Anchor families that earn it.** Indie game / playful tech (NFT / digital collectibles), music label (album-launch microsite), festival / promo, vibrant consumer / playful (campaign launch), cinema / film (release page), luxury fashion (drop page).
+
+**Recipe outline.** A `.outer` container at `height: 500vh` (one viewport per stacked panel) wraps five `.panel` elements with `position: sticky; top: 0; height: 100vh; overflow: hidden`. The first paint shows the loading-bar header — a `0 → 100%` width animation across the top — then each panel's image rises from below (`translateY(60%) → 0`) keyed to scroll progress through its slot in the outer. The footer is a black `100vh` band with a single primary CTA (Discord, Buy, Reserve, etc.).
+
+**Anti-pairs.** V6 type-set-on-scroll (both consume scroll dwell), V11 crosshatching reveal (both want scroll-into-view as the major event), V4 iris transition (scroll-pin vs iris-cut conflicts), S10 / S14 (other page-spine signatures — can't co-exist with this one on the same page).
+
+**Load-bearing details.**
+
+- **Outer height matches panel count.** `5 × 100vh` for five panels; reduce or grow with panel count. If the outer height doesn't match, panels either un-pin early (too short) or extend dead scroll below the last panel (too long).
+- **Pitfall B compliance.** Every panel is `position: sticky`. Body must not be the sticky containing block — no `body { overflow-x: hidden | clip }` combined with `body { height: 100% }`. Scope horizontal-overflow to a `.page-wrap` around the sections.
+- **Loading-bar fires once.** The header reveal animation runs on first paint only; subsequent navigation back to the page does not re-fire it.
+- **Image rise direction is consistent.** Every panel image rises *from below*; mixing directions (some rise, some fade, some slide horizontally) collapses the rhythm. The stacking metaphor depends on visual consistency.
+
+**Specimen.** `signatures/sticky-stack-panels/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (vanilla JS + CSS sticky; no GSAP, no library)
+  author: Paolo
+-->
+
+---
+
+## S19 — Hex-grid breathing dots
+
+**Source / inspiration.** Dave Whyte (BeesAndBombs) hex-grid breathing pattern — Canvas 2D ambient field where dots ripple outward via a rounded-square wave with octagonal phase modulation. Three RGB-channel buffers composited together produce the trailing chromatic-aberration aesthetic. Specimen includes a "Spirit of Rhythm" overlay + Infinite Loop / Press & Hold mode toggle.
+
+**Section role.** Hero / above-the-fold ambient. A bold continuous Canvas 2D surface that announces the brand as digitally-native without needing WebGL.
+
+**Tech stack.** Canvas 2D + vanilla JS. Three independent canvases (one per RGB channel) drawn each frame; phase offset between the three creates chromatic-aberration trailing.
+
+**Anchor families that earn it.** Indie game / playful tech, music label (festival / launch tier), generative-art / studio portfolios, festival / promo, cinema (poster microsite), vibrant consumer (campaign tier).
+
+**Recipe outline.** A grid of 80 × 80 dots laid out on a hex lattice. Each frame, every dot's amplitude is computed as a rounded-square wave radiating from the grid center, with phase modulated by an octagonal-rotational function (this is the rounded-square's distinctive *almost-octagonal* outward step instead of a perfect circle). Three canvases run the same algorithm at three slightly different time offsets — drawn in red, green, blue with `globalCompositeOperation: 'screen'` — producing the trailing chromatic aberration. The control overlay supports two modes: **Infinite Loop** (the wave keeps going) and **Press & Hold** (the wave only ripples while pointer is held).
+
+**Anti-pairs.** V9 drift compositions (territorial — both background ambient), V5 heat trace (cursor wake compounds), V7 chromatic separation (already chromatic), S13 cylinder grid (both WebGL/Canvas hero fields).
+
+**Load-bearing details.**
+
+- **Three-channel RGB compositing is the chromatic aberration.** Render must preserve the three separate canvases drawn with `globalCompositeOperation: 'screen'`. A simplified single-canvas implementation loses the trailing chromatic shift that gives the effect its character.
+- **Rounded-square wave with octagonal phase, not circular.** The wave function uses an octagonal-rotational phase modulation; simplifying to a true circular wave (the obvious "ripple from center" implementation) collapses the distinctive *almost-octagonal* step pattern that reads as Dave-Whyte rather than generic.
+- **Mode toggle (Infinite Loop / Press & Hold) is part of the brand voice.** The user choice between continuous ambient and on-demand ripple is load-bearing for the "Spirit of Rhythm" overlay — it asks the visitor to participate. Render may swap the overlay copy, but the two modes themselves are part of the signature.
+
+**Specimen.** `signatures/breathing-dots/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (Canvas 2D; three-buffer RGB compositing; no Three.js)
+  author: Paolo
+-->
+
+---
+
+## S20 — Rainbow H1 hover
+
+**Source / inspiration.** [coolors.co](https://coolors.co)'s H1 effect — every character of the heading is wrapped in a span with a position-derived rainbow `--c` hue; on hover, each span gets a random small CCW rotation + small leftward shift (both re-rolled per hover) with a 0.3s `cubic-bezier(0.6, 0.4, 0, 1)` transition.
+
+**Section role.** Hero H1 atom — a per-character treatment of a single heading. Atypical for a signature (not a section, not page-wide chrome) but registered here as a *named hero atom* because it carries page identity disproportionately.
+
+**Tech stack.** Vanilla CSS + minimal JS. JS wraps each character in a `<span>` at render time and sets `--c` per character based on index (1/N of the rainbow). On hover, JS re-rolls `--rot` and `--dx` custom properties per span (CCW rotation in `-8deg..0`, leftward shift in `-4px..0`). CSS handles the transition.
+
+**Anchor families that earn it.** Vibrant consumer / playful, indie game / playful tech, music label (festival tier), festival / promo, design-tools / generative-art portfolios (coolors-adjacent), cinema (poster microsite).
+
+**Recipe outline.**
+
+```html
+<h1 class="rainbow-h1">Build with color.</h1>
+```
+
+```css
+.rainbow-h1 { font-size: clamp(3rem, 8vw, 7rem); line-height: 0.95; }
+.rainbow-h1 span {
+  display: inline-block;
+  color: hsl(var(--c, 0), 80%, 55%);
+  transform: rotate(var(--rot, 0deg)) translateX(var(--dx, 0px));
+  transition: transform 0.3s cubic-bezier(0.6, 0.4, 0, 1);
+  will-change: transform;
+}
+.rainbow-h1 span[data-space]:empty::before { content: "\\00a0"; }
+```
+
+```javascript
+const h1 = document.querySelector('.rainbow-h1');
+const text = h1.textContent;
+h1.textContent = '';
+const chars = [...text];
+chars.forEach((ch, i) => {
+  const s = document.createElement('span');
+  s.textContent = ch;
+  s.style.setProperty('--c', Math.round((i / chars.length) * 360));
+  if (ch === ' ') s.dataset.space = '1';
+  h1.appendChild(s);
+});
+h1.addEventListener('mouseover', (e) => {
+  if (e.target.tagName !== 'SPAN') return;
+  e.target.style.setProperty('--rot', `${-Math.random() * 8}deg`);  // CCW only
+  e.target.style.setProperty('--dx', `${-Math.random() * 4}px`);   // leftward only
+});
+h1.addEventListener('mouseout', (e) => {
+  if (e.target.tagName !== 'SPAN') return;
+  e.target.style.removeProperty('--rot');
+  e.target.style.removeProperty('--dx');
+});
+```
+
+**Anti-pairs.** V6 type-set-on-scroll (both touch heading type; visual conflict), V11 crosshatching reveal (both want hero attention), V7 chromatic separation (the heading is already chromatic per-character).
+
+**Load-bearing details.**
+
+- **Per-character spans wrapped at render time** — the brief's hero text is wrapped after content authoring, not by hand in the HTML. Render must run the wrapping script after the page's text is set, but before first paint to avoid a flash of un-spanned text.
+- **`--c` is position-derived, not random.** Each character's hue is `(i / N) × 360` where i is the index and N is total character count — so the rainbow flows left-to-right consistently. Randomizing the hue collapses the rainbow into noise.
+- **Rotation is CCW-only; shift is leftward-only.** Both random ranges are bounded to negative values (rotation `-8deg..0`, shift `-4px..0`). Symmetric ranges produce a jittery feel; the asymmetric bias is the gesture.
+- **Re-roll on each hover.** Every `mouseover` re-rolls `--rot` and `--dx` — the page feels alive because the same character does something slightly different each time. Caching the values per character collapses the effect to "everything moved once and stopped."
+
+**Specimen.** `signatures/h1-rainbow-hover/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (vanilla CSS + minimal JS; per-character spans)
+  author: Paolo
+-->
+
 
