@@ -29,22 +29,29 @@ none  →  briefed  →  directed  →  rendered
     "nebulaVersion": "0.1.0"
   },
   "stage": "none | briefed | directed | rendered",
+  "mode": "interactive | auto",
   "brief": {
     "resolvedAt": "<iso-timestamp>",
     "phrase": "<user's verbatim opening phrase>",
-    "briefFile": "nebula/brief.md"
+    "briefFile": "nebula/brief.md",
+    "mode": "interactive | auto"
   },
   "direction": {
     "resolvedAt": "<iso-timestamp>",
     "anchor": "<chosen anchor name>",
-    "directionFile": "nebula/direction.md"
+    "directionFile": "nebula/direction.md",
+    "mode": "interactive | auto",
+    "autoSubstitutions": <count or null>
   },
   "render": {
     "resolvedAt": "<iso-timestamp>",
     "indexFile": "nebula/index.html",
     "shapeFile": "nebula/shape.md",
     "stale": false,
-    "staleReason": null
+    "staleReason": null,
+    "mode": "interactive | auto",
+    "autoFallbacks": <count or null>,
+    "autoUnresolved": <count or null>
   }
 }
 ```

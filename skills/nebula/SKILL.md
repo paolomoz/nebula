@@ -38,10 +38,75 @@ Once setup is done, route on the user's input:
 - **No argument.** Render the **state report** described in
   `reference/state-machine.md`: which stage we're at, what was last written,
   recommended next command. Do not write anything.
+- **`--auto` (or `-y`) flag present anywhere in the input.** Enter
+  **end-to-end mode** — see § End-to-end (auto) mode below. Runs
+  `brief` → `direct` → `render` in sequence with no gates, no
+  clarifying questions, no review pauses. Every inferred /
+  substituted decision is marked in the artifacts for after-the-fact
+  audit.
 - **First word is `brief`, `direct`, or `render`.** Delegate to the matching
-  sub-command (`nebula:<name>` skill). Pass remaining args through.
+  sub-command (`nebula:<name>` skill). Pass remaining args through
+  (`--auto` propagates to the sub-skill).
 - **First word is anything else (a freeform phrase).** Treat it as the
   opening of a brief. Route to `nebula:brief` with the phrase as input.
+
+## End-to-end (auto) mode
+
+`--auto` is for **first-pass / fast-draft** scenarios — get something
+on the screen quickly to iterate on. Not for production renders that
+need to be defended. Invoking it means: *"ship what the agent picks;
+I'll review the artifacts after, not before."*
+
+Invocation forms:
+
+- `/nebula --auto "<brief phrase>"` — orchestrator runs the full chain.
+- `/nebula:brief --auto "<phrase>"` — auto-mode brief only.
+- `/nebula:direct --auto` — auto-mode direct only (against existing brief).
+- `/nebula:render --auto` — auto-mode render only (against existing spec).
+
+**What `--auto` suppresses** (the gates each sub-skill normally honors):
+
+| Phase | Normal behavior | Auto-mode behavior |
+|---|---|---|
+| brief Phase 3 (2–3 clarifying questions) | Asks the user | **Suppressed** — every gap is inferred from the seed phrase and marked `<!-- inferred (auto-mode) -->` |
+| direct Phase 6 (`"go"` gate) | Waits for confirmation | **Suppressed** — direction is written immediately; gate report is logged but doesn't block |
+| direct failure modes (tension undeclarable, distinctiveness collapse, pool gap) | Stops; asks | **Forces best-available pick**: re-rolls the most divergent axis, picks nearest-fit from the pool with `<!-- best-available -->`, never halts |
+| direct external-only specimen needs opt-in | Asks the user | **Substitutes** the next-best local specimen from the pool and records the substitution in `direction.md` |
+| render Phase 5 (review / refine pause) | Surfaces report, waits | **Suppressed** — report is printed and render exits; no `--refine` pause |
+| render external-only specimen with no local fallback | Asks the user | **Falls back to a local-specimen signature** (typically the closest sibling) with the substitution recorded |
+
+**What auto-mode never compromises** (these still hold):
+
+- Anti-pattern rules (no kraft paper / Edison bulbs / "passion" / etc.)
+- Pitfall A (scrim under filtered photo) and Pitfall B (sticky containing-block)
+- Impeccable craft validation (the final pass still runs; failures are fixed,
+  not bypassed)
+- Render validations (accent territory, signature integrity, hover coverage,
+  load-bearing details, sticky integrity)
+
+**Audit trail.** Every inferred / substituted / re-rolled decision lands in
+the artifacts:
+
+- `brief.md` carries `<!-- inferred (auto-mode) -->` markers on every section
+  not lifted from the seed phrase.
+- `direction.md` carries a `## Auto-mode substitutions` block listing every
+  pool gap, distinctiveness re-roll, external-only fallback, and
+  tension re-derivation.
+- `state.json` records `mode: "auto"` on the run.
+- The final render report ends with:
+  ```
+  Auto-mode summary
+  =================
+  Inferred brief sections: <list>
+  Substitutions in direct: <count>
+  Render fallbacks: <count>
+  Review the artifacts above to refine; re-run any phase manually to override.
+  ```
+
+**Loop end-of-life.** Auto-mode runs the whole chain once and exits.
+There is no auto-iterate (`--auto --refine` is not a thing). To
+refine, the user reads the artifacts, picks a phase to re-run
+manually (without `--auto`), and re-enters the normal gated flow.
 
 ## The "open and reasoned" principle
 

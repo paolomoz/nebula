@@ -21,6 +21,10 @@ HTML — that is `nebula:render`.
   Triggers stale-flagging on the rendered page (if any). Default behaviour
   without the flag is additive: if a direction already exists, the agent
   asks before replacing.
+- `--auto` (or `-y`) — **end-to-end mode**. Suppresses the Phase 6
+  `"go"` gate; forces best-available picks on failure modes (tension
+  undeclarable, distinctiveness collapse, pool gap, external-only
+  specimen requiring opt-in). See § Auto-mode behavior below.
 
 ## Setup
 
@@ -487,6 +491,52 @@ Next: $nebula render
 | `DESIGN.json`         | Sidecar with extensions and full direction audit trail. |
 | `nebula/direction.md` | Resolved direction + full reasoning trace.             |
 | `nebula/state.json`   | Updated with `direction.*` fields and `stage: directed`. |
+
+## Auto-mode behavior (`--auto`)
+
+When `--auto` is set:
+
+1. **Phase 6 `"go"` gate is suppressed.** Direction is written
+   immediately after Phase 5's distinctiveness check passes. The gate
+   report is printed to logs but does NOT block — Phase 7 (write
+   target spec) runs right after Phase 6's report emits.
+2. **Failure modes do not stop the flow.** Each one substitutes a
+   best-available pick and records the substitution:
+   - **Tension undeclarable** — re-pick the most divergent axis (the
+     one whose pool entry was farthest from the LLM-default for the
+     anchor), then re-attempt tension naming. If still undeclarable
+     after one re-pick, declare a synthetic tension on the lowest-
+     fit axis pair and mark `<!-- best-available -->`.
+   - **Distinctiveness collapse (≥ 3 axes match LLM-default)** —
+     re-roll the palette and typography picks first (the two most
+     identity-carrying axes), then re-run the check. If still
+     collapsed, accept the result and mark
+     `<!-- distinctiveness-floor: <count>/5 -->`.
+   - **Pool gap** (no entry fits the brief's anchor) — pick the
+     nearest-fit entry by `fits[]` overlap, mark
+     `<!-- best-available; pool gap surfaced for future authoring -->`.
+   - **External-only specimen needed for a hero signature** —
+     substitute the next-best **local-specimen** hero-eligible
+     signature (currently S1 / S2 / S10 / S12 / S14 / S15 / S17),
+     record the substitution in `direction.md`.
+   - **No re-direct confirmation** — `--auto --re-direct` overwrites
+     the prior direction without asking (the stale-flagging on
+     existing renders still applies).
+3. **`direction.md` carries an `## Auto-mode substitutions` block**
+   listing every substitution / re-roll / fallback with reasoning.
+4. **`state.json` records `mode: "auto"` on the direction stage.**
+5. **The gate report is still printed** — to the conversation log,
+   for after-the-fact audit. The user can read it, then decide
+   whether to manually re-run any phase to override.
+
+What auto-mode never compromises:
+
+- The five-axis pool sampling discipline (no inventing fonts /
+  palettes / moves / signatures).
+- The 5/5 distinctiveness target on Phase 5 (auto-mode tries twice
+  before accepting a sub-5 result; it never bypasses the check).
+- Anti-pattern guardrails on moves (M1 stays photographic-led;
+  M6b stays type-led; etc.).
 
 ## Failure modes
 

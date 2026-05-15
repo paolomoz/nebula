@@ -110,6 +110,48 @@ Expect these to need tuning after observing one or two real runs:
 - **Anchor selection.** Do the silent-picked anchors feel defensible?
   Should the runner-ups be visible earlier?
 
+## End-to-end (auto) mode
+
+For a fast-draft pass — *"ship what the agent picks; I'll review the
+artifacts after, not before"* — invoke with `--auto`:
+
+```
+/nebula --auto "a portfolio for a Berlin-based ceramicist"
+```
+
+This runs `brief` → `direct` → `render` in one pass with **no gates,
+no clarifying questions, no review pauses**. Every inferred decision
+lands in the artifacts with `<!-- inferred (auto-mode) -->`,
+`<!-- best-available -->`, or `<!-- distinctiveness-floor -->`
+markers. The final render report carries an Auto-mode summary
+listing what was inferred / substituted / left unresolved.
+
+Auto-mode is also available per-skill:
+
+```
+/nebula:brief --auto "<phrase>"     # auto-mode brief only
+/nebula:direct --auto               # auto-mode direct against existing brief
+/nebula:render --auto               # auto-mode render against existing spec
+```
+
+What auto-mode never compromises:
+- Anti-pattern guardrails (no kraft paper / Edison bulbs / "passion" / etc.)
+- Pitfall A (scrim under filtered photo) and Pitfall B (sticky containing-block)
+- Impeccable craft validations and nebula's render-time checks
+- Pool sampling discipline (no inventing fonts / palettes / moves)
+
+What it does compromise (by design):
+- Phase 3 clarifying questions in brief
+- Phase 6 `"go"` gate in direct
+- Phase 5 review / refine pause in render
+- External-only specimen opt-ins (substituted to local-specimen siblings)
+- Tension undeclarable / distinctiveness collapse stops (re-rolled instead)
+
+Use auto-mode for: first-pass drafts, sanity checks against a brief
+shape, exploring different anchors quickly, fast iteration cycles.
+Don't use it for: production renders, anything that has to be defended,
+runs where you want to control every axis pick.
+
 ## Iteration loop after the first render
 
 - **Composition-level fix** (e.g., *"the hero needs a quote"*) →

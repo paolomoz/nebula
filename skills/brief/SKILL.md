@@ -19,6 +19,10 @@ palette. Those happen in `direct`. The brief captures intent only.
 - `<phrase>` — optional positional. The user's opening words ("a portfolio
   for a Berlin-based ceramicist", "landing page for a B2B fintech that
   serves accountants"). If omitted, ask the user for one.
+- `--auto` (or `-y`) — **end-to-end mode**. Suppresses Phase 3
+  clarifying questions; infers every missing section from the seed
+  phrase and marks `<!-- inferred (auto-mode) -->`. See § Auto-mode
+  behavior below.
 
 ## Setup
 
@@ -112,6 +116,38 @@ Next: $nebula direct
 |---------------------|--------------------------------------------------|
 | `nebula/brief.md`   | Captured brief, structured.                      |
 | `nebula/state.json` | Updated with brief.* fields and `stage: briefed`. |
+
+## Auto-mode behavior (`--auto`)
+
+When `--auto` is set:
+
+1. **Phase 3 clarifying questions are suppressed entirely.** No
+   questions are asked, regardless of how sparse the seed phrase is.
+2. **Every missing section is inferred** from the seed phrase using
+   LLM reasoning. Each inferred section is marked
+   `<!-- inferred (auto-mode) -->` so the user can grep for them
+   later. Examples of inference:
+   - **Name** — extracted from the phrase if a proper noun is present;
+     otherwise generated as a category descriptor ("the page",
+     "the product").
+   - **Purpose** — derived from verbs and intent words in the phrase.
+   - **Audience** — inferred from anchor signals (the kind of brand
+     described); marked `<!-- inferred -->`.
+   - **Vibe** — derived directly from adjectives in the phrase; if
+     no adjectives, default to a register-appropriate phrase pulled
+     from the anchor family.
+   - **Inspiration** — empty list unless the phrase volunteered a
+     reference.
+   - **Constraints** — empty list unless the phrase named one.
+3. **The brief is written immediately** with all inferences in place.
+4. **Phase 5 surfaces but does not recommend `$nebula direct`** — the
+   orchestrator continues to direct automatically.
+5. **`state.json` carries `mode: "auto"` on the brief stage.**
+
+The "phrase too sparse to anchor 3 questions" failure mode does not
+apply in auto-mode — the brief is always written, even from a
+one-line seed. The user accepts that the inferred brief may not
+match their intent; they review the artifact after the fact.
 
 ## Failure modes
 

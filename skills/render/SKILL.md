@@ -22,6 +22,11 @@ do not improvise.
 - `--refine` — optional. Iterate on an existing render against user
   feedback. Default behaviour: if `nebula/index.html` exists and is not
   stale, ask whether to refine or replace.
+- `--auto` (or `-y`) — **end-to-end mode**. Suppresses the Phase 5
+  review pause; produces the render and exits. External-only
+  specimen needs and overwrite confirmations are resolved by
+  substitution rather than by asking. See § Auto-mode behavior
+  below.
 
 ## Setup
 
@@ -442,6 +447,57 @@ Update `nebula/state.json`:
 | `nebula/index.html`   | The rendered single-page design (self-contained).      |
 | `nebula/shape.md`     | The page-shape brief render wrote the HTML against.    |
 | `nebula/state.json`   | Updated with `render.*` fields and `stage: rendered`.  |
+
+## Auto-mode behavior (`--auto`)
+
+When `--auto` is set:
+
+1. **Phase 5's review / refine pause is suppressed.** Render produces
+   `nebula/index.html`, runs all Phase 4 validations, prints the
+   completion report, and exits. No `--refine` invitation, no "wait
+   for feedback" pause.
+2. **Confirmation prompts are resolved by substitution:**
+   - **Stale render exists** — overwrite without asking. The
+     `state.json.render.stale` flag is consumed and cleared by the
+     re-render.
+   - **External-only specimen with no local fallback** (typically
+     S3 / S5 / S7 / B9 / B10 / B11 / B12) — substitute the closest
+     **local-specimen** sibling and record the substitution. For
+     example, B9 particle-burst → fall back to B8 Material ripple
+     for the same intent (click-acknowledge); S3 / S5 / S7 →
+     S2 Canvas Grid Mouse or S12 Four-layer parallax depending on
+     the hero role.
+3. **Validation failures are repaired, not surfaced.** Auto-mode runs
+   impeccable's craft loop and the nebula Phase 4 checks. When a hard-
+   rule violation surfaces (pitfall hit, contrast failure, accent
+   territory miss, hover coverage gap, sticky integrity break,
+   load-bearing detail missing), the agent **repairs in place** and
+   re-runs the check. Auto-mode escalates to a stop only if a
+   violation can't be repaired within 3 attempts; in that case the
+   page is still shipped, with the unresolved violation listed in
+   the render report under `## Unresolved (auto-mode)`.
+4. **The render report ends with an auto-mode summary** that the
+   orchestrator concatenates with the brief and direct summaries:
+   ```
+   Auto-mode summary
+   =================
+   Inferred brief sections: <list>           # from brief --auto
+   Substitutions in direct: <count>          # from direct --auto
+   Render fallbacks: <count>                 # from render --auto
+   Unresolved validations: <count or "none">
+   Review the artifacts above to refine; re-run any phase
+   manually to override.
+   ```
+5. **`state.json.render.mode = "auto"`** is recorded.
+
+What auto-mode never compromises:
+
+- The substrate / accent territory rules (every section consumes the
+  correct `--acc-*` var).
+- The signature-on-hero rule (one always present, even if substituted).
+- The hover-coverage default-on rule.
+- The image-discipline budget (still ≤ 8 photos per page).
+- Pitfall A and Pitfall B (still validated).
 
 ## Failure modes
 
