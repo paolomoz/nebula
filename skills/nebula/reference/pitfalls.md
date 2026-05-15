@@ -1,6 +1,6 @@
 # Pitfalls
 
-> **Status: round 1 authored 2026-05-14 (Pitfall A — referenced by M1, M3, M5).**
+> **Status: rounds 1–2 authored (Pitfall A round 1; Pitfall B round 2 — 2026-05-15).**
 >
 > This file lists named rules render must respect. Each pitfall has an ID,
 > a description of the failure mode, and a check the agent can run on the
@@ -60,3 +60,63 @@ The parent's `::after` is outside the filter chain, so the scrim
 renders at its declared opacity.
 
 Worked example shown in `moves-library.md` § M1 Recipe (CSS block).
+
+## Pitfall B — Sticky containing-block trap
+
+**Failure mode.** A site needs `position: sticky` on a nav, a logo, a
+sidebar, or any persistent chrome element. The author also wants
+horizontal-overflow protection — so they set
+`body { overflow-x: hidden; }` (or `overflow-x: clip`). Often
+combined with `body { height: 100%; }` from a CSS reset.
+
+The combination makes **`body` itself the sticky containing block**
+for any sticky descendant. Since `body` is now capped at one viewport
+tall, the sticky element **un-sticks after viewport 1** — even though
+`position: sticky` is correctly declared and worked when the page was
+shorter than the viewport.
+
+The regression is **silent on visual inspection** if the reviewer only
+looks at the hero / first fold — sticky elements appear to work
+fine. The break is past the first scroll, when the sticky logo
+suddenly disappears or stops following.
+
+This is the most common reason a nebula render's S11 *Context-aware
+logo* or a persistent masthead breaks past the hero — verified in
+a real test run.
+
+**Check.**
+1. Scan the rendered CSS for `body { ... overflow-x: hidden | clip }`
+   and for any rule that gives `body` a clipped overflow or a finite
+   height (`height: 100%`, `height: 100vh`, etc.).
+2. For every element rendered with `position: sticky`, verify its
+   containing block is **not** `body`. The containing block is the
+   nearest scrollport ancestor that is *not* clipped on the relevant
+   axis.
+3. **Open the rendered page past the first viewport** (programmatic
+   check: scroll to `document.documentElement.scrollHeight / 2`,
+   sample the sticky element's `getBoundingClientRect()` — `top`
+   should still be ≤ the declared sticky offset, not below it). A
+   Playwright sanity check that scrolls to multiple positions and
+   asserts sticky-element top stays bounded catches this in seconds.
+
+**Remedy.** Scope horizontal-overflow protection to a **wrapper
+around the sections**, not `body`:
+
+```css
+/* Bad — traps any sticky descendant */
+body { overflow-x: hidden; height: 100%; }
+
+/* Good — wrapper protects scroll without trapping stickies */
+body { /* no overflow rule; no height: 100% */ }
+.page-wrap { overflow-x: clip; }   /* clip, not hidden, so sticky
+                                       still establishes containing
+                                       block via the document root */
+```
+
+Stickies declared *outside* `.page-wrap` (or via portals) escape the
+wrapper's clipping entirely. If a sticky must live inside the wrapper,
+remove `body { height: 100% }` and verify the wrapper has no other
+overflow or transform that creates a containing block.
+
+The render contract names this check as **Sticky element integrity**
+in `render/SKILL.md` Phase 4.

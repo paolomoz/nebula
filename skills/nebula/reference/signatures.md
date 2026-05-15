@@ -64,6 +64,13 @@ alternative from the catalog.
 **Anchor families that earn it.** Which nebula intents make this defensible.
 **Recipe outline.** High-level structural notes — what to build, what to avoid.
 **Anti-pairs.** Motion vocabularies (V<n>) this signature conflicts with.
+**Load-bearing details.** (optional) Parts of the specimen that render
+must preserve verbatim, not simplify during the adapt-to-brand pass.
+Things that, when simplified, collapse the effect — z-orders relative
+to scrims, sampling sources for lens / chromatic effects, parametric
+clamps that keep scroll-driven motion within section bounds,
+containing-block hygiene for sticky descendants. Render's Phase 4
+re-checks every listed item before finalizing the section.
 **Specimen.** Local runnable HTML, or `specimen-status: external-only — see source`.
 ```
 
@@ -219,6 +226,27 @@ alternative from the catalog.
 
 **Anti-pairs.** V6 type-set-on-scroll (both consume scroll dwell), V11 crosshatching reveal (both want scroll-into-view as the major event), V1 magnetic chain (territory clash on input).
 
+**Load-bearing details.**
+
+- **Host-class-aware tuning.** The specimen's canonical defaults
+  (`BASE_LAG ≈ 0.5`, `LAG_SCALE ≈ 0.1`, no offset clamp) are tuned
+  for a *full-page gallery* host (7 columns × 9 rows, 63 items
+  spanning the page). When the host is a **single-section product
+  grid** (e.g., a 3-column × 3-row card row inside a larger page),
+  these defaults drift columns far out of the section on fast
+  scrolls. **Render must reduce** the defaults for non-gallery
+  hosts: `BASE_LAG ≈ 0.2`, `LAG_SCALE ≈ 0.05`.
+- **MAX_OFFSET clamp.** Add `transform: translateY(clamp(-Y, var(--col-offset, 0px), Y))`
+  where `Y` is bounded by the host section's `clientHeight` minus a
+  safe inset (≈ 80px). Without the clamp, even tuned defaults can
+  overshoot on inertial / wheel-spin scroll. Surface the clamp in
+  the generated CSS so a designer can re-tune visually.
+- **Section overflow.** The host section must declare
+  `overflow: hidden` (or `overflow: clip`) on its block axis so
+  drifted columns don't visually bleed into adjacent bands — but
+  this overflow rule must be scoped to the host, not `body` (see
+  Pitfall B).
+
 **Specimen.** `signatures/elastic-grid-scroll/index.html`
 
 <!-- _provenance:
@@ -296,6 +324,29 @@ alternative from the catalog.
 IntersectionObserver per section adds the corresponding class. Default state (no class) restores neutral.
 
 **Anti-pairs.** None significant — the logo is persistent chrome, not section-bound. Mildly conflicts with V11 crosshatching (cleared section transitions disrupt the smooth observer continuity).
+
+**Load-bearing details.**
+
+- **Containing-block hygiene (Pitfall B).** The logo declares
+  `position: fixed` in the specimen, which is robust against the
+  sticky containing-block trap. **But render commonly substitutes
+  `position: sticky`** when adapting to a brand that wants the logo
+  to *enter* alongside the masthead and *escape* into the body
+  scroll — and `position: sticky` IS vulnerable to Pitfall B.
+  Verify that `body` carries **no** `overflow-x: hidden | clip` and
+  **no** `height: 100%` rules. Scope horizontal-overflow protection
+  to a `.page-wrap` (or similar) *around* the sections. Without
+  this, the logo un-sticks past viewport 1 and the regression is
+  silent on hero-only visual inspection.
+- **Observer per section.** The IntersectionObserver fires per
+  `data-section` element. Render must ensure every section that the
+  logo should respond to carries `data-section`, and that the
+  observer's `rootMargin` is set to fire at the *section* boundary
+  rather than the viewport (otherwise the fx-class lag is visible).
+- **Default state preserved.** When no section is active (between
+  scroll positions, or above the first section), the logo returns
+  to neutral. Render must keep the default-state CSS (no fx-class)
+  intact even when only one or two effects are picked.
 
 **Specimen.** `signatures/context-logo/index.html`
 
@@ -445,6 +496,33 @@ The picker UI in the source HTML lets a designer test all 7; in production, `dir
 **Recipe outline.** A fixed `<canvas>` covers the viewport. A particle system spawns droplets at the top with random horizontal offsets. Each frame: update positions (gravity), draw the background image, then per droplet draw a clipped lens-distorted sample of the image at the droplet's location. A weather widget overlay (`.widget` with `.widget__temp` huge, `.widget__forecast` small) sits centered as the page's content.
 
 **Anti-pairs.** V9 drift compositions (territorial — both continuous ambient), V5 heat trace (cursor wake compounds with droplet motion), V11 crosshatching reveal (clashing motion vocabularies).
+
+**Load-bearing details.**
+
+- **Canvas above scrim.** The rain canvas MUST sit *above* the
+  hero photo's scrim layer in z-order. The specimen uses
+  `z-index: 40` on the widget overlay and `z-index: 0` on the
+  canvas itself, but in practice render must ensure the canvas
+  layer is *between* the photo (z: -2) and the hero content
+  (z: ≥ 1) — never *below* the M1 scrim (which would dim the
+  drops to invisibility). If the canvas is placed below the scrim,
+  drops collapse to faint specks on dark substrate; the effect
+  ships as load-bearing-decorative-only and the user sees nothing.
+- **Lens sampling from the actual hero photograph.** The
+  per-droplet lens distortion samples *the rendered background
+  image* — not a synthesized gradient or solid color. When render
+  substitutes a CSS gradient for the photographic background (a
+  common simplification when adapting M1 to a brief without
+  photography), the lens has nothing to sample and degrades to
+  rim-only dots. Either keep the photographic background OR drop
+  S17 from the pick — never ship a rain canvas without a real
+  background to refract.
+- **Drop density tuned to substrate.** On dark substrate (the
+  `--bg = #0F1216` default), drop highlight color must lift toward
+  paper white (≈ 90% L) for the drops to read. On light substrate,
+  drop highlights tint toward ink. The specimen ships with
+  dark-substrate tuning; render adapts the highlight color per the
+  page's picked substrate.
 
 **Specimen.** `signatures/rain-lenses/index.html`
 

@@ -237,7 +237,16 @@ declared host:
 
 For each picked signature, **adapt the specimen — never inline it
 verbatim**. The specimen demonstrates the technique; render adapts it
-to the brand:
+to the brand. **But preserve every "Load-bearing details" item
+declared in the signature's catalog entry** — those are the parts of
+the specimen that, if simplified, collapse the effect. Examples:
+canvas z-order relative to the hero scrim (S17), sampling-source for
+lens / chromatic effects (S15, S17), specific parametric clamps that
+keep scroll-driven motion within section bounds (S8), containing-block
+hygiene for sticky descendants (S11). When a signature entry lists
+load-bearing details, render the adaptation in two passes — first
+adapt content/tokens, then *re-check every load-bearing detail still
+holds* before finalizing the section.
 
 - Replace specimen placeholder copy (titles, captions, item labels)
   with content sourced from the brief or the page-shape brief.
@@ -292,6 +301,28 @@ Also run nebula-specific checks:
   in the rendered HTML, scoped to a `data-hover="<H-id>"` wrapper.
   Every card within the host grid receives the same hover — no
   intra-grid mixing.
+- **Sticky element integrity (Pitfall B).** Scan the rendered CSS for
+  rules that turn `body` into a sticky containing block:
+  `body { overflow-x: hidden | clip }` *combined with*
+  `body { height: 100% | 100vh }`, or any other rule that gives `body`
+  a finite height. If any element on the page declares
+  `position: sticky`, neither rule may apply to `body` — scope
+  horizontal-overflow protection to a `.page-wrap` (or similar)
+  *around* the sections, and never give `body` a finite height.
+  Programmatic check: for every sticky element, after scrolling the
+  page to `scrollHeight / 2`, the element's `getBoundingClientRect()`
+  `top` must remain ≤ its declared sticky offset (i.e., still
+  pinned). Visual inspection of only the hero viewport hides this
+  regression — the check must scroll past viewport 1. See
+  `pitfalls.md` § Pitfall B for the remedy.
+- **Signature load-bearing details (per-entry).** For every picked
+  signature whose catalog entry declares a "Load-bearing details"
+  list, render verifies each listed property is present in the
+  rendered HTML/CSS as authored (not simplified away during the
+  specimen-adapt pass). Missing load-bearing details collapse the
+  effect — e.g., S17 Rain lenses without canvas-above-scrim z-order
+  ships as nearly invisible specks; S11 Context-aware logo without
+  Pitfall B compliance un-sticks past viewport 1.
 - **Hover coverage (default-on).** For every section in the rendered
   HTML whose `data-move` belongs to the card-family
   (`M2`, `M8`, `S9`, or any other card-grid-bearing move/signature
