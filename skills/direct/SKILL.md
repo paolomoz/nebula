@@ -252,9 +252,11 @@ anchor disallows it.
 
 **Budget check**:
 
-Total slot count must be ≤ 4 photos per page (the Catalog anchor with
-an M2 card grid is the exception: card slots may exceed 4 *only* if no
-other photo slot is present). Surface if the budget is breached.
+Total slot count must be ≤ 8 photos per page (raised from ≤ 4 in
+round 2; the prior cap broke signature picks like S1 Horizontal
+Parallax Gallery, which needs ≥ 5 cards to read as a marquee). The
+Catalog anchor's M2 card grid can occupy most of the budget without
+needing to displace an M1 hero. Surface if the budget is breached.
 
 Record all slots and the policy in `DESIGN.json.extensions.imageSlots[]`
 and `DESIGN.json.extensions.imagePolicy`.

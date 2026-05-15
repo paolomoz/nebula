@@ -167,9 +167,13 @@ single-photo exception. M1, M2, M3, M5 stay forbidden.
 
 To avoid the "every nebula page looks stock-flavored" failure mode:
 
-- **Max 4 photos per page** across all slots. A six-card M2 grid is OK
-  *only* if it's the only photo set on the page; otherwise cap card
-  count at 3 to stay under the budget.
+- **Max 8 photos per page** across all slots. The budget was 4 in
+  round 1; raised to 8 in round 2 (2026-05-15) after a real test
+  showed the cap was actively breaking signature picks — S1
+  Horizontal Parallax Gallery needs ≥ 5 cards to read as a marquee
+  rather than a carousel, and the 4-photo cap left only 3 M2 cards
+  with an M1 hero present. 8 gives signatures + moves room to
+  compose without forcing carousel-shaped degradations.
 - **Mix subject and texture.** Not all 4 photos should be of human
   subjects; at least one should be atmospheric / environmental
   (M3 territory).

@@ -24,7 +24,8 @@ const POOLS = [
   { name: 'motion',    file: 'skills/direct/reference/curated-pools/motion.md',     idPattern: /^## (V\d+)\s+—\s+(.+)$/m, extras: 'motion'     },
   { name: 'edges',     file: 'skills/direct/reference/curated-pools/edges.md',      idPattern: /^## (E\d+)\s+—\s+(.+)$/m, extras: 'edges'      },
   // Recipe libraries (consumed by direct's Phase 4 / 4b / 4d / 4e)
-  { name: 'moves',      file: 'skills/nebula/reference/moves-library.md', idPattern: /^## (M\d+)\s+—\s+(.+)$/m, extras: 'moves'      },
+  // Moves use letter-suffixed IDs (M6a / M6b) for sibling variants of the same move family.
+  { name: 'moves',      file: 'skills/nebula/reference/moves-library.md', idPattern: /^## (M\d+[a-z]?)\s+—\s+(.+)$/m, extras: 'moves'      },
   { name: 'signatures', file: 'skills/nebula/reference/signatures.md',    idPattern: /^## (S\d+)\s+—\s+(.+)$/m, extras: 'signatures' },
   { name: 'hovers',     file: 'skills/nebula/reference/hovers.md',        idPattern: /^## (H\d+)\s+—\s+(.+)$/m, extras: 'hovers'     },
   { name: 'buttons',    file: 'skills/nebula/reference/buttons.md',       idPattern: /^## (B\d+)\s+—\s+(.+)$/m, extras: 'buttons'    },

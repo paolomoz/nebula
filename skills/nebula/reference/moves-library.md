@@ -114,9 +114,27 @@ treatment. Pairs with a closing band (M5) to bookend the page.
 **Pitfalls.** `Pitfall A` (scrim under filtered photo — parent's
 `::after`, not the photo's).
 
-**Pairs with.** **M5** (cinematic closer) to bookend the page with the
-same source photograph at different intensities. **M3** for a quiet
-atmospheric band in the middle of a long-form page.
+**Anchor-aware overlay rule (Bass / Penguin / poster anchors).** When
+the brief's anchor is a **graphic-motif-led type anchor** — Saul
+Bass title sequences, Penguin Clothbound covers, A.G. Fronzoni
+editorial, mid-century poster work, hand-set print specimens — the
+designer's instinct is to add a static cut-paper graphic overlay on
+top of M1's photographic hero (the shapes that "say Bass" even when
+the photo's subject is something else). **Render must not ship
+static cut-paper shapes on an M1 hero — they read as "overlay
+someone forgot to remove" and cover the photo subject wherever
+placed.** Instead, when the brief combines M1 + a graphic-motif
+anchor, **default the overlays to V9-style drift** — two independent
+ease loops, 20–30s periods each, drifting the cut-paper shapes
+through the hero substrate at sub-pixel-per-frame velocities. The
+shapes read as ambient brand-vocabulary, not as obstruction. Honor
+`prefers-reduced-motion: reduce` by reverting to the static
+fallback (placed at less-obstructive positions — typically corners,
+not over the subject).
+
+**Pairs with.** **M5** (cinematic closer) to bookend the page with
+the same source photograph at different intensities. **M3** for a
+quiet atmospheric band in the middle of a long-form page.
 
 ---
 
@@ -400,25 +418,99 @@ Three moves for briefs where the typography *is* the design: Penguin
 Classics Clothbound, Saul Bass title sequences, A.G. Fronzoni editorial,
 hand-set specimen pages, manifesto / declaration pages.
 
-## M6 — Oversized display + corner marginalia
+## M6a — Prose quote
 
-**Use when.** A hero or chapter-opener where the display type is the
-whole composition — Penguin Clothbound covers, manifesto pages, type-
-specimen folios, book-cover-style heros. The anchor is type-led
-(Penguin / Bass / Fronzoni / hand-set print) and the brief earns
-theatrical type scale.
+**Use when.** Editorial pull-quotes, prose-length quotations from
+interviews / essays / op-eds, manifestos that run longer than a
+single phrase. The display type is large but **not** theatrical —
+the quote needs to be *read* in one pass, not just *seen*. Round 2
+split this off from the original M6 after prose-length quotes set at
+14vw were scrolling-within-section and reading fragmented.
 
 **Recipe.**
 
-- The display element fills most of the viewport, anchored to a grid
-  position (commonly bottom-left, top-center, or dead-center) — the
-  composition of the type *as object* is the point.
+- Display at ≈4vw (much smaller than M6b's 14vw) — large enough to
+  feel set, small enough to scan a full sentence at a glance.
+- **No `min-height` on the section** — let the quote's natural prose
+  length determine the section height. Eliminates scroll-within-
+  section.
+- Simple top-label + bottom-attribution marginalia — *not* corner
+  marginalia (corners are M6b's territory).
+- Flat substrate (paper / single-color); no photographic underlay.
+- Italic display is the default voice; consider non-italic when the
+  display family already carries character (Fraunces, Recoleta).
+
+```css
+.prose-quote {
+  position: relative;
+  padding: var(--space-3xl) var(--space-xl);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.prose-quote__label {
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-accent-divider);
+  margin-bottom: var(--space-lg);
+}
+.prose-quote__display {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  max-width: 38ch;
+  margin: 0;
+  font-style: italic;
+}
+.prose-quote__attribution {
+  margin-top: var(--space-xl);
+  font-size: 0.95rem;
+  color: var(--color-mute);
+}
+```
+
+**Pitfalls.** Reaching for M6b's `clamp(5rem, 14vw, 11rem)` +
+`min-height: 88vh` here. Prose-length quotes set at 14vw scroll
+within the section and read fragmented — the move collapses. If the
+display text exceeds 12 words, the brief is asking for M6a, not M6b.
+
+**Pairs with.** **M7** drop-cap chapter opener for the prose that
+follows. **M6b** for short-phrase declarations elsewhere on the page
+(hero is M6b; pull-quote is M6a).
+
+---
+
+## M6b — Manifesto display + corner marginalia
+
+**Use when.** A hero or chapter-opener where the display type is the
+whole composition — Penguin Clothbound covers, manifesto pages,
+type-specimen folios, book-cover-style heros. The anchor is type-led
+(Penguin / Bass / Fronzoni / hand-set print) and the brief earns
+theatrical type scale. Display text is a **single short phrase or
+word** (≤ 12 words) — for prose-length quotes, use M6a.
+
+**Recipe.**
+
+- Display fills most of the viewport, anchored to a grid position
+  (bottom-left, top-center, or dead-center) — the composition of the
+  type *as object* is the point.
 - Tiny corner marginalia (mono or small label-typography) in the
-  opposite corners — page numbers, edition marks, dates, classification
-  labels. These read as book-page marginalia, not as UI chrome.
-- No photography, no second display element. The hairline rule
-  framing the section's edges is optional but reinforces the "book
-  page" register.
+  opposite corners — page numbers, edition marks, dates,
+  classification labels. These read as book-page marginalia, not as
+  UI chrome.
+- **Auto-promote rule.** Corner marginalia at 0.68rem reads as
+  fragmented if it carries more than ~10 words per slot. When *any
+  single marginalia slot's text exceeds 10 words* OR *total marginalia
+  text across all four slots exceeds 30 words*, render auto-promotes
+  the layout from corner-marginalia to a **side-card layout** — the
+  marginalia moves from a corner to a flanking column (typically a
+  16ch column to one side of the display), at 0.85rem with body
+  line-height for actual reading. The display element stays at its
+  M6b scale; only the marginalia placement and size change.
+- No photography, no second display element. Hairline rule frame at
+  the section's edges optional but reinforces the "book page"
+  register.
 
 ```css
 .type-hero {
@@ -426,16 +518,13 @@ theatrical type scale.
   min-height: 88vh;
   padding: var(--space-3xl) var(--space-xl);
   display: grid;
-  /* anchor variations: align-items / justify-items shift the type-as-object */
   align-items: end;
   justify-items: start;
   background: var(--color-paper);
-  color: var(--color-olive-ink);
-  /* optional: 1px inset hairline frame */
+  color: var(--color-ink);
   outline: 1px solid var(--color-rule);
   outline-offset: calc(-1 * var(--space-md));
 }
-
 .type-hero__display {
   font-family: var(--font-display);
   font-size: clamp(5rem, 14vw, 11rem);
@@ -445,6 +534,7 @@ theatrical type scale.
   margin: 0;
 }
 
+/* Corner-marginalia variant (default — marginalia text ≤ 10 words per slot) */
 .type-hero__marginalia {
   position: absolute;
   font-family: var(--font-body);
@@ -452,24 +542,38 @@ theatrical type scale.
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-bottle-green);
+  color: var(--color-accent-divider);
 }
 .type-hero__marginalia--tl { top: var(--space-xl); left: var(--space-xl); }
 .type-hero__marginalia--tr { top: var(--space-xl); right: var(--space-xl); }
 .type-hero__marginalia--bl { bottom: var(--space-xl); left: var(--space-xl); }
 .type-hero__marginalia--br { bottom: var(--space-xl); right: var(--space-xl); }
+
+/* Side-card variant — applied when auto-promote triggers */
+.type-hero[data-marginalia-mode="side-card"] {
+  grid-template-columns: 1fr 16ch;
+  column-gap: var(--space-xl);
+}
+.type-hero[data-marginalia-mode="side-card"] .type-hero__marginalia--side {
+  position: static;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.5;
+  align-self: end;
+  max-width: 16ch;
+}
 ```
 
 **Pitfalls.** None type-specific. The cliché trap is using the
 display type with a subtle scrim or photographic underlay — that
-turns the move into M1 with bigger type. M6 demands the substrate be
-flat (paper or single-color); the typography carries the entire
+turns the move into M1 with bigger type. M6b demands the substrate
+be flat (paper or single-color); the typography carries the entire
 section alone.
 
 **Pairs with.** **M7** drop-cap chapter opener for the body section
-that follows M6 — the oversized display sets the chapter title; the
-drop-cap opens the prose. **M8** type-as-pattern band as a mid-page
-texture rhythm break.
+that follows M6b. **M8** type-as-pattern band as a mid-page texture
+rhythm break. **M6a** for prose-length quotes elsewhere on the page.
 
 ---
 
@@ -533,7 +637,7 @@ multi-column layout (it breaks). Render checks:
 - The lead paragraph must run at least 5 lines at the prose-max width.
 - The containing element must not use CSS columns.
 
-**Pairs with.** **M6** for the chapter title that introduces the
+**Pairs with.** **M6b** for the chapter title that introduces the
 prose. **M3** atmospheric band as the transition into the next
 chapter — the prose ends, the texture band begins.
 
@@ -628,7 +732,7 @@ under 18s reads as scrolling text). Render checks:
   viewport. Must be ≥ 4 to read as pattern.
 - If marquee variant: animation duration ≥ 20s.
 
-**Pairs with.** **M6** as a hero ↔ band ↔ chapter rhythm — type-as-
+**Pairs with.** **M6b** as a hero ↔ band ↔ chapter rhythm — type-as-
 object opens; type-as-pattern interrupts; type-as-paragraph (body)
 continues. **M7** drop-cap chapter opener as the prose that follows
 the pattern band.

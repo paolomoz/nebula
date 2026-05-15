@@ -293,9 +293,9 @@ Also run nebula-specific checks:
   `DESIGN.json.extensions.imageSlots[]` resolved to a rendered image
   (or a labeled placeholder). Every rendered photo carries
   `data-img-source` + `data-img-slot-id` + a non-empty `alt`. Total
-  photo count is within the image-discipline budget (≤ 4 photos
-  unless the anchor is Catalog with an M2 card grid as the only photo
-  set).
+  photo count is within the image-discipline budget (≤ 8 photos —
+  raised from 4 in round 2 after S1 Horizontal Parallax Gallery
+  picks were degrading to 3-card carousels under the prior cap).
 - **Hover integrity.** Every hover in
   `DESIGN.json.extensions.hovers[]` is applied to its declared host
   in the rendered HTML, scoped to a `data-hover="<H-id>"` wrapper.
@@ -397,6 +397,27 @@ Validations:
 Next: review the page (the URL also accepts ?palette=<id> to preview
 the two alternates), then either approve or describe what to refine.
 ```
+
+**When `imagePolicy` resolved to `picsum`, append a one-line hint to
+the render report (single line, immediately after the Validations
+block):**
+
+```
+Image upgrade: this page renders with picsum.photos placeholders.
+  A real photograph or a generated hero (e.g. Gemini 3 Pro Image,
+  Midjourney, Imagen 3) will lift the result substantially for
+  cinematic / music-label / festival / luxury / hospitality anchors.
+  Future: `node scripts/gen-hero.mjs --slot=hero` (helper not yet
+  implemented; track at TODO/issue).
+```
+
+Picsum is the right default — deterministic by seed, free, no API
+key — but for any anchor where mood-photography is load-bearing
+(music label, cinema, festival, luxury fashion, hospitality,
+boutique hotel, wine / spirits), the hint flags that the page is
+shipping at *placeholder* quality and an upgrade is one image away.
+Do **not** show the hint when the slot was user-supplied; the
+upgrade has already happened.
 
 Iteration happens in conversation: the user describes feedback, render
 re-runs with `--refine`. **Default: keep direction.** Only invoke

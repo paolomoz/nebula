@@ -90,7 +90,53 @@ re-checks every listed item before finalizing the section.
 
 **Anti-pairs.** V1 magnetic chain (competing cursor-driven motion), V6 type-set-on-scroll (both compete for scroll dwell), V11 crosshatching reveal (both want scroll-into-view as a major event).
 
+**Load-bearing details.**
+
+- **Card count ≥ 5.** S1 reads as a marquee at 5+ cards; at 3 it
+  reads as a carousel. The raised image budget (≤ 8 photos per page,
+  round 2) is what unblocks the marquee count. If only 3–4 cards
+  are available, pick a different signature (S8 Elastic Grid Scroll
+  or S10 Clipped-section reveal both work at lower card counts).
+- **Embed mode — sticky-pin inline variant required for
+  multi-section pages.** The canonical specimen
+  (`signatures/horizontal-parallax-gallery/index.html`) is authored
+  as a **standalone full-page demo** with `body { overflow: hidden }`
+  and wheel-jacking. Embedding it verbatim in a multi-section page
+  breaks the surrounding scroll. For multi-section hosts (every
+  real nebula render), render must adapt to the **sticky-pin
+  pattern**: a tall outer container (≈ 200vh) holds a sticky inner
+  (`position: sticky; top: 0; height: 100vh; overflow: hidden`) whose
+  `translateX` is scrubbed by scroll progress through the outer:
+  ```css
+  .s1-outer { height: 200vh; position: relative; }
+  .s1-inner { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .s1-track { display: flex; height: 100%;
+              transform: translateX(calc(var(--s1-progress, 0) * -50%)); }
+  ```
+  ```javascript
+  // scroll progress through .s1-outer drives --s1-progress on the inner
+  const outer = document.querySelector('.s1-outer');
+  const inner = outer.querySelector('.s1-inner');
+  window.addEventListener('scroll', () => {
+    const r = outer.getBoundingClientRect();
+    const total = r.height - window.innerHeight;
+    const p = Math.max(0, Math.min(1, -r.top / total));
+    inner.style.setProperty('--s1-progress', p.toFixed(4));
+  });
+  ```
+  This pattern releases the user's scroll naturally — no wheel-
+  jacking, no body lock. A separate
+  `signatures/horizontal-parallax-gallery/inline.html` specimen
+  documenting the sticky-pin variant is **pending** authorship; for
+  now the recipe above is the contract.
+- **No `body { overflow: hidden }` in embed mode.** Pitfall B
+  applies — keep horizontal-overflow protection scoped to the
+  `.s1-inner` element.
+
 **Specimen.** `signatures/horizontal-parallax-gallery/index.html`
+(standalone full-page demo). `signatures/horizontal-parallax-gallery/inline.html`
+(sticky-pin multi-section variant) — **pending** authorship; recipe
+in load-bearing-details above.
 
 <!-- _provenance:
   reimpl: clean-room (DOM-only port; no WebGL)

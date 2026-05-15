@@ -2,9 +2,9 @@
   "_meta": {
     "pool": "moves",
     "schemaVersion": 1,
-    "builtAt": "2026-05-15T10:09:37.893Z",
+    "builtAt": "2026-05-15T10:49:25.988Z",
     "sourceFile": "skills/nebula/reference/moves-library.md",
-    "count": 8
+    "count": 9
   },
   "entries": [
     {
@@ -101,16 +101,30 @@
       ]
     },
     {
-      "id": "M6",
-      "name": "Oversized display + corner marginalia",
-      "anchor": "m6-oversized-display-corner-marginalia",
+      "id": "M6a",
+      "name": "Prose quote",
+      "anchor": "m6a-prose-quote",
+      "filePath": "skills/nebula/reference/moves-library.md",
+      "fits": [],
+      "avoid": [],
+      "useWhen": [
+        "editorial"
+      ],
+      "pairsWith": [
+        "M7"
+      ],
+      "pitfalls": []
+    },
+    {
+      "id": "M6b",
+      "name": "Manifesto display + corner marginalia",
+      "anchor": "m6b-manifesto-display-corner-marginalia",
       "filePath": "skills/nebula/reference/moves-library.md",
       "fits": [],
       "avoid": [],
       "useWhen": [],
       "pairsWith": [
         "M7",
-        "M6",
         "M8"
       ],
       "pitfalls": []
@@ -127,7 +141,6 @@
         "quiet-craft"
       ],
       "pairsWith": [
-        "M6",
         "M3"
       ],
       "pitfalls": []
@@ -143,7 +156,6 @@
         "sustainable-eco"
       ],
       "pairsWith": [
-        "M6",
         "M7"
       ],
       "pitfalls": []
