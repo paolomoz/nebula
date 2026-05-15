@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parallax image layers — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#0a0a0a;color:#fff;
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+
+  .parallax{position:relative}
+
+  /* ─── header: holds the 4 parallax layers ─── */
+  .parallax__header{
+    position:relative;z-index:2;
+    width:100%;height:100vh;
+    overflow:hidden;
+    display:flex;justify-content:center;align-items:center;
+  }
+  .parallax__layers{
+    position:relative;
+    width:100%;height:100%;
+    display:flex;justify-content:center;align-items:center;
+  }
+  .parallax__layer-img{
+    position:absolute;
+    width:80%;max-width:1200px;
+    height:auto;
+    object-fit:contain;
+    will-change:transform;
+  }
+  /* Layer Y starts at 0 (natural). JS sets --y on each layer based on
+     scroll progress through the .parallax__header trigger section.
+     yPercent values match the source: 70/55/40/10 from back to front. */
+  .parallax__layers > *{
+    transform:translate3d(0, calc(var(--y, 0) * 1%), 0);
+  }
+
+  .parallax__layer-title{
+    position:relative;z-index:3;
+    text-align:center;
+  }
+  .parallax__title{
+    font-weight:900;
+    font-size:clamp(80px, 16vw, 240px);
+    line-height:.85;letter-spacing:-0.03em;
+    color:#fff;
+    text-shadow:0 4px 32px rgba(0,0,0,.55);
+    margin:0;
+  }
+
+  /* black overflow bar — masks the bottom edge of the layered images
+     when they animate, so they appear to "rise out of" the section seam */
+  .parallax__black-line-overflow{
+    position:absolute;left:0;right:0;bottom:-1px;height:1px;
+    background:#000;z-index:5;
+  }
+
+  /* gradient fade at the bottom of the hero — softens the cut to next section */
+  .parallax__fade{
+    position:absolute;left:0;right:0;bottom:0;height:25%;
+    z-index:4;pointer-events:none;
+    background:linear-gradient(to top,
+      rgba(0,0,0,1) 0%, rgba(0,0,0,0.74) 19%, rgba(0,0,0,0.54) 34%,
+      rgba(0,0,0,0.38) 47%, rgba(0,0,0,0.28) 56.5%, rgba(0,0,0,0.19) 65%,
+      rgba(0,0,0,0.13) 73%, rgba(0,0,0,0.075) 80%, rgba(0,0,0,0.042) 86%,
+      rgba(0,0,0,0.021) 91%, rgba(0,0,0,0.008) 95%, transparent 100%);
+  }
+
+  /* ─── content section below ─── */
+  .parallax__content{
+    position:relative;z-index:1;
+    background:#0a0a0a;
+    min-height:100vh;
+    padding:6rem 2rem;
+    display:flex;justify-content:center;align-items:center;
+  }
+  .osmo-icon-svg{
+    width:8rem;color:#fff;
+  }
+
+  .credits{
+    position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:30;
+    font-size:11px;color:rgba(255,255,255,.6);
+    pointer-events:none;mix-blend-mode:difference;
+  }
+  .credits a{color:rgba(255,255,255,.85);pointer-events:auto;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="parallax">
+  <section class="parallax__header">
+    <div class="parallax__layers" id="layers">
+      <!-- 4 layers, back → front. CSS `transform: translate3d(0, var(--y)%, 0)`
+           is updated per-frame by JS scroll handler. -->
+      <img class="parallax__layer-img" data-parallax-layer="1" loading="eager"
+           src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp"
+           alt="">
+      <img class="parallax__layer-img" data-parallax-layer="2" loading="eager"
+           src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp"
+           alt="">
+      <div class="parallax__layer-title" data-parallax-layer="3">
+        <h2 class="parallax__title">Parallax</h2>
+      </div>
+      <img class="parallax__layer-img" data-parallax-layer="4" loading="eager"
+           src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp"
+           alt="">
+    </div>
+    <div class="parallax__black-line-overflow"></div>
+    <div class="parallax__fade"></div>
+  </section>
+
+  <section class="parallax__content">
+    <svg class="osmo-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+      <path fill="currentColor" d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"/>
+    </svg>
+  </section>
+</div>
+
+<p class="credits">Clean-room replica of <a href="https://codepen.io/osmosupply/full/NWQevrB" target="_blank" rel="noopener">osmosupply · NWQevrB</a> · pure JS scroll handler, no GSAP/Lenis</p>
+
+<script>
+(function(){
+  "use strict";
+
+  // Same yPercent values as the source: layer 1 (back) moves down 70% during
+  // scroll trigger; layer 4 (front) moves only 10%. Smaller % = element
+  // scrolls away faster relative to viewport = feels closer to camera.
+  const LAYERS = [
+    { sel: '[data-parallax-layer="1"]', amt: 70 },
+    { sel: '[data-parallax-layer="2"]', amt: 55 },
+    { sel: '[data-parallax-layer="3"]', amt: 40 },
+    { sel: '[data-parallax-layer="4"]', amt: 10 },
+  ];
+  const trigger = document.querySelector(".parallax__header");
+  const layers = LAYERS.map(l => ({
+    el: document.querySelector(l.sel),
+    amt: l.amt
+  }));
+
+  function update(){
+    const rect = trigger.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // progress goes 0 when trigger top is at viewport top,
+    // 1 when trigger top has scrolled fully out of view (matches ScrollTrigger
+    // "start: 0% 0%, end: 100% 0%" — the trigger element's top is the gauge).
+    const total = rect.height;
+    const traversed = -rect.top;
+    const p = Math.max(0, Math.min(1, traversed / total));
+
+    for (const { el, amt } of layers){
+      if (el) el.style.setProperty("--y", (p * amt).toFixed(3));
+    }
+  }
+
+  let raf = null;
+  function onScroll(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => { update(); raf = null; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();
+</script>
+
+</body>
+</html>

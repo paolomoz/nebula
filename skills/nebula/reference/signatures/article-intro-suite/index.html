@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Article intro effects — clean-room replica (7 variants)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Inter',sans-serif;color:#1a1a1a;background:#fff;
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* ─── variant switcher (top bar) ─── */
+  .picker{
+    position:fixed;top:0;left:0;right:0;z-index:6000;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1rem 1.5rem;
+    background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);
+    color:#fff;font-size:12px;letter-spacing:.04em;
+    pointer-events:none;
+  }
+  .picker__title{font-weight:700;pointer-events:auto}
+  .picker__nav{display:flex;gap:.4rem;pointer-events:auto;flex-wrap:wrap}
+  .picker button{
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+    color:#fff;padding:6px 12px;border-radius:3px;font:inherit;font-size:11px;font-weight:500;
+    letter-spacing:.06em;cursor:pointer;
+  }
+  .picker button:hover{background:rgba(255,255,255,.22)}
+  .picker button.active{background:#fff;color:#000;border-color:#fff}
+
+  /* ─── container & hero ─── */
+  .container{position:relative;height:100vh}
+  .container.notrans *{transition:none !important}
+
+  .header{
+    position:relative;height:100vh;min-height:560px;width:100%;
+    overflow:hidden;
+    /* CRITICAL: transitions on the header itself so layout-affecting properties
+       (height/width/transform/position) animate smoothly. Without this, the
+       hero collapses instantly when .modify is added and you only see a flash. */
+    transition:height 1.2s cubic-bezier(.7,0,.3,1),
+               width  1.2s cubic-bezier(.7,0,.3,1),
+               min-height 1.2s cubic-bezier(.7,0,.3,1),
+               transform 1.2s cubic-bezier(.7,0,.3,1);
+  }
+  .bg-img{
+    position:absolute;inset:0;overflow:hidden;
+    transition:all 1.2s cubic-bezier(.7,0,.3,1);
+  }
+  .bg-img img{
+    position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;
+    transition:all 1.2s cubic-bezier(.7,0,.3,1);
+  }
+  /* dark overlay for legibility */
+  .bg-img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.45) 100%);
+    transition:opacity 1.2s cubic-bezier(.7,0,.3,1);
+  }
+
+  .title{
+    z-index:1000;text-align:center;width:100%;padding:0 2rem;
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    color:#fff;
+    transition:all 1.2s cubic-bezier(.7,0,.3,1);
+  }
+  .title h1{font-weight:800;font-size:clamp(36px, 5vw, 64px);line-height:1;letter-spacing:-0.02em;margin:0 0 .35rem}
+  .title p.subline{font-weight:300;font-size:clamp(16px, 1.6vw, 22px);opacity:.9;margin:0;line-height:1.2}
+  .title p.meta{font-size:12px;letter-spacing:.18em;opacity:.7;margin-bottom:1.25rem;text-transform:uppercase}
+
+  /* trigger scroll arrow */
+  .trigger{
+    position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:5000;
+    background:transparent;border:0;color:#fff;cursor:pointer;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    text-align:center;
+    transition:opacity .3s ease .4s;
+  }
+  .container.modify .trigger{opacity:0;pointer-events:none;transition-delay:0s}
+  .trigger .arrow{
+    display:block;margin-top:.5rem;font-size:18px;
+    animation:bounce 1.8s ease-in-out infinite;
+  }
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ─── article content (revealed after hero animates) ─── */
+  .content{
+    position:relative;z-index:1;background:#fff;color:#1a1a1a;
+    padding:3rem 2rem 6rem;max-width:760px;margin:0 auto;
+    transition:opacity .6s cubic-bezier(.7,0,.3,1) .4s, transform .8s cubic-bezier(.7,0,.3,1) .4s;
+  }
+  .content__meta{
+    font-size:12px;letter-spacing:.06em;color:#888;margin-bottom:2rem;
+    padding-bottom:1.5rem;border-bottom:1px solid #eee;
+  }
+  .content__meta b{color:#1a1a1a;font-weight:500}
+  .content p{margin-bottom:1.25rem;font-size:16px;line-height:1.7;color:#333}
+  .content h2{font-size:22px;font-weight:700;margin:2.5rem 0 .75rem}
+
+  /* initial state: hide content under the hero */
+  .container:not(.modify) .content{opacity:0;transform:translateY(30px);pointer-events:none}
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 1 — jam3: hero shrinks to a top header bar
+     ════════════════════════════════════════════════════════════ */
+  .variant-jam3.modify .header{height:160px;min-height:0}
+  .variant-jam3.modify .bg-img::after{opacity:.7}
+  .variant-jam3.modify .title{
+    top:50%;left:2rem;transform:translateY(-50%);
+    text-align:left;width:auto;padding:0;
+  }
+  .variant-jam3.modify .title h1{font-size:24px;margin:0}
+  .variant-jam3.modify .title p.subline{font-size:13px;opacity:.85;margin-top:.2rem}
+  .variant-jam3.modify .title p.meta{display:none}
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 2 — fadeout: hero fades out, content fades in
+     ════════════════════════════════════════════════════════════ */
+  .variant-fadeout.modify .bg-img{opacity:0;transform:scale(1.05)}
+  .variant-fadeout.modify .title{
+    color:#1a1a1a;top:120px;
+    transform:translate(-50%, 0);
+  }
+  .variant-fadeout.modify .title h1{font-size:clamp(28px, 4vw, 48px)}
+  .variant-fadeout.modify .title p.subline{font-size:16px;opacity:.6}
+  .variant-fadeout.modify .title p.meta{color:#888;opacity:1}
+  .variant-fadeout.modify .header{height:280px;min-height:0}
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 3 — sliced: hero splits in half vertically (top↑, bottom↓)
+     uses two stacked bg layers, each clipped to half the height
+     ════════════════════════════════════════════════════════════ */
+  .variant-sliced .bg-img:nth-child(1){
+    clip-path:inset(0 0 50% 0);
+  }
+  .variant-sliced .bg-img:nth-child(2){
+    clip-path:inset(50% 0 0 0);
+  }
+  .variant-sliced.modify .bg-img:nth-child(1){
+    transform:translateY(-100%);
+  }
+  .variant-sliced.modify .bg-img:nth-child(2){
+    transform:translateY(100%);
+  }
+  .variant-sliced.modify .title{
+    color:#1a1a1a;top:80px;
+    transform:translate(-50%, 0);
+  }
+  .variant-sliced.modify .title h1{font-size:clamp(28px, 4vw, 44px)}
+  .variant-sliced.modify .header{height:260px;min-height:0}
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 4 — side: bg moves to left half, content slides in right
+     ════════════════════════════════════════════════════════════ */
+  .variant-side.modify .header{
+    height:100vh;position:sticky;top:0;
+    width:50vw;float:left;
+  }
+  .variant-side.modify .title{padding:0 2rem}
+  .variant-side.modify .title h1{font-size:clamp(28px, 3vw, 40px)}
+  .variant-side.modify .content{
+    margin:0;margin-left:50vw;
+    padding:6vh 4vw;max-width:50vw;
+    background:#fff;min-height:100vh;
+  }
+  @media (max-width:780px){
+    .variant-side.modify .header{width:100vw;float:none;position:relative;height:50vh}
+    .variant-side.modify .content{margin-left:0;max-width:100%;padding:3rem 2rem}
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 5 — sidefixed: bg pinned to left, content scrolls right
+     ════════════════════════════════════════════════════════════ */
+  .variant-sidefixed.modify .header{
+    position:fixed;top:0;left:0;
+    width:50vw;height:100vh;
+  }
+  .variant-sidefixed.modify .title h1{font-size:clamp(28px, 3vw, 40px)}
+  .variant-sidefixed.modify .content{
+    margin:0;margin-left:50vw;max-width:none;
+    padding:6vh 4vw;background:#fff;min-height:100vh;
+  }
+  @media (max-width:780px){
+    .variant-sidefixed.modify .header{position:relative;width:100vw;height:40vh}
+    .variant-sidefixed.modify .content{margin-left:0;padding:3rem 2rem}
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 6 — push: hero translates fully up; content "pushes" in
+     ════════════════════════════════════════════════════════════ */
+  .variant-push .container{overflow:visible}
+  .variant-push.modify .header{
+    transform:translateY(-100vh);
+  }
+  .variant-push.modify .content{
+    margin-top:-100vh;
+  }
+  .variant-push.modify .title{opacity:0}
+
+  /* ════════════════════════════════════════════════════════════
+     VARIANT 7 — grid: hero breaks into a 3×3 grid; cells scatter
+     each cell shows a portion of the original image via background-position
+     ════════════════════════════════════════════════════════════ */
+  .variant-grid .grid{
+    position:absolute;inset:0;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:repeat(3, 1fr);
+    pointer-events:none;z-index:5;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .variant-grid.modify .grid{opacity:1;transition-delay:0s}
+  .variant-grid.modify .bg-img{opacity:0;transition:opacity .3s ease}
+  .variant-grid .grid div{
+    background-size:300% 300%;
+    transition:transform 1.2s cubic-bezier(.7,0,.3,1), opacity 1.2s cubic-bezier(.7,0,.3,1);
+  }
+  /* Each cell's background-position maps to its grid cell so the assembled grid
+     IS the original image. .modify state scatters them outward. */
+  .variant-grid .grid div:nth-child(1){background-position:0% 0%}
+  .variant-grid .grid div:nth-child(2){background-position:50% 0%}
+  .variant-grid .grid div:nth-child(3){background-position:100% 0%}
+  .variant-grid .grid div:nth-child(4){background-position:0% 50%}
+  .variant-grid .grid div:nth-child(5){background-position:50% 50%}
+  .variant-grid .grid div:nth-child(6){background-position:100% 50%}
+  .variant-grid .grid div:nth-child(7){background-position:0% 100%}
+  .variant-grid .grid div:nth-child(8){background-position:50% 100%}
+  .variant-grid .grid div:nth-child(9){background-position:100% 100%}
+  /* scatter directions */
+  .variant-grid.modify .grid div:nth-child(1){transform:translate(-120%,-120%);opacity:0}
+  .variant-grid.modify .grid div:nth-child(2){transform:translate(0,-150%);opacity:0}
+  .variant-grid.modify .grid div:nth-child(3){transform:translate(120%,-120%);opacity:0}
+  .variant-grid.modify .grid div:nth-child(4){transform:translate(-150%,0);opacity:0}
+  .variant-grid.modify .grid div:nth-child(5){opacity:0;transform:scale(2.5)}
+  .variant-grid.modify .grid div:nth-child(6){transform:translate(150%,0);opacity:0}
+  .variant-grid.modify .grid div:nth-child(7){transform:translate(-120%,120%);opacity:0}
+  .variant-grid.modify .grid div:nth-child(8){transform:translate(0,150%);opacity:0}
+  .variant-grid.modify .grid div:nth-child(9){transform:translate(120%,120%);opacity:0}
+  .variant-grid.modify .title{
+    color:#1a1a1a;top:100px;
+    transform:translate(-50%, 0);
+  }
+  .variant-grid.modify .title h1{font-size:clamp(28px, 4vw, 44px)}
+  .variant-grid.modify .header{height:260px;min-height:0}
+</style>
+</head>
+<body>
+
+<header class="picker" role="banner">
+  <span class="picker__title">Article intro effects · clean-room replica</span>
+  <nav class="picker__nav" id="picker">
+    <button data-variant="jam3"      class="active">1 · Shrink</button>
+    <button data-variant="fadeout">2 · Fade</button>
+    <button data-variant="sliced">3 · Slice</button>
+    <button data-variant="side">4 · Side</button>
+    <button data-variant="sidefixed">5 · Side-fixed</button>
+    <button data-variant="push">6 · Push</button>
+    <button data-variant="grid">7 · Grid</button>
+  </nav>
+</header>
+
+<div class="container variant-jam3" id="container">
+  <div class="header">
+    <!-- variant 3 uses TWO bg-img layers (sliced effect needs two halves) -->
+    <div class="bg-img"><img src="https://picsum.photos/seed/article-intro-cliffs/1800/1100" alt=""></div>
+    <div class="bg-img" aria-hidden="true"><img src="https://picsum.photos/seed/article-intro-cliffs/1800/1100" alt=""></div>
+
+    <!-- variant 7 uses 9-cell grid showing the same image -->
+    <div class="grid" aria-hidden="true">
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+      <div style="background-image:url('https://picsum.photos/seed/article-intro-cliffs/1800/1100')"></div>
+    </div>
+
+    <div class="title">
+      <p class="meta">Punk · Funk Out · Sliced · Side · Fixed Side · Grid · Jam 3</p>
+      <h1>Breathe under water till the end</h1>
+      <p class="subline">Inspiration for article intro effects</p>
+    </div>
+
+    <button class="trigger" type="button" aria-label="Scroll to article">
+      This is the<br>scroll trigger<br>
+      <span class="arrow" aria-hidden="true">↓</span>
+    </button>
+  </div>
+
+  <article class="content" id="content">
+    <div class="content__meta">
+      By <b>Henry James</b> &middot; Posted in <b>Inspiration</b> &middot; on May 21, 2014
+    </div>
+    <p>We may define a food to be any substance which will repair the functional waste of the body, increase its growth, or maintain the heat, muscular, and nervous energy.</p>
+    <p>In its most comprehensive sense, the oxygen of the air is a food; as although it is admitted by the lungs, it passes into the blood, and there re-acts upon the other food which has passed through the stomach. It is usual, however, to restrict the term food to such nutriment as enters the body by the intestinal canal.</p>
+    <h2>The substance of food</h2>
+    <p>Water is often spoken of as being distinct from food, but for this there is no sufficient reason. Many popular writers have divided foods into flesh-formers, heat-givers, and bone-formers; but Dr. Edward Smith's division into nitrogenous, calorifacient, and respiratory is far better.</p>
+    <p>Foods are usually divided into solids and fluids, animal and vegetable; or into nitrogenous, hydro-carbonaceous, oleaginous, gelatinous, saline, and so on.</p>
+    <h2>A further note</h2>
+    <p>The combinations of food which yield the largest amount of nutriment, at the smallest cost, are those generally to be commended. The use of one kind of food only is generally found to be detrimental to health.</p>
+    <p>Even the most wholesome articles of food, if used exclusively, will, in time, become objectionable; and a frequent change is therefore essential to the well-being of the human race.</p>
+    <p>The next variant button will reset the page so you can scroll again — try each one to compare.</p>
+  </article>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const container = document.getElementById("container");
+  const trigger = container.querySelector(".trigger");
+  const picker = document.getElementById("picker");
+
+  let isRevealed = false;
+  let isAnimating = false;
+
+  function onScroll(){
+    if (container.classList.contains("notrans")){
+      container.classList.remove("notrans");
+      return;
+    }
+    if (isAnimating) return;
+    const sy = window.scrollY;
+    if (sy <= 0 && isRevealed) toggle(false);
+    else if (sy > 0 && !isRevealed) toggle(true);
+  }
+
+  function toggle(reveal){
+    isAnimating = true;
+    if (reveal){
+      container.classList.add("modify");
+    } else {
+      container.classList.remove("modify");
+      window.scrollTo(0, 0);
+    }
+    setTimeout(() => {
+      isRevealed = reveal;
+      isAnimating = false;
+    }, 1200);
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  trigger.addEventListener("click", () => {
+    if (!isRevealed) {
+      // smooth-scroll a tiny bit to trigger the same code path
+      window.scrollTo({ top: 80, behavior: "smooth" });
+    }
+  });
+
+  // variant switching
+  picker.addEventListener("click", e => {
+    if (e.target.tagName !== "BUTTON") return;
+    const variant = e.target.dataset.variant;
+    // reset state
+    container.classList.add("notrans");
+    container.classList.remove("modify");
+    isRevealed = false;
+    isAnimating = false;
+    window.scrollTo(0, 0);
+    // swap variant class
+    container.className = "container notrans variant-" + variant;
+    // active button
+    Array.from(picker.children).forEach(b => b.classList.remove("active"));
+    e.target.classList.add("active");
+    // re-enable transitions next frame
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => container.classList.remove("notrans"));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

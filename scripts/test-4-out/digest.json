@@ -1,0 +1,247 @@
+{
+  "sectionsCount": 13,
+  "sections": [
+    {
+      "index": 0,
+      "role": "masthead",
+      "headingText": null,
+      "tag": "header",
+      "childCount": 1
+    },
+    {
+      "index": 1,
+      "role": "hero",
+      "headingText": "La birra ribelledi Milano.",
+      "tag": "section",
+      "childCount": 4
+    },
+    {
+      "index": 2,
+      "role": "colophon",
+      "headingText": "Acqua, malto, lievito.",
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 3,
+      "role": "catalogue",
+      "headingText": "Undici nomi.Tutta Milano.",
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 4,
+      "role": "declaration",
+      "headingText": null,
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 5,
+      "role": "destinations",
+      "headingText": "Tre indirizzi.Lambrate.",
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 6,
+      "role": "card-adelchi",
+      "headingText": "Adelchi",
+      "tag": "a",
+      "childCount": 3
+    },
+    {
+      "index": 7,
+      "role": "card-golgi",
+      "headingText": "Golgi",
+      "tag": "a",
+      "childCount": 3
+    },
+    {
+      "index": 8,
+      "role": "card-brewery",
+      "headingText": "Il birrificio",
+      "tag": "a",
+      "childCount": 3
+    },
+    {
+      "index": 9,
+      "role": "shop",
+      "headingText": "Fai scortadi Lambrate.",
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 10,
+      "role": "newsletter",
+      "headingText": "Scriviamo quando c’è qualcosa che vale la pena sapere.",
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 11,
+      "role": "news",
+      "headingText": "News",
+      "tag": "section",
+      "childCount": 1
+    },
+    {
+      "index": 12,
+      "role": "footer",
+      "headingText": "BirrificioLambrate",
+      "tag": "footer",
+      "childCount": 1
+    }
+  ],
+  "beersFound": [
+    "Ortiga",
+    "Robb de Matt"
+  ],
+  "beersMissing": [
+    "Montestella",
+    "Ghisa",
+    "Sant’Ambroeus",
+    "Sant'Ambroeus",
+    "Magut",
+    "Ligera",
+    "Domm",
+    "Porpora",
+    "Gaina",
+    "Fa Balà L'Oeucc",
+    "Fa Bala L'Oeucc"
+  ],
+  "phrasesFound": [
+    "1996",
+    "Adelchi",
+    "Golgi",
+    "NON FILTRATA",
+    "NON PASTORIZZATA",
+    "NON IN VENDITA"
+  ],
+  "phrasesMissing": [
+    "la birra ribelle di Milano",
+    "Fai scorta di Lambrate"
+  ],
+  "antiHits": [],
+  "imageCount": 4,
+  "imageAudit": [
+    {
+      "tag": "img",
+      "src": "https://source.unsplash.com/featured/1920x1080/?milan-bar-night,crowd-spilling-sidewalk,tram-wires,lambrate-streets,cond",
+      "alt": "Folla davanti a un bar milanese in una sera d’estate, bicchieri di birra in mano sotto i fili del tram.",
+      "isUnsplash": true,
+      "dataImgSource": "unsplash",
+      "dataImgSlotId": "hero-1",
+      "loading": "auto"
+    },
+    {
+      "tag": "img",
+      "src": "https://source.unsplash.com/featured/900x1200/?italian-pub-interior,beer-taps,dark-wood-bar,people-at-bar,milan-evening,",
+      "alt": "L’Adelchi di sera — spine, banco di legno scuro, folla stretta al bancone.",
+      "isUnsplash": true,
+      "dataImgSource": "unsplash",
+      "dataImgSlotId": "card-adelchi",
+      "loading": "lazy"
+    },
+    {
+      "tag": "img",
+      "src": "https://source.unsplash.com/featured/900x1200/?italian-restaurant-bar,open-kitchen,lunch-service,milan-lambrate,neighbor",
+      "alt": "Golgi all’ora di pranzo — cucina e bancone nella stessa sala, luce di mezzogiorno.",
+      "isUnsplash": true,
+      "dataImgSource": "unsplash",
+      "dataImgSlotId": "card-golgi",
+      "loading": "lazy"
+    },
+    {
+      "tag": "img",
+      "src": "https://source.unsplash.com/featured/900x1200/?brewery-floor,stainless-tank,working-clothes,brewer-hands,industrial-mila",
+      "alt": "Un birraio in tuta da lavoro sul piano di cottura, vasca da venti hL alle spalle.",
+      "isUnsplash": true,
+      "dataImgSource": "unsplash",
+      "dataImgSlotId": "card-brewery",
+      "loading": "lazy"
+    }
+  ],
+  "primaryBtnCount": 3,
+  "secondaryBtnCount": 2,
+  "bodyLinksSample": [
+    {
+      "text": "Birrificio·Lambrate",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#",
+      "className": "masthead__brand"
+    },
+    {
+      "text": "Le birre",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#catalogue",
+      "className": "masthead__link"
+    },
+    {
+      "text": "I pub",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#destinations",
+      "className": "masthead__link"
+    },
+    {
+      "text": "Shop",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#shop",
+      "className": "masthead__link"
+    },
+    {
+      "text": "Visite",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#destinations",
+      "className": "masthead__link"
+    },
+    {
+      "text": "News",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#news",
+      "className": "masthead__link"
+    },
+    {
+      "text": "Adelchi · sera · banco scuro · folla in piedi · spine in lin",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#adelchi",
+      "className": "pub-card"
+    },
+    {
+      "text": "Golgi · pranzo · cucina aperta · luce di mezzogiorno · quart",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#golgi",
+      "className": "pub-card"
+    },
+    {
+      "text": "Birrificio · vasche in acciaio · tute da lavoro · ventihL · ",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#brewery",
+      "className": "pub-card"
+    },
+    {
+      "text": "12 aprile 2026\n        // Collaborazione\n        Robb de Mat",
+      "href": "file:///Users/paolo/stardust/nebula-test-4/nebula/index.html#news-1",
+      "className": "news-card"
+    }
+  ],
+  "fontLinks": [
+    "https://fonts.googleapis.com/",
+    "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap"
+  ],
+  "cssVars": {
+    "--paper": "oklch(99.1% 0.014 93)",
+    "--ghisa": "oklch(26.1% 0.004 60)",
+    "--ambra": "oklch(65.6% 0.186 39.4)",
+    "--nebbia": "oklch(82.6% 0.018 81.3)",
+    "--tank": "oklch(36.2% 0.008 75.3)",
+    "--rule": "oklch(82% 0.005 60)",
+    "--ink": null,
+    "--bg": null,
+    "--accent": null
+  },
+  "activeAnimations": 1,
+  "animationsSample": [
+    {
+      "name": "rail-drift",
+      "playState": "running",
+      "target": "div"
+    }
+  ],
+  "heroPad": {
+    "paddingTop": "0px",
+    "paddingBottom": "0px"
+  },
+  "bodyLength": 4832
+}

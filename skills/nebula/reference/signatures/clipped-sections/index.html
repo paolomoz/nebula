@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clipped sections on scroll — clean-room replica</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}
+  html,body{height:100%}
+  body{
+    font-family:Helvetica,'Inter',sans-serif;
+    background:#fafafa;color:#000;
+    -webkit-font-smoothing:antialiased;
+  }
+  ul{list-style:none}
+  img{display:block;max-width:100%}
+
+  #app{position:relative;z-index:1;display:flex;flex-direction:column}
+
+  /* page chrome */
+  header, footer{
+    font-size:2vmax;
+    display:flex;justify-content:center;align-items:center;
+    height:100dvh;
+  }
+  .spacer{height:100vh}
+
+  /* ─── pinned sections ─── */
+  .parallax-sections-wrapper{height:400vh;position:relative}
+  .parallax-sections{
+    position:sticky;top:0;
+    width:100%;height:100dvh;overflow:hidden;
+    color:#fff;
+  }
+  .pinned-section{
+    position:absolute;inset:0;
+    overflow:hidden;
+    display:flex;max-width:100%;height:100dvh;
+    /* clip-path starts fully visible (corners at 100%); JS scrubs the
+       bottom corners from 100% → 0% to collapse the section bottom-up. */
+    clip-path:polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+  .pinned-section:nth-of-type(1){z-index:3}
+  .pinned-section:nth-of-type(2){z-index:2}
+  .pinned-section:nth-of-type(3){z-index:1}
+
+  .pinned-section__background{
+    position:absolute;inset:0;z-index:0;overflow:hidden;
+  }
+  .pinned-section__background img{
+    width:100%;height:100%;object-fit:cover;
+    filter:blur(12px);transform:scale(1.1);
+  }
+  .pinned-section h3{font-size:3vmax;font-weight:500}
+  .pinned-section ul{
+    display:flex;flex-direction:column;gap:.75vmax;
+    text-transform:uppercase;font-size:1.1vmax;letter-spacing:.04em;
+  }
+  .pinned-section__right{
+    display:flex;position:relative;z-index:1;
+    width:50%;margin-left:50%;flex-direction:column;
+    gap:6vmax;justify-content:center;
+    padding-right:5vw;
+  }
+
+  /* center sharp photo — crossfades between 3 images via z-index of stack */
+  .images-container{
+    position:absolute;z-index:10;
+    width:35%;aspect-ratio:1/1;
+    left:7.5%;top:50%;transform:translateY(-50%);
+    overflow:hidden;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.4);
+  }
+  .images-container .img{position:absolute;inset:0}
+  .images-container .img:nth-last-of-type(1){z-index:0}
+  .images-container .img:nth-last-of-type(2){z-index:1}
+  .images-container .img:nth-last-of-type(3){z-index:2}
+  .images-container img{width:100%;height:100%;display:block;object-fit:cover}
+
+  .before, .after{
+    height:100dvh;display:flex;justify-content:center;align-items:center;
+    color:#000;font-size:2vmax;
+  }
+
+  /* ─── perspective gallery (300dvh tall) ─── */
+  .perspective-gallery{height:300dvh;position:relative}
+  .perspective-gallery-container{
+    position:sticky;top:0;
+    height:100dvh;overflow:hidden;
+    perspective:100dvh;
+  }
+  .perspective-gallery__media-wrapper, .perspective-gallery-wrapper{
+    position:absolute;inset:0;height:100dvh;width:100%;
+  }
+  .perspective-gallery__media{position:absolute;will-change:transform}
+  .perspective-gallery__media img{max-width:100%;object-fit:cover;display:block}
+  .perspective-gallery__media__1{width:20%;left:15%;top:8%}
+  .perspective-gallery__media__2{width:20.8%;right:14%;top:35%}
+  .perspective-gallery__media__3{width:20%;left:20%;top:69%}
+  .perspective-gallery__media__4{width:20%;right:37.5%;top:69%}
+  .perspective-gallery__media__5{width:25%;left:50%;top:50%;transform:translate(-50%, -50%)}
+  .perspective-gallery__media__6{width:34%;left:37.5%;top:8%}
+
+  /* credit */
+  .credit{
+    position:fixed;bottom:1rem;left:1rem;z-index:1000;
+    font-size:10px;color:#888;
+  }
+  .credit a{color:inherit;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <header>scroll down</header>
+
+  <div class="before">section before clip</div>
+
+  <!-- ─── clipped sections ─── -->
+  <section class="parallax-sections-wrapper" id="pinWrap">
+    <div class="parallax-sections">
+      <!-- 3 pinned sections, clip-path scrubbed by scroll -->
+      <div class="pinned-section" data-pinned="0">
+        <div class="pinned-section__background">
+          <img src="https://picsum.photos/seed/clipped-osaka/1800/1200" alt="">
+        </div>
+        <div class="pinned-section__right">
+          <h3>Teodor Kuduschiev</h3>
+          <ul>
+            <li>Osaka, Japan</li>
+            <li>Publiée il y a 3 jours</li>
+            <li>Fujifilm X-T1</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pinned-section" data-pinned="1">
+        <div class="pinned-section__background">
+          <img src="https://picsum.photos/seed/clipped-warsaw/1800/1200" alt="">
+        </div>
+        <div class="pinned-section__right">
+          <h3>Vadim Berg</h3>
+          <ul>
+            <li>Warsaw, Poland</li>
+            <li>Publiée il y a 4 jours</li>
+            <li>Canon EOS 6D Mark II</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pinned-section" data-pinned="2">
+        <div class="pinned-section__background">
+          <img src="https://picsum.photos/seed/clipped-berlin/1800/1200" alt="">
+        </div>
+        <div class="pinned-section__right">
+          <h3>Anya Roth</h3>
+          <ul>
+            <li>Berlin, Germany</li>
+            <li>Publiée il y a 6 jours</li>
+            <li>Leica Q2</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- center sharp photo, fades through 3 images as sections scroll -->
+      <div class="images-container">
+        <div class="img" data-photo="2"><img src="https://picsum.photos/seed/clipped-photo-berlin/800/800" alt=""></div>
+        <div class="img" data-photo="1"><img src="https://picsum.photos/seed/clipped-photo-warsaw/800/800" alt=""></div>
+        <div class="img" data-photo="0"><img src="https://picsum.photos/seed/clipped-photo-osaka/800/800" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="after">section after clip</div>
+
+  <!-- ─── perspective gallery ─── -->
+  <section class="perspective-gallery" id="perspWrap">
+    <div class="perspective-gallery-container">
+      <div class="perspective-gallery-wrapper" id="perspMedia">
+        <div class="perspective-gallery__media perspective-gallery__media__1" data-depth="-50"><img src="https://picsum.photos/seed/persp-1/600/600" alt=""></div>
+        <div class="perspective-gallery__media perspective-gallery__media__2" data-depth="40"><img src="https://picsum.photos/seed/persp-2/600/600" alt=""></div>
+        <div class="perspective-gallery__media perspective-gallery__media__3" data-depth="-30"><img src="https://picsum.photos/seed/persp-3/600/600" alt=""></div>
+        <div class="perspective-gallery__media perspective-gallery__media__4" data-depth="60"><img src="https://picsum.photos/seed/persp-4/600/600" alt=""></div>
+        <div class="perspective-gallery__media perspective-gallery__media__5" data-depth="-100"><img src="https://picsum.photos/seed/persp-5/800/800" alt=""></div>
+        <div class="perspective-gallery__media perspective-gallery__media__6" data-depth="20"><img src="https://picsum.photos/seed/persp-6/800/600" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>fin</footer>
+</div>
+
+<p class="credit">Clean-room replica of <a href="https://onscroll-clipped-sections.vercel.app/" target="_blank" rel="noopener">onscroll-clipped-sections</a> · pure JS · no GSAP</p>
+
+<script>
+(function(){
+  "use strict";
+
+  const pinWrap = document.getElementById("pinWrap");
+  const sections = Array.from(document.querySelectorAll(".pinned-section"));
+  const photos = Array.from(document.querySelectorAll(".images-container .img"));
+
+  const perspWrap = document.getElementById("perspWrap");
+  const perspMedia = Array.from(document.querySelectorAll(".perspective-gallery__media"));
+
+  function update(){
+    // ─── clipped sections progress 0..1 across 400vh wrapper ───
+    const pinRect = pinWrap.getBoundingClientRect();
+    const pinTotal = pinWrap.offsetHeight - window.innerHeight;
+    const pinTrav = -pinRect.top;
+    const pinP = Math.max(0, Math.min(1, pinTrav / pinTotal));
+
+    // 3 sections: section 0 collapses 0..0.5, section 1 collapses 0.5..1
+    // (section 2 stays visible at the bottom)
+    const seg1 = Math.max(0, Math.min(1, pinP / 0.5));
+    const seg2 = Math.max(0, Math.min(1, (pinP - 0.5) / 0.5));
+    // bottom corner Y goes from 100% to 0% as segment progresses
+    const bottom1 = (1 - seg1) * 100;
+    const bottom2 = (1 - seg2) * 100;
+    sections[0].style.clipPath = `polygon(0 0, 0 ${bottom1}%, 100% ${bottom1}%, 100% 0)`;
+    sections[1].style.clipPath = `polygon(0 0, 0 ${bottom2}%, 100% ${bottom2}%, 100% 0)`;
+    sections[2].style.clipPath = `polygon(0 0, 0 100%, 100% 100%, 100% 0)`;
+
+    // crossfade center photo: photos are stacked with data-photo 0/1/2
+    // photo 0 visible at pinP 0..0.5, photo 1 at 0.5..1.0, photo 2 after that
+    // Implement by setting opacity on each based on which section is "active"
+    photos.forEach(p => p.style.opacity = "0");
+    if (pinP < 0.45){
+      photos.find(p => p.dataset.photo === "0").style.opacity = "1";
+    } else if (pinP < 0.55){
+      const t = (pinP - 0.45) / 0.10;
+      photos.find(p => p.dataset.photo === "0").style.opacity = String(1 - t);
+      photos.find(p => p.dataset.photo === "1").style.opacity = String(t);
+    } else if (pinP < 0.95){
+      photos.find(p => p.dataset.photo === "1").style.opacity = "1";
+    } else {
+      const t = (pinP - 0.95) / 0.05;
+      photos.find(p => p.dataset.photo === "1").style.opacity = String(1 - t);
+      photos.find(p => p.dataset.photo === "2").style.opacity = String(t);
+    }
+
+    // ─── perspective gallery: depth-driven Z translation ───
+    const pRect = perspWrap.getBoundingClientRect();
+    const pTotal = perspWrap.offsetHeight - window.innerHeight;
+    const pTrav = -pRect.top;
+    const pP = Math.max(-0.2, Math.min(1.2, pTrav / pTotal));
+    perspMedia.forEach(el => {
+      const depth = parseFloat(el.dataset.depth || "0");
+      const z = depth * pP * 8;             // pixels of Z translation
+      const yPct = (pP - 0.5) * 30 * (depth / 60);  // mild parallax in Y too
+      // preserve any pre-existing transform (media__5 has translate(-50%,-50%))
+      const base = el.classList.contains("perspective-gallery__media__5")
+        ? "translate(-50%,-50%) "
+        : "";
+      el.style.transform = `${base}translate3d(0, ${yPct}%, ${z}px)`;
+    });
+  }
+
+  let raf = null;
+  function onScroll(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => { update(); raf = null; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();
+</script>
+
+</body>
+</html>

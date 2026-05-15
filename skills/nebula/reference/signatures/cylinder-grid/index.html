@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cylinders grid — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#0a0a0a;color:#fff;
+    font-family:'Inter',sans-serif;
+    overflow:hidden;-webkit-font-smoothing:antialiased;
+    cursor:pointer;
+  }
+  canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
+  .overlay{
+    position:fixed;inset:0;display:grid;place-items:center;z-index:10;
+    pointer-events:none;
+  }
+  .overlay h1{
+    font-weight:900;
+    font-size:clamp(48px, 9vw, 140px);
+    line-height:.9;letter-spacing:.04em;
+    text-align:center;color:#fff;
+    text-shadow:0 4px 32px rgba(0,0,0,.45);
+  }
+  .overlay h1 span{
+    display:block;font-size:.32em;font-weight:500;letter-spacing:.5em;
+    margin-top:.4em;opacity:.85;
+  }
+  .credit{
+    position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:30;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);
+    pointer-events:none;mix-blend-mode:difference;
+  }
+  .credit a{color:inherit;pointer-events:auto;text-decoration:underline}
+  .hint{
+    position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:30;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);
+    pointer-events:none;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="webgl-canvas"></canvas>
+
+<div class="overlay">
+  <h1>CYLINDERS<span>GRID</span></h1>
+</div>
+
+<p class="hint">Click anywhere to randomize colors</p>
+<p class="credit">Replica of <a href="https://codepen.io/soju22/full/QwLpBBa" target="_blank" rel="noopener">soju22 · QwLpBBa</a> using <a href="https://www.npmjs.com/package/threejs-components" target="_blank" rel="noopener">threejs-components</a></p>
+
+<script type="module">
+  // Same setup as the source pen. The library encapsulates a Three.js scene
+  // with a grid of cylinder meshes, two animated point lights, and a
+  // reflective base plane. ~5 lines of public API.
+  import Grid2Background from 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.17/build/backgrounds/grid2.cdn.min.js';
+
+  const bg = Grid2Background(document.getElementById('webgl-canvas'));
+
+  // click anywhere → randomize cylinder colors + light hues/intensities
+  document.body.addEventListener('click', () => {
+    bg.grid.setColors([
+      0xffffff * Math.random(),
+      0xffffff * Math.random(),
+      0xffffff * Math.random()
+    ]);
+    bg.grid.light1.color.set(0xffffff * Math.random());
+    bg.grid.light1.intensity = 500 + Math.random() * 1000;
+    bg.grid.light2.color.set(0xffffff * Math.random());
+    bg.grid.light2.intensity = 250 + Math.random() * 250;
+  });
+</script>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Signatures library
 
-> **Status: round 1 authored 2026-05-14 (9 signatures — 4 with specimens, 5 external-only).**
+> **Status: rounds 1–2 authored (17 signatures — 12 with specimens, 5 external-only). Round 1 2026-05-14; round 2 2026-05-15.**
 >
 > This file catalogs named *set-piece effects* — discrete dramatic
 > moments that occupy a specific section role. Signatures are distinct
@@ -235,3 +235,208 @@ alternative from the catalog.
   reimpl: clean-room (4×2 variant of S8 + Sadie hover from HoverEffectIdeas)
   author: Paolo
 -->
+
+---
+
+## S10 — Clipped-section reveal
+
+**Source / inspiration.** Codrops-adjacent scroll pattern — pinned sections with `clip-path` scrubbed by scroll progress, plus a center photo crossfade and a 3D perspective gallery as the concluding band.
+
+**Section role.** Full-page scroll narrative; vertical hero-to-band-to-gallery transition mechanism. Sits as the *spine* of a long-form page rather than a single section.
+
+**Tech stack.** Vanilla JS + CSS (`clip-path` polygon scrubbed by scroll observer). No GSAP, no WebGL.
+
+**Anchor families that earn it.** Cinema / film, music label, festival / promo, indie game (premium tier), luxury fashion (statement tier), vibrant consumer / playful (launch tier).
+
+**Recipe outline.** A wrapper of `height: 400vh` holds a `position: sticky; height: 100dvh` section. Inside, three `.pinned-section` absolute layers stack at z-indexes 3 / 2 / 1; their `clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0)` is scrubbed on scroll — bottom corners pull from 100% → 0% so each section collapses bottom-up to reveal the next. After the pinned trilogy, a `perspective: 1200px` gallery band rotates image cards in 3D as they enter the viewport.
+
+**Anti-pairs.** V6 type-set-on-scroll (both consume scroll dwell), V11 crosshatching reveal (both want scroll-into-view as the major event), V4 iris transition (scroll-cut conflicts with iris-cut).
+
+**Specimen.** `signatures/clipped-sections/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (DOM + clip-path; no GSAP)
+  author: Paolo
+-->
+
+---
+
+## S11 — Context-aware logo
+
+**Source / inspiration.** [Codrops · context-aware fixed logo](https://tympanus.net/Development/) — fixed brand mark that transforms across sections.
+
+**Section role.** Page-wide persistent atom — not a section but a *site chrome* element that responds to scroll position. The logo morphs as the user passes through differently-themed sections.
+
+**Tech stack.** Vanilla JS + CSS. IntersectionObserver per section toggles one of seven effect classes on the fixed `.logo`. Uses variable font weights (Inter 200/500/700) and Playfair Display italic for the ornamental pre-mark.
+
+**Anchor families that earn it.** Music label, cinema / film, festival / promo, indie game (premium tier), luxury fashion, agency / portfolio sites, design-studio capability showcases.
+
+**Recipe outline.** A `position: fixed` logo at top-left with seven named effect classes:
+- `fx-1` **vanish** — `scale(0) opacity(0)` (the logo disappears entirely)
+- `fx-2` **blur** — `filter: blur(5px) scale(.9) opacity(.5)`
+- `fx-3` **slide-up** — parent `overflow: hidden`, inner `translateY(-102%)`
+- `fx-4` **char-scatter** — each `.logo__char` translates to a random offset + rotate
+- `fx-5` **char-shuffle** — each char swaps text content briefly before resolving
+- `fx-6` **move-rotate** — `translate(...) rotate(...)` to a fixed angle
+- `fx-7` **slide-off** — `translateX(-120%)` exits left
+
+IntersectionObserver per section adds the corresponding class. Default state (no class) restores neutral.
+
+**Anti-pairs.** None significant — the logo is persistent chrome, not section-bound. Mildly conflicts with V11 crosshatching (cleared section transitions disrupt the smooth observer continuity).
+
+**Specimen.** `signatures/context-logo/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (vanilla JS + IntersectionObserver per section)
+  author: Paolo
+-->
+
+---
+
+## S12 — Four-layer parallax
+
+**Source / inspiration.** Osmo-style parallax landing — four image layers translated at different rates as the user scrolls through the hero trigger section. Mountain-hero is the canonical use; portrait subject + foreground/background scrub is the alternative.
+
+**Section role.** Hero with depth illusion. The first viewport reveals the layers in their natural position; scrolling pushes layers apart vertically to expose the deeper space.
+
+**Tech stack.** Vanilla JS + CSS. Each `.parallax__layer-img` sets `--y` from scroll progress; CSS applies `translate3d(0, calc(var(--y) * 1%), 0)`. yPercent values 70 / 55 / 40 / 10 from back to front.
+
+**Anchor families that earn it.** Outdoor / adventure, sustainable / eco, hospitality (landscape-led), cinema / film, music label (landscape album sleeve), boutique hotel (landscape-led tier), festival / promo (landscape).
+
+**Recipe outline.** A `100vh` `.parallax__header` holds four absolutely-positioned `<img>` layers. A `scroll` listener computes progress through the header element and assigns each layer a yPercent offset. Layers transform via `translate3d` (GPU); `will-change: transform`. The title sits at z-index 3 on top of layer 4 (foreground).
+
+**Anti-pairs.** V5 heat trace (cursor wake conflicts with layer scrub on hero), V9 drift compositions (background territorial clash), V11 crosshatching (both want scroll-into-view as the major event).
+
+**Specimen.** `signatures/four-layer-parallax/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (vanilla JS scroll listener; no GSAP)
+  author: Paolo
+-->
+
+---
+
+## S13 — Cylinder grid
+
+**Source / inspiration.** WebGL playground — 3D cylinder grid with click-to-randomize per-cell colors. Each click reseeds the palette across the field.
+
+**Section role.** Hero / above-the-fold ambient. A bold, interactive WebGL surface that announces the brand as digital-native.
+
+**Tech stack.** WebGL (canvas#webgl-canvas — Three.js scene with instanced cylinder mesh). Vanilla JS, no GSAP. Hard tech tier — high reimpl cost; not for budgets that don't earn it.
+
+**Anchor families that earn it.** Indie game / playful tech, music label (festival / launch tier), cinema / film (festival promo), vibrant consumer / playful (campaign tier), luxury fashion (collectible-edition pages).
+
+**Recipe outline.** A fixed-position `<canvas id="webgl-canvas">` covers the viewport. A Three.js scene instances `CylinderGeometry` on a grid; per-instance color is randomized on `click` event. Camera is fixed; cylinders may rotate gently on idle. Type overlay (`.overlay h1`) sits above the canvas with `mix-blend-mode: difference` for visibility against the dynamic palette.
+
+**Anti-pairs.** V9 drift compositions (territorial — both background ambient), V5 heat trace (cursor wake on heavy WebGL doesn't read), V7 chromatic separation (already chromatic), V11 crosshatching (overkill).
+
+**Specimen.** `signatures/cylinder-grid/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (Three.js instanced mesh)
+  author: Paolo
+-->
+
+---
+
+## S14 — Just-scroll pinned reveal
+
+**Source / inspiration.** Moussa-style portfolio — *"just scroll it"* narrative with full-viewport hero + footer that mirror each other, and pinned scroll-reveal sections between.
+
+**Section role.** Page-wide scroll narrative; for portfolio / agency / launch pages where the whole page is the story and reveal-pacing IS the design.
+
+**Tech stack.** Vanilla JS + CSS. Pinned scroll observers + `mix-blend-mode: difference` on the nav to handle dark/light section transitions transparently.
+
+**Anchor families that earn it.** Agency / portfolio sites, cinema / film (festival microsite), music label (launch / featured-artist page), luxury fashion (statement / lookbook), vibrant consumer / playful (launch campaign), indie game (premium tier launch).
+
+**Recipe outline.** Fixed nav with `mix-blend-mode: difference` so its color flips against varying section backgrounds. Hero and footer share the same structure (image + overlay + centered text), creating bookends. Between them, pinned `position: sticky` sections with `100vh` scroll-reveal content blocks. Cursor-driven UI is minimal — the scroll IS the interaction.
+
+**Anti-pairs.** V6 type-set-on-scroll (both consume scroll dwell), V11 crosshatching reveal (both want scroll-into-view as the major event), V4 iris transition (scroll-cut vs iris-cut conflicts).
+
+**Specimen.** `signatures/just-scroll/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (vanilla JS scroll observers; no GSAP)
+  author: Paolo
+-->
+
+---
+
+## S15 — CSS glitch
+
+**Source / inspiration.** CSS-only chromatic-glitch image effect — stacked clip-path layers with `mix-blend-mode: screen` + chromatic tints (red / cyan / green) produce channel separation across animated slices. Variants: **Haunted** (red/cyan/green slivers) and **Ethereal** (pink/cyan/white slivers, slower).
+
+**Section role.** Hero / band — atmospheric image treatment that runs continuously without input. Best as a single hero photograph or a single mood-band; never as a recurring decoration.
+
+**Tech stack.** Pure CSS — no JS. Five layered pseudo-elements with `mix-blend-mode` + clip-path animations on staggered delays.
+
+**Anchor families that earn it.** Music label, cinema / film (horror / thriller / festival), indie game (atmospheric / dark tier), vibrant consumer (campaign / launch), luxury fashion (statement / Halloween edition).
+
+**Recipe outline.** A wrapper holds 5 stacked image layers — same image, with `mix-blend-mode: screen` (layers 2–4) and `mix-blend-mode: overlay` (layer 5), each tinted via `background-color` + chromatic tint vars. `@keyframes` cycles `clip-path: polygon(...)` slices with staggered timing per layer; tints become visible at each slice as chromatic offset. Two variants share the same structure with different `:root` vars:
+- `.variant-haunted` — red/cyan/green tints, 4s cycle
+- `.variant-ethereal` — pink/cyan/white tints, 3s cycle, `hard-light` final blend
+
+**Anti-pairs.** V7 chromatic separation (territorial overlap — both about RGB separation), V5 heat trace (visual noise compounds).
+
+**Specimen.** `signatures/css-glitch/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (pure CSS — no JS)
+  author: Paolo
+-->
+
+---
+
+## S16 — Article-intro suite
+
+**Source / inspiration.** Codrops-style article-intro reveal patterns — 7 variants of "how the hero transitions when you start reading" (shrink / fade / slice / side / side-fixed / push / grid).
+
+**Section role.** Article hero-to-body transition. Specifically for editorial / long-form / journalism pages where the article *opens* and the reader is invited into the body. Each variant is a different metaphor for that transition.
+
+**Tech stack.** Vanilla JS + CSS. `transition` on layout properties (height / width / transform / position) — the agent's note in the source flags that the hero element itself must carry the transition or it collapses instantly.
+
+**Anchor families that earn it.** Editorial / publication, documentary / journalism, music label (long-form artist features), academic publishing, museum / gallery (essay pages).
+
+**Recipe outline.** A `.header` element holds the article hero (height: 100vh, min-height: 560px). When scroll triggers `.modify` class, the chosen variant's properties animate. The 7 variants:
+1. **shrink** — hero height collapses to a header strip; body reveals below
+2. **fade** — hero crossfades to body
+3. **slice** — hero splits horizontally; body comes up from the gap
+4. **side** — hero translates left; body slides up from the right
+5. **side-fixed** — like side but hero stays pinned at width: 50%
+6. **push** — hero is pushed up off-screen as body enters
+7. **grid** — hero shifts into a grid cell; body fills the remaining cells
+
+The picker UI in the source HTML lets a designer test all 7; in production, `direct` would pick one variant per page.
+
+**Anti-pairs.** V11 crosshatching reveal (both want scroll-into-view as event), V4 iris transition (article-intro IS a transition; iris would compete), V6 type-set-on-scroll on the article body (the variant transition uses scroll budget).
+
+**Specimen.** `signatures/article-intro-suite/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (vanilla JS + CSS transitions; carries a designer-facing picker)
+  author: Paolo
+-->
+
+---
+
+## S17 — Rain lenses
+
+**Source / inspiration.** Canvas 2D simulation — rain droplets on glass with magnifying-lens distortion. Each droplet refracts the background image beneath it as a lens.
+
+**Section role.** Hero / band — atmospheric overlay that runs continuously. Pairs especially with a weather widget or a mood-led page (a venue's "tonight in Milano" hero, a film's noir landing).
+
+**Tech stack.** Canvas 2D + vanilla JS. Particles spawn at the top, fall with gravity, accumulate at the bottom; each particle samples the background image as a lens distortion.
+
+**Anchor families that earn it.** Cinema / film (noir / atmospheric), music label (album-mood tier), indie game (atmospheric / weather-themed), vibrant consumer (mood / seasonal campaigns), hospitality (rain-evening / cocktail-bar mood).
+
+**Recipe outline.** A fixed `<canvas>` covers the viewport. A particle system spawns droplets at the top with random horizontal offsets. Each frame: update positions (gravity), draw the background image, then per droplet draw a clipped lens-distorted sample of the image at the droplet's location. A weather widget overlay (`.widget` with `.widget__temp` huge, `.widget__forecast` small) sits centered as the page's content.
+
+**Anti-pairs.** V9 drift compositions (territorial — both continuous ambient), V5 heat trace (cursor wake compounds with droplet motion), V11 crosshatching reveal (clashing motion vocabularies).
+
+**Specimen.** `signatures/rain-lenses/index.html`
+
+<!-- _provenance:
+  reimpl: clean-room (Canvas 2D particle system; no Three.js)
+  author: Paolo
+-->
+

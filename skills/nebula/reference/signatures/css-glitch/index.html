@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS image glitch effect — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    color:#fff;background:#0a0a0a;
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+
+  /* ─── tunable variables (overridden per variant) ─── */
+  :root{
+    --glitch-width: 100vw;
+    --glitch-height: 100vh;
+    --gap-horizontal: 12px;
+    --gap-vertical: 6px;
+    --time-anim: 4s;
+    --delay-anim: 0.4s;     /* was 2s — user shouldn't wait that long for first glitch */
+    /* Layers 2 & 3 get tints + SCREEN blend → chromatic channel separation
+       (red/cyan offset) becomes visible at every clip-path slice. */
+    --blend-mode-1: none;
+    --blend-mode-2: screen;
+    --blend-mode-3: screen;
+    --blend-mode-4: screen;
+    --blend-mode-5: overlay;
+    --blend-color-1: transparent;
+    --blend-color-2: #ff2a2a;   /* red channel */
+    --blend-color-3: #00d8d8;   /* cyan channel (opposite of red) */
+    --blend-color-4: #1aff2e;   /* green sliver */
+    --blend-color-5: #af4949;
+    --image-url: url('https://picsum.photos/seed/glitch-haunted-fog/1800/1100');
+  }
+  body.variant-ethereal{
+    --blend-mode-5: hard-light;
+    --blend-color-2: #ff3a8c;
+    --blend-color-3: #2dd2ff;
+    --blend-color-4: #ffffff;
+    --blend-color-5: #2d5fc4;
+    --gap-horizontal: 16px;
+    --gap-vertical: 9px;
+    --time-anim: 3s;
+    --image-url: url('https://picsum.photos/seed/glitch-ethereal-portrait/1800/1100');
+  }
+
+  /* ─── 5-layer image stack ─── */
+  .glitch{
+    position:absolute;top:0;left:0;
+    width:var(--glitch-width);height:var(--glitch-height);
+    overflow:hidden;
+  }
+  .glitch__img{
+    position:absolute;
+    top:calc(-1 * var(--gap-vertical));
+    left:calc(-1 * var(--gap-horizontal));
+    width:calc(100% + var(--gap-horizontal) * 2);
+    height:calc(100% + var(--gap-vertical) * 2);
+    background-image:var(--image-url);
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size:cover;
+    background-color:var(--blend-color-1);
+    background-blend-mode:var(--blend-mode-1);
+    transform:translate3d(0,0,0);
+  }
+  .glitch__img:nth-child(n+2){opacity:0}
+  /* once images have loaded the animations kick in */
+  .imgloaded .glitch__img:nth-child(n+2){
+    animation-duration:var(--time-anim);
+    animation-delay:var(--delay-anim);
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+  }
+  .imgloaded .glitch__img:nth-child(2){
+    background-color:var(--blend-color-2);
+    background-blend-mode:var(--blend-mode-2);
+    animation-name:glitch-anim-1;
+  }
+  .imgloaded .glitch__img:nth-child(3){
+    background-color:var(--blend-color-3);
+    background-blend-mode:var(--blend-mode-3);
+    animation-name:glitch-anim-2;
+  }
+  .imgloaded .glitch__img:nth-child(4){
+    background-color:var(--blend-color-4);
+    background-blend-mode:var(--blend-mode-4);
+    animation-name:glitch-anim-3;
+  }
+  .imgloaded .glitch__img:nth-child(5){
+    background-color:var(--blend-color-5);
+    background-blend-mode:var(--blend-mode-5);
+    animation-name:glitch-anim-flash;
+  }
+
+  /* ─── overlay content ─── */
+  .content{
+    position:relative;width:100%;height:100vh;
+    padding:0 5vw;
+    z-index:10;
+    color:#fff;
+  }
+  .content__title{
+    position:relative;
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:14vw;line-height:.95;letter-spacing:.005em;
+    margin:38vh 0 0 0;
+    text-align:center;
+  }
+  body.variant-ethereal .content__title{
+    font-family:'Inter', sans-serif;font-weight:500;letter-spacing:.04em;
+    font-size:11vw;text-transform:uppercase;
+  }
+  .imgloaded .content__title{
+    animation-name:glitch-anim-text;
+    animation-duration:var(--time-anim);
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    animation-delay:calc(var(--delay-anim) + var(--time-anim) * 0.2);
+  }
+  .content__text{
+    position:absolute;
+    font-family:'IM Fell English', serif;
+    font-style:italic;
+    font-size:1.4em;line-height:1.5;
+    top:6em;right:10vw;
+    max-width:480px;text-align:right;
+    color:rgba(255,255,255,.95);
+    text-shadow:0 2px 8px rgba(0,0,0,.4);
+  }
+  .imgloaded .content__text{
+    animation-name:glitch-anim-text;
+    animation-duration:var(--time-anim);
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    animation-delay:calc(var(--delay-anim) + var(--time-anim) * 0.25);
+  }
+  body.variant-ethereal .content__text{
+    font-family:'Inter',sans-serif;font-style:normal;font-weight:500;
+    font-size:0.9em;letter-spacing:.06em;
+    max-width:340px;
+  }
+  @media (max-width: 880px){
+    .content__text{position:relative;right:auto;top:auto;text-align:center;font-size:1.05em;padding:1rem 1em 0}
+  }
+
+  /* ─── chrome ─── */
+  .frame{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;letter-spacing:.04em;color:#fff;
+    pointer-events:none;
+  }
+  .frame__title{font-weight:500}
+  .frame__title b{font-weight:700;margin-right:.5rem}
+  .frame__title span{opacity:.55}
+  .picker{display:flex;gap:.4rem;pointer-events:auto}
+  .picker button{
+    background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);
+    color:#fff;font:inherit;font-size:11px;font-weight:500;
+    padding:6px 12px;border-radius:3px;cursor:pointer;letter-spacing:.06em;
+    backdrop-filter:blur(8px);
+  }
+  .picker button:hover{background:rgba(255,255,255,.2)}
+  .picker button.active{background:#fff;color:#000}
+  .credit{
+    position:fixed;bottom:1rem;left:1.5rem;z-index:1000;
+    font-size:10px;letter-spacing:.04em;color:rgba(255,255,255,.6);
+  }
+  .credit a{color:inherit;text-decoration:underline}
+
+  /* ════════════════════════════════════════════════════════════
+     KEYFRAMES
+     The source pen uses ~16-20 keyframe stops per anim, each with
+     a different clip-path polygon defining a horizontal "tear" strip,
+     plus a small translateX. Combined across 5 layers + blend modes,
+     this produces the chromatic-channel glitch tear effect.
+     ════════════════════════════════════════════════════════════ */
+  /* One glitch burst per cycle, confined to the first ~22% (≈0.88s of a 4s
+     cycle, or ≈0.66s of a 3s cycle). Then the image sits clean for the
+     remaining ~3 seconds before the next burst — the rhythm the user wants. */
+  @keyframes glitch-anim-1 {
+    0%   { opacity:1; transform:translate3d(var(--gap-horizontal),0,0); clip-path:polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
+    2%   { clip-path:polygon(0 15%, 100% 15%, 100% 15%, 0 15%); }
+    4%   { clip-path:polygon(0 10%, 100% 10%, 100% 20%, 0 20%); transform:translate3d(calc(var(--gap-horizontal) * -1),0,0); }
+    6%   { clip-path:polygon(0 1%, 100% 1%, 100% 2%, 0 2%); transform:translate3d(var(--gap-horizontal),0,0); }
+    8%   { clip-path:polygon(0 33%, 100% 33%, 100% 33%, 0 33%); }
+    10%  { clip-path:polygon(0 44%, 100% 44%, 100% 44%, 0 44%); transform:translate3d(calc(var(--gap-horizontal) * -1),0,0); }
+    12%  { clip-path:polygon(0 50%, 100% 50%, 100% 20%, 0 20%); }
+    14%  { clip-path:polygon(0 70%, 100% 70%, 100% 70%, 0 70%); }
+    16%  { clip-path:polygon(0 80%, 100% 80%, 100% 80%, 0 80%); transform:translate3d(var(--gap-horizontal),0,0); }
+    18%  { clip-path:polygon(0 50%, 100% 50%, 100% 55%, 0 55%); }
+    20%  { clip-path:polygon(0 70%, 100% 70%, 100% 80%, 0 80%); transform:translate3d(calc(var(--gap-horizontal) * -1),0,0); }
+    22%, 100% { opacity:1; clip-path:polygon(0 0, 0 0, 0 0, 0 0); transform:translate3d(0,0,0); }
+  }
+  @keyframes glitch-anim-2 {
+    0%   { opacity:1; transform:translate3d(calc(-1 * var(--gap-horizontal)),0,0); clip-path:polygon(0 25%, 100% 25%, 100% 30%, 0 30%); }
+    3%   { clip-path:polygon(0 3%, 100% 3%, 100% 3%, 0 3%); }
+    5%   { clip-path:polygon(0 5%, 100% 5%, 100% 20%, 0 20%); transform:translate3d(var(--gap-horizontal),0,0); }
+    7%   { clip-path:polygon(0 20%, 100% 20%, 100% 20%, 0 20%); }
+    9%   { clip-path:polygon(0 40%, 100% 40%, 100% 40%, 0 40%); transform:translate3d(calc(-1 * var(--gap-horizontal)),0,0); }
+    11%  { clip-path:polygon(0 52%, 100% 52%, 100% 59%, 0 59%); }
+    13%  { clip-path:polygon(0 60%, 100% 60%, 100% 60%, 0 60%); }
+    15%  { clip-path:polygon(0 75%, 100% 75%, 100% 75%, 0 75%); transform:translate3d(var(--gap-horizontal),0,0); }
+    17%  { clip-path:polygon(0 65%, 100% 65%, 100% 40%, 0 40%); }
+    19%  { clip-path:polygon(0 45%, 100% 45%, 100% 50%, 0 50%); }
+    20%  { clip-path:polygon(0 14%, 100% 14%, 100% 33%, 0 33%); transform:translate3d(0,0,0); }
+    21.9%, 100% { opacity:1; clip-path:polygon(0 0,0 0,0 0,0 0); }
+  }
+  @keyframes glitch-anim-3 {
+    0%   { opacity:1; transform:translate3d(0, calc(-1 * var(--gap-vertical)), 0) scale3d(-1,-1,1); clip-path:polygon(0 1%, 100% 1%, 100% 3%, 0 3%); }
+    1.5% { clip-path:polygon(0 10%, 100% 10%, 100% 9%, 0 9%); }
+    3%   { clip-path:polygon(0 5%, 100% 5%, 100% 6%, 0 6%); }
+    5%   { clip-path:polygon(0 20%, 100% 20%, 100% 20%, 0 20%); }
+    7.5% { clip-path:polygon(0 10%, 100% 10%, 100% 10%, 0 10%); }
+    9%   { clip-path:polygon(0 23%, 100% 23%, 100% 24%, 0 24%); }
+    11%  { clip-path:polygon(0 30%, 100% 30%, 100% 31%, 0 31%); }
+    13%  { clip-path:polygon(0 38%, 100% 38%, 100% 38%, 0 38%); }
+    15%  { clip-path:polygon(0 41%, 100% 41%, 100% 41%, 0 41%); }
+    17%  { clip-path:polygon(0 50%, 100% 50%, 100% 50%, 0 50%); }
+    19%  { clip-path:polygon(0 60%, 100% 60%, 100% 60%, 0 60%); }
+    20%  { clip-path:polygon(0 70%, 100% 70%, 100% 70%, 0 70%); }
+    21.9%, 100% { opacity:1; clip-path:polygon(0 0,0 0,0 0,0 0); transform:translate3d(0,0,0) scale3d(1,1,1); }
+  }
+  @keyframes glitch-anim-flash {
+    0%, 5%   { opacity:.35; transform:translate3d(var(--gap-horizontal), var(--gap-vertical), 0); }
+    5.5%, 100% { opacity:0; transform:translate3d(0,0,0); }
+  }
+  @keyframes glitch-anim-text {
+    /* Text glitches briefly at 0-10% of cycle, then sits at full visibility
+       for the remaining 90%. One burst per cycle = once every 3-4s. */
+    0%   { transform:translate3d(calc(-1 * var(--gap-horizontal)),0,0) scale3d(-1,-1,1); clip-path:polygon(0 20%, 100% 20%, 100% 21%, 0 21%); }
+    2%   { clip-path:polygon(0 33%, 100% 33%, 100% 33%, 0 33%); }
+    4%   { clip-path:polygon(0 44%, 100% 44%, 100% 44%, 0 44%); }
+    5%   { clip-path:polygon(0 50%, 100% 50%, 100% 20%, 0 20%); }
+    6%   { clip-path:polygon(0 70%, 100% 70%, 100% 70%, 0 70%); }
+    7%   { clip-path:polygon(0 80%, 100% 80%, 100% 80%, 0 80%); transform:translate3d(var(--gap-horizontal),0,0) scale3d(-1,-1,1); }
+    8%   { clip-path:polygon(0 50%, 100% 50%, 100% 55%, 0 55%); }
+    9%   { clip-path:polygon(0 70%, 100% 70%, 100% 80%, 0 80%); transform:translate3d(0,0,0) scale3d(1,1,1); }
+    9.9%, 100% { clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%); transform:translate3d(0,0,0) scale3d(1,1,1); }
+  }
+
+  /* a tiny scan-line texture for the variant-ethereal vibe */
+  body.variant-ethereal::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+    mix-blend-mode:multiply;opacity:.4;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .glitch__img{animation:none !important}
+    .content__title, .content__text{animation:none !important}
+  }
+</style>
+</head>
+<body class="variant-haunted imgloaded">
+
+<header class="frame" role="banner">
+  <div class="frame__title"><b>Image Glitch Effect</b><span>CSS only · clip-path</span></div>
+  <nav class="picker" id="picker">
+    <button data-variant="haunted" class="active">1 · Haunted</button>
+    <button data-variant="ethereal">2 · Ethereal</button>
+  </nav>
+</header>
+
+<div class="glitch" aria-hidden="true">
+  <div class="glitch__img"></div>
+  <div class="glitch__img"></div>
+  <div class="glitch__img"></div>
+  <div class="glitch__img"></div>
+  <div class="glitch__img"></div>
+</div>
+
+<main class="content">
+  <h1 class="content__title" id="title">Haunted</h1>
+  <p class="content__text" id="text">Evening was in the wood, louring with storm. A time of drought had sucked the weedy pool and baked the channels; birds had done with song.</p>
+</main>
+
+<p class="credit">Clean-room replica of <a href="https://tympanus.net/Tutorials/CSSGlitchEffect/" target="_blank" rel="noopener">CSS Glitch Effect by Codrops</a></p>
+
+<script>
+(function(){
+  "use strict";
+  const picker = document.getElementById("picker");
+  const title = document.getElementById("title");
+  const text = document.getElementById("text");
+  const COPIES = {
+    haunted: {
+      title: "Haunted",
+      text: "Evening was in the wood, louring with storm. A time of drought had sucked the weedy pool and baked the channels; birds had done with song."
+    },
+    ethereal: {
+      title: "Ethereal",
+      text: "The body painted, the bones rearranged. A signal sent across the rendered grid. Nothing answers. Everything listens."
+    }
+  };
+  picker.addEventListener("click", e => {
+    if (e.target.tagName !== "BUTTON") return;
+    const v = e.target.dataset.variant;
+    document.body.className = "variant-" + v + " imgloaded";
+    title.textContent = COPIES[v].title;
+    text.textContent = COPIES[v].text;
+    Array.from(picker.children).forEach(b => b.classList.remove("active"));
+    e.target.classList.add("active");
+    // restart animations by toggling imgloaded
+    document.body.classList.remove("imgloaded");
+    void document.body.offsetWidth;
+    document.body.classList.add("imgloaded");
+  });
+})();
+</script>
+
+</body>
+</html>

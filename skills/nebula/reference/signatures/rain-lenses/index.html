@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rain & water effects — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Roboto',sans-serif;color:#fff;background:#1a1f24;
+    -webkit-font-smoothing:antialiased;overflow:hidden;
+  }
+  canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
+
+  /* ─── weather widget overlay (matches source's chrome) ─── */
+  .frame{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:1.5rem 2.5rem;
+    display:flex;justify-content:space-between;align-items:center;
+    pointer-events:none;
+  }
+  .frame__brand{
+    font-weight:500;font-size:14px;letter-spacing:.04em;
+  }
+  .frame__brand span{opacity:.6;margin-right:.6rem}
+  .frame__nav{display:flex;gap:1.5rem;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85);pointer-events:auto}
+  .frame__nav a{color:inherit;text-decoration:none}
+  .frame__nav a.active{font-weight:700}
+
+  .widget{
+    position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+    z-index:40;text-align:center;
+    color:#fff;pointer-events:none;
+    text-shadow:0 2px 10px rgba(0,0,0,.5);
+    user-select:none;
+  }
+  .widget__date{
+    font-size:13px;font-weight:300;letter-spacing:.02em;opacity:.92;
+    margin-bottom:1.25rem;
+  }
+  .widget__temp{
+    font-size:108px;font-weight:100;line-height:.95;
+    letter-spacing:-.02em;
+  }
+  .widget__temp sup{font-size:.32em;font-weight:300;margin-left:.2em;vertical-align:.55em;opacity:.9}
+  .widget__forecast{
+    margin-top:1.5rem;
+    display:grid;grid-template-columns:repeat(4, 1fr);gap:1rem;
+    font-size:11px;font-weight:300;opacity:.9;
+  }
+  .widget__forecast div{padding:0 .8rem;border-right:1px solid rgba(255,255,255,.2)}
+  .widget__forecast div:last-child{border-right:0}
+  .widget__forecast .icon{
+    font-size:18px;display:block;margin-bottom:.4rem;
+  }
+  .widget__forecast .time{font-size:11px;opacity:.7;margin-top:.3rem}
+
+  .controls{
+    position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:50;
+    display:flex;gap:1.5rem;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);
+    pointer-events:auto;
+  }
+  .controls button{
+    background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.18);
+    color:inherit;font:inherit;padding:6px 12px;border-radius:3px;
+    cursor:pointer;letter-spacing:.18em;
+    backdrop-filter:blur(8px);
+  }
+  .controls button:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35)}
+  .controls button.active{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.4)}
+  .credit{
+    position:fixed;bottom:1rem;right:1.5rem;z-index:50;
+    font-size:10px;color:rgba(255,255,255,.55);
+  }
+  .credit a{color:inherit;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<header class="frame">
+  <div class="frame__brand"><span>/ /</span> Rain &amp; Water Effects</div>
+  <nav class="frame__nav">
+    <a href="#" class="active">Weather</a>
+    <a href="#">Storm</a>
+    <a href="#">Drizzle</a>
+  </nav>
+</header>
+
+<div class="widget" aria-hidden="true">
+  <div class="widget__date">Sunday, 24<sup style="font-size:.7em">th</sup> of October 2043</div>
+  <div class="widget__temp">12<sup>°C</sup></div>
+  <div class="widget__forecast">
+    <div><span class="icon">☁</span>Mon<div class="time">12/25</div></div>
+    <div><span class="icon">🌧</span>Tue<div class="time">10/23</div></div>
+    <div><span class="icon">⛅</span>Wed<div class="time">14/26</div></div>
+    <div><span class="icon">🌧</span>Thu<div class="time">11/22</div></div>
+  </div>
+</div>
+
+<div class="controls">
+  <button data-scene="0" class="active">City</button>
+  <button data-scene="1">Forest</button>
+  <button data-scene="2">Ocean</button>
+  <button data-wipe>Wipe</button>
+</div>
+
+<p class="credit">Clean-room replica of <a href="https://tympanus.net/Development/RainEffect/" target="_blank" rel="noopener">RainEffect by Lucas Bebber</a> · Canvas 2D</p>
+
+<script>
+(function(){
+  "use strict";
+
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d");
+
+  // ─── scene images: rainy city / forest / ocean (picsum seeds) ───
+  const SCENES = [
+    "https://picsum.photos/seed/rain-city-43/1600/1000",
+    "https://picsum.photos/seed/rain-forest-12/1600/1000",
+    "https://picsum.photos/seed/rain-ocean-77/1600/1000",
+  ];
+
+  let W, H, dpr = Math.min(1.5, window.devicePixelRatio || 1);
+  function size(){
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    canvas.style.width = W + "px"; canvas.style.height = H + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    composeBackgrounds();
+  }
+
+  // ─── two offscreen canvases: blurred (out-of-focus) and sharp ───
+  // The blurred version paints continuously as the "behind the glass" view.
+  // The sharp version is sampled THROUGH each drop circle to simulate the
+  // lensing/magnification effect water droplets create.
+  const bgBlur = document.createElement("canvas");
+  const bgSharp = document.createElement("canvas");
+  const bgBlurCtx = bgBlur.getContext("2d");
+  const bgSharpCtx = bgSharp.getContext("2d");
+
+  let img = new Image();
+  img.crossOrigin = "anonymous";
+  let imgLoaded = false;
+  function loadScene(i){
+    imgLoaded = false;
+    img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => { imgLoaded = true; composeBackgrounds(); };
+    img.onerror = () => {
+      // procedural gradient fallback (cool blue cityscape feel)
+      const fb = document.createElement("canvas");
+      fb.width = 1600; fb.height = 1000;
+      const c = fb.getContext("2d");
+      const g = c.createLinearGradient(0, 0, 0, 1000);
+      g.addColorStop(0, "#5a7898"); g.addColorStop(0.6, "#3a4a5a"); g.addColorStop(1, "#1c2026");
+      c.fillStyle = g; c.fillRect(0, 0, 1600, 1000);
+      // some "windows" of lit warm color
+      for (let k = 0; k < 60; k++){
+        c.fillStyle = `rgba(255,${180 + Math.random()*60},${60+Math.random()*80},${0.6 + Math.random()*0.4})`;
+        c.fillRect(Math.random()*1600, 300+Math.random()*350, 3+Math.random()*5, 3+Math.random()*8);
+      }
+      img = fb;
+      imgLoaded = true;
+      composeBackgrounds();
+    };
+    img.src = SCENES[i];
+  }
+
+  function composeBackgrounds(){
+    if (!imgLoaded || !W) return;
+    bgBlur.width = W; bgBlur.height = H;
+    bgSharp.width = W; bgSharp.height = H;
+    // sharp: full-bleed cover crop
+    const ir = img.width / img.height;
+    const cr = W / H;
+    let sx=0, sy=0, sw=img.width, sh=img.height;
+    if (ir > cr){
+      sw = img.height * cr;
+      sx = (img.width - sw) / 2;
+    } else {
+      sh = img.width / cr;
+      sy = (img.height - sh) / 2;
+    }
+    bgSharpCtx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
+    // blurred: same image with stack-blur via filter
+    bgBlurCtx.filter = "blur(9px) brightness(0.85) saturate(0.92)";
+    bgBlurCtx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
+    bgBlurCtx.filter = "none";
+  }
+
+  loadScene(0);
+  size();
+  window.addEventListener("resize", size);
+
+  // ─── drop system ──────────────────────────────────────────────────
+  // drops live in screen pixel coords.
+  //   r = visual radius
+  //   m = mass-ish counter that grows with hits; once m > falling threshold,
+  //       the drop starts falling with vy and leaves trail dots behind.
+  const drops = [];
+  const MAX_DROPS = 480;
+
+  function addStaticDrop(x, y, r){
+    if (drops.length >= MAX_DROPS) return;
+    drops.push({ x, y, r, vy: 0, falling: false, life: 0 });
+  }
+
+  // every frame, spawn a few small drops at random positions
+  function spawnRain(){
+    const tries = 6;  // approximate intensity
+    for (let i = 0; i < tries; i++){
+      if (Math.random() < 0.7){
+        addStaticDrop(Math.random() * W, Math.random() * H, 2 + Math.random() * 3);
+      }
+    }
+    // occasional bigger drop
+    if (Math.random() < 0.10){
+      addStaticDrop(Math.random() * W, Math.random() * H * 0.6, 6 + Math.random() * 5);
+    }
+  }
+
+  function tickDrops(dt){
+    for (let i = drops.length - 1; i >= 0; i--){
+      const d = drops[i];
+      d.life += dt;
+
+      if (!d.falling){
+        // drops slowly accumulate when nearby drops hit them — proxy: grow
+        // occasionally to simulate accretion. Larger drops are more likely
+        // to start falling.
+        if (Math.random() < 0.0006 * d.r) d.r += 0.4;
+        if (d.r > 10 && Math.random() < 0.004 * (d.r - 9)){
+          d.falling = true;
+          d.vy = 0.6;
+        }
+      } else {
+        // falling: accelerate, drop trail dots periodically
+        d.vy += 0.08 * dt;
+        d.y += d.vy * dt;
+        // small chance to slow / get caught
+        if (Math.random() < 0.018){
+          d.vy *= 0.6;
+        }
+        // leave a trail dot every few px traveled
+        if (Math.floor(d.y / 12) !== Math.floor((d.y - d.vy * dt) / 12)){
+          addStaticDrop(d.x + (Math.random() - 0.5) * 2, d.y - d.r * 0.4, Math.max(2, d.r * 0.35));
+        }
+        // remove if it's off screen
+        if (d.y > H + 30){ drops.splice(i, 1); continue; }
+      }
+
+      // tiny static drops slowly fade if they sit too long
+      if (!d.falling && d.r < 4 && d.life > 280){
+        d.r -= 0.04 * dt;
+        if (d.r <= 1){ drops.splice(i, 1); }
+      }
+    }
+  }
+
+  // wipe — clear all drops in a rectangle around cursor
+  let mouseX = -1000, mouseY = -1000, mouseDown = false;
+  canvas.addEventListener("pointerdown", e => { mouseDown = true; mouseX = e.clientX; mouseY = e.clientY; });
+  canvas.addEventListener("pointermove", e => {
+    if (mouseDown){
+      mouseX = e.clientX; mouseY = e.clientY;
+      // wipe drops in a 60px radius
+      for (let i = drops.length - 1; i >= 0; i--){
+        const d = drops[i];
+        if ((d.x - mouseX) ** 2 + (d.y - mouseY) ** 2 < 60*60){
+          drops.splice(i, 1);
+        }
+      }
+    }
+  });
+  canvas.addEventListener("pointerup", () => mouseDown = false);
+  canvas.addEventListener("pointerleave", () => mouseDown = false);
+
+  // ─── render ───────────────────────────────────────────────────────
+  function render(){
+    if (!imgLoaded){ requestAnimationFrame(render); return; }
+
+    // 1) blurred background covers everything (the "out of focus" base)
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
+    ctx.drawImage(bgBlur, 0, 0, W, H);
+
+    // 2) draw each drop. We render the SHARP background sampled with
+    //    magnification (smaller source rect → larger dest rect), clipped
+    //    to the drop's circle. A subtle bright rim on top sells the "wet
+    //    glass" feel.
+    for (let i = 0; i < drops.length; i++){
+      const d = drops[i];
+      const r = d.r;
+      if (r < 1.5) continue;
+
+      // clip to drop circle
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+      ctx.clip();
+
+      // magnification factor varies with drop size — bigger drops magnify more
+      const mag = 1.4 + Math.min(0.6, r * 0.04);
+      const src = r / mag;
+      // draw the sharp bg, sampled around the drop center, magnified into the clip
+      ctx.drawImage(
+        bgSharp,
+        d.x - src, d.y - src, src * 2, src * 2,
+        d.x - r,   d.y - r,   r * 2,   r * 2
+      );
+      ctx.restore();
+
+      // refractive rim — a subtle white highlight on the upper-left
+      // and a darker edge on the lower-right (gives the "spherical" cue)
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+      const grim = ctx.createRadialGradient(
+        d.x - r * 0.4, d.y - r * 0.4, r * 0.1,
+        d.x, d.y, r
+      );
+      grim.addColorStop(0, "rgba(255,255,255,0.16)");
+      grim.addColorStop(0.45, "rgba(255,255,255,0)");
+      grim.addColorStop(0.85, "rgba(0,0,0,0)");
+      grim.addColorStop(1, "rgba(0,0,0,0.28)");
+      ctx.fillStyle = grim;
+      ctx.fill();
+
+      // tiny specular dot upper-left
+      ctx.beginPath();
+      ctx.arc(d.x - r * 0.45, d.y - r * 0.45, Math.max(0.6, r * 0.15), 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,0.55)";
+      ctx.fill();
+    }
+  }
+
+  // ─── animation loop ───────────────────────────────────────────────
+  let lastT = performance.now();
+  function tick(now){
+    const dt = Math.min(2.5, (now - lastT) / 16);   // normalized to 60fps frames
+    lastT = now;
+    spawnRain();
+    tickDrops(dt);
+    render();
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // ─── controls ─────────────────────────────────────────────────────
+  document.querySelectorAll("[data-scene]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-scene]").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      loadScene(parseInt(btn.dataset.scene, 10));
+    });
+  });
+  document.querySelector("[data-wipe]").addEventListener("click", () => { drops.length = 0; });
+})();
+</script>
+
+</body>
+</html>

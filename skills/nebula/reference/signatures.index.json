@@ -2,9 +2,9 @@
   "_meta": {
     "pool": "signatures",
     "schemaVersion": 1,
-    "builtAt": "2026-05-14T17:42:59.978Z",
+    "builtAt": "2026-05-15T06:12:34.674Z",
     "sourceFile": "skills/nebula/reference/signatures.md",
-    "count": 9
+    "count": 17
   },
   "entries": [
     {
@@ -211,6 +211,187 @@
       ],
       "specimenStatus": "local",
       "specimen": "signatures/elastic-cards/index.html"
+    },
+    {
+      "id": "S10",
+      "name": "Clipped-section reveal",
+      "anchor": "s10-clipped-section-reveal",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Full-page scroll narrative; vertical hero-to-band-to-gallery transition mechanism. Sits as the *spine* of a long-form page rather than a single section",
+      "techStack": "Vanilla JS + CSS (`clip-path` polygon scrubbed by scroll observer). No GSAP, no WebGL",
+      "antiPairs": [
+        "V6",
+        "V11",
+        "V4"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/clipped-sections/index.html"
+    },
+    {
+      "id": "S11",
+      "name": "Context-aware logo",
+      "anchor": "s11-context-aware-logo",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Page-wide persistent atom — not a section but a *site chrome* element that responds to scroll position. The logo morphs as the user passes through differently-themed sections",
+      "techStack": "Vanilla JS + CSS. IntersectionObserver per section toggles one of seven effect classes on the fixed `.logo`. Uses variable font weights (Inter 200/500/700) and Playfair Display italic for the ornamental pre-mark",
+      "antiPairs": [
+        "V11"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/context-logo/index.html"
+    },
+    {
+      "id": "S12",
+      "name": "Four-layer parallax",
+      "anchor": "s12-four-layer-parallax",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "hospitality",
+        "outdoor-adventure",
+        "sustainable-eco",
+        "music-label",
+        "cinematic",
+        "boutique-hotel"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero with depth illusion. The first viewport reveals the layers in their natural position; scrolling pushes layers apart vertically to expose the deeper space",
+      "techStack": "Vanilla JS + CSS. Each `.parallax__layer-img` sets `--y` from scroll progress; CSS applies `translate3d(0, calc(var(--y) * 1%), 0)`. yPercent values 70 / 55 / 40 / 10 from back to front",
+      "antiPairs": [
+        "V5",
+        "V9",
+        "V11"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/four-layer-parallax/index.html"
+    },
+    {
+      "id": "S13",
+      "name": "Cylinder grid",
+      "anchor": "s13-cylinder-grid",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero / above-the-fold ambient. A bold, interactive WebGL surface that announces the brand as digital-native",
+      "techStack": "WebGL (canvas#webgl-canvas — Three.js scene with instanced cylinder mesh). Vanilla JS, no GSAP. Hard tech tier — high reimpl cost; not for budgets that don't earn it",
+      "antiPairs": [
+        "V9",
+        "V5",
+        "V7",
+        "V11"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/cylinder-grid/index.html"
+    },
+    {
+      "id": "S14",
+      "name": "Just-scroll pinned reveal",
+      "anchor": "s14-just-scroll-pinned-reveal",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Page-wide scroll narrative; for portfolio / agency / launch pages where the whole page is the story and reveal-pacing IS the design",
+      "techStack": "Vanilla JS + CSS. Pinned scroll observers + `mix-blend-mode: difference` on the nav to handle dark/light section transitions transparently",
+      "antiPairs": [
+        "V6",
+        "V11",
+        "V4"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/just-scroll/index.html"
+    },
+    {
+      "id": "S15",
+      "name": "CSS glitch",
+      "anchor": "s15-css-glitch",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "luxury-fashion",
+        "indie-game",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero / band — atmospheric image treatment that runs continuously without input. Best as a single hero photograph or a single mood-band; never as a recurring decoration",
+      "techStack": "Pure CSS — no JS. Five layered pseudo-elements with `mix-blend-mode` + clip-path animations on staggered delays",
+      "antiPairs": [
+        "V7",
+        "V5"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/css-glitch/index.html"
+    },
+    {
+      "id": "S16",
+      "name": "Article-intro suite",
+      "anchor": "s16-article-intro-suite",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "editorial",
+        "documentary",
+        "tech-research",
+        "music-label"
+      ],
+      "avoid": [],
+      "sectionRole": "Article hero-to-body transition. Specifically for editorial / long-form / journalism pages where the article *opens* and the reader is invited into the body. Each variant is a different metaphor for that transition",
+      "techStack": "Vanilla JS + CSS. `transition` on layout properties (height / width / transform / position) — the agent's note in the source flags that the hero element itself must carry the transition or it collapses instantly",
+      "antiPairs": [
+        "V11",
+        "V4",
+        "V6"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/article-intro-suite/index.html"
+    },
+    {
+      "id": "S17",
+      "name": "Rain lenses",
+      "anchor": "s17-rain-lenses",
+      "filePath": "skills/nebula/reference/signatures.md",
+      "fits": [
+        "vibrant-playful",
+        "indie-game",
+        "hospitality",
+        "music-label",
+        "cinematic"
+      ],
+      "avoid": [],
+      "sectionRole": "Hero / band — atmospheric overlay that runs continuously. Pairs especially with a weather widget or a mood-led page (a venue's \"tonight in Milano\" hero, a film's noir landing)",
+      "techStack": "Canvas 2D + vanilla JS. Particles spawn at the top, fall with gravity, accumulate at the bottom; each particle samples the background image as a lens distortion",
+      "antiPairs": [
+        "V9",
+        "V5",
+        "V11"
+      ],
+      "specimenStatus": "local",
+      "specimen": "signatures/rain-lenses/index.html"
     }
   ]
 }

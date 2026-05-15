@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Just scroll it — clean-room replica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#0a0a0a;color:#fff;
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+
+  /* ─── nav ─── */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    padding:1.5rem 2rem;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.06em;font-weight:700;
+    mix-blend-mode:difference;color:#fff;
+  }
+  .nav__line{
+    position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(255,255,255,.3);
+  }
+
+  /* ─── hero / footer (same structure, mirrored copy) ─── */
+  .hero, .footer{
+    position:relative;
+    width:100%;height:100vh;
+    overflow:hidden;
+  }
+  .hero__image, .footer__image{
+    position:absolute;inset:0;
+  }
+  .hero__image::after, .footer__image::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+  }
+  .hero__text, .footer__text{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    z-index:10;
+    font-weight:900;
+    font-size:clamp(64px, 16vw, 240px);
+    line-height:.85;letter-spacing:-0.04em;text-align:center;
+    color:#fff;
+  }
+  .hero__text .color, .footer__text .color{color:#e3ff3a}
+
+  /* ─── work section ─── */
+  .work{
+    position:relative;
+    /* 3 items with overlapping scroll ranges: each item is 300vh, but each
+       starts 200vh after the previous → ranges overlap by 100vh. Total
+       work height: 2*200 + 300 = 700vh. During overlaps, the outgoing item
+       exits while the incoming item reveals — no black frame. */
+    height:700vh;
+  }
+  /* the actual visible work-items are absolutely-positioned fixed inside,
+     and we use the section's own height as a ghost-spacer container */
+  .work__items{
+    position:sticky;top:0;height:100vh;
+    overflow:hidden;
+  }
+  .work__item{
+    position:absolute;inset:0;
+    overflow:hidden;
+    /* starts hidden — clip-path animates from inset(100% 0 0 0) to inset(0% 0 0 0)
+       as the user scrolls through this item's 300vh ghost-spacer */
+    --reveal: 100;          /* 100 = fully hidden (clipped from top), 0 = fully revealed */
+    --blur: 0;              /* 0 = sharp, 10 = blurred for exit */
+    --img-scale: 1.4;       /* image starts large, contracts as it reveals */
+    --img-y: 10;            /* vertical drift */
+    --img-opacity: 1;       /* fades as you scroll past */
+    --overlay-opacity: 0;
+    clip-path:inset(calc(var(--reveal) * 1%) 0 0 0);
+    filter:blur(calc(var(--blur) * 1px));
+  }
+  .work__item.flipped{
+    /* odd-indexed items have sub-images slide from the LEFT instead of right */
+  }
+
+  /* the background image inside each work item */
+  .work__image{
+    position:absolute;inset:0;
+    transform:scale(var(--img-scale)) translateY(calc(var(--img-y) * 1%));
+    opacity:var(--img-opacity);
+    transition:filter .3s ease;
+  }
+
+  /* sub-images (replacing the source's videos) — 3 portrait panels */
+  .work__panels{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1.5vw;
+    padding:0 4vw;
+    z-index:5;
+    pointer-events:none;
+  }
+  .work__panel{
+    flex:1;max-width:30vw;
+    aspect-ratio:9/16;
+    overflow:hidden;
+    border-radius:8px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
+    --panel-x: 100vw;       /* slide-in offset, set by JS */
+    transform:translateX(var(--panel-x));
+  }
+  .work__panel:nth-child(2){--panel-x: -100vw}
+  .work__panel:nth-child(3){--panel-x: 100vw}
+  .work__item.flipped .work__panel:nth-child(1){--panel-x: -100vw}
+  .work__item.flipped .work__panel:nth-child(2){--panel-x: 100vw}
+  .work__item.flipped .work__panel:nth-child(3){--panel-x: -100vw}
+
+  /* text overlay (title + subtitle) — sits at left, animates in line-by-line */
+  .work__text{
+    position:absolute;top:50%;left:5vw;transform:translateY(-50%);
+    z-index:8;
+    color:#fff;
+    pointer-events:none;
+  }
+  .work__title{
+    font-weight:900;
+    font-size:clamp(40px, 7vw, 110px);
+    line-height:.95;letter-spacing:-0.03em;text-transform:uppercase;
+    margin-bottom:1.5rem;
+  }
+  .work__title .color-1{color:#7fd47a}
+  .work__title .color-2{color:#ff7ad4}
+  .work__title .color-3{color:#7ab3ff}
+  .work__sub{
+    font-size:clamp(13px, 1.2vw, 18px);
+    font-weight:400;letter-spacing:.06em;
+    color:rgba(255,255,255,.85);
+  }
+  .line-wrapper{
+    overflow:hidden;
+    line-height:1.1;
+  }
+  .line{
+    display:block;
+    transform:translateY(var(--line-y, 125%)) rotate(var(--line-rot, 2.5deg));
+    transform-origin:left top;
+    transition:transform .9s cubic-bezier(.16,.84,.34,1);
+  }
+  .work__item.visible .line{
+    --line-y: 0%;
+    --line-rot: 0deg;
+  }
+  .work__sub .line-wrapper{margin-bottom:.25rem}
+
+  /* the overlay element is kept in the DOM but disabled visually
+     — caused a black-frame bug at item boundaries; we use img-opacity
+     fade for the exit instead. */
+  .work__overlay{ display:none; }
+
+  .credit{
+    position:fixed;bottom:1rem;left:1rem;z-index:1000;
+    font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);
+    letter-spacing:.04em;
+  }
+  .credit a{color:inherit;text-decoration:underline}
+
+  @media (prefers-reduced-motion: reduce){
+    .work__item, .work__image, .line, .work__panel{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="#" class="nav__link">MOUSSA</a>
+  <a href="#" class="nav__link">CONTACT</a>
+  <div class="nav__line"></div>
+</header>
+
+<!-- ─── hero ─── -->
+<section class="hero">
+  <div class="hero__image">
+    <img src="https://picsum.photos/seed/moussa-hero-shades/1600/1100" alt="">
+  </div>
+  <div class="hero__text">Just<br><span class="color">scroll</span>&nbsp;it.</div>
+</section>
+
+<!-- ─── work section — 3 pinned items with ghost spacers ─── -->
+<section class="work" id="work">
+  <div class="work__items">
+    <!-- Item 1: NATURE / SAVED YOU -->
+    <article class="work__item" data-idx="0">
+      <div class="work__image"><img src="https://picsum.photos/seed/moussa-nature-rocks/1600/1100" alt=""></div>
+      <div class="work__panels">
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-1a/720/1280" alt=""></div>
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-1b/720/1280" alt=""></div>
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-1c/720/1280" alt=""></div>
+      </div>
+      <div class="work__text">
+        <div class="work__title">
+          <div class="line-wrapper"><span class="line">NATURE</span></div>
+          <div class="line-wrapper"><span class="line"><span class="color-1">SAVED</span> YOU</span></div>
+        </div>
+        <div class="work__sub">
+          <div class="line-wrapper"><span class="line">Rock and Tree</span></div>
+          <div class="line-wrapper"><span class="line">Air and Sea</span></div>
+          <div class="line-wrapper"><span class="line">Land and Life</span></div>
+          <div class="line-wrapper"><span class="line">Leaf and Root</span></div>
+          <div class="line-wrapper"><span class="line">Sand and Sea</span></div>
+        </div>
+      </div>
+      <div class="work__overlay"></div>
+    </article>
+
+    <!-- Item 2: TOUCH / CHANGES YOU (flipped panel directions) -->
+    <article class="work__item flipped" data-idx="1">
+      <div class="work__image"><img src="https://picsum.photos/seed/moussa-touch-hands/1600/1100" alt=""></div>
+      <div class="work__panels">
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-2a/720/1280" alt=""></div>
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-2b/720/1280" alt=""></div>
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-2c/720/1280" alt=""></div>
+      </div>
+      <div class="work__text">
+        <div class="work__title">
+          <div class="line-wrapper"><span class="line">TOUCH</span></div>
+          <div class="line-wrapper"><span class="line"><span class="color-2">CHANGES</span> YOU</span></div>
+        </div>
+        <div class="work__sub">
+          <div class="line-wrapper"><span class="line">Touch and Heal</span></div>
+          <div class="line-wrapper"><span class="line">Kind and True</span></div>
+          <div class="line-wrapper"><span class="line">Hand and Heart</span></div>
+          <div class="line-wrapper"><span class="line">Care and Light</span></div>
+          <div class="line-wrapper"><span class="line">Joy and Peace</span></div>
+        </div>
+      </div>
+      <div class="work__overlay"></div>
+    </article>
+
+    <!-- Item 3: BOOKS / INSPIRES YOU -->
+    <article class="work__item" data-idx="2">
+      <div class="work__image"><img src="https://picsum.photos/seed/moussa-books-page/1600/1100" alt=""></div>
+      <div class="work__panels">
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-3a/720/1280" alt=""></div>
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-3b/720/1280" alt=""></div>
+        <div class="work__panel"><img src="https://picsum.photos/seed/moussa-3c/720/1280" alt=""></div>
+      </div>
+      <div class="work__text">
+        <div class="work__title">
+          <div class="line-wrapper"><span class="line">BOOKS</span></div>
+          <div class="line-wrapper"><span class="line"><span class="color-3">INSPIRES</span> YOU</span></div>
+        </div>
+        <div class="work__sub">
+          <div class="line-wrapper"><span class="line">Book and Life</span></div>
+          <div class="line-wrapper"><span class="line">Ink and Page</span></div>
+          <div class="line-wrapper"><span class="line">Read and Rise</span></div>
+          <div class="line-wrapper"><span class="line">Verse and Voice</span></div>
+          <div class="line-wrapper"><span class="line">Page and Mind</span></div>
+        </div>
+      </div>
+      <div class="work__overlay"></div>
+    </article>
+  </div>
+</section>
+
+<!-- ─── footer — reverse-hero ─── -->
+<section class="footer">
+  <div class="footer__image">
+    <img src="https://picsum.photos/seed/moussa-footer-port/1600/1100" alt="">
+  </div>
+  <div class="footer__text">YOU<br><span class="color">scrollED</span>&nbsp;it.</div>
+</section>
+
+<p class="credit">Clean-room replica of <a href="https://codepen.io/moussamamadou/full/WbNepNG" target="_blank" rel="noopener">moussamamadou · WbNepNG</a> · pure JS · no GSAP/Lenis</p>
+
+<script>
+(function(){
+  "use strict";
+
+  const work = document.getElementById("work");
+  const items = Array.from(document.querySelectorAll(".work__item"));
+  const VH = () => window.innerHeight;
+
+  // overlapping ranges: each item i starts at i*200vh, lasts 300vh
+  function update(){
+    const workRect = work.getBoundingClientRect();
+    const traversed = -workRect.top;
+    const STAGGER_VH = 2;     // each item starts 200vh after the previous
+    const RANGE_VH  = 3;      // each item lasts 300vh
+
+    items.forEach((item, idx) => {
+      const localStart = idx * STAGGER_VH * VH();
+      const localEnd   = localStart + RANGE_VH * VH();
+      const rawP = (traversed - localStart) / (localEnd - localStart);
+      const p = Math.max(-0.2, Math.min(1.2, rawP));
+
+      // ── 0..0.33: reveal phase. clip-path goes 100% → 0%, image scale 1.4 → 1.2
+      const revealP = Math.max(0, Math.min(1, p / 0.33));
+      const reveal  = (1 - revealP) * 100;
+      const imgScale = 1.4 - revealP * 0.2;
+      const imgY = 10 - revealP * 20;     // 10% → -10%
+
+      // ── 0.05..0.5: panels slide in from offscreen → 0
+      const panelP = Math.max(0, Math.min(1, (p - 0.05) / 0.45));
+      const panelX = (1 - panelP) * 100;  // 100% → 0
+
+      // ── 0.10..0.45: text lines drop in
+      const textP = (p > 0.10 && p < 1);
+      item.classList.toggle("visible", textP);
+
+      // ── 0.55..0.85: image blurs and dims (exit phase)
+      const exitP = Math.max(0, Math.min(1, (p - 0.55) / 0.30));
+      const blur = exitP * 10;
+      const imgOpacity = 1 - exitP * 0.7;
+
+      // ── 0.85..1.0: overlay fades in (transitioning out of this item)
+      const overlayP = Math.max(0, Math.min(1, (p - 0.85) / 0.15));
+
+      // apply
+      item.style.setProperty("--reveal", reveal);
+      item.style.setProperty("--img-scale", imgScale);
+      item.style.setProperty("--img-y", imgY);
+      item.style.setProperty("--blur", blur);
+      item.style.setProperty("--img-opacity", imgOpacity);
+      item.style.setProperty("--overlay-opacity", overlayP);
+
+      // panel slide — direction depends on whether item is .flipped
+      const dir = item.classList.contains("flipped") ? -1 : 1;
+      const panels = item.querySelectorAll(".work__panel");
+      panels.forEach((panel, pi) => {
+        // alternate panel directions: 1, -1, 1 (or -1, 1, -1 for flipped)
+        const pdir = (pi % 2 === 0 ? 1 : -1) * dir;
+        panel.style.setProperty("--panel-x", `${panelX * pdir}vw`);
+      });
+
+      // z-order: items that are CURRENTLY in their range (rawP 0..1) are
+      // stacked higher; the *later* item wins ties so it covers the exiting
+      // older one. Use rawP, not the clamped p, to evaluate inactive items.
+      const isInRange = rawP >= 0 && rawP <= 1;
+      item.style.zIndex = isInRange ? (10 + idx) : 1;
+    });
+  }
+
+  let raf = null;
+  function onScroll(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => { update(); raf = null; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();
+</script>
+
+</body>
+</html>
