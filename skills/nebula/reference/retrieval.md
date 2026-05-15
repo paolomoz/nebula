@@ -73,7 +73,7 @@ Plus pool-specific extras:
 | Pool | Extras |
 |---|---|
 | typefaces | `display: { name, genre }`, `body: { name, genre }`, `scale` |
-| palettes  | `roles: { bg, ink, accent, surface1, surface2 }` (each with L/C/h/hex), `stats: { avgLightness, avgChroma, contrastInkBg, bgLightness, bgChroma, isDarkLean, isLightLean, isMonochrome, accentHue, accentChroma }` |
+| palettes  | `anchorMode: "dual" \| "free"`, `intensity: "bold" \| "quiet" \| "neon"`, `accents: [{ role, hex, note }]`, `accentCount`. **v2 schema (2026-05-15)**: substrate is a separate axis (light `#F4F1E6` or dark `#0F1216`), not per-palette; each entry ships accents only. |
 | density   | `values: { pad, lhBody, lhDisplay, scale, base, rhythm, container, gridGap }` |
 | motion    | `trigger`, `easing`, `duration` |
 | edges     | `radii: { card, button, input, badge, image }` |
@@ -95,9 +95,11 @@ For every axis pick or library pick in `direct`'s phases:
    - **Tech-stack budget** (where applicable — signatures, buttons) —
      keep entries within the anchor's tech tier.
    - **Pool-specific filters** (where useful):
-     - palettes: apply the dark-lean default (`stats.isDarkLean`)
-       unless the brief signals "light/airy/open/paper/clinical/cream"
-       or the anchor implies an editorial-light register.
+     - palettes: substrate is picked separately (dark default, light
+       on brief override). Within the pool, filter by
+       `anchorMode` (dual default; free only on multi-accent
+       brief signals) and `intensity` (bold default; quiet for
+       restrained registers; neon for festival / launch).
      - moves: filter by photographic family for picked photo-bearing
        brief; type-led family for type-led briefs.
      - hovers: filter by `appliedTo` — only show hovers that can host

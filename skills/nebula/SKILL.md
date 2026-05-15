@@ -103,10 +103,11 @@ what was synthesized vs. authored, and what other artifacts were read.
   `reference/signatures/<slug>/index.html`. Carries the composition rule
   (1 motion vocabulary + 0–2 signatures per page) and per-anchor tech-stack
   budget.
-- `reference/image-policy.md` — image source policy (Unsplash by default,
-  user-supplied takes priority, generation opt-in only), the 3-way
-  resolution chain, slot schema, per-anchor skip rules, Unsplash discipline
-  (max 4 photos / brand-anchored keywords).
+- `reference/image-policy.md` — image source policy (picsum.photos by
+  default, user-supplied takes priority, generation opt-in only), the
+  3-way resolution chain, slot schema, per-anchor skip rules, image
+  discipline (max 4 photos / brand-anchored keywords). The deprecated
+  `source.unsplash.com` endpoint is explicitly forbidden.
 - `reference/hovers.md` — hover effects catalog (H1–H15 from Codrops:
   Sadie, Layla, Honey, Lily, Selena, Apollo, Steve, Marley, Ruby,
   Bubba, Romeo, Dexter, Sarah, Chico, Oscar). Applied as modifiers

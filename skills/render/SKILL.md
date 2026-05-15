@@ -82,6 +82,68 @@ deviates from its own brief is rejected.
 
 ### Phase 3 — Render
 
+#### Palette bake-in (3 palettes per page)
+
+Every render bakes **three palettes** into the page — the primary
+pick plus two alternates from `DESIGN.json.extensions.palettes`.
+Substrate is set once at the page root via `--bg` / `--ink`; accent
+sets are scoped to a class on `<html>` (or `<body>`):
+
+```html
+<html class="palette-primary" data-palette-primary="<primary-id>"
+      data-palette-alts="<id-1>,<id-2>">
+```
+
+For each of the three palettes, render emits one CSS class block
+keyed by the palette ID:
+
+```css
+:root, .palette-<id> {
+  --acc-primary:        #...;
+  --acc-divider:        #...;
+  --acc-inverted-band:  #...;
+  --acc-section-a:      #...;   /* free-mode only */
+  --acc-section-b:      #...;   /* free-mode only */
+}
+```
+
+`--bg` and `--ink` come from the picked substrate and do NOT change
+across palettes (the substrate axis is independent — alternates only
+swap accents). Render also emits the constant substrate vars:
+
+```css
+:root {
+  --bg:  #F4F1E6;   /* or #0F1216 for dark substrate */
+  --ink: #0F1216;   /* or #F4F1E6 for dark substrate */
+}
+```
+
+A small bootstrap script switches the palette class on load:
+
+```html
+<script>
+  (function() {
+    var p = new URLSearchParams(location.search).get('palette');
+    if (!p) return;
+    var alts = (document.documentElement.dataset.paletteAlts || '').split(',');
+    var primary = document.documentElement.dataset.palettePrimary;
+    if (p === primary || alts.indexOf(p) >= 0) {
+      document.documentElement.className =
+        document.documentElement.className.replace(/palette-\S+/g, '').trim() +
+        ' palette-' + p;
+    }
+  })();
+</script>
+```
+
+Place the script in `<head>` so the swap fires before paint and
+prevents a primary-then-alternate flash. ~2KB inline JS.
+
+**At render completion print the 3 active palette IDs** to the
+render report (see § Phase 5).
+
+#### Generate the page
+
 Generate `nebula/index.html` as a **self-contained** file:
 
 - Inline CSS in a single `<style>` block (or in `<style>` blocks per
@@ -102,22 +164,24 @@ through the chain defined in `skills/nebula/reference/image-policy.md`:
 1. **User-supplied first.** Check `nebula/assets/images/<role>.<ext>`
    (webp, jpg, jpeg, png in that preference order). If a file matches
    the slot role, use it. Mark `data-img-source="user"`.
-2. **Unsplash Source URL** (the default).
-   `https://source.unsplash.com/featured/<w>x<h>/?<keywords>` where
-   `<w>x<h>` derives from `slot.dimensions` and `<keywords>` is the
-   slot's `keywords[]` joined by commas. Mark
-   `data-img-source="unsplash"`.
+2. **picsum.photos seed URL** (the default).
+   `https://picsum.photos/seed/<keywords-joined-by-hyphen>/<w>/<h>`
+   where `<w>`/`<h>` derive from `slot.dimensions` and
+   `<keywords-joined-by-hyphen>` is the slot's `keywords[]` joined
+   with `-`. Mark `data-img-source="picsum"`.
+   **The deprecated `source.unsplash.com/featured/<w>x<h>/?<keywords>`
+   endpoint must never be emitted — it stopped serving images in 2024.**
 3. **Generated.** Only if `imagePolicy === "generate"`. **Currently
    NOT implemented** — when this policy fires, surface a warning to
    the user that generation is on the roadmap, and fall back to
-   Unsplash for this render.
+   picsum.photos for this render.
 4. **Labeled placeholder.** If the above fails (network, no fit),
    render a CSS-only block with the slot's `altText` as visible text
    and `data-img-source="placeholder"`. Placeholders are visible TODOs,
    not polished defaults.
 
 Every rendered photographic element must carry:
-- `data-img-source="<user|unsplash|generated|placeholder>"`
+- `data-img-source="<user|picsum|generated|placeholder>"`
 - `data-img-slot-id="<slot.id>"` (back-reference to DESIGN.json)
 - `alt="<slot.altText>"` — describing the subject, not the design role
 - `loading="lazy"` (except hero / above-the-fold, which may be eager)
@@ -209,13 +273,18 @@ Also run nebula-specific checks:
   HTML, wrapped in a `data-signature="<S-id>"` element. Every
   `data-signature` element in the rendered HTML corresponds to a
   picked signature. No orphan signatures either direction.
+  **Total picked signatures is between 2 and 4** (the new floor).
+  **Exactly one picked signature carries `isHero: true`** in
+  `DESIGN.json` and is rendered on the section with
+  `data-section="hero"`; render refuses if the hero signature is
+  not on the hero section.
 - **Move integrity.** Same rule for `data-move="<M-id>"` against the
   picked moves in `DESIGN.json`.
 - **Image slot integrity.** Every slot in
   `DESIGN.json.extensions.imageSlots[]` resolved to a rendered image
   (or a labeled placeholder). Every rendered photo carries
   `data-img-source` + `data-img-slot-id` + a non-empty `alt`. Total
-  photo count is within the Unsplash-discipline budget (≤ 4 photos
+  photo count is within the image-discipline budget (≤ 4 photos
   unless the anchor is Catalog with an M2 card grid as the only photo
   set).
 - **Hover integrity.** Every hover in
@@ -223,6 +292,35 @@ Also run nebula-specific checks:
   in the rendered HTML, scoped to a `data-hover="<H-id>"` wrapper.
   Every card within the host grid receives the same hover — no
   intra-grid mixing.
+- **Hover coverage (default-on).** For every section in the rendered
+  HTML whose `data-move` belongs to the card-family
+  (`M2`, `M8`, `S9`, or any other card-grid-bearing move/signature
+  picked), the section element MUST carry a `data-hover="<H-id>"`
+  attribute pointing to a valid H-id from the hovers index. Silent
+  omission is a render refusal. Bordered callout blocks must also
+  carry a border-color hover transition consuming `--acc-primary`.
+- **Accent territory integrity.** Each `--acc-*` custom property is
+  consumed by the section roles its name implies. The contract:
+  | CSS var | Allowed consumers |
+  |---|---|
+  | `--acc-primary` | hero kicker, primary CTA, masthead serif mark, top-of-page rule, hero hover |
+  | `--acc-divider` | section dividers, hairline rules between bands, stat-row separators |
+  | `--acc-inverted-band` | substrate of the inverted manifesto / declaration band |
+  | `--acc-section-a` | one named section family (odd-indexed cards, one half of a pair) |
+  | `--acc-section-b` | the alternate section family |
+
+  A section element annotated as a hero MUST consume `--acc-primary`,
+  not `--acc-divider` or `--acc-section-b`. Mixed-role placement on a
+  single section is **render-refusal grade**. The check exists to
+  catch the common failure mode where a multi-accent palette is
+  sprayed indiscriminately across sections, producing a carnival
+  rather than an editorial composition.
+- **Palette bake-in integrity.** Three palette class blocks present
+  in the rendered CSS — primary + two alternates. The bootstrap
+  script reads `URLSearchParams.get('palette')` and swaps the
+  `palette-<id>` class on `<html>` before first paint. Substrate
+  (`--bg` / `--ink`) is constant across all three palettes. The
+  three palette IDs are reported to Phase 5's render report.
 - **Button-system integrity.** The picked button animation
   (`DESIGN.json.extensions.buttonAnimation`) is applied uniformly:
   every `.btn--primary` shares the same primary recipe; every
@@ -251,11 +349,22 @@ Sections:    <list of section data-roles>
 Moves:       <M-ids actually applied, in execution order>
 Tension:     <one-line>
 
-Validations:
-  impeccable craft     <pass/fail summary>
-  nebula pitfalls      <pass/fail summary>
+Palettes baked in:
+  substrate  <dark | light>
+  primary    <id>  (<name>)         → default
+  alternate  <id>  (<name>)         → ?palette=<id>
+  alternate  <id>  (<name>)         → ?palette=<id>
 
-Next: review the page, then either approve or describe what to refine.
+Validations:
+  impeccable craft           <pass/fail summary>
+  nebula pitfalls            <pass/fail summary>
+  accent territory           <pass/fail summary>
+  palette bake-in            <pass/fail summary>
+  signature integrity        <pass/fail summary>
+  hover-coverage             <pass/fail summary>
+
+Next: review the page (the URL also accepts ?palette=<id> to preview
+the two alternates), then either approve or describe what to refine.
 ```
 
 Iteration happens in conversation: the user describes feedback, render
@@ -307,7 +416,7 @@ Update `nebula/state.json`:
 - `skills/nebula/reference/signatures.md` — the signature catalog;
   specimens live at `signatures/<slug>/index.html`.
 - `skills/nebula/reference/image-policy.md` — image source policy
-  (Unsplash by default; user-supplied takes priority; generation
+  (picsum.photos by default; user-supplied takes priority; generation
   opt-in) + slot schema + provenance + validation rules.
 - `skills/nebula/reference/hovers.md` — hover effects catalog
   (H1–H15 from Codrops). CSS recipes scoped to `data-hover="<H-id>"`.

@@ -11,17 +11,30 @@
 ## How signatures compose with motion vocabularies
 
 A page picks **exactly one** motion vocabulary (V1–V11 from
-`curated-pools/motion.md`) + **0–2 named signatures**.
+`curated-pools/motion.md`) + **2–4 named signatures**, with
+**one signature always on the hero**.
 
-- Zero signatures is the type-led default.
-- One signature is the most common — typically a hero or a gallery moment.
-- Two is generous and reserved for editorial / cinematic / promo briefs;
-  the two must be in different section roles (hero + gallery is fine;
-  hero + hero is not).
+- **Minimum 2 signatures per page.** Zero is no longer a valid choice
+  — every nebula page must carry at least one hero signature plus one
+  more on a non-hero section. The "well-mannered editorial" failure
+  mode (a page that could be re-skinned for any brand in the anchor
+  family) is what this floor exists to prevent.
+- **One signature is always on the hero.** Picked from the
+  hero-eligible subset:
+  **S1 · S2 · S4 · S10 · S12 · S13 · S14 · S15 · S17**.
+  These are the entries whose `sectionRole` covers hero / page-spine /
+  full-bleed band; S3 / S5 / S7 are also hero-class but
+  `specimen-status: external-only` so they require explicit user
+  opt-in to ship.
+- **The other 1–3 signatures** occupy non-hero section roles (gallery,
+  atmospheric band, type-as-pattern, transition, persistent chrome,
+  closer).
+- **Maximum 4 signatures per page.** Beyond that the page reads as
+  a sizzle reel; the composition collapses.
 
-Each signature declares **anti-pairs** — motion vocabularies it conflicts
-with. The agent must check these in `direct` before picking the
-combination; violations are render-refusal grade.
+Each signature declares **anti-pairs** — motion vocabularies and other
+signatures it conflicts with. The agent must check these in `direct`
+before picking the combination; violations are render-refusal grade.
 
 ## Tech-stack budget per anchor family
 

@@ -2,9 +2,9 @@
   "_meta": {
     "pool": "hovers",
     "schemaVersion": 1,
-    "builtAt": "2026-05-15T06:12:34.675Z",
+    "builtAt": "2026-05-15T08:34:12.945Z",
     "sourceFile": "skills/nebula/reference/hovers.md",
-    "count": 15
+    "count": 17
   },
   "entries": [
     {
@@ -396,6 +396,49 @@
       "trigger": null,
       "specimenStatus": "external-only",
       "specimen": null
+    },
+    {
+      "id": "H16",
+      "name": "Storefront",
+      "anchor": "h16-storefront",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "vibrant-playful",
+        "civic",
+        "indie-game",
+        "hospitality",
+        "music-label"
+      ],
+      "avoid": [],
+      "appliedTo": [
+        "M8"
+      ],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "local",
+      "specimen": "inline-complete"
+    },
+    {
+      "id": "H17",
+      "name": "Editorial Item",
+      "anchor": "h17-editorial-item",
+      "filePath": "skills/nebula/reference/hovers.md",
+      "fits": [
+        "editorial",
+        "civic",
+        "indie-game",
+        "documentary",
+        "hospitality",
+        "sustainable-eco",
+        "music-label"
+      ],
+      "avoid": [],
+      "appliedTo": [],
+      "techStack": null,
+      "trigger": null,
+      "specimenStatus": "local",
+      "specimen": "inline-complete"
     }
   ]
 }

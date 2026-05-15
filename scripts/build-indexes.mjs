@@ -17,17 +17,18 @@ import path from 'path';
 
 const POOLS = [
   // Curated axis pools (direct's 5 axes)
-  { name: 'typefaces', file: 'skills/direct/reference/curated-pools/typefaces.md',  idPrefix: 'T', extras: 'typefaces'  },
-  { name: 'palettes',  file: 'skills/direct/reference/curated-pools/palettes.md',   idPrefix: 'P', extras: 'palettes'   },
-  { name: 'density',   file: 'skills/direct/reference/curated-pools/density.md',    idPrefix: 'D', extras: 'density'    },
-  { name: 'motion',    file: 'skills/direct/reference/curated-pools/motion.md',     idPrefix: 'V', extras: 'motion'     },
-  { name: 'edges',     file: 'skills/direct/reference/curated-pools/edges.md',      idPrefix: 'E', extras: 'edges'      },
+  { name: 'typefaces', file: 'skills/direct/reference/curated-pools/typefaces.md',  idPattern: /^## (T\d+)\s+—\s+(.+)$/m, extras: 'typefaces'  },
+  // Palettes use a dual-prefix ID scheme (pd-* dual-anchor, fm-* free-mode); see palettes.md.
+  { name: 'palettes',  file: 'skills/direct/reference/curated-pools/palettes.md',   idPattern: /^## ((?:pd|fm)-[\w-]+)\s+—\s+(.+)$/m, extras: 'palettes'   },
+  { name: 'density',   file: 'skills/direct/reference/curated-pools/density.md',    idPattern: /^## (D\d+)\s+—\s+(.+)$/m, extras: 'density'    },
+  { name: 'motion',    file: 'skills/direct/reference/curated-pools/motion.md',     idPattern: /^## (V\d+)\s+—\s+(.+)$/m, extras: 'motion'     },
+  { name: 'edges',     file: 'skills/direct/reference/curated-pools/edges.md',      idPattern: /^## (E\d+)\s+—\s+(.+)$/m, extras: 'edges'      },
   // Recipe libraries (consumed by direct's Phase 4 / 4b / 4d / 4e)
-  { name: 'moves',      file: 'skills/nebula/reference/moves-library.md', idPrefix: 'M', extras: 'moves'      },
-  { name: 'signatures', file: 'skills/nebula/reference/signatures.md',    idPrefix: 'S', extras: 'signatures' },
-  { name: 'hovers',     file: 'skills/nebula/reference/hovers.md',        idPrefix: 'H', extras: 'hovers'     },
-  { name: 'buttons',    file: 'skills/nebula/reference/buttons.md',       idPrefix: 'B', extras: 'buttons'    },
-  { name: 'links',      file: 'skills/nebula/reference/links.md',         idPrefix: 'L', extras: 'links'      },
+  { name: 'moves',      file: 'skills/nebula/reference/moves-library.md', idPattern: /^## (M\d+)\s+—\s+(.+)$/m, extras: 'moves'      },
+  { name: 'signatures', file: 'skills/nebula/reference/signatures.md',    idPattern: /^## (S\d+)\s+—\s+(.+)$/m, extras: 'signatures' },
+  { name: 'hovers',     file: 'skills/nebula/reference/hovers.md',        idPattern: /^## (H\d+)\s+—\s+(.+)$/m, extras: 'hovers'     },
+  { name: 'buttons',    file: 'skills/nebula/reference/buttons.md',       idPattern: /^## (B\d+)\s+—\s+(.+)$/m, extras: 'buttons'    },
+  { name: 'links',      file: 'skills/nebula/reference/links.md',         idPattern: /^## (L\d+)\s+—\s+(.+)$/m, extras: 'links'      },
 ];
 
 // -----------------------------------------------------------------------------
@@ -99,9 +100,11 @@ function firstBacktickValue(text) {
   return m ? m[1] : null;
 }
 
-// Parse entries: split body by ^## <PREFIX>\d+ — heading; skip schema example.
-function parseEntries(md, idPrefix) {
-  const re = new RegExp(`^## (${idPrefix}\\d+)\\s+—\\s+(.+)$`, 'gm');
+// Parse entries: split body by an H2 heading matching the pool's idPattern; skip schema example.
+function parseEntries(md, idPattern) {
+  // Promote single-pattern to global for matchAll.
+  const flags = idPattern.flags.replace('m', '') + 'gm';
+  const re = new RegExp(idPattern.source, flags);
   const positions = [];
   let m;
   while ((m = re.exec(md)) !== null) {
@@ -114,7 +117,7 @@ function parseEntries(md, idPrefix) {
     entries.push({ id: positions[i].id, name: positions[i].name, body: md.slice(start, end) });
   }
   // Filter schema-example sentinels (defensive — shouldn't appear with strict regex)
-  return entries.filter(e => !/<name>|<n>/.test(e.name));
+  return entries.filter(e => !/<name>|<n>|<id>/.test(e.name));
 }
 
 // -----------------------------------------------------------------------------
@@ -136,45 +139,35 @@ function extrasForTypefaces(body) {
 }
 
 function extrasForPalettes(body) {
-  const colorsMatch = body.match(/\*\*Colors\.\*\*\s*([\s\S]+?)(?=\n\s*\*\*[A-Z]|<!--)/);
-  if (!colorsMatch) return {};
-  const block = colorsMatch[1];
-  const lineRe = /-\s*`(\w+)\s*`\s*·\s*`oklch\(([0-9.]+)%\s+([0-9.]+)\s+(none|[0-9.]+)\)`\s*·\s*`#([0-9a-fA-F]+)`/g;
-  const roles = {};
-  let m;
-  while ((m = lineRe.exec(block)) !== null) {
-    const role = m[1].trim();
-    roles[role] = {
-      L: parseFloat(m[2]) / 100,
-      C: parseFloat(m[3]),
-      h: m[4] === 'none' ? null : parseFloat(m[4]),
-      hex: '#' + m[5].toUpperCase(),
-    };
-  }
-  const all = Object.values(roles);
-  if (all.length === 0) return { roles };
+  // v2 schema (2026-05-15): dual-anchor pool. Substrate is a separate axis
+  // with two fixed values (light #F4F1E6 / dark #0F1216). Each palette
+  // entry carries an anchorMode (dual = 3 accents | free = 5 accents),
+  // an intensity tag, and an accents list with named roles.
+  const anchorMode = (fieldShortest(body, 'Anchor mode') || '').toLowerCase().replace(/\s*\(.*$/, '').trim() || null;
+  const intensity  = (fieldShortest(body, 'Intensity')  || '').toLowerCase().trim() || null;
 
-  const avgLightness = all.reduce((s, c) => s + c.L, 0) / all.length;
-  const avgChroma = all.reduce((s, c) => s + c.C, 0) / all.length;
-  const inkL = roles.ink?.L ?? 0;
-  const bgL = roles.bg?.L ?? 1;
-  // Rough WCAG-ish contrast proxy on OKLCH L (approximation; agent recomputes from hex if needed)
-  const ratio = (Math.max(inkL, bgL) + 0.05) / (Math.min(inkL, bgL) + 0.05);
+  // Accents block — looks like:
+  //   - `primary`        · `#048090` — confident teal
+  //   - `divider`        · `#456990` — slate
+  const accentsBlock = body.match(/\*\*Accents\.\*\*\s*([\s\S]+?)(?=\n\s*\*\*[A-Z]|<!--)/);
+  const accents = [];
+  if (accentsBlock) {
+    const lineRe = /-\s*`([\w-]+)`\s*·\s*`(#[0-9a-fA-F]{6})`(?:\s*—\s*(.+))?/g;
+    let m;
+    while ((m = lineRe.exec(accentsBlock[1])) !== null) {
+      accents.push({
+        role: m[1],
+        hex: m[2].toUpperCase(),
+        note: m[3]?.trim() || null,
+      });
+    }
+  }
 
   return {
-    roles,
-    stats: {
-      avgLightness: round(avgLightness, 3),
-      avgChroma:    round(avgChroma, 3),
-      contrastInkBg: round(ratio, 2),
-      bgLightness:  roles.bg?.L  != null ? round(roles.bg.L, 3)  : null,
-      bgChroma:     roles.bg?.C  != null ? round(roles.bg.C, 3)  : null,
-      isDarkLean:   (roles.bg?.L ?? 1) < 0.40,
-      isLightLean:  (roles.bg?.L ?? 0) > 0.85,
-      isMonochrome: avgChroma < 0.05,
-      accentHue:    roles.accent?.h ?? null,
-      accentChroma: roles.accent?.C ?? null,
-    },
+    anchorMode,
+    intensity,
+    accents,
+    accentCount: accents.length,
   };
 }
 
@@ -345,7 +338,7 @@ const EXTRAS = {
 
 async function buildIndex(pool) {
   const md = await fs.readFile(pool.file, 'utf8');
-  const entries = parseEntries(md, pool.idPrefix);
+  const entries = parseEntries(md, pool.idPattern);
 
   const extrasFn = EXTRAS[pool.extras];
   const indexed = entries.map(e => {

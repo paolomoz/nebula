@@ -76,8 +76,18 @@ The 5 axes:
 2. **Density** — named density school (e.g., "editorial-sparse",
    "utilitarian-tight"), drives spacing tokens.
    Pool: `reference/curated-pools/density.md`.
-3. **Color palette structure** — named palette with role definitions, neutral
-   temperature, contrast strategy, accent allowance.
+3. **Color palette** — **two independent picks** per the v2 schema:
+   (a) **Substrate mode** — `light` (`#F4F1E6`) or `dark` (`#0F1216`),
+   selected from brief signals; default `dark`, override on signals
+   like *"paper"*, *"cream"*, *"editorial-print"*, *"almost-white"*,
+   *"clinical"*.
+   (b) **Accent set** — picked from `palettes.md` by `fits` / `avoid`
+   / `intensity` / `anchorMode`. Default pool slice is
+   `anchorMode: dual` (3 accents); pick from `anchorMode: free`
+   (5 accents) only on brief signals like *"festival-loud"*,
+   *"five-accent identity"*, or *"section-distribution palette"*.
+   See § Accent territory rules in `render/SKILL.md` for the
+   role-to-section-element contract render enforces.
    Pool: `reference/curated-pools/palettes.md`.
 4. **Motion temperament** — one named motion vocabulary defining what is
    allowed to move, what is not, easing character.
@@ -93,20 +103,20 @@ the choice — so the distinctiveness check at Phase 4 has data to operate on.
 These are nebula's design defaults — applied silently and surfaced in the
 gate report so the user sees them and can override.
 
-- **Palette (axis A3) — lean dark.** Default to a palette where the
-  `bg` role sits at low lightness (ink-on-dark surface) rather than
-  paper-on-light. Dark palettes give photographic heroes their best
-  surface and produce the strongest first-viewport contrast available
-  in the plugin's vocabulary. Inside `palettes.md`, prefer entries
-  whose ink-on-bg contrast ratio implies the surface is dark — e.g.,
-  *Midnight Magic*, *Black & Gold Elegance*, *Deep Sea*, *Crimson
-  Hues*, *Dark Sunset*. **Override** when the brief signals *"light"*,
-  *"airy"*, *"open"*, *"paper"*, *"clinical"*, *"cream"*, or when the
-  anchor implies a print/editorial register (Codex, Editorial Sparse,
-  Gentle Craft, Hospitality Calm, Atelier Folio, Op-Ed — these
-  typically want lighter palettes).
+- **Substrate (palette pick a) — default dark.** Substrate is one of
+  two fixed values: `#F4F1E6` (light) or `#0F1216` (dark). Default
+  `dark` — gives photographic heroes their best surface and produces
+  the strongest first-viewport contrast available in the vocabulary.
+  **Override** when the brief signals *"paper"*, *"cream"*,
+  *"editorial-print"*, *"almost-white"*, *"clinical"*, *"airy"*, or
+  when the anchor implies a print/editorial register (Codex,
+  Editorial Sparse, Gentle Craft, Hospitality Calm, Atelier Folio,
+  Op-Ed typically want light substrate).
+- **Accent set (palette pick b) — pick from the pool.** Dual-anchor
+  pool (3 accents) is the default slice; pick free-mode (5 accents)
+  only when the brief earns multi-accent section-distribution.
 - **Hero treatment** — see Phase 4 § Hero default.
-- **Image source** — Unsplash by default (see Phase 4c).
+- **Image source** — picsum.photos by default (see Phase 4c).
 
 Distinctiveness check (Phase 5) operates against the **LLM-default**,
 not against nebula's default leans. A dark-leaning palette pick can
@@ -161,38 +171,43 @@ When overriding, surface the substitution and the substitute hero
 treatment in the gate report (e.g., *"M1 substituted with type-led
 hero per brief; no photo slot for hero."*).
 
-### Phase 4b — Pick signatures (0–2, optional)
+### Phase 4b — Pick signatures (2–4 per page, one always on the hero)
 
-Read `skills/nebula/reference/signatures.md`. Decide whether the brief
-earns one or two **signature effects** — named set-piece moments
-distinct from moves (a moves library entry composes a section; a
-signature is a specific elaborated effect occupying a defined section
-role). Most pages pick **zero or one**; two is reserved for editorial,
-cinematic, or promo briefs and requires the signatures to occupy
-*different* section roles.
+Read `skills/nebula/reference/signatures.md`. Every nebula page picks
+**2–4 signatures**, with **one always on the hero**. Zero is no
+longer a valid choice; "well-mannered editorial that could be
+re-skinned for any brand in the anchor family" is the failure mode
+this floor exists to prevent.
 
-For each candidate, verify all four constraints:
+**Two-step pick procedure:**
 
-1. **Tech-stack budget.** Does the brief's anchor family permit the
-   signature's tech stack? See the budget table at the top of
-   `signatures.md` (trust-led B2B → vanilla only; editorial → may earn
-   GSAP; music label / cinema / festival → may earn Three.js / shader).
-2. **Anchor-family eligibility.** The brief's anchor family must
-   appear in the signature's "Anchor families that earn it" list.
-3. **Anti-pairs.** The motion vocabulary picked in Phase 2 § axis A4
-   must **not** appear in the signature's anti-pairs.
-4. **Specimen availability.** Prefer signatures with a local specimen
-   (`signatures/<slug>/index.html`). Picking a `specimen-status:
-   external-only` signature is allowed but render will require the
-   user's explicit go-ahead to ship a placeholder section.
+1. **Hero signature first.** Filter the index to hero-eligible
+   entries — currently **S1 · S2 · S4 · S10 · S12 · S13 · S14 ·
+   S15 · S17** (specimen-local hero-class entries). For external-
+   only hero-class entries (S3 / S5 / S7) the user must opt in
+   explicitly. Score the surviving candidates by anchor-family fit,
+   tech-budget tier, anti-pair check against the picked motion
+   vocabulary, and specimen availability. Pick the highest scorer.
+2. **Additional signature(s).** Pick **1–3 more** from non-hero
+   section roles (gallery, atmospheric band, type-as-pattern,
+   transition, persistent chrome, closer). Same constraint set as
+   step 1; no two picked signatures may occupy the same section
+   role.
 
-If a candidate fails any check, do not pick it. **Zero is a valid
-choice** — don't force a signature where one isn't earned by the brief.
+For every candidate verify:
 
-Record picked signatures by ID (S1, S2, …) in `direction.md` and
-propagate to `DESIGN.json` under `extensions.signatures[]`. Each entry:
-`{ id, name, sectionRole, specimen }` where `specimen` is either the
-local path or the literal string `"external-only"`.
+1. **Tech-stack budget.** Anchor permits the signature's tech tier.
+2. **Anchor-family eligibility.** Brief's anchor appears in the
+   signature's "Anchor families that earn it" list.
+3. **Anti-pairs.** Picked motion vocabulary (Phase 2 § A4) does NOT
+   appear in the signature's anti-pairs. No two picked signatures
+   list each other in anti-pairs.
+4. **Specimen availability.** Prefer local specimens. External-only
+   requires explicit user opt-in.
+
+Record picks in `DESIGN.json.extensions.signatures[]` as
+`[{ id, name, sectionRole, isHero, specimen }, ...]` where exactly
+one entry has `isHero: true`.
 
 ### Phase 4c — Image slots and policy
 
@@ -207,9 +222,9 @@ Read `skills/nebula/reference/image-policy.md`. Decide the page's
 2. Check the brief for explicit generation requests (phrases like
    *"generate the imagery"*, *"AI-generated photos"*, *"images by
    model"*). If yes → `imagePolicy: "generate"`. Surface to the user
-   that generation is currently NOT implemented and Unsplash will be
-   used as fallback.
-3. Default → `imagePolicy: "unsplash"`.
+   that generation is currently NOT implemented and picsum.photos
+   will be used as fallback.
+3. Default → `imagePolicy: "picsum"`.
 
 **Slot derivation**:
 
@@ -244,31 +259,41 @@ other photo slot is present). Surface if the budget is breached.
 Record all slots and the policy in `DESIGN.json.extensions.imageSlots[]`
 and `DESIGN.json.extensions.imagePolicy`.
 
-### Phase 4d — Pick hovers (0–1 per card grid)
+### Phase 4d — Pick hovers (default coverage on every card-like grid)
 
-Read `skills/nebula/reference/hovers.md`. If any picked move/signature
-is a card-grid host (M2 photographic card, S9 elastic-cards, or any
-future card-grid pattern), **optionally** pick one hover from the
-library to apply *uniformly* to all cards in that grid.
+Read `skills/nebula/reference/hovers.md`. **Hover affordance is the
+default, not the opt-in** — every nebula page ships responses on
+essentially every clickable or pointable card-like element. Pick a
+hover for **every** picked move/signature that hosts a card grid or a
+list:
 
-The rules:
+| Host pattern | Default hover |
+|---|---|
+| M2 photographic card grids | **H1 Sadie** |
+| M8 type-as-pattern bands / per-card-accent catalogues | **H16 Storefront** |
+| S9 Elastic Cards | **H1 Sadie** (already wired in the specimen) |
+| List-style content items (news / article / post feeds) | **H17 Editorial Item** |
+| Bordered callout blocks (pull-quotes, classified inserts) | container border shifts to `--acc-primary` on hover (no H-entry needed; render handles inline) |
 
-1. **0–1 hover per card grid.** Multiple grids on the same page may
-   use different hovers; cards within a single grid must use the same
-   hover (mixing hovers within a grid is render-refusal grade).
-2. **Defaults to zero.** Unless the brief signals card emphasis
-   (portfolio brief, gallery brief, atelier folio, featured-work
-   showcase), prefer no hover.
-3. **Verify constraints.** For each candidate hover:
-   - Its `Applied to` list includes a picked host move/signature.
-   - The brief's anchor family appears in its `Fits` list.
-   - Its CSS tech cost is acceptable (all H1–H15 are vanilla CSS — no
-     tech-budget concern).
+The picking rules:
+
+1. **One hover per host grid.** Cards within a single grid must
+   share the same hover (mixing is render-refusal grade).
+2. **Multiple grids on one page may use different hovers** — a
+   photographic destination grid using Sadie and a type-led
+   catalogue using Storefront is correct.
+3. **Verify per-candidate constraints**:
+   - `Applied to` list includes the picked host move/signature.
+   - Brief's anchor family appears in `Fits`.
+   - Anti-pairs against the picked motion vocabulary (Phase 2 § A4).
+4. **Pages with no cards** still carry button + link hovers (Phase
+   4e + 4f); no card hover is forced where there are no cards.
 
 Record picked hovers in `DESIGN.json.extensions.hovers[]` as
-`{ id, name, appliedToMove, appliedToGridSlot, specimen }`. Each
-entry binds the hover to a specific host so render knows which grid
-to scope the CSS to.
+`{ id, name, appliedToMove, appliedToGridSlot, specimen }`. Render
+validates that every card-family section in the page has a matching
+`data-hover` attribute (see `render/SKILL.md` § hover-coverage
+validation).
 
 ### Phase 4e — Pick button animation (0–1 per page)
 
@@ -369,12 +394,18 @@ Hovers:      <H-ids per host, or "none">
 Buttons:     <B-id> (<tier>)
 Links:       <L-id> (e.g., L1 Sansa)
 Image slots: <N total, broken down: hero ×1, card ×3 …>
-Image policy: <unsplash | user-supplied | generate (will fall back to unsplash)>
+Image policy: <picsum | user-supplied | generate (will fall back to picsum)>
+
+Palettes baked in:
+  substrate  <dark | light>
+  primary    <id>  (<name>)         → default
+  alternate  <id>  (<name>)         → ?palette=<id>
+  alternate  <id>  (<name>)         → ?palette=<id>
 
 Default leans applied:
-  palette       <dark | light (overridden because: …)>
+  substrate     <dark | light (overridden because: …)>
   hero          <photo-bg (M1) | type-led (overridden because: …)>
-  image source  <unsplash | user-supplied | generate>
+  image source  <picsum | user-supplied | generate>
 
 Distinctiveness: <N>/5 axes diverge from default.
 ```
@@ -391,9 +422,24 @@ Author the project-root spec in impeccable's format:
 - `DESIGN.md` — visual system (Stitch frontmatter + 6 sections). Tokens
   derived from the axis choices in Phase 2 and the moves picked in Phase 4.
 - `DESIGN.json` — sidecar with extensions (divergence, componentStyle,
-  voice, moves, signatures). Include the full audit trail of axis
-  choices, defaults, the named tension, and the picked-signature
-  records under `extensions.signatures[]`.
+  voice, moves, signatures, palettes). Include the full audit trail
+  of axis choices, defaults, the named tension, picked-signature
+  records under `extensions.signatures[]`, and the **three baked-in
+  palettes** under `extensions.palettes`:
+  ```json
+  "palettes": {
+    "substrate": "dark | light",
+    "primary":   { "id": "<picked-id>", "accents": [...] },
+    "alternates": [
+      { "id": "<adjacent-id-1>", "accents": [...] },
+      { "id": "<adjacent-id-2>", "accents": [...] }
+    ]
+  }
+  ```
+  Adjacents are picked from the same pool slice (same `anchorMode` —
+  dual or free) as the primary, by closeness of `fits[]` overlap.
+  Render bakes all three into the page as switchable CSS classes
+  (see `render/SKILL.md` § Phase 3 § Palette bake-in).
 
 Every component HTML/CSS snippet must be self-contained, use `ds-` class
 prefixes, and respect impeccable's hard rules.
@@ -465,7 +511,7 @@ Next: $nebula render
 - `skills/nebula/reference/signatures.md` — signature effects catalog;
   composition rule + tech-stack budget per anchor family.
 - `skills/nebula/reference/image-policy.md` — image source policy
-  (Unsplash by default; user-supplied takes priority; generation
+  (picsum.photos by default; user-supplied takes priority; generation
   opt-in only) + per-anchor skip rules + slot schema.
 - `skills/nebula/reference/hovers.md` — hover effects catalog (H1–H15
   from Codrops). Applied as modifiers to card-grid host moves; 0–1

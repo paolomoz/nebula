@@ -14,14 +14,35 @@
 
 ## Composition rule
 
-**0–1 hover per card grid.** Consistency across cards in a single grid
-is mandatory; mixing two hovers across cards in the same grid produces
-chaos and is render-refusal grade.
+**Hover affordance is the default**, not the opt-in. Every nebula
+page ships hover responses on essentially every clickable or
+pointable card-like element. Specifically:
 
-Multiple grids on the same page may use *different* hovers — e.g., a
-hero portfolio grid using Sadie and a feature card row using Honey.
-Each grid declares its own host-move/host-signature and its own
-single hover.
+- **M2 photographic card grids** — default hover: **H1 Sadie**.
+- **Type-led card grids (M8 type-as-pattern bands, beer-name catalogues,
+  manifesto card rows)** — default hover: **H16 Storefront** (NEW).
+- **List-style content items** (news feeds, article lists, post
+  lists) — default hover: **H17 Editorial Item** (NEW).
+- **Bordered callout blocks** (pull-quotes, classified-style inserts,
+  feature callouts) — container's `border-color` shifts to
+  `--acc-primary` on hover; the inner CTA link continues to use L3
+  Wilcox (the page-wide link effect).
+- **Buttons** — see `buttons.md` (B1 Quiet hover is the default).
+- **Inline body links** — see `links.md` (L3 Wilcox is the default).
+
+The principle: **every clickable or pointable surface gets a subtle
+response by default**. Personality is the default, not an opt-in.
+
+**Consistency rules**:
+
+- All cards in a single grid use the same hover (mixing is
+  render-refusal grade).
+- Multiple grids on the same page may use *different* hovers — a
+  photographic destination grid using Sadie and a type-led catalogue
+  using Storefront is correct.
+- Pages with no card-like elements (e.g., editorial pages with only
+  body prose) carry only the button + link defaults; no card hover
+  is forced where there are no cards to hold it.
 
 ## Schema for each entry
 
@@ -665,3 +686,92 @@ Note: title markup splits the title into two spans so each half can translate in
 **Avoid for.** Brutalist statement, vibrant consumer / playful (too quiet), sports / athletic, ops / utility.
 
 **Specimen.** `external-only` — see source link.
+
+---
+
+## H16 — Storefront
+
+**Source.** New in nebula — designed for type-led card grids that carry per-card accent colors (M8 type-as-pattern bands, beer-name catalogues, manifesto card rows). The card *announces itself* on hover without leaving its grid position.
+
+**Applied to.** `[M8, type-led card grids with per-card accents]`
+
+**Effect.** On hover: card scales 1.02×, the card's accent color saturation lifts via `color-mix` (70% accent + 30% white) for a *brighter* version of the per-card hue, and a 1px underline reveals under the card's display element. Apply uniformly to every card in the grid; the per-card accent color varies but the hover shape stays consistent.
+
+**Recipe.**
+```css
+.tcard {
+  --card-accent: var(--acc-primary);  /* per-card override via inline style or data-attr */
+  position: relative;
+  background: var(--card-bg, var(--bg));
+  padding: var(--rhythm) calc(var(--rhythm) * 1.2);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tcard__title {
+  color: var(--card-accent);
+  position: relative;
+  transition: color 0.2s ease;
+}
+.tcard__title::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -3px;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tcard:hover { transform: scale(1.02); }
+.tcard:hover .tcard__title {
+  color: color-mix(in oklch, var(--card-accent) 70%, white 30%);
+}
+.tcard:hover .tcard__title::after { transform: scaleX(1); }
+```
+
+**Fits.** Editorial / publication (with per-card accents), music label (catalogue), hospitality (menu cards), vibrant consumer / playful, indie game, festival / promo, civic / institutional (publication register).
+
+**Avoid for.** Photographic card grids (M2 — those carry H1 Sadie), list-style items (those carry H17), pure ops / utility surfaces.
+
+**Anti-pairs (motion vocabularies).** V1 magnetic chain (cursor territory clash), V9 drift compositions (background territorial clash).
+
+**Specimen.** `inline-complete` — the CSS recipe above is the full specimen. Render adapts class names to the page namespace.
+
+---
+
+## H17 — Editorial Item
+
+**Source.** New in nebula — designed for list-style content items (news feeds, article lists, post lists). The list item *advances forward* on hover, signaling forward motion to the linked content.
+
+**Applied to.** `[list-style content items, news / article / post feeds]`
+
+**Effect.** On hover: title color shifts to `--acc-primary`, an underline appears under the title, and the whole item slides forward by 2px via `transform: translateX(2px)`. The forward motion is the read — like the bartender leaning in toward the listener.
+
+**Recipe.**
+```css
+.eitem {
+  display: block;
+  padding: var(--rhythm) 0;
+  border-bottom: 1px solid var(--rule, currentColor);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.eitem__title {
+  color: var(--ink);
+  position: relative;
+  transition: color 0.2s ease;
+}
+.eitem__title::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.eitem:hover { transform: translateX(2px); }
+.eitem:hover .eitem__title { color: var(--acc-primary); }
+.eitem:hover .eitem__title::after { transform: scaleX(1); }
+```
+
+**Fits.** Editorial / publication (article lists, news feeds), documentary / journalism, music label (release lists), civic / institutional (publication archives), hospitality (event lists), indie game (release notes), sustainable / eco (post feeds).
+
+**Avoid for.** Card grids (use H1 / H16 instead), button-like CTAs (use B-effects), photographic surfaces (use H1 Sadie).
+
+**Anti-pairs (motion vocabularies).** V1 magnetic chain (cursor territory clash), V11 crosshatching reveal (both want forward motion as the metaphor; redundant).
+
+**Specimen.** `inline-complete` — the CSS recipe above is the full specimen.

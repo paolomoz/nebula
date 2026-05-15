@@ -2,9 +2,11 @@
 
 > Policy decision: 2026-05-14.
 >
-> **Default source: Unsplash.** Pages render with Unsplash photography unless
-> the user has supplied assets (which takes priority) or has explicitly asked
-> for generated imagery (opt-in, future).
+> **Default source: picsum.photos.** Pages render with picsum.photos
+> photography unless the user has supplied assets (which takes priority) or
+> has explicitly asked for generated imagery (opt-in, future). The previous
+> `source.unsplash.com` endpoint was deprecated by Unsplash in 2024 and
+> never appears in nebula renders.
 >
 > Same human-sourced principle that governs palettes and typefaces holds for
 > images: real photography by real humans. AI image generation is reserved
@@ -22,14 +24,17 @@ through this chain, in order:
    - If a file matching the slot's `role` is present, use it.
    - Mark `data-img-source="user"` on the rendered element.
 
-2. **Unsplash Source URL** (default)
-   - Construct: `https://source.unsplash.com/featured/<w>x<h>/?<keywords>`
-     where `<w>x<h>` derives from the slot's `aspectRatio` and the
-     desired render size, and `<keywords>` is comma-separated terms
-     from the slot's `keywords[]` array.
-   - Mark `data-img-source="unsplash"`.
-   - This URL is **free, no API key required**, and returns a featured
-     photograph matching the keywords on every request.
+2. **picsum.photos seed URL** (default)
+   - Construct: `https://picsum.photos/seed/<keywords-joined-by-hyphen>/<w>/<h>`
+     where `<w>`/`<h>` derive from the slot's `aspectRatio` and the
+     desired render size, and `<keywords-joined-by-hyphen>` is the
+     slot's `keywords[]` array joined with `-`.
+   - Mark `data-img-source="picsum"`.
+   - This URL is **free, no API key required**, deterministic by
+     seed (same keywords → same photo), and still working in 2026.
+     **The previous `source.unsplash.com/featured/<w>x<h>/?<keywords>`
+     endpoint was deprecated by Unsplash in 2024 and no longer
+     serves images — never emit it.**
 
 3. **Generated** (opt-in only, future implementation)
    - When `DESIGN.json.extensions.imagePolicy === "generate"`,
@@ -51,16 +56,16 @@ priority order:
 
 1. **User-supplied assets present.** If `nebula/assets/images/` exists and
    contains at least one file matching a slot role, set
-   `imagePolicy: "user-supplied"`. Render still falls back to Unsplash for
+   `imagePolicy: "user-supplied"`. Render still falls back to picsum.photos for
    slots without a matching file.
 
 2. **Brief explicitly requests generation.** If the brief contains phrases
    like *"generate the imagery"*, *"AI-generated photos"*, *"images by
    model"*, *"render with generated images"*, set
    `imagePolicy: "generate"`. Surface to the user that generation is
-   currently not implemented and Unsplash will be used as fallback.
+   currently not implemented and picsum.photos will be used as fallback.
 
-3. **Default.** `imagePolicy: "unsplash"`.
+3. **Default.** `imagePolicy: "picsum"`.
 
 ## Default hero treatment
 
@@ -100,7 +105,8 @@ must be **prominent and well-handled**, not boxed and apologetic:
   on the **parent section's** `::after`, never on the filtered photo's
   pseudo-element. Verify WCAG AA at the densest type area at minimum;
   AAA where the brief demands.
-- **Brand-anchored keywords.** When sourcing from Unsplash, the slot's
+- **Brand-anchored keywords.** When sourcing from picsum.photos (or any
+  fallback), the slot's
   `keywords[]` array must read as specific to the brand subject — *not*
   stock-photo clichés. For a ceramicist:
   `[ceramic-studio, hands-at-wheel, warm-light, raw-clay]`, not
@@ -157,9 +163,9 @@ When an anchor in the no-photos column is paired with a brief that
 anchor), `direct` may pick M4 (fade-into-page mask) as a measured
 single-photo exception. M1, M2, M3, M5 stay forbidden.
 
-## Unsplash discipline
+## Image discipline
 
-To avoid the "every nebula page looks Unsplash-flavored" failure mode:
+To avoid the "every nebula page looks stock-flavored" failure mode:
 
 - **Max 4 photos per page** across all slots. A six-card M2 grid is OK
   *only* if it's the only photo set on the page; otherwise cap card
@@ -190,7 +196,7 @@ When the user wants to ship with their own photography:
 
 Every rendered image must carry:
 
-- `data-img-source="<user|unsplash|generated|placeholder>"`
+- `data-img-source="<user|picsum|generated|placeholder>"`
 - `data-img-slot-id="<slot-id>"` (back-reference to DESIGN.json)
 - `alt="<slot.altText>"` — always present; describe the photographic
   subject, not the design role
@@ -204,5 +210,5 @@ The `render` skill's Phase 4 (validations) must check:
 - Every slot in `DESIGN.json.extensions.imageSlots[]` resolved to a
   rendered image (or a labeled placeholder).
 - Every rendered photographic element has a `data-img-source` attribute.
-- Total photo count is within the Unsplash-discipline budget (≤ 4 unless
+- Total photo count is within the image-discipline budget (≤ 4 unless
   the anchor is Catalog with a card grid).
